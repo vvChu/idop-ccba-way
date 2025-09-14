@@ -1,0 +1,12 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "BenefitPackages",
+"Description": "Gói phúc lợi",
+"Columns": [
+  { "Name": "PackageName", "Type": "Text", "Required": true },
+  { "Name": "Description", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

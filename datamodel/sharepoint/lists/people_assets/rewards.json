@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Rewards",
+"Description": "Khen thưởng",
+"Columns": [
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "RewardTitle", "Type": "Text", "Required": true },
+  { "Name": "RewardDate", "Type": "DateTime" },
+  { "Name": "Description", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

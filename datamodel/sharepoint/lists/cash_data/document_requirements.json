@@ -1,0 +1,14 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "DocumentRequirements",
+"Description": "Yêu cầu hồ sơ chứng từ",
+"Columns": [
+  { "Name": "RequirementName", "Type": "Text", "Required": true },
+  { "Name": "Description", "Type": "Text" },
+  { "Name": "AppliesTo", "Type": "Choice",
+    "Choices": ["Contract","Invoice","Expense"] }
+],
+"ContentTypes": []
+
+}

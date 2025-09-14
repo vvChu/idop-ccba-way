@@ -1,0 +1,21 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Projects",
+"Description": "Dự án thực thi",
+"Columns": [
+  { "Name": "ProjectCode", "Type": "Text", "Required": true },
+  { "Name": "ProjectName", "Type": "Text", "Required": true },
+  { "Name": "ContractId", "Type": "Lookup",
+    "Lookup": { "List": "Contracts", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Budget", "Type": "Number" },
+  { "Name": "ServiceType", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" } },
+  { "Name": "Status", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } },
+  { "Name": "StartDate", "Type": "DateTime" },
+  { "Name": "EndDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}

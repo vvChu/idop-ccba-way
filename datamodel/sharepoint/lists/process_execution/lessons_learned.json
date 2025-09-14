@@ -1,0 +1,16 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "LessonsLearned",
+"Description": "Bài học kinh nghiệm",
+"Columns": [
+  { "Name": "ProjectId", "Type": "Lookup",
+    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "LessonTitle", "Type": "Text", "Required": true },
+  { "Name": "Description", "Type": "Text" },
+  { "Name": "Category", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_PhanLoaiBaiHoc" } }
+],
+"ContentTypes": []
+
+}

@@ -1,0 +1,9 @@
+docs:
+  entry: docs/index.md
+  output: docs/site
+placeholders:
+  - file: specs/modules/*/*/spec.md
+  - file: specs/modules/*/*/plan.md
+  - file: specs/modules/*/*/tasks.md
+assets:
+  - specs/modules/*/*/diagrams/**

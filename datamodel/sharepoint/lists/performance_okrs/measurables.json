@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Measurables",
+"Description": "Chỉ số đo lường",
+"Columns": [
+  { "Name": "MetricName", "Type": "Text", "Required": true },
+  { "Name": "Unit", "Type": "Text" },
+  { "Name": "Description", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

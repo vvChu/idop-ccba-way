@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "ProjectMembers",
+"Description": "Thành viên dự án",
+"Columns": [
+  { "Name": "ProjectId", "Type": "Lookup",
+    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Role", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

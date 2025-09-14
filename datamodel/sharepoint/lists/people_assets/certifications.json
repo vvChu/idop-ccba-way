@@ -1,0 +1,16 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Certifications",
+"Description": "Chứng chỉ",
+"Columns": [
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "CertificationName", "Type": "Text", "Required": true },
+  { "Name": "IssuedBy", "Type": "Text" },
+  { "Name": "IssueDate", "Type": "DateTime" },
+  { "Name": "ExpiryDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}

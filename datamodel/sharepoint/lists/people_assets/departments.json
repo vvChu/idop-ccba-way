@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Departments",
+"Description": "Phòng ban",
+"Columns": [
+  { "Name": "DepartmentName", "Type": "Text", "Required": true },
+  { "Name": "DepartmentCode", "Type": "Text" },
+  { "Name": "Manager", "Type": "User" }
+],
+"ContentTypes": []
+
+}

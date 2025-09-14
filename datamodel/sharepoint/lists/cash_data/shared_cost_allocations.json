@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "SharedCostAllocations",
+"Description": "Phân bổ chi phí chung",
+"Columns": [
+  { "Name": "ExpenseId", "Type": "Lookup",
+    "Lookup": { "List": "Expenses", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "AllocationRuleId", "Type": "Lookup",
+    "Lookup": { "List": "AllocationRules", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Amount", "Type": "Number" }
+],
+"ContentTypes": []
+
+}

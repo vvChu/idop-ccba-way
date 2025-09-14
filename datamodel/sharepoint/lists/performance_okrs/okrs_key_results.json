@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "OKRS_KeyResults",
+"Description": "Kết quả then chốt OKR",
+"Columns": [
+  { "Name": "ObjectiveId", "Type": "Lookup",
+    "Lookup": { "List": "OKRS_Objectives", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "KeyResultTitle", "Type": "Text", "Required": true },
+  { "Name": "TargetValue", "Type": "Number" },
+  { "Name": "CurrentValue", "Type": "Number" }
+],
+"ContentTypes": []
+
+}

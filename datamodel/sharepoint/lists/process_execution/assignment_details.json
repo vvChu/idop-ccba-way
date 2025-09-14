@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "AssignmentDetails",
+"Description": "Chi tiết phân công",
+"Columns": [
+  { "Name": "AssignmentId", "Type": "Lookup",
+    "Lookup": { "List": "JobAssignments", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "TaskDescription", "Type": "Text" },
+  { "Name": "HoursWorked", "Type": "Number" },
+  { "Name": "Notes", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "MaintenanceLogs",
+"Description": "Nhật ký bảo trì tài sản",
+"Columns": [
+  { "Name": "AssetId", "Type": "Lookup",
+    "Lookup": { "List": "Assets", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "MaintenanceDate", "Type": "DateTime" },
+  { "Name": "Description", "Type": "Text" },
+  { "Name": "PerformedBy", "Type": "User" }
+],
+"ContentTypes": []
+
+}

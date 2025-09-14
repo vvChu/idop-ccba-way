@@ -1,0 +1,18 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "InputInvoices",
+"Description": "Hóa đơn đầu vào",
+"Columns": [
+  { "Name": "VendorId", "Type": "Lookup",
+    "Lookup": { "List": "Vendors", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "InvoiceNumber", "Type": "Text", "Required": true },
+  { "Name": "Currency", "Type": "Choice", "Choices": ["VND","USD","EUR"] },
+  { "Name": "VATRate", "Type": "Number" },
+  { "Name": "GrossAmount", "Type": "Number" },
+  { "Name": "NetAmount", "Type": "Number" },
+  { "Name": "InvoiceDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}

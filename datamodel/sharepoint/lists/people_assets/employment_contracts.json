@@ -1,0 +1,17 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "EmploymentContracts",
+"Description": "Hợp đồng lao động",
+"Columns": [
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "ContractNumber", "Type": "Text", "Required": true },
+  { "Name": "StartDate", "Type": "DateTime" },
+  { "Name": "EndDate", "Type": "DateTime" },
+  { "Name": "ContractType", "Type": "Choice",
+    "Choices": ["Full-time","Part-time","Internship","Freelance"] }
+],
+"ContentTypes": []
+
+}

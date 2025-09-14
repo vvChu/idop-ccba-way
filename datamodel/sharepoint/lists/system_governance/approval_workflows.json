@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "ApprovalWorkflows",
+"Description": "Quy trình phê duyệt",
+"Columns": [
+  { "Name": "WorkflowName", "Type": "Text", "Required": true },
+  { "Name": "Description", "Type": "Text" },
+  { "Name": "Steps", "Type": "Number" }
+],
+"ContentTypes": []
+
+}

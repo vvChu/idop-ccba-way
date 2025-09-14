@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "EnvironmentVariables",
+"Description": "Biến môi trường hệ thống",
+"Columns": [
+  { "Name": "VariableName", "Type": "Text", "Required": true },
+  { "Name": "Value", "Type": "Text" },
+  { "Name": "Description", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

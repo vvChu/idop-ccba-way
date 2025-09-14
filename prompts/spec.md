@@ -1,0 +1,1 @@
+# Prompt viết spec.md

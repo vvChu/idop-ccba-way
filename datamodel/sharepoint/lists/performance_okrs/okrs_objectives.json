@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "OKRS_Objectives",
+"Description": "Mục tiêu OKR",
+"Columns": [
+  { "Name": "ObjectiveTitle", "Type": "Text", "Required": true },
+  { "Name": "Owner", "Type": "User" },
+  { "Name": "QuarterId", "Type": "Lookup",
+    "Lookup": { "List": "Quarters", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Description", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

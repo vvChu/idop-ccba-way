@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Timesheets",
+"Description": "Bảng chấm công",
+"Columns": [
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Date", "Type": "DateTime" },
+  { "Name": "HoursWorked", "Type": "Number" },
+  { "Name": "Notes", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

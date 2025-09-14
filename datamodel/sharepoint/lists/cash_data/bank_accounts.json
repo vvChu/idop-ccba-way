@@ -1,0 +1,14 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "BankAccounts",
+"Description": "Tài khoản ngân hàng",
+"Columns": [
+  { "Name": "BankName", "Type": "Text", "Required": true },
+  { "Name": "AccountNumber", "Type": "Text", "Required": true },
+  { "Name": "AccountName", "Type": "Text" },
+  { "Name": "Currency", "Type": "Choice", "Choices": ["VND","USD","EUR"] }
+],
+"ContentTypes": []
+
+}

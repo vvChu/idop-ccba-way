@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "IntegrationPoints",
+"Description": "Điểm tích hợp hệ thống",
+"Columns": [
+  { "Name": "IntegrationName", "Type": "Text", "Required": true },
+  { "Name": "SystemName", "Type": "Text" },
+  { "Name": "APIEndpoint", "Type": "Text" },
+  { "Name": "AuthMethod", "Type": "Choice",
+    "Choices": ["None","Basic","OAuth2","APIKey"] }
+],
+"ContentTypes": []
+
+}

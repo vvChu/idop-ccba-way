@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "InvoiceRequests",
+"Description": "Yêu cầu xuất hóa đơn",
+"Columns": [
+  { "Name": "ContractId", "Type": "Lookup",
+    "Lookup": { "List": "Contracts", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "RequestDate", "Type": "DateTime" },
+  { "Name": "Amount", "Type": "Number" },
+  { "Name": "Currency", "Type": "Choice", "Choices": ["VND","USD","EUR"] }
+],
+"ContentTypes": []
+
+}

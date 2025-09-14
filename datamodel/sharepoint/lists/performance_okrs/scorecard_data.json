@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "ScorecardData",
+"Description": "Dữ liệu scorecard định kỳ",
+"Columns": [
+  { "Name": "MetricId", "Type": "Lookup",
+    "Lookup": { "List": "Measurables", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "PeriodType", "Type": "Choice", "Choices": ["Week","Month","Quarter","Year"] },
+  { "Name": "PeriodKey", "Type": "Text" },
+  { "Name": "Value", "Type": "Number" }
+],
+"ContentTypes": []
+
+}

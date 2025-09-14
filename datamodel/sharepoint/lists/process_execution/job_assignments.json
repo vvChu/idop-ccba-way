@@ -1,0 +1,17 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "JobAssignments",
+"Description": "Phân công công việc",
+"Columns": [
+  { "Name": "ProjectId", "Type": "Lookup",
+    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Role", "Type": "Text" },
+  { "Name": "StartDate", "Type": "DateTime" },
+  { "Name": "EndDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}

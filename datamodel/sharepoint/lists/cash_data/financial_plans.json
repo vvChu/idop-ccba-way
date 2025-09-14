@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "FinancialPlans",
+"Description": "Kế hoạch tài chính",
+"Columns": [
+  { "Name": "PlanName", "Type": "Text", "Required": true },
+  { "Name": "Year", "Type": "Number" },
+  { "Name": "TotalBudget", "Type": "Number" }
+],
+"ContentTypes": []
+
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "ProjectHistory",
+"Description": "Lịch sử dự án",
+"Columns": [
+  { "Name": "ProjectId", "Type": "Lookup",
+    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "ChangeDate", "Type": "DateTime" },
+  { "Name": "ChangeDescription", "Type": "Text" },
+  { "Name": "IsCurrent", "Type": "YesNo" }
+],
+"ContentTypes": []
+
+}

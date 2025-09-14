@@ -1,0 +1,18 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Submissions",
+"Description": "Hồ sơ nộp phê duyệt",
+"Columns": [
+  { "Name": "SubmissionTitle", "Type": "Text", "Required": true },
+  { "Name": "RelatedEntity", "Type": "Choice",
+    "Choices": ["Contract","Invoice","Expense","Project"] },
+  { "Name": "RelatedId", "Type": "Number" },
+  { "Name": "SubmittedBy", "Type": "User" },
+  { "Name": "SubmissionDate", "Type": "DateTime" },
+  { "Name": "Status", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiPheDuyet" } }
+],
+"ContentTypes": []
+
+}

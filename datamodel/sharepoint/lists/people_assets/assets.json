@@ -1,0 +1,17 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Assets",
+"Description": "Tài sản",
+"Columns": [
+  { "Name": "AssetName", "Type": "Text", "Required": true },
+  { "Name": "AssetCode", "Type": "Text" },
+  { "Name": "AssignedTo", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "PurchaseDate", "Type": "DateTime" },
+  { "Name": "Status", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiTaiSan" } }
+],
+"ContentTypes": []
+
+}

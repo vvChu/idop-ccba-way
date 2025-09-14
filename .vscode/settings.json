@@ -1,0 +1,10 @@
+{
+  "chat.tools.edits.autoApprove": false,
+  "chat.tools.edits.protectedPatterns": [
+    ".speckit.yml",
+    "datamodel/sharepoint/lists/**/*.json",
+    "datamodel/sharepoint/schemas/*.json",
+    "constitution.md",
+    "AGENTS.md"
+  ]
+}

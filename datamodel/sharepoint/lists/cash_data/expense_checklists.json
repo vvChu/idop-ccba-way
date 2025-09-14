@@ -1,0 +1,14 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "ExpenseChecklists",
+"Description": "Checklist kiểm tra chi phí",
+"Columns": [
+  { "Name": "ExpenseId", "Type": "Lookup",
+    "Lookup": { "List": "Expenses", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "ChecklistItem", "Type": "Text" },
+  { "Name": "IsCompleted", "Type": "YesNo" }
+],
+"ContentTypes": []
+
+}

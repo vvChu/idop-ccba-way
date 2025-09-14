@@ -1,0 +1,14 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Vendors",
+"Description": "Nhà cung cấp",
+"Columns": [
+  { "Name": "VendorName", "Type": "Text", "Required": true },
+  { "Name": "VendorCode", "Type": "Text" },
+  { "Name": "ServiceType", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" } }
+],
+"ContentTypes": []
+
+}

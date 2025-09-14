@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SharePoint List Definition",
+  "type": "object",
+  "properties": {
+    "ListName": { "type": "string" },
+    "Description": { "type": "string" },
+    "Columns": { "type": "array" }
+  },
+  "required": ["ListName", "Columns"]
+}

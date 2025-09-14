@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "EmployeeHistory",
+"Description": "Lịch sử nhân viên",
+"Columns": [
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "StartDate", "Type": "DateTime" },
+  { "Name": "EndDate", "Type": "DateTime" },
+  { "Name": "IsCurrent", "Type": "YesNo" }
+],
+"ContentTypes": []
+
+}

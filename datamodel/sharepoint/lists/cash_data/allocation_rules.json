@@ -1,0 +1,12 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "AllocationRules",
+"Description": "Quy tắc phân bổ chi phí",
+"Columns": [
+  { "Name": "RuleName", "Type": "Text", "Required": true },
+  { "Name": "Description", "Type": "Text" }
+],
+"ContentTypes": []
+
+}

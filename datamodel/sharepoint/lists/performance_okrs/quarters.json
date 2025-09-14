@@ -1,0 +1,14 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Quarters",
+"Description": "Quý",
+"Columns": [
+  { "Name": "Year", "Type": "Number", "Required": true },
+  { "Name": "Quarter", "Type": "Choice", "Choices": ["Q1","Q2","Q3","Q4"] },
+  { "Name": "StartDate", "Type": "DateTime" },
+  { "Name": "EndDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}

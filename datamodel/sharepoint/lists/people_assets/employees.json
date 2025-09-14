@@ -1,0 +1,18 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Employees",
+"Description": "Nhân viên",
+"Columns": [
+  { "Name": "FullName", "Type": "Text", "Required": true },
+  { "Name": "EmployeeCode", "Type": "Text" },
+  { "Name": "DepartmentId", "Type": "Lookup",
+    "Lookup": { "List": "Departments", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "Position", "Type": "Text" },
+  { "Name": "HireDate", "Type": "DateTime" },
+  { "Name": "Status", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiNhanSu" } }
+],
+"ContentTypes": []
+
+}

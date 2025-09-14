@@ -1,0 +1,16 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "EmployeeBenefits",
+"Description": "Phúc lợi nhân viên",
+"Columns": [
+  { "Name": "EmployeeId", "Type": "Lookup",
+    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "BenefitPackageId", "Type": "Lookup",
+    "Lookup": { "List": "BenefitPackages", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "StartDate", "Type": "DateTime" },
+  { "Name": "EndDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}

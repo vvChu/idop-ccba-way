@@ -1,0 +1,19 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  
+"ListName": "Expenses",
+"Description": "Chi phí dự án",
+"Columns": [
+  { "Name": "ProjectId", "Type": "Lookup",
+    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "ExpenseType", "Type": "ManagedMetadata",
+    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiChiPhi" } },
+  { "Name": "Currency", "Type": "Choice", "Choices": ["VND","USD","EUR"] },
+  { "Name": "VATRate", "Type": "Number" },
+  { "Name": "GrossAmount", "Type": "Number" },
+  { "Name": "NetAmount", "Type": "Number" },
+  { "Name": "ExpenseDate", "Type": "DateTime" }
+],
+"ContentTypes": []
+
+}
