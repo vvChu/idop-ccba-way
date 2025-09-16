@@ -26,7 +26,9 @@ jobs:
       - name: Validate JSON schemas
         run: |
           npm install -g ajv-cli
-          ajv validate -s datamodel/sharepoint/schemas/sp-list.schema.json -d datamodel/sharepoint/lists/**/*.json
+          for file in datamodel/sharepoint/lists/**/*.json; do
+            ajv validate -s datamodel/sharepoint/schemas/sp-list.schema.json -d "$file"
+          done
       - name: Lint markdown
         run: |
           npm install -g markdownlint-cli
