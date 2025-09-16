@@ -1,0 +1,296 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_TrangThaiChung",
+    "Id": "901f7f53-65e3-4f88-ab8d-410b3fab77df",
+    "Description": "Quản lý tập trung các bộ trạng thái để điều khiển quy trình tự động.",
+    "CreatedDate": "2025-06-16T10:24:51.957Z",
+    "LastModifiedDate": "2025-06-16T10:35:17.62Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "f738029c-a73a-484c-9604-4fbbe9bad851",
+      "Name": "Trạng thái Cơ hội Kinh doanh",
+      "IsRoot": true,
+      "PathOfTerm": "Trạng thái Cơ hội Kinh doanh",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "8c669933-1a9d-4c00-ad4f-018b8615d6d0",
+          "Name": "Đã chốt (Win)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Cơ hội Kinh doanh;Đã chốt (Win)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "f2fe4d12-acb3-462d-9eac-c4f64d7b11ac",
+          "Name": "Đang chào giá (Proposal)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Cơ hội Kinh doanh;Đang chào giá (Proposal)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "8ee7d286-c95a-4c64-be1e-9d5de71b9f9a",
+          "Name": "Đang đàm phán (Negotiation)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Cơ hội Kinh doanh;Đang đàm phán (Negotiation)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "7d10c537-75c6-47ba-aecf-5b24ef99e877",
+          "Name": "Mới (New)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Cơ hội Kinh doanh;Mới (New)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "996ae24f-8369-4260-b2a7-002ccd599863",
+          "Name": "Thất bại (Loss)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Cơ hội Kinh doanh;Thất bại (Loss)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "716887fa-ba71-4818-801f-18ebc127f180",
+      "Name": "Trạng thái Công nợ/Hóa đơn",
+      "IsRoot": true,
+      "PathOfTerm": "Trạng thái Công nợ/Hóa đơn",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "fe5b5a8c-78c5-4588-8e68-63ec871d50d0",
+          "Name": "Chưa phát hành",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Công nợ/Hóa đơn;Chưa phát hành",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "b84c9992-c292-4059-a7b6-6871f5c56143",
+          "Name": "Đã phát hành (Chưa thanh toán)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Công nợ/Hóa đơn;Đã phát hành (Chưa thanh toán)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "e7220678-eb94-480b-88d9-58649406b56f",
+              "Name": "Quá hạn 30-60 ngày",
+              "IsRoot": false,
+              "PathOfTerm": "Trạng thái Công nợ/Hóa đơn;Đã phát hành (Chưa thanh toán);Quá hạn 30-60 ngày",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "d8629650-5a04-49fc-bd34-bfa6ca2d0866",
+              "Name": "Trong hạn",
+              "IsRoot": false,
+              "PathOfTerm": "Trạng thái Công nợ/Hóa đơn;Đã phát hành (Chưa thanh toán);Trong hạn",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "7436c5c0-b6c7-47fb-a61f-6a0068dfe2c2",
+          "Name": "Đã thanh toán",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Công nợ/Hóa đơn;Đã thanh toán",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "5faa48d9-726a-4bf9-b048-2f696ef525ff",
+      "Name": "Trạng thái Hòn Đá/OKR",
+      "IsRoot": true,
+      "PathOfTerm": "Trạng thái Hòn Đá/OKR",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "60e0ee9c-cee2-4959-a8b9-a3654647ae13",
+          "Name": "Done (Hoàn thành)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hòn Đá/OKR;Done (Hoàn thành)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "304199f2-a961-49e4-9d11-0f6b9c977a6e",
+          "Name": "Off Track (Chậm tiến độ)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hòn Đá/OKR;Off Track (Chậm tiến độ)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "72600a9c-bfd2-43b9-8767-6c8919ae652e",
+          "Name": "On Track (Đúng tiến độ)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hòn Đá/OKR;On Track (Đúng tiến độ)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "88d5ff77-62bd-4525-b2be-f8da781cd1b5",
+      "Name": "Trạng thái Hợp đồng/Dự án Thực thi",
+      "IsRoot": true,
+      "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "8d4ea539-4340-4cbe-aa3d-58c96c020812",
+          "Name": "Chờ phê duyệt",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Chờ phê duyệt",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "e69e0e64-0818-4a94-9d0e-fabc44f1bbd4",
+          "Name": "Đã thanh lý",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Đã thanh lý",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "00483287-9d49-4806-ab5e-e851125ce220",
+          "Name": "Đang thực hiện",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Đang thực hiện",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "7060781f-c3e9-43a0-be59-58ce2e0611f5",
+          "Name": "Hoàn thành (Chờ nghiệm thu/thanh lý)",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Hoàn thành (Chờ nghiệm thu/thanh lý)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "f7e180aa-66a1-4989-9acc-fcd5357d4b45",
+          "Name": "Hủy bỏ",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Hủy bỏ",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "2d4eb05b-214f-40e7-beeb-cfdb9ae0c5a1",
+          "Name": "Soạn thảo",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Soạn thảo",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "bc791f41-5f95-496f-aa6c-182ab59708a9",
+          "Name": "Tạm dừng",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Hợp đồng/Dự án Thực thi;Tạm dừng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "4f47e5b4-c954-4573-a9c9-76b6e5812ac9",
+      "Name": "Trạng thái Tờ trình/Phê duyệt",
+      "IsRoot": true,
+      "PathOfTerm": "Trạng thái Tờ trình/Phê duyệt",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "8dfa7aa5-07e5-4d21-a113-33c0d7879415",
+          "Name": "Bị từ chối",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Tờ trình/Phê duyệt;Bị từ chối",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "096d4857-82a4-4c8f-bd5e-e433aad107b0",
+          "Name": "Chờ duyệt",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Tờ trình/Phê duyệt;Chờ duyệt",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "07b7d2a3-f3a6-40e3-953a-ff54ff66b328",
+          "Name": "Đã duyệt",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Tờ trình/Phê duyệt;Đã duyệt",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "69781e2e-e4f8-4579-836b-ceac6e58d1b1",
+          "Name": "Soạn thảo",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Tờ trình/Phê duyệt;Soạn thảo",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "76975f52-954e-45a0-a158-2b7a5902b5a5",
+          "Name": "Yêu cầu bổ sung/Chỉnh sửa",
+          "IsRoot": false,
+          "PathOfTerm": "Trạng thái Tờ trình/Phê duyệt;Yêu cầu bổ sung/Chỉnh sửa",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 5,
+    "TotalTermsWithChildren": 5,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:20"
+  }
+}

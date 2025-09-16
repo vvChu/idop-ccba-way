@@ -1,0 +1,47 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_VaiTroLienHe",
+    "Id": "96150086-5902-4efa-9e25-fe050b081c96",
+    "Description": "Phân loại vai trò của người liên hệ trong một cơ hội kinh doanh để hỗ trợ CRM chiến lược.",
+    "CreatedDate": "2025-06-16T13:58:00.103Z",
+    "LastModifiedDate": "2025-06-16T13:58:00.123Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "0821672c-2041-46d9-a8b4-f1f29312a8cc",
+      "Name": "Decision Maker",
+      "IsRoot": true,
+      "PathOfTerm": "Decision Maker",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "48464974-8deb-4afb-afca-346811421d52",
+      "Name": "Influencer",
+      "IsRoot": true,
+      "PathOfTerm": "Influencer",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "7644c877-9f03-4264-92cf-43b9b83fdca1",
+      "Name": "Referrer",
+      "IsRoot": true,
+      "PathOfTerm": "Referrer",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 3,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:22"
+  }
+}

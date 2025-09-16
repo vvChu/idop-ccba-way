@@ -1,0 +1,36 @@
+name: Validate & Lint
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      IDOP_ENVIRONMENT: ${{ secrets.IDOP_ENVIRONMENT }}
+      DEV_SHAREPOINT_URL: ${{ secrets.DEV_SHAREPOINT_URL }}
+      DEV_TENANT_ID: ${{ secrets.DEV_TENANT_ID }}
+      DEV_ENVIRONMENT_ID: ${{ secrets.DEV_ENVIRONMENT_ID }}
+      DEV_INSTANCE_URL: ${{ secrets.DEV_INSTANCE_URL }}
+      TEST_SHAREPOINT_URL: ${{ secrets.TEST_SHAREPOINT_URL }}
+      TEST_TENANT_ID: ${{ secrets.TEST_TENANT_ID }}
+      TEST_ENVIRONMENT_ID: ${{ secrets.TEST_ENVIRONMENT_ID }}
+      TEST_INSTANCE_URL: ${{ secrets.TEST_INSTANCE_URL }}
+      PROD_SHAREPOINT_URL: ${{ secrets.PROD_SHAREPOINT_URL }}
+      PROD_TENANT_ID: ${{ secrets.PROD_TENANT_ID }}
+      PROD_ENVIRONMENT_ID: ${{ secrets.PROD_ENVIRONMENT_ID }}
+      PROD_INSTANCE_URL: ${{ secrets.PROD_INSTANCE_URL }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate JSON schemas
+        run: |
+          npm install -g ajv-cli
+          ajv validate -s datamodel/sharepoint/schemas/sp-list.schema.json -d datamodel/sharepoint/lists/**/*.json
+      - name: Lint markdown
+        run: |
+          npm install -g markdownlint-cli
+          markdownlint '**/*.md' --ignore node_modules
+      - name: Run SharePoint List Apply Script
+        run: |
+          pwsh -c "./tools/scripts/apply-sp-lists.ps1"

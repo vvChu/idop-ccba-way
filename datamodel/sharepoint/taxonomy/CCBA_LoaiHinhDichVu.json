@@ -1,0 +1,392 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LoaiHinhDichVu",
+    "Id": "ef5e1bb4-d514-4707-9580-67e7f1396ad7",
+    "Description": "Phân loại các Hợp đồng/Nhiệm vụ, ảnh hưởng trực tiếp đến việc phân bổ tài chính theo QCCTNB và phân tích cơ cấu doanh thu.",
+    "CreatedDate": "2025-06-16T09:20:17.487Z",
+    "LastModifiedDate": "2025-06-16T10:21:15.293Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "ed1fa8e1-6e45-41f0-b95b-14313e73e46f",
+      "Name": "Đào tạo ＆ Tập huấn",
+      "IsRoot": true,
+      "PathOfTerm": "Đào tạo ＆ Tập huấn",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "8052cf56-7581-465f-b123-d73107eaa45b",
+          "Name": "Đào tạo Chuyên viên BIM",
+          "IsRoot": false,
+          "PathOfTerm": "Đào tạo ＆ Tập huấn;Đào tạo Chuyên viên BIM",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "d3b102f3-e2aa-4198-aa55-fddbbb2c190d",
+          "Name": "Tập huấn/Đào tạo tại Viện",
+          "IsRoot": false,
+          "PathOfTerm": "Đào tạo ＆ Tập huấn;Tập huấn/Đào tạo tại Viện",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "b2557256-340d-49df-8dc9-3f82506ea33f",
+      "Name": "DVKT Cung ứng",
+      "IsRoot": true,
+      "PathOfTerm": "DVKT Cung ứng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "a52578ca-c18c-4694-9220-6f8936d10eb9",
+      "Name": "DVKT Thi công",
+      "IsRoot": true,
+      "PathOfTerm": "DVKT Thi công",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "b71fe9c2-1866-4c8c-ba6a-2d879860d077",
+          "Name": "Thi công",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Thi công;Thi công",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "3d4e520a-aba2-4318-a029-5537cecb7ec3",
+              "Name": "sửa chữa CT thông thường",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Thi công;Thi công;sửa chữa CT thông thường",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "d6bb2b45-d9db-440c-b6d4-82b23d4a3a9a",
+          "Name": "Thi công Dự ứng lực (DUL) - Tại chỗ",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Thi công;Thi công Dự ứng lực (DUL) - Tại chỗ",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "027e8b11-4808-4d1d-8b70-d066a7670aa5",
+      "Name": "DVKT Tư vấn",
+      "IsRoot": true,
+      "PathOfTerm": "DVKT Tư vấn",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "ace4914e-f8e6-4c68-b2df-1e1f71cc6a7b",
+          "Name": "BIM ＆ Công nghệ",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Tư vấn;BIM ＆ Công nghệ",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "2b7d01fe-c9ba-45a5-96f9-c966a791829f",
+              "Name": "Phối hợp/Kiểm tra Mô hình BIM",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;BIM ＆ Công nghệ;Phối hợp/Kiểm tra Mô hình BIM",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "7e4336ca-cf68-49ee-867b-f94a5b77a439",
+              "Name": "Triển khai Mô hình BIM Kết cấu",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;BIM ＆ Công nghệ;Triển khai Mô hình BIM Kết cấu",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "3ddc6196-7854-4cec-83b3-c6842b254d4d",
+              "Name": "Tư vấn Lộ trình/Kế hoạch BIM",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;BIM ＆ Công nghệ;Tư vấn Lộ trình/Kế hoạch BIM",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "839fc7c3-bdb8-41a0-ba65-575758224a54",
+          "Name": "Khảo sát ＆ TN Hiện trường",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Tư vấn;Khảo sát ＆ TN Hiện trường",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "724c3e08-160c-4e5d-ba9b-a97943f77255",
+              "Name": "Kiểm định Chất lượng CT",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Khảo sát ＆ TN Hiện trường;Kiểm định Chất lượng CT",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "f66ae480-acbf-4dae-807f-7d02df8ebe29",
+              "Name": "KS Địa chất Công trình",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Khảo sát ＆ TN Hiện trường;KS Địa chất Công trình",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "72518be0-6fa1-4202-a7d5-d9125b82eac3",
+              "Name": "PIT/Sonic Cọc",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Khảo sát ＆ TN Hiện trường;PIT/Sonic Cọc",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "e818809d-5858-45a8-95e4-26f7ebed7de8",
+          "Name": "Thẩm tra ＆ Chứng nhận",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Tư vấn;Thẩm tra ＆ Chứng nhận",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "129f637f-d1c9-43eb-ac04-f4a3730a7342",
+              "Name": "Chứng nhận HCHQ - Tại chỗ",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thẩm tra ＆ Chứng nhận;Chứng nhận HCHQ - Tại chỗ",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "8e700bed-da6d-4ae2-9792-8415cfb02a3c",
+              "Name": "Chứng nhận SPHCL Công trình",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thẩm tra ＆ Chứng nhận;Chứng nhận SPHCL Công trình",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "90d293fb-2b9b-4e77-86b4-ef16c716107c",
+              "Name": "Thẩm tra Thiết kế",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thẩm tra ＆ Chứng nhận;Thẩm tra Thiết kế",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "7d8f37fc-e745-45bf-bab3-57cf6f650af8",
+          "Name": "Thí nghiệm trong Phòng",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Tư vấn;Thí nghiệm trong Phòng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "da4fd99c-97d2-4a95-9bca-e6b9c0716fee",
+              "Name": "TN Thép ＆ Vật liệu hàn",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thí nghiệm trong Phòng;TN Thép ＆ Vật liệu hàn",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "e24734d6-a654-455a-beea-824da07a21c2",
+              "Name": "TN Vật liệu Xây dựng",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thí nghiệm trong Phòng;TN Vật liệu Xây dựng",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "dcc807ae-a7c6-480d-89fe-99c9ce1059a4",
+          "Name": "Thiết kế",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Tư vấn;Thiết kế",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "9e9019c6-900a-4620-825f-3f920718a65d",
+              "Name": "Lập DAĐT ＆ TK Cơ sở",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thiết kế;Lập DAĐT ＆ TK Cơ sở",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "c9f8a2ab-fe7a-4779-afb2-424d1a3c67e5",
+              "Name": "Lập Dự toán ＆ Tổng dự toán",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thiết kế;Lập Dự toán ＆ Tổng dự toán",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "f077767b-70ed-4f87-9c9f-65c356de25d8",
+              "Name": "Thiết kế KT ＆ BVTC - CT Thường - Tại chỗ",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;Thiết kế;Thiết kế KT ＆ BVTC - CT Thường - Tại chỗ",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "3b34268a-a7e8-43fb-b0fa-de5bbc43d868",
+          "Name": "TVGS ＆ QLDA",
+          "IsRoot": false,
+          "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "db5c5e37-d469-4a9f-ab94-5935fc45bb73",
+              "Name": "Quản lý dự án",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA;Quản lý dự án",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "254c4ed9-b898-4d5e-aeb2-c3ee766dcd38",
+              "Name": "Tư vấn Đấu thầu",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA;Tư vấn Đấu thầu",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": [
+                {
+                  "Id": "33b905b0-2b72-4a76-8041-9015ea152677",
+                  "Name": "ĐG HSDT",
+                  "IsRoot": false,
+                  "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA;Tư vấn Đấu thầu;ĐG HSDT",
+                  "IsAvailableForTagging": true,
+                  "CustomProperties": {},
+                  "Children": []
+                },
+                {
+                  "Id": "ecc09e6d-4a74-490e-a934-bbbf324be2ca",
+                  "Name": "Lập HSMT",
+                  "IsRoot": false,
+                  "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA;Tư vấn Đấu thầu;Lập HSMT",
+                  "IsAvailableForTagging": true,
+                  "CustomProperties": {},
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "Id": "0967d846-c204-4ab4-abb2-39f7bd73d3f2",
+              "Name": "TVGS CT DD - Địa phương khác",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA;TVGS CT DD - Địa phương khác",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "10bdc3d3-fe53-43e1-9f7d-8e64e47f80d9",
+              "Name": "TVGS CT DD - Tại chỗ",
+              "IsRoot": false,
+              "PathOfTerm": "DVKT Tư vấn;TVGS ＆ QLDA;TVGS CT DD - Tại chỗ",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "c19c4048-e749-4eef-8b0f-fe4269a98001",
+      "Name": "KHCN ＆ QLNN",
+      "IsRoot": true,
+      "PathOfTerm": "KHCN ＆ QLNN",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "efa99db0-a448-4682-a2ce-e212686a8b95",
+          "Name": "Nhiệm vụ Giám định Tư pháp",
+          "IsRoot": false,
+          "PathOfTerm": "KHCN ＆ QLNN;Nhiệm vụ Giám định Tư pháp",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "6cd4c86c-7dff-4daa-8496-c997145d9252",
+          "Name": "Nhiệm vụ KHCN Nguồn Khác",
+          "IsRoot": false,
+          "PathOfTerm": "KHCN ＆ QLNN;Nhiệm vụ KHCN Nguồn Khác",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "9cf44ec3-c339-4373-9948-deede2d1f688",
+          "Name": "Nhiệm vụ KHCN NSNN Cấp Bộ/NN",
+          "IsRoot": false,
+          "PathOfTerm": "KHCN ＆ QLNN;Nhiệm vụ KHCN NSNN Cấp Bộ/NN",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "bd9aacb2-f958-4068-bb16-0e1361893c71",
+          "Name": "Nhiệm vụ Phục vụ QLNN",
+          "IsRoot": false,
+          "PathOfTerm": "KHCN ＆ QLNN;Nhiệm vụ Phục vụ QLNN",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 5,
+    "TotalTermsWithChildren": 4,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:17"
+  }
+}

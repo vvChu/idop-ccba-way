@@ -1,11 +1,26 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SharePoint List Definition",
   "type": "object",
   "properties": {
     "ListName": { "type": "string" },
     "Description": { "type": "string" },
-    "Columns": { "type": "array" }
+    "Columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": { "type": "string" },
+          "Type": { "type": "string" },
+          "Required": { "type": "boolean" }
+        },
+        "required": ["Name", "Type"]
+      }
+    },
+    "ContentTypes": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
   },
   "required": ["ListName", "Columns"]
 }

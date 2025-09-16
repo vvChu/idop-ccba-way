@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json.schemastore.org/vscode/tasks.json",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SpecKit: check",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\speckit\\specify.ps1","check"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SpecKit: init here (Copilot+PS)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\speckit\\specify.ps1","init","--here","--ai","copilot","--script","ps"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: validate schemas",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validate-sp-schemas.ps1"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: diff lists",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: apply lists (dry-run)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\apply-sp-lists.ps1","-DryRun"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: import termstore (dry-run)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\termstore-import.ps1","-DryRun"],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "SpecKit: check",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				".\\tools\\speckit\\specify.ps1",
+				"check"
+			],
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		}
+	]
+}

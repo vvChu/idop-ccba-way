@@ -1,0 +1,263 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_ChucDanhXayDung",
+    "Id": "7070726d-93e7-4edc-86b7-f5ea3c0a0faa",
+    "Description": "Chuẩn hóa các chức danh vai trò theo quy định pháp luật xây dựng (Nghị định 175/2024/NĐ-CP) để đảm bảo tuân thủ khi phân công.",
+    "CreatedDate": "2025-06-16T10:27:51.42Z",
+    "LastModifiedDate": "2025-06-16T10:34:51.497Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "7ae35d6a-9dab-4059-b378-e93698bce447",
+      "Name": "Kiểm định",
+      "IsRoot": true,
+      "PathOfTerm": "Kiểm định",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "8d26af8a-f9ad-4ebf-a1aa-c132dc5b771b",
+          "Name": "Chủ trì kiểm định xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Kiểm định;Chủ trì kiểm định xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "cb9002c5-9458-4c65-8859-0b7f8ea19f7f",
+      "Name": "Quản lý Chi phí",
+      "IsRoot": true,
+      "PathOfTerm": "Quản lý Chi phí",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "57ad84ed-05a3-4053-92ca-a07353af0540",
+          "Name": "Chủ trì lập",
+          "IsRoot": false,
+          "PathOfTerm": "Quản lý Chi phí;Chủ trì lập",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "39ef3aca-2e3d-4e4f-9373-e3854d5dad2a",
+              "Name": "thẩm tra và quản lý chi phí đầu tư xây dựng",
+              "IsRoot": false,
+              "PathOfTerm": "Quản lý Chi phí;Chủ trì lập;thẩm tra và quản lý chi phí đầu tư xây dựng",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "6b25b7a9-d77b-4bfe-b266-4e9aa5b59cee",
+      "Name": "Quản lý Dự án",
+      "IsRoot": true,
+      "PathOfTerm": "Quản lý Dự án",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "e2304c74-60f4-4420-aa18-6b3742256cb3",
+          "Name": "Chủ đầu tư",
+          "IsRoot": false,
+          "PathOfTerm": "Quản lý Dự án;Chủ đầu tư",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "561663ff-26bb-456c-b386-825e25de1092",
+          "Name": "Giám đốc quản lý dự án",
+          "IsRoot": false,
+          "PathOfTerm": "Quản lý Dự án;Giám đốc quản lý dự án",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "eb6964cc-7b3e-4a93-8fd3-e0cc8ff8da48",
+      "Name": "Thi công",
+      "IsRoot": true,
+      "PathOfTerm": "Thi công",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "0ba08ceb-b977-44f8-94eb-45b2d3ea5c70",
+          "Name": "Cán bộ kỹ thuật thi công",
+          "IsRoot": false,
+          "PathOfTerm": "Thi công;Cán bộ kỹ thuật thi công",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "54dcd244-abc9-4f56-a76a-ce14e28d7422",
+          "Name": "Chỉ huy trưởng công trường",
+          "IsRoot": false,
+          "PathOfTerm": "Thi công;Chỉ huy trưởng công trường",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "ae7cda8c-f559-42be-ae63-cd4f600aff37",
+      "Name": "Tư vấn Giám sát",
+      "IsRoot": true,
+      "PathOfTerm": "Tư vấn Giám sát",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "b01527fb-db77-4050-975e-3725fff88e20",
+          "Name": "Giám sát trưởng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Giám sát;Giám sát trưởng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "2212f05d-58fc-4618-8770-c212138554b3",
+          "Name": "Giám sát viên",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Giám sát;Giám sát viên",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "567c5022-f35f-4221-8e46-1066b575d6ec",
+      "Name": "Tư vấn Khảo sát",
+      "IsRoot": true,
+      "PathOfTerm": "Tư vấn Khảo sát",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "d88b94b5-d020-40a8-a813-cbf3ff79492c",
+          "Name": "Chủ nhiệm khảo sát xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Khảo sát;Chủ nhiệm khảo sát xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "750d634e-955b-4f68-84da-471f1f4ed889",
+          "Name": "Giám sát khảo sát xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Khảo sát;Giám sát khảo sát xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "59fadaa4-0329-40a8-92a8-7d89ed8567c1",
+      "Name": "Tư vấn Thẩm tra",
+      "IsRoot": true,
+      "PathOfTerm": "Tư vấn Thẩm tra",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "42e33657-9ab3-4541-9a9e-d963efd83bbc",
+          "Name": "Chủ nhiệm thẩm tra thiết kế xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thẩm tra;Chủ nhiệm thẩm tra thiết kế xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "236b8e84-3530-494b-a463-d0c03538cf7c",
+          "Name": "Chủ trì thẩm tra thiết kế xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thẩm tra;Chủ trì thẩm tra thiết kế xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "10cb2449-5191-4a43-8d3f-c11d56c32238",
+      "Name": "Tư vấn Thiết kế",
+      "IsRoot": true,
+      "PathOfTerm": "Tư vấn Thiết kế",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "e957daf9-01f1-4b62-a296-50bc88b92c3b",
+          "Name": "Chủ nhiệm lập thiết kế quy hoạch xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thiết kế;Chủ nhiệm lập thiết kế quy hoạch xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "fa8a5425-5164-4902-8ec8-e5f922ec1426",
+          "Name": "Chủ nhiệm thiết kế xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thiết kế;Chủ nhiệm thiết kế xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "d1d95ca7-90f0-47a7-8492-6ba5fcd5293d",
+          "Name": "Chủ trì lập thiết kế quy hoạch xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thiết kế;Chủ trì lập thiết kế quy hoạch xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "1b971850-a773-4448-98e7-ef9d6409b1e5",
+          "Name": "Chủ trì thiết kế xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thiết kế;Chủ trì thiết kế xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "1f085c2d-0365-4b6f-8313-6c0a9c75fb62",
+          "Name": "Thiết kế viên",
+          "IsRoot": false,
+          "PathOfTerm": "Tư vấn Thiết kế;Thiết kế viên",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 8,
+    "TotalTermsWithChildren": 8,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:13"
+  }
+}

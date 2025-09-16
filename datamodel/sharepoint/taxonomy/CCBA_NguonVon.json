@@ -1,0 +1,56 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_NguonVon",
+    "Id": "07b64879-f65f-4d2f-acf6-fb3ccc189dff",
+    "Description": "Phân loại nguồn vốn của hợp đồng để phục vụ công tác kế toán và báo cáo.",
+    "CreatedDate": "2025-06-16T14:03:12.55Z",
+    "LastModifiedDate": "2025-06-16T14:03:12.57Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "13838548-76e2-45ba-9bde-9063acacc279",
+      "Name": "Ngân sách Nhà nước",
+      "IsRoot": true,
+      "PathOfTerm": "Ngân sách Nhà nước",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "1c3aaf51-9fca-452f-b616-19cd4c89c4e2",
+      "Name": "Vốn Đầu tư Nước ngoài (FDI)",
+      "IsRoot": true,
+      "PathOfTerm": "Vốn Đầu tư Nước ngoài (FDI)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "af53d197-9ddc-4d48-bd4c-e0ce4b6508b4",
+      "Name": "Vốn Doanh nghiệp Nhà nước",
+      "IsRoot": true,
+      "PathOfTerm": "Vốn Doanh nghiệp Nhà nước",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "1620d6f2-9d97-4f93-8506-4fbe8815b145",
+      "Name": "Vốn Doanh nghiệp Tư nhân",
+      "IsRoot": true,
+      "PathOfTerm": "Vốn Doanh nghiệp Tư nhân",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 4,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:20"
+  }
+}

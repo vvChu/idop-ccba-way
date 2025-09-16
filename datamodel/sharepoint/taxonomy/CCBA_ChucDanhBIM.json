@@ -1,0 +1,95 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_ChucDanhBIM",
+    "Id": "7011cab3-1146-469f-a9ae-911ec8115549",
+    "Description": "Chuẩn hóa các chức danh đặc thù trong các dự án BIM, phản ánh đúng năng lực cốt lõi của CCBA.",
+    "CreatedDate": "2025-06-16T13:41:54.953Z",
+    "LastModifiedDate": "2025-06-16T13:41:54.98Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "ae477931-b76a-4bbd-b55f-3a477c43f8a6",
+      "Name": "Phát triển ＆ Tùy biến Công nghệ BIM",
+      "IsRoot": true,
+      "PathOfTerm": "Phát triển ＆ Tùy biến Công nghệ BIM",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "a417619c-65c7-4ee5-b05d-f7a0381643de",
+          "Name": "Chuyên gia Lập trình Dynamo/Python",
+          "IsRoot": false,
+          "PathOfTerm": "Phát triển ＆ Tùy biến Công nghệ BIM;Chuyên gia Lập trình Dynamo/Python",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "fafc0840-62d3-4709-8c89-7c76ada91993",
+      "Name": "Quản lý ＆ Điều phối BIM",
+      "IsRoot": true,
+      "PathOfTerm": "Quản lý ＆ Điều phối BIM",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "ec2d6dd6-af30-4e09-b3f0-877e1fe8b240",
+          "Name": "Điều phối viên BIM / BIM Coordinator",
+          "IsRoot": false,
+          "PathOfTerm": "Quản lý ＆ Điều phối BIM;Điều phối viên BIM / BIM Coordinator",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "9b4c791a-994e-4c68-8da8-80e688396103",
+          "Name": "Giám đốc BIM / BIM Director",
+          "IsRoot": false,
+          "PathOfTerm": "Quản lý ＆ Điều phối BIM;Giám đốc BIM / BIM Director",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "d8a91a87-f5ed-4f52-af26-a5a545b8c7a3",
+          "Name": "Quản lý BIM / BIM Manager",
+          "IsRoot": false,
+          "PathOfTerm": "Quản lý ＆ Điều phối BIM;Quản lý BIM / BIM Manager",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "f86db6ef-c5e7-49c9-8869-75e8bf2efdd5",
+      "Name": "Thực thi ＆ Phát triển Mô hình BIM",
+      "IsRoot": true,
+      "PathOfTerm": "Thực thi ＆ Phát triển Mô hình BIM",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "804258a5-2dd8-4536-8e42-9dd9252d35af",
+          "Name": "Chuyên viên Mô hình hóa BIM / BIM Modeler",
+          "IsRoot": false,
+          "PathOfTerm": "Thực thi ＆ Phát triển Mô hình BIM;Chuyên viên Mô hình hóa BIM / BIM Modeler",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 3,
+    "TotalTermsWithChildren": 3,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:12"
+  }
+}

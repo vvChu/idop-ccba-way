@@ -1,0 +1,65 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LoaiTaiLieu",
+    "Id": "76040b61-39cc-4948-aeb7-b0c02c44e372",
+    "Description": "Phân loại các loại tài liệu trong hệ thống để quản lý, tìm kiếm và định tuyến quy trình.",
+    "CreatedDate": "2025-06-16T13:53:53.68Z",
+    "LastModifiedDate": "2025-06-16T13:53:53.7Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "097d8c39-d150-40bf-a125-b24edd19d500",
+      "Name": "Hồ sơ Dự án",
+      "IsRoot": true,
+      "PathOfTerm": "Hồ sơ Dự án",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "ab56868a-7791-4b96-9fdb-a776cd5b6648",
+      "Name": "Hồ sơ Hợp đồng",
+      "IsRoot": true,
+      "PathOfTerm": "Hồ sơ Hợp đồng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "203c55c0-6359-40e2-a1a5-23590af9b8c4",
+      "Name": "Hồ sơ Kỹ thuật",
+      "IsRoot": true,
+      "PathOfTerm": "Hồ sơ Kỹ thuật",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "0b6e4897-0998-4f6a-84a2-087ada0349cb",
+      "Name": "Hồ sơ Tài chính",
+      "IsRoot": true,
+      "PathOfTerm": "Hồ sơ Tài chính",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "0b6f2317-0698-4f21-bc5a-300e2480aca3",
+      "Name": "Văn bản Nội bộ/Pháp quy",
+      "IsRoot": true,
+      "PathOfTerm": "Văn bản Nội bộ/Pháp quy",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 5,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:19"
+  }
+}

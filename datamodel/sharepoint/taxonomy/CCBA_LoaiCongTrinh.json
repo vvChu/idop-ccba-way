@@ -1,0 +1,56 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LoaiCongTrinh",
+    "Id": "fb193202-a7bc-467b-a5b9-41012ef48b7a",
+    "Description": "Phân loại dự án theo loại hình công trình, tham chiếu Phụ lục X Nghị định 175/2024/NĐ-CP.",
+    "CreatedDate": "2025-06-16T14:08:48.253Z",
+    "LastModifiedDate": "2025-06-16T14:08:48.27Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "1cd381bb-975e-4702-99d7-96036a3bb7ea",
+      "Name": "Công trình Công nghiệp",
+      "IsRoot": true,
+      "PathOfTerm": "Công trình Công nghiệp",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "04931c8b-d57a-4f01-b599-055fc28bc31d",
+      "Name": "Công trình Đặc thù",
+      "IsRoot": true,
+      "PathOfTerm": "Công trình Đặc thù",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "b2cc9acb-3161-4677-8f9d-a164c81d4f38",
+      "Name": "Công trình Dân dụng",
+      "IsRoot": true,
+      "PathOfTerm": "Công trình Dân dụng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "8d950234-e6cc-4956-9ddb-955ed7a890a0",
+      "Name": "Công trình Giao thông",
+      "IsRoot": true,
+      "PathOfTerm": "Công trình Giao thông",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 4,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:17"
+  }
+}

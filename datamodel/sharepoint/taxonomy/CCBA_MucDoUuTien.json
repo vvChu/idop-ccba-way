@@ -1,0 +1,56 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_MucDoUuTien",
+    "Id": "44883010-2e06-43bb-810d-da6a547cf29b",
+    "Description": "Phân loại mức độ ưu tiên cho các công việc, hoạt động, vấn đề.",
+    "CreatedDate": "2025-06-16T14:10:30.643Z",
+    "LastModifiedDate": "2025-06-16T14:10:30.66Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "0fd03297-3c59-4f72-9836-1e0932b8da10",
+      "Name": "1 - Rất cao/Khẩn cấp",
+      "IsRoot": true,
+      "PathOfTerm": "1 - Rất cao/Khẩn cấp",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "ce77d92f-031d-4ddb-b0b2-4ea1ac7dfa69",
+      "Name": "2 - Cao",
+      "IsRoot": true,
+      "PathOfTerm": "2 - Cao",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "3d658384-50ed-41bd-82a3-c4284faf856f",
+      "Name": "3 - Trung bình",
+      "IsRoot": true,
+      "PathOfTerm": "3 - Trung bình",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "b012e715-3637-4e30-b8a1-35b82a73cca5",
+      "Name": "4 - Thấp",
+      "IsRoot": true,
+      "PathOfTerm": "4 - Thấp",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 4,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:20"
+  }
+}

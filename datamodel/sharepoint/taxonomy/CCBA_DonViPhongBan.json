@@ -1,0 +1,141 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_DonViPhongBan",
+    "Id": "2690649d-4d2c-409b-b3e8-176e7d16ea8c",
+    "Description": "Danh mục chính thức các đơn vị, phòng ban, trung tâm thuộc CCBA, làm cơ sở cho việc phân quyền, giao việc và báo cáo.",
+    "CreatedDate": "2025-06-16T08:47:04.093Z",
+    "LastModifiedDate": "2025-06-16T08:47:04.397Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "3d93b5fb-1076-4ab0-a9bb-1869a01a04f6",
+      "Name": "100. BAN LÃNH ĐẠO",
+      "IsRoot": true,
+      "PathOfTerm": "100. BAN LÃNH ĐẠO",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "f592a735-ec41-42f4-8ca0-fc6002284184",
+          "Name": "101. Ban Giám đốc",
+          "IsRoot": false,
+          "PathOfTerm": "100. BAN LÃNH ĐẠO;101. Ban Giám đốc",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "c5685305-d5ad-4753-91d8-42265609bb22",
+      "Name": "200. KHỐI VĂN PHÒNG",
+      "IsRoot": true,
+      "PathOfTerm": "200. KHỐI VĂN PHÒNG",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "84cc115e-b3ef-47fe-a4c4-288e720e41ab",
+          "Name": "201. Phòng Tổng hợp",
+          "IsRoot": false,
+          "PathOfTerm": "200. KHỐI VĂN PHÒNG;201. Phòng Tổng hợp",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "734bbf13-b56b-4960-8dcd-45db14db7fa0",
+      "Name": "300. KHỐI CHUYÊN MÔN",
+      "IsRoot": true,
+      "PathOfTerm": "300. KHỐI CHUYÊN MÔN",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "ba05665c-284a-4a99-a571-6bc526705231",
+          "Name": "301. Phòng BIM Thiết kế",
+          "IsRoot": false,
+          "PathOfTerm": "300. KHỐI CHUYÊN MÔN;301. Phòng BIM Thiết kế",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "7aa48996-971e-43ce-8869-fa677c2f65f0",
+          "Name": "302. Phòng BIM Dự án",
+          "IsRoot": false,
+          "PathOfTerm": "300. KHỐI CHUYÊN MÔN;302. Phòng BIM Dự án",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "8a4f9dae-b85b-467e-9043-e6e4ef59f74f",
+          "Name": "303. Phòng R＆D và Hợp tác Quốc tế",
+          "IsRoot": false,
+          "PathOfTerm": "300. KHỐI CHUYÊN MÔN;303. Phòng R＆D và Hợp tác Quốc tế",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "3e532cec-2829-49b1-acfe-8b05f5b43972",
+      "Name": "IBST",
+      "IsRoot": true,
+      "PathOfTerm": "IBST",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "04b14cfa-de30-4d6b-bfea-15717e4e3b42",
+          "Name": "Ban Lãnh đạo Viện",
+          "IsRoot": false,
+          "PathOfTerm": "IBST;Ban Lãnh đạo Viện",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "832e68af-910f-42ac-a414-04e0b1d6e8d3",
+          "Name": "Phòng Kế hoạch Kỹ thuật",
+          "IsRoot": false,
+          "PathOfTerm": "IBST;Phòng Kế hoạch Kỹ thuật",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "5de5d6ea-43fb-452b-85c4-567a18bf4305",
+          "Name": "Phòng Tài chính Kế toán",
+          "IsRoot": false,
+          "PathOfTerm": "IBST;Phòng Tài chính Kế toán",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "10e9dfd7-0f94-4c0b-ab44-8d5bef9bbec4",
+          "Name": "Phòng Tổ chức Hành chính",
+          "IsRoot": false,
+          "PathOfTerm": "IBST;Phòng Tổ chức Hành chính",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 4,
+    "TotalTermsWithChildren": 4,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:14"
+  }
+}

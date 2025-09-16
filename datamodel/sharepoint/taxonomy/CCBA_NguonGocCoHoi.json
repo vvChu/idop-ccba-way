@@ -1,0 +1,65 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_NguonGocCoHoi",
+    "Id": "e664ed01-1af3-4864-9da9-4d0dea2e9d2e",
+    "Description": "Theo dõi và đánh giá hiệu quả của các kênh phát triển kinh doanh.",
+    "CreatedDate": "2025-06-16T14:11:46.39Z",
+    "LastModifiedDate": "2025-06-16T14:11:46.407Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "b0c5f828-42d5-495e-a4e0-7002040b809b",
+      "Name": "Đấu thầu công khai",
+      "IsRoot": true,
+      "PathOfTerm": "Đấu thầu công khai",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "35d487f5-1791-4996-8ac0-9d4472338011",
+      "Name": "Đối tác Giới thiệu",
+      "IsRoot": true,
+      "PathOfTerm": "Đối tác Giới thiệu",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "0a7d4496-efc0-4173-8708-3bd2981fd14e",
+      "Name": "Hội thảo/Sự kiện",
+      "IsRoot": true,
+      "PathOfTerm": "Hội thảo/Sự kiện",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "6b575ef2-2e7b-46de-aebc-d5e1fe62ada6",
+      "Name": "Khách hàng Cũ",
+      "IsRoot": true,
+      "PathOfTerm": "Khách hàng Cũ",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "10d8e936-c5aa-472f-84d4-9ae3dcb6fd7c",
+      "Name": "Website/Digital Marketing",
+      "IsRoot": true,
+      "PathOfTerm": "Website/Digital Marketing",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 5,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:20"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_NganhLinhVuc",
+    "Id": "e61cf26e-e3ed-498c-b126-24309805a789",
+    "Description": "",
+    "CreatedDate": "2025-07-01T12:03:17.977Z",
+    "LastModifiedDate": "2025-07-01T12:03:17.987Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "98f68300-13f7-4ed9-a231-959e4bdf5ebe",
+      "Name": "Bất động sản",
+      "IsRoot": true,
+      "PathOfTerm": "Bất động sản",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "b9f0ceac-dfa2-425b-a48e-5408d654a798",
+      "Name": "Công nghệ Thông tin (Data Center)",
+      "IsRoot": true,
+      "PathOfTerm": "Công nghệ Thông tin (Data Center)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "762f1c8f-f657-4ee0-bd6a-5414d088b47d",
+      "Name": "Hạ tầng ＆ Giao thông",
+      "IsRoot": true,
+      "PathOfTerm": "Hạ tầng ＆ Giao thông",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "3c55dfad-710b-468b-a6be-09cc8416d4d5",
+      "Name": "Năng lượng",
+      "IsRoot": true,
+      "PathOfTerm": "Năng lượng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "d89729a5-a826-4892-82f0-f54c9e865cb5",
+      "Name": "Xây dựng Công nghiệp",
+      "IsRoot": true,
+      "PathOfTerm": "Xây dựng Công nghiệp",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "90428859-bbb4-42dc-9789-e3e9627e8bae",
+      "Name": "Xây dựng Dân dụng",
+      "IsRoot": true,
+      "PathOfTerm": "Xây dựng Dân dụng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 6,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:20"
+  }
+}

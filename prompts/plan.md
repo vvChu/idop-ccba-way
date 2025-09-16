@@ -1,1 +1,142 @@
 # Prompt viết plan.md
+
+---
+
+## Định nghĩa và bối cảnh hoạt động của CCBA
+
+
+- **Tên đầy đủ:** Trung tâm Tư vấn và Ứng dụng BIM trong xây dựng
+- **Tư cách pháp nhân:** Đơn vị trực thuộc Viện Khoa học Công nghệ Xây dựng (IBST), có con dấu và tài khoản riêng
+- **Tên tiếng Anh:** Center for Consulting Services and BIM Application in construction
+- **Tên viết tắt:** CCBA
+
+- **Địa chỉ:** Số 81 Trần Cung, phường Nghĩa Tân, Cầu Giấy, Hà Nội
+
+
+---
+
+## Bối cảnh hoạt động của CCBA
+
+- **Chức năng:**
+  - Tư vấn xây dựng: thiết kế, quản lý dự án, giám sát, thẩm tra, kiểm định...
+  - Tư vấn, triển khai ứng dụng BIM xuyên suốt các giai đoạn dự án
+  - Nghiên cứu khoa học, phát triển và chuyển giao công nghệ BIM
+  - Đào tạo nhân lực BIM
+  - Hợp tác trong nước và quốc tế
+  - Thực hiện nhiệm vụ phục vụ quản lý nhà nước khi được giao
+
+
+- **Nguyên tắc vận hành:**
+  - Tuân thủ pháp luật, quy định Bộ Xây dựng và quy chế của Viện
+  - Tự chủ, minh bạch, hiệu quả
+  - Lấy ứng dụng BIM làm trục xuyên suốt
+  - Số hóa và tự động hóa bằng nền tảng IDOP
+
+
+- **Cơ cấu tổ chức:**
+  - Ban Giám đốc
+  - Phòng Tổng hợp
+  - Phòng R&D và Hợp tác quốc tế
+  - Phòng BIM Dự án
+  - Phòng BIM Thiết kế
+  - Các đơn vị trực thuộc khác khi cần thiết
+
+
+---
+
+## Định nghĩa và phạm vi của IDOP trong CCBA
+
+- **IDOP (Integrated Digital Operation Platform):** Nền tảng hoạt động số tích hợp của CCBA trên Microsoft 365 (SharePoint Online, Power Automate, Power BI, Teams).
+- **Mục đích:** Số hóa, tự động hóa quy trình, quản lý dữ liệu, hỗ trợ điều hành–ra quyết định.
+- **Các thành phần trọng tâm:**
+  - SharePoint Lists cho CRM–Hợp đồng–Dự án–Công việc–Chi phí–Hóa đơn–Tờ trình
+  - Power Automate cho trình ký và phê duyệt động theo quy tắc
+  - Power BI cho dashboards tiến độ, tài chính, chất lượng
+  - Teams cho cộng tác và thực thi quy trình “Trình ký”
+
+
+---
+
+## Quy trình nghiệp vụ cốt lõi (CCBA WAY) gắn với IDOP
+
+- **Chu trình CRM → Hợp đồng → Dự án → Thực thi → Nghiệm thu → Thanh/Quyết toán–Hoàn chứng từ.**
+- **Ứng dụng “Trình ký”:** luồng phê duyệt tài liệu nội bộ theo nhiều tầng (Chủ trì → Trưởng phòng → Cố vấn Pháp lý/TC&QLCL → Phó Giám đốc → Giám đốc).
+- **Quản lý tài liệu dự án:** CDE trên SharePoint; quy định chuyển lưu trữ sang OneDrive cho archive/dung lượng lớn; cấu trúc thư mục chuẩn.
+- **Tài chính–kế toán:** Kế hoạch tài chính hợp đồng, Hóa đơn, Chi phí, quy trình tạm ứng–thanh toán–quyết toán–hoàn chứng từ được tự động hóa.
+
+
+---
+
+## Khóa neo cho mọi thảo luận và triển khai
+
+- **CCBA = Trung tâm TV&UD BIM của IBST;** mọi “WAY”, “IDOP”, “quy trình” đều gắn với bối cảnh cơ quan nhà nước/đơn vị sự nghiệp thuộc Viện, không phải doanh nghiệp đồ uống.
+- **IDOP là nền tảng nội bộ** phục vụ số hóa quy trình của Trung tâm (BIM thiết kế, BIM dự án, R&D, hành chính–tài chính), không phải sản phẩm thương mại đại trà (trừ khi được định hướng thương mại hóa từng phần sau).
+- **Thuật ngữ và viết tắt chuẩn hóa:** dùng đúng các định nghĩa trong Quy chế (HĐKT, VCNLĐ, CDE, PMO, Trình ký…) để giữ tính nhất quán pháp lý–nghiệp vụ.
+- **ALM và phân quyền:** phải phản ánh ma trận vai trò nội bộ (Giám đốc/Phó Giám đốc/Trưởng phòng/Chủ trì…), phân quyền theo dự án–phòng ban, và yêu cầu lưu vết/kiểm toán.
+
+- **Tuân thủ tài chính:** quy trình chi–thu–hoàn chứng từ tuân thủ Quy chế chi tiêu nội bộ của Viện; tự động hóa chỉ là công cụ, không thay thế kiểm soát chuẩn tắc.
+
+---
+
+Mục tiêu: Viết/ cập nhật `plan.md` triển khai kỹ thuật dựa trên `spec.md`, bám Constitution và **datamodel/taxonomy đã đồng bộ** trong repo.
+
+Yêu cầu đầu ra:
+
+- Kiến trúc (logical, components, boundaries), phụ thuộc.
+- **Data model: Lists/columns/relations tham chiếu chính xác tới `datamodel/sharepoint/lists/**`; trường Managed Metadata phải mapping tới term set trong `datamodel/sharepoint/taxonomy/**` với term set ID và structure từ JSON đã export.**
+- **Taxonomy integration: Reference đúng term set names, IDs, terms từ 14 term sets đã đồng bộ CCBA.**
+- Flows & integration: Power Automate, Power BI, Power Apps (nếu có), external APIs.
+- Env & security: Dev/Test/Prod, secrets, connection refs, row-level access.
+- Tích hợp & cấu hình đặc thù; thông số hoá qua env vars.
+- Triển khai & kiểm thử: scripts, validate, diff (dry-run), backup, rollback.
+
+**Taxonomy terms phải sử dụng từ các term sets có sẵn:**
+
+- **Workflow status:** `CCBA_TrangThaiChung` (5 terms)
+
+- **Department/Owner:** `CCBA_DonViPhongBan` (4 terms)
+- **Expense types:** `CCBA_LoaiChiPhiPhanBo` (4 terms)
+- **Customer segments:** `CCBA_LoaiKhachHang` (6 terms)
+- **Project priority:** `CCBA_MucDoUuTien` (4 terms)
+- **Document types:** `CCBA_LoaiTaiLieu` (5 terms)
+- **Service types:** `CCBA_LoaiHinhDichVu` (5 terms)
+
+Mẫu khởi tạo nhanh:
+
+```markdown
+# Kế hoạch kỹ thuật — <Tên module>
+
+## Kiến trúc
+Sơ đồ/diễn giải components, boundaries, events.
+
+## Data model
+- **Lists:** `datamodel/sharepoint/lists/...`
+- **Columns thay đổi/ảnh hưởng:** ...
+- **Managed Metadata fields:**
+  - Field: `Status` → Term Set: `CCBA_TrangThaiChung` (ID: từ JSON)
+  - Field: `Department` → Term Set: `CCBA_DonViPhongBan` (ID: từ JSON)
+  - Field: `ExpenseType` → Term Set: `CCBA_LoaiChiPhiPhanBo` (ID: từ JSON)
+
+## Taxonomy Dependencies
+- **Term sets sử dụng:** (list chính xác từ 14 sets đã export)
+- **Term mappings:** Định nghĩa cách terms được sử dụng trong business logic
+- **Validation rules:** Ensure terms exist trước khi reference
+
+## Flows & Integration
+- Power Automate: ...
+- Power BI: ...
+- Power Apps: ... (nếu có)
+- External APIs: ...
+
+## Env & Security
+- Variables, secrets, connection refs theo môi trường.
+- Quy tắc phân quyền (Owner/Dept/Project Team), audit.
+
+## Tích hợp & cấu hình đặc thù
+...
+
+## Triển khai & kiểm thử
+- **Taxonomy validation:** Kiểm tra term sets/terms existence
+- Validate schemas → diff (dry‑run) → snapshot → apply.
+- Seed data, test flows/dashboards; tiêu chí pass/fail.
+```

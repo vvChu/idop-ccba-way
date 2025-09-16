@@ -1,0 +1,74 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LoaiKhachHang",
+    "Id": "c823a9ab-b2b4-4c5d-b4d6-ee0811916f15",
+    "Description": "",
+    "CreatedDate": "2025-07-01T12:00:39.527Z",
+    "LastModifiedDate": "2025-07-01T12:00:39.547Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "b6a61779-bf74-4483-9a15-31f0fa8b6adf",
+      "Name": "Chủ đầu tư",
+      "IsRoot": true,
+      "PathOfTerm": "Chủ đầu tư",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "67698413-47d2-4158-8ab8-a1f9bf0d7e2f",
+      "Name": "Cơ quan Nhà nước",
+      "IsRoot": true,
+      "PathOfTerm": "Cơ quan Nhà nước",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "4180b334-a6b2-4358-a241-dfca192a0cb4",
+      "Name": "Đối tác",
+      "IsRoot": true,
+      "PathOfTerm": "Đối tác",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "f75f4521-cfcf-4cd2-ae43-cf12a039c806",
+      "Name": "Đơn vị Quản lý Dự án",
+      "IsRoot": true,
+      "PathOfTerm": "Đơn vị Quản lý Dự án",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "f2fdb217-57fc-422f-9623-3f45ca16e7de",
+      "Name": "Đơn vị Thiết kế",
+      "IsRoot": true,
+      "PathOfTerm": "Đơn vị Thiết kế",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    },
+    {
+      "Id": "741661ba-b481-47b4-887b-5974aa86c23a",
+      "Name": "Tổng thầu Xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "Tổng thầu Xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 6,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:19"
+  }
+}

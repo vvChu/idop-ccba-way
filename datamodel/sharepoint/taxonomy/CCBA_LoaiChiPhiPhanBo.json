@@ -1,0 +1,188 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LoaiChiPhiPhanBo",
+    "Id": "cb134001-14df-4bef-aa76-4eca2d60a693",
+    "Description": "Phân loại các khoản chi phí và phân bổ theo QCCTNB để kiểm soát chi tiêu và tự động hóa quy trình duyệt chi.",
+    "CreatedDate": "2025-06-16T10:20:31.743Z",
+    "LastModifiedDate": "2025-06-16T10:22:12.61Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "81ae24af-fb25-4355-a616-202ef884b609",
+      "Name": "Chi phí Trực tiếp (CPTT)",
+      "IsRoot": true,
+      "PathOfTerm": "Chi phí Trực tiếp (CPTT)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "6a00ce4b-edb2-485f-8e5a-a7825d97d7e8",
+          "Name": "Chi phí Khác Trực tiếp (CPTT_KHAC)",
+          "IsRoot": false,
+          "PathOfTerm": "Chi phí Trực tiếp (CPTT);Chi phí Khác Trực tiếp (CPTT_KHAC)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "a4bc15e8-664d-4f22-be9a-c28697176b85",
+              "Name": "Công tác phí",
+              "IsRoot": false,
+              "PathOfTerm": "Chi phí Trực tiếp (CPTT);Chi phí Khác Trực tiếp (CPTT_KHAC);Công tác phí",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "e354f1f0-6aad-41ee-8a17-8c81af31d333",
+              "Name": "In ấn/Photo/Đóng quyển",
+              "IsRoot": false,
+              "PathOfTerm": "Chi phí Trực tiếp (CPTT);Chi phí Khác Trực tiếp (CPTT_KHAC);In ấn/Photo/Đóng quyển",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "fe665895-65fe-4608-92df-63a079497b01",
+          "Name": "Máy móc ＆ Thiết bị (CPTT_MM)",
+          "IsRoot": false,
+          "PathOfTerm": "Chi phí Trực tiếp (CPTT);Máy móc ＆ Thiết bị (CPTT_MM)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "5356d70d-8585-4e6a-a7c2-e3f84a27badc",
+          "Name": "Nhân công (CPTT_NC)",
+          "IsRoot": false,
+          "PathOfTerm": "Chi phí Trực tiếp (CPTT);Nhân công (CPTT_NC)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "4ab741ae-c983-41b3-96da-d5ef0ef6ab32",
+              "Name": "Nhân công Nội bộ",
+              "IsRoot": false,
+              "PathOfTerm": "Chi phí Trực tiếp (CPTT);Nhân công (CPTT_NC);Nhân công Nội bộ",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            },
+            {
+              "Id": "a5174c42-d8f6-4ace-9ec0-ce5e3be8ca21",
+              "Name": "Nhân công Thuê ngoài",
+              "IsRoot": false,
+              "PathOfTerm": "Chi phí Trực tiếp (CPTT);Nhân công (CPTT_NC);Nhân công Thuê ngoài",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {},
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "46260451-4eb4-40af-bc10-b7e27b42b6dc",
+          "Name": "Vật tư (CPTT_VT)",
+          "IsRoot": false,
+          "PathOfTerm": "Chi phí Trực tiếp (CPTT);Vật tư (CPTT_VT)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "23c72d06-7084-44af-920e-897517427ef2",
+      "Name": "Phân bổ về Viện (PB_VIEN)",
+      "IsRoot": true,
+      "PathOfTerm": "Phân bổ về Viện (PB_VIEN)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "4655b0e9-6c46-4b6e-bac0-3b2a0913e64d",
+          "Name": "Chi phí Quản lý Viện",
+          "IsRoot": false,
+          "PathOfTerm": "Phân bổ về Viện (PB_VIEN);Chi phí Quản lý Viện",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "5901625c-f42e-44de-9906-685a0bbe574b",
+          "Name": "Lợi nhuận Viện",
+          "IsRoot": false,
+          "PathOfTerm": "Phân bổ về Viện (PB_VIEN);Lợi nhuận Viện",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "34d33531-f244-4981-ae68-011b77614613",
+      "Name": "Phân bổ/Chi tại Đơn vị (PB_DV)",
+      "IsRoot": true,
+      "PathOfTerm": "Phân bổ/Chi tại Đơn vị (PB_DV)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "1c46ef2c-74da-4140-9457-3252f6cfe8e5",
+          "Name": "Chi phí Quản lý Đơn vị",
+          "IsRoot": false,
+          "PathOfTerm": "Phân bổ/Chi tại Đơn vị (PB_DV);Chi phí Quản lý Đơn vị",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "a74b7a31-e69d-4909-a946-7c46382af44d",
+          "Name": "Quỹ lương ＆ BHXH Đơn vị",
+          "IsRoot": false,
+          "PathOfTerm": "Phân bổ/Chi tại Đơn vị (PB_DV);Quỹ lương ＆ BHXH Đơn vị",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "cfaa7399-7c82-4ff8-81db-fb387f0b8d98",
+      "Name": "Thuế (THUE)",
+      "IsRoot": true,
+      "PathOfTerm": "Thuế (THUE)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "95cde39d-c04e-4db1-8fe6-e8ef742cd5a9",
+          "Name": "Thuế TNCN",
+          "IsRoot": false,
+          "PathOfTerm": "Thuế (THUE);Thuế TNCN",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        },
+        {
+          "Id": "b5490341-5cb7-4461-86c3-c6083fc2513f",
+          "Name": "Thuế TNDN",
+          "IsRoot": false,
+          "PathOfTerm": "Thuế (THUE);Thuế TNDN",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 4,
+    "TotalTermsWithChildren": 4,
+    "MaxDepth": 0,
+    "ExportDate": "2025-09-15 00:23:15"
+  }
+}
