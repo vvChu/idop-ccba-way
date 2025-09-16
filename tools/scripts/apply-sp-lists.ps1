@@ -45,17 +45,22 @@ Write-Host "[env] Tenant ID: $($envConfig.TenantId)" -ForegroundColor Cyan
 Write-Host "[env] Environment ID: $($envConfig.EnvironmentId)" -ForegroundColor Cyan
 Write-Host "[env] Instance URL: $($envConfig.InstanceUrl)" -ForegroundColor Cyan
 
-# Validate all JSON files against schema
+
+# Validate all JSON files against schema (call ajv for each file individually)
 $SchemaPath = "datamodel/sharepoint/schemas/sp-list.schema.json"
 Write-Host "[validate] Checking all JSON lists against schema: $SchemaPath" -ForegroundColor Cyan
+$allValid = $true
 foreach ($jsonFile in Get-ChildItem -Path $ListsPath -Recurse -Filter *.json) {
-  $ajvCmd = "ajv validate -s $SchemaPath -d $($jsonFile.FullName)"
+  $ajvCmd = "ajv validate -s `"$SchemaPath`" -d `"$($jsonFile.FullName)`""
   Write-Host "Validating: $($jsonFile.FullName)"
-  $result = Invoke-Expression $ajvCmd
+  Invoke-Expression $ajvCmd
   if ($LASTEXITCODE -ne 0) {
     Write-Host "[ERROR] Schema validation failed for $($jsonFile.FullName)" -ForegroundColor Red
-    exit 1
+    $allValid = $false
   }
+}
+if (-not $allValid) {
+  exit 2
 }
 Write-Host "[validate] All JSON lists are valid." -ForegroundColor Green
 
