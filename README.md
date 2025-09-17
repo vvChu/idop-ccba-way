@@ -173,9 +173,7 @@ jobs:
 
 ## 🚀 Getting started
 
-
 ## 📂 Liên kết nhanh
-
 
 - **Spec modules:** [`specs/modules/`](specs/modules/)
   - [Contracts](specs/modules/cash_data/allocations/spec.md)

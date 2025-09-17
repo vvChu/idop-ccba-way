@@ -1,8 +1,7 @@
+
 # Constitution — Nguyên tắc kỹ thuật & kiểm soát chất lượng CCBA
 
-
 ## 1) Tư tưởng cốt lõi (First Principles)
-
 
 ## 2) Pipeline IDOP‑CCBA‑WAY (từ scaffold → vận hành)
 
@@ -205,15 +204,12 @@ Màu sắc đề xuất (khi render bằng công cụ vẽ):
 
 - S1: xanh nhạt; S2: xanh ngọc; S3: xanh lá; S4: vàng; S5: cam; S6: tím. Cross‑cutting: Environments (teal nhạt), Governance (xám nhạt).
 
-
-
 ## 3) Vai trò & phê duyệt
 
 - Integrator (Giám đốc): Chủ trì review/approval ở Pull Request, quyết định merge. Kiểm chứng alignment với chiến lược CCBA và quy chế.
 - Lead Kỹ thuật: Bảo đảm tuân thủ kiến trúc, bảo mật, diff/rollback khả dụng, chất lượng triển khai.
 - BA/Owner Module: Làm rõ yêu cầu, đồng bộ đặc tả với thực tế vận hành, ký nhận nghiệm thu.
 - Dev/Analyst: Triển khai theo `plan.md`/`tasks.md`, cập nhật datamodel JSON và taxonomy khi phát sinh.
-
 
 ## 4) Quy ước đặt tên & cấu trúc repo
 
@@ -232,10 +228,7 @@ Quy tắc đặt tên chính:
 - Term set: `CCBA_*` nhất quán; mã hoá song ngữ khi cần.
 - Branch: `feat/<area>-<short>`, `fix/<area>-<short>`, `docs/<area>-<short>`.
 
-
 ## 4a) Nguyên tắc thiết kế & quản trị Taxonomy (Termstore)
-
-
 
 ### 4a.1) Cấu trúc taxonomy đã triển khai CCBA
 
@@ -275,7 +268,6 @@ Dựa trên đồng bộ từ SharePoint termstore thực tế (`CCBA Taxonomy`)
 
 - `CCBA_TrangThaiChung`: Trạng thái workflow tổng quát (5 terms)
 
-
 ### 4a.2) Nguyên tắc quản trị taxonomy
 
 - **Ownership:** Mỗi term set có owner rõ ràng (department/role), chỉ owner được modify terms.
@@ -286,7 +278,6 @@ Dựa trên đồng bộ từ SharePoint termstore thực tế (`CCBA Taxonomy`)
 - **Description bắt buộc:** Mỗi term set phải có mô tả mục đích sử dụng cụ thể.
 - **Consistency:** Terms được sử dụng nhất quán trong SharePoint Lists, Power Apps, Power Automate.
 
-
 ### 4a.3) Quy trình cập nhật taxonomy
 
 1. **Thiết kế:** Cập nhật file JSON trong `datamodel/sharepoint/taxonomy/`
@@ -295,9 +286,7 @@ Dựa trên đồng bộ từ SharePoint termstore thực tế (`CCBA Taxonomy`)
 4. **Validate:** Kiểm tra consistency với SharePoint Lists sử dụng taxonomy
 5. **Document:** Cập nhật module spec liên quan đến taxonomy changes
 
-
 Mọi term set, term group, term đều phải được định nghĩa rõ ràng trong repo (`datamodel/sharepoint/taxonomy/**`) dưới dạng JSON, có mô tả, ID duy nhất, và liên kết nghiệp vụ.
-
 
 - Term group: `CCBA_<Domain>` (ví dụ: `CCBA_Project`, `CCBA_Asset`)
 - Term set: `CCBA_<Tên>` (song ngữ nếu cần, ví dụ: `CCBA_TrangThaiChung`)
@@ -316,18 +305,13 @@ Mọi term set, term group, term đều phải được định nghĩa rõ ràng
   - [ ] Validate uniqueness, mapping, versioning khi import/export.
   - [ ] Owner và mô tả nghiệp vụ cho từng term set.
 
-
-
 ## 5) Checklist bắt buộc theo từng bước
-
-
 
 ### S1 — Scaffold & Configure
 
 - [ ] `.speckit.yml` có `docs.entry`, `docs.output`, placeholders cho spec/plan/tasks.
 - [ ] Datamodel JSON, taxonomy, schemas hiện diện và hợp lệ với schema.
 - [ ] Scripts rỗng hoặc khung lệnh đã sẵn (`apply-sp-lists`, `termstore-import`, `sp-diff`).
-
 
 ### S2 — Detailed Design (AI)
 
@@ -336,13 +320,11 @@ Mọi term set, term group, term đều phải được định nghĩa rõ ràng
 - [ ] `tasks.md` có backlog khả thi; liên kết tới datamodel/taxonomy chịu ảnh hưởng.
 - [ ] Tất cả bám theo quy ước tên, bảo mật, uniqueness, retention, audit trail.
 
-
 ### S3 — Review & Merge (PR)
 
 - [ ] Đặc tả phù hợp chiến lược CCBA (theo tài liệu chiến lược/VTO/quy chế).
 - [ ] Diff datamodel/taxonomy rõ ràng; lý do thay đổi và tác động.
 - [ ] Đã có kế hoạch rollback và snapshot.
-
 
 ### S4 — Technical Deployment
 
@@ -350,18 +332,15 @@ Mọi term set, term group, term đều phải được định nghĩa rõ ràng
 - [ ] Áp dụng Lists/Taxonomy bằng script phù hợp OS (ps1|sh).
 - [ ] Secrets/connection refs lấy từ môi trường; không hard‑code.
 
-
 ### S5 — Testing & Acceptance
 
 - [ ] Seed data, flow approvals, dashboards cơ bản chạy được.
 - [ ] Data quality: required/regex/dedup đạt chuẩn; ghi lại kết quả vào `tasks.md`.
 
-
 ### S6 — Operate & Improve
 
 - [ ] Theo dõi SLA/RAG; khi có thay đổi quay lại vòng `spec → plan → tasks`.
 - [ ] Lưu trữ audit logs, approvals; thực thi retention phù hợp quy chế.
-
 
 ## 6) Liên kết tài liệu chiến lược (nguồn tham chiếu)
 
@@ -372,16 +351,12 @@ Mọi term set, term group, term đều phải được định nghĩa rõ ràng
 
 Các tài liệu này định hình acceptance criteria ở cấp tổ chức. Khi có xung đột, ưu tiên tuân thủ quy chế và quyết định của Integrator.
 
-
 ## 7) Cách dùng nhanh (SpecKit + VS Code)
 
 - Kiểm tra môi trường: `./tools/speckit/specify.ps1 check`
 - Khởi tạo/đồng bộ khung: `./tools/speckit/specify.ps1 init --here --ai copilot --script ps`
 - Viết đặc tả/plan/tasks theo prompts và checklist; mở PR để review/merge.
 
-
 ---
 
-
 Tài liệu này cần được cập nhật liên tục khi phát hiện ràng buộc mới trong quá trình triển khai. Mọi chỉnh sửa phải đi qua PR và được “Trình ký”.
-

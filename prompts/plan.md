@@ -4,14 +4,12 @@
 
 ## Định nghĩa và bối cảnh hoạt động của CCBA
 
-
 - **Tên đầy đủ:** Trung tâm Tư vấn và Ứng dụng BIM trong xây dựng
 - **Tư cách pháp nhân:** Đơn vị trực thuộc Viện Khoa học Công nghệ Xây dựng (IBST), có con dấu và tài khoản riêng
 - **Tên tiếng Anh:** Center for Consulting Services and BIM Application in construction
 - **Tên viết tắt:** CCBA
 
 - **Địa chỉ:** Số 81 Trần Cung, phường Nghĩa Tân, Cầu Giấy, Hà Nội
-
 
 ---
 
@@ -25,13 +23,11 @@
   - Hợp tác trong nước và quốc tế
   - Thực hiện nhiệm vụ phục vụ quản lý nhà nước khi được giao
 
-
 - **Nguyên tắc vận hành:**
   - Tuân thủ pháp luật, quy định Bộ Xây dựng và quy chế của Viện
   - Tự chủ, minh bạch, hiệu quả
   - Lấy ứng dụng BIM làm trục xuyên suốt
   - Số hóa và tự động hóa bằng nền tảng IDOP
-
 
 - **Cơ cấu tổ chức:**
   - Ban Giám đốc
@@ -40,7 +36,6 @@
   - Phòng BIM Dự án
   - Phòng BIM Thiết kế
   - Các đơn vị trực thuộc khác khi cần thiết
-
 
 ---
 
@@ -54,7 +49,6 @@
   - Power BI cho dashboards tiến độ, tài chính, chất lượng
   - Teams cho cộng tác và thực thi quy trình “Trình ký”
 
-
 ---
 
 ## Quy trình nghiệp vụ cốt lõi (CCBA WAY) gắn với IDOP
@@ -63,7 +57,6 @@
 - **Ứng dụng “Trình ký”:** luồng phê duyệt tài liệu nội bộ theo nhiều tầng (Chủ trì → Trưởng phòng → Cố vấn Pháp lý/TC&QLCL → Phó Giám đốc → Giám đốc).
 - **Quản lý tài liệu dự án:** CDE trên SharePoint; quy định chuyển lưu trữ sang OneDrive cho archive/dung lượng lớn; cấu trúc thư mục chuẩn.
 - **Tài chính–kế toán:** Kế hoạch tài chính hợp đồng, Hóa đơn, Chi phí, quy trình tạm ứng–thanh toán–quyết toán–hoàn chứng từ được tự động hóa.
-
 
 ---
 

@@ -11,9 +11,9 @@ Tài liệu này mô tả cách làm việc tiêu chuẩn giữa nhóm dự án 
 
 - Sử dụng prompts trong `prompts/spec.md`, `prompts/plan.md`, `prompts/tasks.md` để dẫn hướng AI.
 - Sinh/ cập nhật:
-	- `specs/modules/<group>/<module>/spec.md`
-	- `specs/modules/<group>/<module>/plan.md`
-	- `specs/modules/<group>/<module>/tasks.md`
+  - `specs/modules/<group>/<module>/spec.md`
+  - `specs/modules/<group>/<module>/plan.md`
+  - `specs/modules/<group>/<module>/tasks.md`
 
 - Áp dụng checklist trong Constitution (Section 5) trước khi tạo PR.
 
@@ -26,8 +26,8 @@ Tài liệu này mô tả cách làm việc tiêu chuẩn giữa nhóm dự án 
 
 - Validate schemas và chạy diff (dry‑run).
 - Áp dụng Lists/Taxonomy bằng script phù hợp OS:
-	- PowerShell: `tools/scripts/apply-sp-lists.ps1`, `tools/scripts/termstore-import.ps1`
-	- POSIX: `tools/scripts/apply-sp-lists.sh`, `tools/scripts/termstore-import.sh`
+  - PowerShell: `tools/scripts/apply-sp-lists.ps1`, `tools/scripts/termstore-import.ps1`
+  - POSIX: `tools/scripts/apply-sp-lists.sh`, `tools/scripts/termstore-import.sh`
 
 ## 5) Kiểm thử & chấp nhận
 
@@ -39,6 +39,7 @@ Tài liệu này mô tả cách làm việc tiêu chuẩn giữa nhóm dự án 
 - Theo dõi SLA/RAG, khi có thay đổi quay lại vòng `spec → plan → tasks → PR → deploy`.
 
 ## Lệnh nhanh
+
 ```powershell
 ./tools/speckit/specify.ps1 check
 ./tools/speckit/specify.ps1 init --here --ai copilot --script ps

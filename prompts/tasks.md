@@ -11,8 +11,9 @@ Yêu cầu đầu ra:
 - Liên kết tới thay đổi trong `datamodel/sharepoint/**` và taxonomy nếu có (ghi rõ mapping, owner, versioning, lý do thay đổi, tuân thủ quy trình phê duyệt).
 
 **Bắt buộc include taxonomy validation tasks nếu module sử dụng Managed Metadata:**
+
 - Verify term set IDs từ JSON files
-- Validate terms tồn tại trong SharePoint 
+- Validate terms tồn tại trong SharePoint
 - Test taxonomy field mappings
 - Check consistency với business logic
 

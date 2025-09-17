@@ -38,11 +38,13 @@
 ## Kết quả thực hiện
 
 ### ✅ Scripts & Tools
+
 - `termstore-export-simple.ps1`: Script export termstore thành công
 - Authentication: PnP PowerShell với Client ID đã đăng ký
 - Export format: JSON files với structure đầy đủ (Name, ID, Description, Terms)
 
 ### ✅ Repository Structure
+
 ```
 datamodel/sharepoint/taxonomy/
 ├── CCBA_ChucDanhBIM.json
@@ -62,6 +64,7 @@ datamodel/sharepoint/taxonomy/
 ```
 
 ### ✅ Governance & Compliance  
+
 - **Constitution.md** cập nhật với taxonomy principles từ dữ liệu thực tế
 - **Prompts strengthened** với taxonomy compliance và validation
 - **Naming convention** verified: tất cả term sets tuân thủ `CCBA_*` format
@@ -70,13 +73,16 @@ datamodel/sharepoint/taxonomy/
 ## Tác động lên IDOP-CCBA workflow
 
 ### Điểm khởi đầu thiết kế
+
 Repository hiện đã có **taxonomy baseline hoàn chỉnh** để:
+
 - Spec modules reference đúng term sets
 - Plan modules mapping taxonomy fields chính xác  
 - Tasks validation taxonomy dependencies
 - Deployment scripts có data source đáng tin cậy
 
 ### Next steps khuyến nghị
+
 1. **Module design:** Sử dụng taxonomy trong SharePoint Lists design
 2. **Import script:** Develop `termstore-import.ps1` cho round-trip sync
 3. **Validation:** Implement taxonomy consistency checks trong CI/CD
