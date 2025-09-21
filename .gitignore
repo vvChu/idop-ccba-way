@@ -1,0 +1,44 @@
+# Serena noise control (also useful generally)
+node_modules/
+dist/
+build/
+out/
+target/
+*.log
+.vscode/
+!.vscode/tasks.json
+.venv/
+.env
+coverage/
+*.zip
+*.tar
+
+# Additional PowerShell/SharePoint specific ignores
+*.ps1~
+*.psm1~
+*.psd1~
+*.tmp
+*.bak
+*.orig
+
+# Serena cache and logs
+.serena/
+*.pkl
+logs/
+
+# Build artifacts
+bin/
+obj/
+packages/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Environment files
+.env.local
+.env.*.local

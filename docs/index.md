@@ -8,6 +8,7 @@ Trang này là cổng vào hệ thống tài liệu nội bộ cho nền tảng 
 - Quy trình cộng tác với AI Agent: xem `./ai-workflow.md`.
 - Datamodel & Taxonomy: xem thư mục `../datamodel/sharepoint/**`.
 - Modules: `../specs/modules/**` gồm `spec.md`, `plan.md`, `tasks.md` và `diagrams/`.
+- Checklist bảo trì & đồng bộ: xem `./maintenance-checklist.md`.
 
 ## Cách bắt đầu nhanh
 

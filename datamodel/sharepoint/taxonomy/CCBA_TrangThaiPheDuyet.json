@@ -1,0 +1,15 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_TrangThaiPheDuyet",
+    "Id": "7f6e5d4c-3b2a-1908-7f6e-5d4c3b2a1908",
+    "Description": "Trạng thái phê duyệt hồ sơ/đệ trình",
+    "IsOpenForTermCreation": false
+  },
+  "Terms": [
+    { "Id": "aaaabbbb-cccc-dddd-eeee-ffff00000001", "Name": "Nháp", "IsRoot": true, "Children": [] },
+    { "Id": "aaaabbbb-cccc-dddd-eeee-ffff00000002", "Name": "Đệ trình", "IsRoot": true, "Children": [] },
+    { "Id": "aaaabbbb-cccc-dddd-eeee-ffff00000003", "Name": "Yêu cầu bổ sung", "IsRoot": true, "Children": [] },
+    { "Id": "aaaabbbb-cccc-dddd-eeee-ffff00000004", "Name": "Phê duyệt", "IsRoot": true, "Children": [] },
+    { "Id": "aaaabbbb-cccc-dddd-eeee-ffff00000005", "Name": "Từ chối", "IsRoot": true, "Children": [] }
+  ]
+}

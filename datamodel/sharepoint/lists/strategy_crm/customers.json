@@ -1,0 +1,18 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "Customers",
+  "Description": "Danh sách khách hàng của CCBA",
+  "Columns": [
+    { "Name": "CustomerName", "Type": "Text", "Required": true },
+    { "Name": "CustomerType", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiKhachHang" } },
+    { "Name": "Industry", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NganhLinhVuc" } },
+    { "Name": "Source", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NguonGocCoHoi" } },
+    { "Name": "Contacts", "Type": "Lookup", "Lookup": { "List": "Contacts", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "Opportunities", "Type": "Lookup", "Lookup": { "List": "Opportunities", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "TaxCode", "Type": "Text" },
+    { "Name": "Address", "Type": "Text" },
+    { "Name": "Phone", "Type": "Text" },
+    { "Name": "Email", "Type": "Text" }
+  ],
+  "ContentTypes": []
+}

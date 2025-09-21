@@ -1,0 +1,14 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "OpportunityStageHistory",
+  "Description": "Lịch sử chuyển stage của Opportunity",
+  "Columns": [
+    { "Name": "Opportunity", "Type": "Lookup", "Lookup": { "List": "Opportunities", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "FromStage", "Type": "Choice", "Choices": ["Lead","Qualified","Proposal","Negotiation","Won","Lost"] },
+    { "Name": "ToStage", "Type": "Choice", "Choices": ["Lead","Qualified","Proposal","Negotiation","Won","Lost"] },
+    { "Name": "DaysInPrevStage", "Type": "Number" },
+    { "Name": "ChangedAt", "Type": "DateTime" },
+    { "Name": "ChangedBy", "Type": "User" }
+  ],
+  "ContentTypes": []
+}

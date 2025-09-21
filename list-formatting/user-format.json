@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "children": [
+    {
+      "elmType": "img",
+      "attributes": {
+        "src": "=getUserImage(@currentField.email)",
+        "title": "=@currentField.title"
+      },
+      "style": {
+        "width": "24px",
+        "height": "24px",
+        "border-radius": "50%",
+        "margin-right": "6px"
+      }
+    },
+    {
+      "elmType": "span",
+      "txtContent": "=@currentField.title"
+    }
+  ]
+}

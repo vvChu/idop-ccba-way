@@ -1,5 +1,5 @@
 {
-  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "$schema": "../../schemas/sp-list.schema.json",
   
 "ListName": "LessonsLearned",
 "Description": "Bài học kinh nghiệm",

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "span",
+  "attributes": {
+    "class": "=if(@currentField < @now, 'sp-field-severity--blocked', if(@currentField <= @now + 604800000, 'sp-field-severity--warning', 'sp-field-severity--good'))"
+  },
+  "txtContent": "=toLocaleDateString(@currentField)"
+}

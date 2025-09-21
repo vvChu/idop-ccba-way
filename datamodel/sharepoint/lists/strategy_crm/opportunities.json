@@ -1,0 +1,26 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "Opportunities",
+  "Description": "Cơ hội kinh doanh của CCBA",
+  "Columns": [
+    { "Name": "OpportunityName", "Type": "Text", "Required": true },
+    { "Name": "Customer", "Type": "Lookup", "Lookup": { "List": "Customers", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "Contact", "Type": "Lookup", "Lookup": { "List": "Contacts", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "Stage", "Type": "Choice", "Choices": ["Lead","Qualified","Proposal","Negotiation","Won","Lost"] },
+    { "Name": "Value", "Type": "Number" },
+    { "Name": "Probability", "Type": "Number" },
+    { "Name": "AdjustedProbability", "Type": "Number", "Description": "Xác suất điều chỉnh sau InfluenceScore & Risk." },
+    { "Name": "InfluenceScore", "Type": "Number", "Description": "Σ(InfluenceWeight * SupportFactor * EngagementFactor)." },
+    { "Name": "RiskFlags", "Type": "MultiChoice", "Choices": ["InfluenceLow","MissingRoles","StakeholderOpposition","DataGap"] },
+    { "Name": "ServiceMixSummary", "Type": "Note", "Description": "Tổng hợp dịch vụ: <ServiceType>:<Count>(Won/Pending)." },
+    { "Name": "ExpectedCloseDate", "Type": "DateTime" },
+    { "Name": "Status", "Type": "Choice", "Choices": ["Active","Closed","OnHold"] },
+    { "Name": "ServiceType", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" } },
+    { "Name": "Industry", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NganhLinhVuc" } },
+    { "Name": "Source", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NguonGocCoHoi" } },
+    { "Name": "RelatedContracts", "Type": "Lookup", "Lookup": { "List": "Contracts", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "RelatedProjects", "Type": "Lookup", "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "Owner", "Type": "User" }
+  ],
+  "ContentTypes": []
+}

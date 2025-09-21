@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "span",
+  "attributes": {
+    "iconName": "=if(@currentField, 'CheckMark', 'Cancel')",
+    "class": "=if(@currentField, 'sp-field-severity--good', 'sp-field-severity--blocked')"
+  }
+}

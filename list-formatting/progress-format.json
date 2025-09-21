@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "children": [
+    {
+      "elmType": "span",
+      "style": { "font-weight": "bold" },
+      "txtContent": "=if(Number(@currentField) >= 100, 'Hoàn thành', Number(@currentField) + '%')"
+    },
+    {
+      "elmType": "progress",
+      "attributes": {
+        "value": "=Number(@currentField)",
+        "max": "100"
+      },
+      "style": {
+        "width": "80px",
+        "height": "10px",
+        "margin-left": "8px"
+      }
+    }
+  ]
+}

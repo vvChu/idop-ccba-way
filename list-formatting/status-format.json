@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "attributes": {
+    "class": "=if(@currentField == 'Approved', 'sp-field-severity--good', if(@currentField == 'Rejected', 'sp-field-severity--blocked', if(@currentField == 'Pending', 'sp-field-severity--low', 'sp-field-severity--warning')) )"
+  },
+  "children": [
+    {
+      "elmType": "span",
+      "style": { "font-weight": "bold" },
+      "txtContent": "=@currentField"
+    },
+    {
+      "elmType": "span",
+      "attributes": {
+        "iconName": "=if(@currentField == 'Approved', 'CheckMark', if(@currentField == 'Rejected', 'Cancel', if(@currentField == 'Pending', 'Clock', 'Warning')))"
+      },
+      "style": { "margin-left": "6px" }
+    }
+  ]
+}

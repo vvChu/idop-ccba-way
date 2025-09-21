@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "Contacts",
+  "Description": "Liên hệ khách hàng của CCBA",
+  "Columns": [
+    { "Name": "ContactName", "Type": "Text", "Required": true },
+    { "Name": "Role", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_VaiTroLienHe" } },
+    { "Name": "Email", "Type": "Text" },
+    { "Name": "Phone", "Type": "Text" },
+    { "Name": "Customer", "Type": "Lookup", "Lookup": { "List": "Customers", "Field": "ID", "Behavior": "restrict" } }
+  ],
+  "ContentTypes": []
+}

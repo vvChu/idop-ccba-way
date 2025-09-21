@@ -1,0 +1,15 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_TrangThaiTaiSan",
+    "Id": "c3b1a9a4-2e3f-4b1a-a7f8-4d1c0b8cbf01",
+    "Description": "Trạng thái vòng đời Tài sản (Asset lifecycle statuses)",
+    "IsOpenForTermCreation": false
+  },
+  "Terms": [
+    { "Id": "8f4f6f3a-dcd8-4c2c-9c2c-6e1f1ab5c101", "Name": "Mới nhập", "IsRoot": true, "Children": [] },
+    { "Id": "cfd8b2a9-5a6e-46a6-a3d4-6f64b3a3dd02", "Name": "Đang sử dụng", "IsRoot": true, "Children": [] },
+    { "Id": "fb3c1f8d-6c9a-43ac-8b0b-3a7a6b7ff303", "Name": "Bảo trì", "IsRoot": true, "Children": [] },
+    { "Id": "b2e64155-6a7e-4b7a-bc36-4f1be0d54b04", "Name": "Tạm dừng", "IsRoot": true, "Children": [] },
+    { "Id": "a4c1d3f8-2b7d-47a9-8b66-2f1f0a1b5c05", "Name": "Thanh lý", "IsRoot": true, "Children": [] }
+  ]
+}

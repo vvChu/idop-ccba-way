@@ -1,18 +1,16 @@
 {
-  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
-  
-"ListName": "WorkPackages",
-"Description": "Gói công việc",
-"Columns": [
-  { "Name": "PackageName", "Type": "Text", "Required": true },
-  { "Name": "ProjectId", "Type": "Lookup",
-    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
-  { "Name": "AssignedTo", "Type": "User" },
+  "$schema": "../../schemas/sp-list.schema.json",
+  "ListName": "WorkPackages",
+  "Description": "Gói công việc",
+  "Columns": [
+    { "Name": "PackageName", "Type": "Text", "Required": true },
+    { "Name": "ProjectId", "Type": "Lookup",
+      "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "AssignedTo", "Type": "User" },
   { "Name": "Status", "Type": "ManagedMetadata",
-    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } },
-  { "Name": "StartDate", "Type": "DateTime" },
-  { "Name": "EndDate", "Type": "DateTime" }
-],
-"ContentTypes": []
-
+      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } },
+    { "Name": "StartDate", "Type": "DateTime" },
+    { "Name": "EndDate", "Type": "DateTime" }
+  ],
+  "ContentTypes": []
 }

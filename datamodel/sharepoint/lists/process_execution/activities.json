@@ -1,16 +1,14 @@
 {
-  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
-  
-"ListName": "Activities",
-"Description": "Hoạt động CRM/Marketing/R&D/Admin",
-"Columns": [
-  { "Name": "ActivityName", "Type": "Text", "Required": true },
-  { "Name": "ActivityType", "Type": "Choice",
-    "Choices": ["CRM","PotentialProject","Marketing","R&D","Admin"] },
-  { "Name": "Owner", "Type": "User" },
+  "$schema": "../../schemas/sp-list.schema.json",
+  "ListName": "Activities",
+  "Description": "Hoạt động CRM/Marketing/R&D/Admin",
+  "Columns": [
+    { "Name": "ActivityName", "Type": "Text", "Required": true },
+    { "Name": "ActivityType", "Type": "Choice",
+      "Choices": ["CRM","PotentialProject","Marketing","R&D","Admin"] },
+    { "Name": "Owner", "Type": "User" },
   { "Name": "Status", "Type": "ManagedMetadata",
-    "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } }
-],
-"ContentTypes": []
-
+      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } }
+  ],
+  "ContentTypes": []
 }

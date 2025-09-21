@@ -1,0 +1,15 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LoaiChiPhi",
+    "Id": "91587b8c-45a1-4b7b-9b9f-0b8c4e7a2f01",
+    "Description": "Phân loại chi phí hoạt động (Expenses)",
+    "IsOpenForTermCreation": false
+  },
+  "Terms": [
+    { "Id": "0c1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e01", "Name": "Chi phí Nhân sự", "IsRoot": true, "Children": [] },
+    { "Id": "0c1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e02", "Name": "Chi phí Vật tư", "IsRoot": true, "Children": [] },
+    { "Id": "0c1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e03", "Name": "Chi phí Dịch vụ", "IsRoot": true, "Children": [] },
+    { "Id": "0c1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e04", "Name": "Chi phí Di chuyển", "IsRoot": true, "Children": [] },
+    { "Id": "0c1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e05", "Name": "Khác", "IsRoot": true, "Children": [] }
+  ]
+}

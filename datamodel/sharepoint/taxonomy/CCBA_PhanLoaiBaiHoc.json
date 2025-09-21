@@ -1,0 +1,15 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_PhanLoaiBaiHoc",
+    "Id": "0a1b2c3d-4e5f-6071-8293-a4b5c6d7e813",
+    "Description": "Phân loại Bài học Kinh nghiệm",
+    "IsOpenForTermCreation": false
+  },
+  "Terms": [
+    { "Id": "11111111-2222-3333-4444-555555555501", "Name": "Kỹ thuật & Chất lượng", "IsRoot": true, "Children": [] },
+    { "Id": "11111111-2222-3333-4444-555555555502", "Name": "Quản lý dự án", "IsRoot": true, "Children": [] },
+    { "Id": "11111111-2222-3333-4444-555555555503", "Name": "Chi phí & Tài chính", "IsRoot": true, "Children": [] },
+    { "Id": "11111111-2222-3333-4444-555555555504", "Name": "Pháp lý & Hợp đồng", "IsRoot": true, "Children": [] },
+    { "Id": "11111111-2222-3333-4444-555555555505", "Name": "Nhân sự & Năng lực", "IsRoot": true, "Children": [] }
+  ]
+}

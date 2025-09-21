@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "ServiceCatalog",
+  "Description": "Danh mục dịch vụ chuẩn để liên kết vào OpportunityServices",
+  "Columns": [
+    { "Name": "ServiceCode", "Type": "Text", "Required": true },
+    { "Name": "ServiceName", "Type": "Text", "Required": true },
+    { "Name": "Category", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" } },
+    { "Name": "Description", "Type": "Note" },
+    { "Name": "IsActive", "Type": "YesNo" },
+    { "Name": "DefaultDurationDays", "Type": "Number" },
+    { "Name": "DefaultPrice", "Type": "Number" }
+  ],
+  "ContentTypes": []
+}

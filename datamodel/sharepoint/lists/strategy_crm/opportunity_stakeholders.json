@@ -1,0 +1,15 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "OpportunityStakeholders",
+  "Description": "Stakeholder và mức ảnh hưởng trong từng cơ hội",
+  "Columns": [
+    { "Name": "Opportunity", "Type": "Lookup", "Lookup": { "List": "Opportunities", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "Contact", "Type": "Lookup", "Lookup": { "List": "Contacts", "Field": "ID", "Behavior": "restrict" } },
+    { "Name": "RoleType", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_VaiTroLienHe" } },
+    { "Name": "InfluenceWeight", "Type": "Number" },
+    { "Name": "SupportLevel", "Type": "Choice", "Choices": ["Champion","Supportive","Neutral","Opposed"] },
+    { "Name": "EngagementStatus", "Type": "Choice", "Choices": ["New","Nurturing","Active","AtRisk"] },
+    { "Name": "Notes", "Type": "Text" }
+  ],
+  "ContentTypes": []
+}
