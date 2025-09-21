@@ -183,7 +183,7 @@ jobs:
 
 - **Datamodel:** [`datamodel/sharepoint/lists/`](datamodel/sharepoint/lists/)
 
-- **Scripts:** [`tools/scripts/`](tools/scripts/) & [`specify/scripts/`](specify/scripts/)
+- **Scripts:** [`tools/scripts/`](tools/scripts/)
 
 - [Hướng dẫn sử dụng script deploy-sp-lists-enhanced.ps1](docs/deploy-sp-lists-enhanced.md)  
   (Tự động tạo/cập nhật SharePoint Lists từ JSON, hỗ trợ đầy đủ các loại trường, hướng dẫn chi tiết quyền hạn, TermStore, tham số script)
@@ -197,18 +197,17 @@ jobs:
 - [Thư viện List Formatting (JSON) cho SharePoint Lists](list-formatting/README.md)
 - [Hướng dẫn bảo trì & mở rộng List Formatting](docs/list-formatting-maintenance.md)
 
+- [Hướng dẫn sử dụng Scaffold (README-SCAFFOLD.md)](README-SCAFFOLD.md)  
+  (Hướng dẫn chi tiết sử dụng scaffold đã tinh gọn cho các dự án mới)
+
 ---
 
-## Hướng dẫn cấu hình VS Code MCP client với Serena
+## 📦 Scaffold Status
 
-1. Cài đặt Serena MCP server (xem serena/README.md).
-2. Khởi động Serena MCP server bằng script:
-   ```powershell
-   .\tools\scripts\start-serena-mcp.ps1
-   ```
-3. Cài extension hỗ trợ MCP client cho VS Code (ví dụ: Cline, Roo Code, Cursor, Claude Desktop, hoặc OpenWebUI).
-4. Trong VS Code, cấu hình extension/client để sử dụng endpoint MCP server (thường là http://localhost:5001 hoặc theo config của Serena).
-5. Khi sử dụng Copilot Chat, Claude, Cursor... hãy inject prompt hướng dẫn sử dụng Serena MCP (xem docs/serena_on_chatgpt.md).
-6. Đảm bảo agent luôn truy vấn MCP server để lấy context code trước khi trả lời.
+**Repository này đã được tinh gọn thành scaffold gọn nhẹ:**
 
-> Tham khảo chi tiết: serena/README.md, docs/serena_on_chatgpt.md, docs/custom_agent.md
+- **Kích thước:** 7.5MB (giảm từ 1.3GB+ - giảm 99%+)
+- **Thành phần:** Chỉ giữ lại core components cần thiết  
+- **Mục đích:** Làm nền tảng cho các dự án CCBA mới
+
+**Chi tiết xem:** [README-SCAFFOLD.md](README-SCAFFOLD.md)
