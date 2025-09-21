@@ -1,38 +1,3 @@
-
-# Constitution — Nguyên tắc kỹ thuật & kiểm soát chất lượng CCBA
-
-## 1) Tư tưởng cốt lõi (First Principles)
-
-## 2) Pipeline IDOP‑CCBA‑WAY (từ scaffold → vận hành)
-
-```mermaid
-flowchart LR
-  %% Cross-cutting swimlanes
-## 3) Vai trò & phê duyệt
-
-## 4) Quy ước đặt tên & cấu trúc repo
-## 4a) Nguyên tắc thiết kế & quản trị Taxonomy (Termstore)
-
-### 4a.1) Cấu trúc taxonomy đã triển khai CCBA
-### 4a.2) Nguyên tắc quản trị taxonomy
-
-### 4a.3) Quy trình cập nhật taxonomy
-## 5) Checklist bắt buộc theo từng bước
-
-### S1 — Scaffold & Configure
-### S2 — Detailed Design (AI)
-
-### S3 — Review & Merge (PR)
-### S4 — Technical Deployment
-
-### S5 — Testing & Acceptance
-### S6 — Operate & Improve
-
-## 6) Liên kết tài liệu chiến lược (nguồn tham chiếu)
-## 7) Cách dùng nhanh (SpecKit + VS Code)
-
----
-Tài liệu này cần được cập nhật liên tục khi phát hiện ràng buộc mới trong quá trình triển khai. Mọi chỉnh sửa phải đi qua PR và được “Trình ký”.
 # Constitution — Nguyên tắc kỹ thuật & kiểm soát chất lượng CCBA
 
 ---
@@ -198,7 +163,6 @@ flowchart LR
   GOV1 --- C3
   GOV2 --- D3
 
-```
 
 Màu sắc đề xuất (khi render bằng công cụ vẽ):
 
@@ -305,58 +269,41 @@ Mọi term set, term group, term đều phải được định nghĩa rõ ràng
   - [ ] Validate uniqueness, mapping, versioning khi import/export.
   - [ ] Owner và mô tả nghiệp vụ cho từng term set.
 
-## 5) Checklist bắt buộc theo từng bước
+## 4b) Bản đồ nguyên tắc vận hành ↔ Datamodel (Anchor)
 
-### S1 — Scaffold & Configure
+Mục tiêu: Ràng buộc vận hành trong mục "Tư tưởng cốt lõi" và "Khóa neo" phải phản ánh trực tiếp vào datamodel SharePoint (Lists/Fields/Taxonomy).
 
-- [ ] `.speckit.yml` có `docs.entry`, `docs.output`, placeholders cho spec/plan/tasks.
-- [ ] Datamodel JSON, taxonomy, schemas hiện diện và hợp lệ với schema.
-- [ ] Scripts rỗng hoặc khung lệnh đã sẵn (`apply-sp-lists`, `termstore-import`, `sp-diff`).
+- Truy vết nguyên tắc → phần tử dữ liệu:
+  - Security & Compliance by design → `Permissions`, `Retention`, `Audit` fields/views
+  - Data Source of Truth → `uniqueness`, `codes`, `lookup` relationships
+  - ALM & PR → `versioning` policies, `changeLog` list (nếu có)
+- Mẫu ánh xạ (placeholder, sẽ điền khi nhận bối cảnh chi tiết):
+  - Nguyên tắc: [Tên nguyên tắc]
+    - List impacted: `[Domain/ListName]`
+    - Fields: `[FieldA, FieldB...]` (required/regex/choice/managed metadata)
+    - Taxonomy: `[CCBA_*]` tham chiếu
+    - Views/Formatting: `[compact/editable/board]` + JSON formatting nếu có
+    - Policies: `[Retention X ngày, Unique(ProjectCode), Audit trail]`
 
-### S2 — Detailed Design (AI)
+## 4c) Ma trận ownership module & phân quyền (Anchor)
 
-- [ ] `spec.md` mô tả mục tiêu, phạm vi, user stories, acceptance criteria, quy trình & ràng buộc đặc thù.
-- [ ] `plan.md` nêu kiến trúc, data model, flows, env & security, tích hợp & cấu hình đặc thù.
-- [ ] `tasks.md` có backlog khả thi; liên kết tới datamodel/taxonomy chịu ảnh hưởng.
-- [ ] Tất cả bám theo quy ước tên, bảo mật, uniqueness, retention, audit trail.
+- Định nghĩa vai trò chịu trách nhiệm theo module:
+  - Module: `[strategy_crm/process_execution/cash_data/people_assets/performance_okrs/system_governance]`
+  - Owner (BA): `[Tên/Chức danh]`
+  - Lead kỹ thuật: `[Tên]`
+  - Reviewer/Approver: `[Integrator/Phó Giám đốc/Trưởng phòng]`
+- Phân quyền thực thi (mẫu):
+  - `[ListName]` → `[Owner]` (Contribute), `[Dept]` (Edit own), `[PMO]` (Read), `[Directorate]` (Approve)
+  - Field‑level/row‑level access (nếu áp dụng Power Apps/Power BI RLS): mô tả ngắn + liên kết cấu hình.
 
-### S3 — Review & Merge (PR)
+## 4d) Change governance & PR flow (Anchor)
 
-- [ ] Đặc tả phù hợp chiến lược CCBA (theo tài liệu chiến lược/VTO/quy chế).
-- [ ] Diff datamodel/taxonomy rõ ràng; lý do thay đổi và tác động.
-- [ ] Đã có kế hoạch rollback và snapshot.
-
-### S4 — Technical Deployment
-
-- [ ] Validate schemas trước khi apply; chạy diff (dry‑run) và sao lưu.
-- [ ] Áp dụng Lists/Taxonomy bằng script phù hợp OS (ps1|sh).
-- [ ] Secrets/connection refs lấy từ môi trường; không hard‑code.
-
-### S5 — Testing & Acceptance
-
-- [ ] Seed data, flow approvals, dashboards cơ bản chạy được.
-- [ ] Data quality: required/regex/dedup đạt chuẩn; ghi lại kết quả vào `tasks.md`.
-
-### S6 — Operate & Improve
-
-- [ ] Theo dõi SLA/RAG; khi có thay đổi quay lại vòng `spec → plan → tasks`.
-- [ ] Lưu trữ audit logs, approvals; thực thi retention phù hợp quy chế.
-
-## 6) Liên kết tài liệu chiến lược (nguồn tham chiếu)
-
-- Kế hoạch chiến lược & Sơ đồ trách nhiệm giải trình (CCBA, file nội bộ).
-- IDOP — Nền tảng Hoạt động Số Tích Hợp (whitepaper nội bộ).
-- Quy chế hoạt động Trung tâm BIM (phiên bản 2025), các điều khoản về phân quyền, phê duyệt, lưu trữ.
-- V/TO (Vision/Traction Organizer) — mục tiêu, chỉ số, sáng kiến trọng điểm.
-
-Các tài liệu này định hình acceptance criteria ở cấp tổ chức. Khi có xung đột, ưu tiên tuân thủ quy chế và quyết định của Integrator.
-
-## 7) Cách dùng nhanh (SpecKit + VS Code)
-
-- Kiểm tra môi trường: `./tools/speckit/specify.ps1 check`
-- Khởi tạo/đồng bộ khung: `./tools/speckit/specify.ps1 init --here --ai copilot --script ps`
-- Viết đặc tả/plan/tasks theo prompts và checklist; mở PR để review/merge.
-
----
-
-Tài liệu này cần được cập nhật liên tục khi phát hiện ràng buộc mới trong quá trình triển khai. Mọi chỉnh sửa phải đi qua PR và được “Trình ký”.
+- Quy tắc thay đổi bắt buộc:
+  - Mọi thay đổi datamodel/taxonomy phải có `spec.md` cập nhật, `plan.md` nêu tác động, `tasks.md` có checklist.
+  - Bắt buộc `dry‑run` (diff) trước khi apply; chụp snapshot/bản sao lưu.
+  - Ghi log thay đổi (commit message, changelog module) và liên kết PR.
+- Quy trình PR tóm tắt:
+  1. Soạn đặc tả → cập nhật datamodel JSON/taxonomy
+  2. Validate schema + scripts (CI)
+  3. Mở PR, reviewer kiểm tra mapping/nguyên tắc/rollback
+  4. Merge khi đủ điều kiện → triển khai theo S4
