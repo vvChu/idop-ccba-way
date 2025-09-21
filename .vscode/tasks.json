@@ -49,27 +49,31 @@
       "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\termstore-import.ps1","-DryRun"],
       "group": "build",
       "problemMatcher": []
+    },
+    {
+      "label": "Serena: Add MCP server (workspace)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-Command", "claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena-mcp-server --context ide-assistant --project ${workspaceFolder}"],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Serena: Index project",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-Command", "uvx --from git+https://github.com/oraios/serena index-project"],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Serena: Start MCP server (local)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\start-serena-mcp.ps1","-Context","agent","-Mode","editing","-Transport","sse","-Port","9121"],
+      "problemMatcher": [],
+      "group": "build",
+      "isBackground": true
     }
   ]
-}
-{
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "SpecKit: check",
-			"type": "shell",
-			"command": "powershell",
-			"args": [
-				"-ExecutionPolicy",
-				"Bypass",
-				"-File",
-				".\\tools\\speckit\\specify.ps1",
-				"check"
-			],
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "build"
-		}
-	]
 }
