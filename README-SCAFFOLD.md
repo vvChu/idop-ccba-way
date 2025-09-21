@@ -196,12 +196,61 @@ $VerbosePreference = "Continue"
 .\tools\scripts\apply-sp-lists.ps1 -DryRun
 ```
 
+## Optional: Serena MCP Integration
+
+Nếu cần AI-assisted development nâng cao với Model Context Protocol:
+
+### 1. Clone và cài đặt Serena
+```bash
+# Clone Serena repo
+git clone https://github.com/oraios/serena.git temp-serena
+cp -r temp-serena/serena ./serena
+cp temp-serena/serena-mcp-injector/serena-mcp-injector-0.0.1.vsix ./
+rm -rf temp-serena
+```
+
+### 2. Setup virtual environment
+```bash
+cd serena
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Install VS Code extension
+```bash
+code --install-extension serena-mcp-injector-0.0.1.vsix
+```
+
+### 4. Start MCP server
+```powershell
+# Sử dụng script có sẵn
+.\tools\scripts\start-serena-mcp.ps1 -Context "agent" -Mode "editing" -Transport "sse" -Port 9121
+
+# Hoặc chạy trực tiếp
+cd serena
+.venv\Scripts\python.exe scripts/mcp_server.py --context "agent" --mode "editing" \
+  --transport "sse" --host "127.0.0.1" --port 9121
+```
+
+### 5. Verify installation
+```bash
+# Test import module
+.venv\Scripts\python.exe -c "import serena; print('Serena module found')"
+
+# Test MCP server
+curl http://127.0.0.1:9121/health
+```
+
+**Lưu ý:** Serena MCP là optional component cho AI-assisted development.  
+Scaffold core vẫn hoạt động bình thường mà không cần nó.
+
 ## Contributing
 
-1. Follow spec-driven development workflow
-2. Validate changes before commit
-3. Update documentation
-4. Test deployment scripts
+1.  Follow Spec-Driven Development workflow
+2.  Validate changes before commit
+3.  Update documentation
+4.  Test deployment scripts
 
 ## License & Attribution
 
