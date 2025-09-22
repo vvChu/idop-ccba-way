@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schemas/sp-list.schema.json",
+  "ListName": "PotentialProjects",
+  "Description": "Tiềm năng dự án hình thành từ CRM, tiền đề để chuyển thành Projects sau khi ký HĐKT.",
+  "Columns": [
+    {
+      "Name": "Title",
+      "Type": "Text",
+      "Required": true,
+      "DisplayName": "Tiêu đề"
+    },
+    {
+      "Name": "Customer",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Customers",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Khách hàng"
+    },
+    {
+      "Name": "Contact",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Contacts",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Liên hệ"
+    },
+    {
+      "Name": "ExpectedContractValue",
+      "Type": "Number",
+      "DisplayName": "Giá trị HĐ dự kiến"
+    },
+    {
+      "Name": "ServiceType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiHinhDichVu"
+      },
+      "DisplayName": "Loại hình dịch vụ"
+    },
+    {
+      "Name": "Industry",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NganhLinhVuc"
+      },
+      "DisplayName": "Ngành/Lĩnh vực"
+    },
+    {
+      "Name": "ProjectType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiCongTrinh"
+      },
+      "DisplayName": "Loại công trình"
+    },
+    {
+      "Name": "Priority",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_MucDoUuTien"
+      },
+      "DisplayName": "Mức độ ưu tiên"
+    },
+    {
+      "Name": "Stage",
+      "Type": "Choice",
+      "Choices": [
+        "Identified",
+        "Qualified",
+        "On Hold",
+        "Converted",
+        "Dropped"
+      ],
+      "DisplayName": "Giai đoạn"
+    },
+    {
+      "Name": "EstimatedStart",
+      "Type": "DateTime",
+      "DisplayName": "Ngày bắt đầu dự kiến"
+    },
+    {
+      "Name": "EstimatedEnd",
+      "Type": "DateTime",
+      "DisplayName": "Ngày kết thúc dự kiến"
+    },
+    {
+      "Name": "PMOOwner",
+      "Type": "User",
+      "DisplayName": "Quản trị PMO"
+    }
+  ],
+  "ContentTypes": []
+}

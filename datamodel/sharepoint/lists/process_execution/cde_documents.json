@@ -1,0 +1,104 @@
+{
+  "$schema": "../../schemas/sp-list.schema.json",
+  "ListName": "CDEDocuments",
+  "Description": "Chỉ mục tài liệu CDE theo dự án, quản lý siêu dữ liệu & liên kết đến thư mục/URL thực tế.",
+  "Columns": [
+    {
+      "Name": "Title",
+      "Type": "Text",
+      "Required": true,
+      "DisplayName": "Tiêu đề"
+    },
+    {
+      "Name": "Project",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Projects",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Dự án"
+    },
+    {
+      "Name": "ProjectCode",
+      "Type": "Text",
+      "Description": "Mã dự án để hỗ trợ tra cứu nhanh và RLS.",
+      "DisplayName": "Mã dự án"
+    },
+    {
+      "Name": "DocumentCode",
+      "Type": "Text",
+      "Description": "Mã tài liệu theo quy ước CDE/PMO.",
+      "DisplayName": "Mã tài liệu"
+    },
+    {
+      "Name": "DocumentType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiTaiLieu"
+      },
+      "DisplayName": "Loại tài liệu"
+    },
+    {
+      "Name": "Discipline",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_ChucDanhXayDung"
+      },
+      "DisplayName": "Chuyên ngành"
+    },
+    {
+      "Name": "ServiceType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiHinhDichVu"
+      },
+      "DisplayName": "Loại hình dịch vụ"
+    },
+    {
+      "Name": "Status",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_TrangThaiChung"
+      },
+      "DisplayName": "Trạng thái"
+    },
+    {
+      "Name": "Version",
+      "Type": "Text",
+      "DisplayName": "Phiên bản"
+    },
+    {
+      "Name": "FileUrl",
+      "Type": "Hyperlink",
+      "Description": "Liên kết tới file/thu mục trong CDE (SharePoint/OneDrive).",
+      "DisplayName": "Liên kết tệp"
+    },
+    {
+      "Name": "Submission",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Submissions",
+        "Field": "ID",
+        "Behavior": "cascade"
+      },
+      "DisplayName": "Hồ sơ nộp"
+    },
+    {
+      "Name": "RetentionUntil",
+      "Type": "DateTime",
+      "Description": "Ngày hết hạn lưu trữ theo chính sách.",
+      "DisplayName": "Lưu đến ngày"
+    },
+    {
+      "Name": "Owner",
+      "Type": "User",
+      "DisplayName": "Người phụ trách"
+    }
+  ],
+  "ContentTypes": []
+}
