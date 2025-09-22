@@ -3,16 +3,78 @@
   "ListName": "Customers",
   "Description": "Danh sách khách hàng của CCBA",
   "Columns": [
-    { "Name": "CustomerName", "Type": "Text", "Required": true },
-    { "Name": "CustomerType", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiKhachHang" } },
-    { "Name": "Industry", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NganhLinhVuc" } },
-    { "Name": "Source", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NguonGocCoHoi" } },
-    { "Name": "Contacts", "Type": "Lookup", "Lookup": { "List": "Contacts", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "Opportunities", "Type": "Lookup", "Lookup": { "List": "Opportunities", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "TaxCode", "Type": "Text" },
-    { "Name": "Address", "Type": "Text" },
-    { "Name": "Phone", "Type": "Text" },
-    { "Name": "Email", "Type": "Text" }
+    {
+      "Name": "CustomerName",
+      "Type": "Text",
+      "Required": true,
+      "DisplayName": "Tên khách hàng"
+    },
+    {
+      "Name": "CustomerType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiKhachHang"
+      }
+    },
+    {
+      "Name": "Industry",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NganhLinhVuc"
+      },
+      "DisplayName": "Ngành/Lĩnh vực"
+    },
+    {
+      "Name": "Source",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NguonGocCoHoi"
+      },
+      "DisplayName": "Nguồn"
+    },
+    {
+      "Name": "Contacts",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Contacts",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Liên hệ"
+    },
+    {
+      "Name": "Opportunities",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Opportunities",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Cơ hội"
+    },
+    {
+      "Name": "TaxCode",
+      "Type": "Text",
+      "DisplayName": "Mã số thuế"
+    },
+    {
+      "Name": "Address",
+      "Type": "Text",
+      "DisplayName": "Địa chỉ"
+    },
+    {
+      "Name": "Phone",
+      "Type": "Text",
+      "DisplayName": "Điện thoại"
+    },
+    {
+      "Name": "Email",
+      "Type": "Text",
+      "DisplayName": "Email"
+    }
   ],
   "ContentTypes": []
 }
