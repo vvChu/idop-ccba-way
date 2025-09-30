@@ -1,0 +1,33 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "Leads",
+  "Description": "Khách hàng tiềm năng từ Microsoft Forms và các nguồn khác",
+  "Columns": [
+    { "Name": "LeadName", "Type": "Text", "Required": true, "Description": "Tên người liên hệ hoặc công ty" },
+    { "Name": "Email", "Type": "Text", "Required": true, "Description": "Email liên hệ chính" },
+    { "Name": "Phone", "Type": "Text", "Description": "Số điện thoại liên hệ" },
+    { "Name": "Company", "Type": "Text", "Description": "Tên công ty/tổ chức" },
+    { "Name": "Position", "Type": "Text", "Description": "Chức vụ" },
+    { "Name": "Source", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NguonGocCoHoi" }, "Description": "Nguồn gốc lead" },
+    { "Name": "ServiceInterest", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" }, "Description": "Dịch vụ quan tâm" },
+    { "Name": "Industry", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_NganhLinhVuc" }, "Description": "Ngành nghề" },
+    { "Name": "Status", "Type": "Choice", "Choices": ["New", "Contacted", "Qualified", "Converted", "Lost"], "Description": "Trạng thái lead" },
+    { "Name": "Priority", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_MucDoUuTien" }, "Description": "Mức độ ưu tiên" },
+    { "Name": "Notes", "Type": "Note", "Description": "Ghi chú chi tiết về lead" },
+    { "Name": "ProjectDescription", "Type": "Note", "Description": "Mô tả dự án từ form" },
+    { "Name": "Budget", "Type": "Text", "Description": "Ngân sách dự kiến" },
+    { "Name": "Timeline", "Type": "Text", "Description": "Thời gian dự kiến triển khai" },
+    { "Name": "AssignedTo", "Type": "User", "Description": "Nhân viên phụ trách" },
+    { "Name": "LastContactDate", "Type": "DateTime", "Description": "Lần liên hệ cuối" },
+    { "Name": "NextFollowUpDate", "Type": "DateTime", "Description": "Ngày hẹn liên hệ tiếp theo" },
+    { "Name": "ConvertedToOpportunity", "Type": "Lookup", "Lookup": { "List": "Opportunities", "Field": "ID", "Behavior": "restrict" }, "Description": "Cơ hội đã chuyển đổi" },
+    { "Name": "ConvertedToCustomer", "Type": "Lookup", "Lookup": { "List": "Customers", "Field": "ID", "Behavior": "restrict" }, "Description": "Khách hàng đã chuyển đổi" },
+    { "Name": "LeadScore", "Type": "Number", "Description": "Điểm đánh giá lead (1-100)" },
+    { "Name": "FormSubmissionId", "Type": "Text", "Description": "ID của bài nộp Microsoft Forms" },
+    { "Name": "FormResponseDate", "Type": "DateTime", "Description": "Ngày nộp form" },
+    { "Name": "FollowUpSequenceStage", "Type": "Choice", "Choices": ["Initial", "FirstFollow", "SecondFollow", "ThirdFollow", "Completed"], "Description": "Giai đoạn email tự động" },
+    { "Name": "EmailsSent", "Type": "Number", "Description": "Số email đã gửi trong chuỗi follow-up" },
+    { "Name": "LastEmailSent", "Type": "DateTime", "Description": "Thời gian gửi email cuối" }
+  ],
+  "ContentTypes": []
+}
