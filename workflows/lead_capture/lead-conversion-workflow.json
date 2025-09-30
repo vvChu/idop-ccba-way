@@ -1,0 +1,350 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$connections": {
+        "defaultValue": {},
+        "type": "Object"
+      },
+      "SiteUrl": {
+        "defaultValue": "https://ibstbim.sharepoint.com/sites/idop-dev",
+        "type": "String"
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "leadId": {
+                "type": "integer",
+                "description": "ID của lead cần convert"
+              },
+              "conversionType": {
+                "type": "string",
+                "enum": ["opportunity", "customer", "both"],
+                "description": "Loại conversion"
+              },
+              "salesNotes": {
+                "type": "string",
+                "description": "Ghi chú từ sales person"
+              }
+            },
+            "required": ["leadId", "conversionType"]
+          }
+        },
+        "metadata": {
+          "description": "Manual trigger để convert lead sang opportunity/customer"
+        }
+      }
+    },
+    "actions": {
+      "Get_lead_details": {
+        "runAfter": {},
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "get",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(triggerBody()?['leadId'])}"
+        },
+        "metadata": {
+          "description": "Lấy thông tin chi tiết của lead"
+        }
+      },
+      "Check_if_customer_exists": {
+        "runAfter": {
+          "Get_lead_details": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "get",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Customers')}/items",
+          "queries": {
+            "$filter": "Email eq '@{outputs('Get_lead_details')?['body/Email']}' or CustomerName eq '@{outputs('Get_lead_details')?['body/Company']}'",
+            "$top": 1
+          }
+        }
+      },
+      "Create_or_update_customer": {
+        "runAfter": {
+          "Check_if_customer_exists": [
+            "Succeeded"
+          ]
+        },
+        "type": "Condition",
+        "expression": {
+          "and": [
+            {
+              "greater": [
+                "@length(outputs('Check_if_customer_exists')?['body/value'])",
+                0
+              ]
+            }
+          ]
+        },
+        "actions": {
+          "Use_existing_customer": {
+            "type": "SetVariable",
+            "inputs": {
+              "name": "CustomerId",
+              "value": "@first(outputs('Check_if_customer_exists')?['body/value'])?['ID']"
+            }
+          }
+        },
+        "else": {
+          "actions": {
+            "Create_new_customer": {
+              "type": "ApiConnection",
+              "inputs": {
+                "host": {
+                  "connection": {
+                    "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                  }
+                },
+                "method": "post",
+                "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Customers')}/items",
+                "body": {
+                  "CustomerName": "@coalesce(outputs('Get_lead_details')?['body/Company'], outputs('Get_lead_details')?['body/LeadName'])",
+                  "Email": "@outputs('Get_lead_details')?['body/Email']",
+                  "Phone": "@outputs('Get_lead_details')?['body/Phone']",
+                  "Address": "",
+                  "TaxCode": "",
+                  "Source": "@outputs('Get_lead_details')?['body/Source']",
+                  "Industry": "@outputs('Get_lead_details')?['body/Industry']",
+                  "CustomerType": {
+                    "Label": "Khách hàng mới",
+                    "TermGuid": "your-customer-type-term-guid",
+                    "WssId": -1
+                  }
+                }
+              }
+            },
+            "Set_new_customer_id": {
+              "runAfter": {
+                "Create_new_customer": [
+                  "Succeeded"
+                ]
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "CustomerId",
+                "value": "@outputs('Create_new_customer')?['body/ID']"
+              }
+            }
+          }
+        }
+      },
+      "Create_opportunity_if_requested": {
+        "runAfter": {
+          "Create_or_update_customer": [
+            "Succeeded"
+          ]
+        },
+        "type": "Condition",
+        "expression": {
+          "or": [
+            {
+              "equals": [
+                "@triggerBody()?['conversionType']",
+                "opportunity"
+              ]
+            },
+            {
+              "equals": [
+                "@triggerBody()?['conversionType']", 
+                "both"
+              ]
+            }
+          ]
+        },
+        "actions": {
+          "Create_opportunity": {
+            "type": "ApiConnection",
+            "inputs": {
+              "host": {
+                "connection": {
+                  "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                }
+              },
+              "method": "post",
+              "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Opportunities')}/items",
+              "body": {
+                "OpportunityName": "@concat('Lead Conversion - ', outputs('Get_lead_details')?['body/LeadName'])",
+                "Customer": "@variables('CustomerId')",
+                "Stage": "Qualified",
+                "Value": 0,
+                "Probability": "@mul(outputs('Get_lead_details')?['body/LeadScore'], 0.8)",
+                "AdjustedProbability": "@outputs('Get_lead_details')?['body/LeadScore']",
+                "InfluenceScore": "@outputs('Get_lead_details')?['body/LeadScore']",
+                "RiskFlags": [],
+                "ServiceMixSummary": "@outputs('Get_lead_details')?['body/ProjectDescription']",
+                "ExpectedCloseDate": "@addMonths(utcNow(), 3)",
+                "Status": "Active",
+                "Source": "@outputs('Get_lead_details')?['body/Source']",
+                "Industry": "@outputs('Get_lead_details')?['body/Industry']",
+                "ServiceType": "@outputs('Get_lead_details')?['body/ServiceInterest']",
+                "Owner": "@outputs('Get_lead_details')?['body/AssignedTo']"
+              }
+            }
+          },
+          "Set_opportunity_id": {
+            "runAfter": {
+              "Create_opportunity": [
+                "Succeeded"
+              ]
+            },
+            "type": "SetVariable",
+            "inputs": {
+              "name": "OpportunityId",
+              "value": "@outputs('Create_opportunity')?['body/ID']"
+            }
+          }
+        }
+      },
+      "Update_lead_conversion_status": {
+        "runAfter": {
+          "Create_opportunity_if_requested": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "patch",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(triggerBody()?['leadId'])}",
+          "body": {
+            "Status": "Converted",
+            "ConvertedToCustomer": "@variables('CustomerId')",
+            "ConvertedToOpportunity": "@variables('OpportunityId')", 
+            "FollowUpSequenceStage": "Completed",
+            "LastContactDate": "@utcNow()",
+            "Notes": "@concat(coalesce(outputs('Get_lead_details')?['body/Notes'], ''), char(10), char(10), 'CONVERTED: ', triggerBody()?['salesNotes'])"
+          }
+        }
+      },
+      "Create_conversion_activity": {
+        "runAfter": {
+          "Update_lead_conversion_status": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('LeadActivities')}/items",
+          "body": {
+            "LeadId": "@triggerBody()?['leadId']",
+            "ActivityType": "Converted",
+            "ActivityDate": "@utcNow()",
+            "ActivityDetails": "@concat('Lead converted to ', triggerBody()?['conversionType'], '. Customer ID: ', variables('CustomerId'), if(variables('OpportunityId'), concat(', Opportunity ID: ', variables('OpportunityId')), ''), '. Notes: ', triggerBody()?['salesNotes'])",
+            "EngagementScore": 100
+          }
+        }
+      },
+      "Send_conversion_notification": {
+        "runAfter": {
+          "Create_conversion_activity": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['office365']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/v2/Mail",
+          "body": {
+            "To": "@outputs('Get_lead_details')?['body/AssignedTo']",
+            "Cc": "sales-manager@ccba.vn",
+            "Subject": "🎉 Lead Conversion Success - @{outputs('Get_lead_details')?['body/LeadName']}",
+            "Body": "<div style='font-family: Arial, sans-serif;'><h2 style='color: #28a745;'>🎉 Chúc mừng! Lead đã được convert thành công</h2><p><strong>Lead Details:</strong></p><ul><li><strong>Tên:</strong> @{outputs('Get_lead_details')?['body/LeadName']}</li><li><strong>Công ty:</strong> @{outputs('Get_lead_details')?['body/Company']}</li><li><strong>Email:</strong> @{outputs('Get_lead_details')?['body/Email']}</li><li><strong>Điểm Lead:</strong> @{outputs('Get_lead_details')?['body/LeadScore']}/100</li><li><strong>Nguồn:</strong> @{outputs('Get_lead_details')?['body/Source/Label']}</li></ul><p><strong>Conversion Details:</strong></p><ul><li><strong>Loại conversion:</strong> @{triggerBody()?['conversionType']}</li><li><strong>Customer ID:</strong> @{variables('CustomerId')}</li>@{if(variables('OpportunityId'), concat('<li><strong>Opportunity ID:</strong> ', variables('OpportunityId'), '</li>'), '')}<li><strong>Sales Notes:</strong> @{triggerBody()?['salesNotes']}</li></ul><p>Hãy tiếp tục follow up để đưa opportunity đến thành công!</p></div>",
+            "Importance": "High"
+          }
+        }
+      },
+      "Return_conversion_result": {
+        "runAfter": {
+          "Send_conversion_notification": [
+            "Succeeded"
+          ]
+        },
+        "type": "Response",
+        "inputs": {
+          "statusCode": 200,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "success": true,
+            "leadId": "@triggerBody()?['leadId']",
+            "customerId": "@variables('CustomerId')",
+            "opportunityId": "@variables('OpportunityId')",
+            "conversionType": "@triggerBody()?['conversionType']",
+            "message": "Lead converted successfully"
+          }
+        }
+      },
+      "Initialize_variables": {
+        "runAfter": {},
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "CustomerId",
+              "type": "integer",
+              "value": 0
+            },
+            {
+              "name": "OpportunityId", 
+              "type": "integer",
+              "value": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "value": {
+        "sharepointonline": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/sharepointonline",
+          "connectionName": "sharepointonline",
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/sharepointonline"
+        },
+        "office365": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/office365",
+          "connectionName": "office365",
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/office365"
+        }
+      }
+    }
+  }
+}

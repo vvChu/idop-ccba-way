@@ -54,10 +54,19 @@
       "IsAvailableForTagging": true,
       "CustomProperties": {},
       "Children": []
+    },
+    {
+      "Id": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
+      "Name": "Microsoft Forms",
+      "IsRoot": true,
+      "PathOfTerm": "Microsoft Forms",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": []
     }
   ],
   "Statistics": {
-    "TotalRootTerms": 5,
+    "TotalRootTerms": 6,
     "TotalTermsWithChildren": 0,
     "MaxDepth": 0,
     "ExportDate": "2025-09-15 00:23:20"

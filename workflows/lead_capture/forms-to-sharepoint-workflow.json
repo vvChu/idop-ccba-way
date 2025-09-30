@@ -1,0 +1,282 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$connections": {
+        "defaultValue": {},
+        "type": "Object"
+      },
+      "SiteUrl": {
+        "defaultValue": "https://ibstbim.sharepoint.com/sites/idop-dev",
+        "type": "String"
+      }
+    },
+    "triggers": {
+      "When_a_new_response_is_submitted": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['microsoftforms']['connectionId']"
+            }
+          },
+          "path": "/formapi/api/forms/@{encodeURIComponent('your-form-id')}/responses",
+          "queries": {
+            "response_type": "complete"
+          }
+        },
+        "metadata": {
+          "description": "Trigger khi có form submission mới từ Microsoft Forms"
+        }
+      }
+    },
+    "actions": {
+      "Get_response_details": {
+        "runAfter": {},
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['microsoftforms']['connectionId']"
+            }
+          },
+          "method": "get",
+          "path": "/formapi/api/forms/@{encodeURIComponent('your-form-id')}/responses/@{encodeURIComponent(triggerOutputs()?['body/resourceData/responseId'])}"
+        },
+        "metadata": {
+          "description": "Lấy chi tiết câu trả lời từ form"
+        }
+      },
+      "Parse_form_data": {
+        "runAfter": {
+          "Get_response_details": [
+            "Succeeded"
+          ]
+        },
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "FormData",
+              "type": "object",
+              "value": "@outputs('Get_response_details')?['body']"
+            }
+          ]
+        }
+      },
+      "Calculate_lead_score": {
+        "runAfter": {
+          "Parse_form_data": [
+            "Succeeded"
+          ]
+        },
+        "type": "Compose",
+        "inputs": {
+          "LeadScore": "@add(add(add(if(empty(variables('FormData')?['answers']?['company']), 0, 20), if(empty(variables('FormData')?['answers']?['budget']), 0, 15)), if(empty(variables('FormData')?['answers']?['timeline']), 0, 10)), if(empty(variables('FormData')?['answers']?['description']), 0, 25))"
+        },
+        "metadata": {
+          "description": "Tính điểm lead dựa trên độ đầy đủ của thông tin form"
+        }
+      },
+      "Determine_lead_assignment": {
+        "runAfter": {
+          "Calculate_lead_score": [
+            "Succeeded"
+          ]
+        },
+        "type": "Switch",
+        "expression": "@variables('FormData')?['answers']?['serviceType']",
+        "cases": {
+          "BIM_Modeling": {
+            "case": "BIM Modeling",
+            "actions": {
+              "Set_BIM_specialist": {
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "AssignedTo",
+                  "value": "bim-specialist@ccba.vn"
+                }
+              }
+            }
+          },
+          "BIM_Coordination": {
+            "case": "BIM Coordination", 
+            "actions": {
+              "Set_coordination_specialist": {
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "AssignedTo",
+                  "value": "coordination-specialist@ccba.vn"
+                }
+              }
+            }
+          }
+        },
+        "default": {
+          "actions": {
+            "Set_general_sales": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "AssignedTo",
+                "value": "sales@ccba.vn"
+              }
+            }
+          }
+        }
+      },
+      "Create_lead_in_SharePoint": {
+        "runAfter": {
+          "Determine_lead_assignment": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items",
+          "body": {
+            "LeadName": "@variables('FormData')?['answers']?['fullName']",
+            "Email": "@variables('FormData')?['answers']?['email']",
+            "Phone": "@variables('FormData')?['answers']?['phone']", 
+            "Company": "@variables('FormData')?['answers']?['company']",
+            "Position": "@variables('FormData')?['answers']?['position']",
+            "ProjectDescription": "@variables('FormData')?['answers']?['description']",
+            "Budget": "@variables('FormData')?['answers']?['budget']",
+            "Timeline": "@variables('FormData')?['answers']?['timeline']",
+            "Source": {
+              "Label": "Microsoft Forms",
+              "TermGuid": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
+              "WssId": -1
+            },
+            "Status": "New",
+            "Priority": "@if(greater(outputs('Calculate_lead_score')?['LeadScore'], 70), 'High', if(greater(outputs('Calculate_lead_score')?['LeadScore'], 50), 'Medium', 'Low'))",
+            "LeadScore": "@outputs('Calculate_lead_score')?['LeadScore']",
+            "FormSubmissionId": "@triggerOutputs()?['body/resourceData/responseId']",
+            "FormResponseDate": "@utcNow()",
+            "FollowUpSequenceStage": "Initial",
+            "EmailsSent": 0
+          }
+        },
+        "metadata": {
+          "description": "Tạo lead record trong SharePoint Leads list"
+        }
+      },
+      "Send_notification_to_assigned_rep": {
+        "runAfter": {
+          "Create_lead_in_SharePoint": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['office365']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/v2/Mail",
+          "body": {
+            "To": "@variables('AssignedTo')",
+            "Subject": "🔥 Lead mới đã được giao cho bạn - @{variables('FormData')?['answers']?['fullName']}",
+            "Body": "<p>Bạn có lead mới cần xử lý:</p><ul><li><strong>Tên:</strong> @{variables('FormData')?['answers']?['fullName']}</li><li><strong>Công ty:</strong> @{variables('FormData')?['answers']?['company']}</li><li><strong>Email:</strong> @{variables('FormData')?['answers']?['email']}</li><li><strong>Điện thoại:</strong> @{variables('FormData')?['answers']?['phone']}</li><li><strong>Dự án:</strong> @{variables('FormData')?['answers']?['description']}</li><li><strong>Ngân sách:</strong> @{variables('FormData')?['answers']?['budget']}</li><li><strong>Điểm lead:</strong> @{outputs('Calculate_lead_score')?['LeadScore']}/100</li></ul><p>Vui lòng liên hệ với lead trong vòng 24 giờ.</p>",
+            "Importance": "High"
+          }
+        }
+      },
+      "Send_welcome_email_to_lead": {
+        "runAfter": {
+          "Send_notification_to_assigned_rep": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['office365']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/v2/Mail",
+          "body": {
+            "To": "@variables('FormData')?['answers']?['email']",
+            "Subject": "Cảm ơn bạn đã quan tâm đến dịch vụ BIM của CCBA",
+            "Body": "<div style='font-family: Arial, sans-serif; max-width: 600px;'><h2 style='color: #0066cc;'>Cảm ơn bạn đã quan tâm đến dịch vụ BIM của CCBA!</h2><p>Xin chào @{variables('FormData')?['answers']?['fullName']},</p><p>Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi đã nhận được thông tin về dự án của bạn và sẽ liên hệ lại trong vòng 24 giờ tới.</p><p>Trong thời gian chờ đợi, bạn có thể tham khảo thêm về dịch vụ BIM của chúng tôi tại <a href='https://ccba.vn'>website</a>.</p><p>Trân trọng,<br>Đội ngũ CCBA BIM</p></div>"
+          }
+        }
+      },
+      "Create_lead_activity_record": {
+        "runAfter": {
+          "Send_welcome_email_to_lead": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('LeadActivities')}/items",
+          "body": {
+            "LeadId": "@outputs('Create_lead_in_SharePoint')?['body/ID']",
+            "ActivityType": "FormSubmitted",
+            "ActivityDate": "@utcNow()",
+            "ActivityDetails": "Lead submitted form with score @{outputs('Calculate_lead_score')?['LeadScore']}/100",
+            "EngagementScore": "@outputs('Calculate_lead_score')?['LeadScore']"
+          }
+        }
+      },
+      "Schedule_first_follow_up": {
+        "runAfter": {
+          "Create_lead_activity_record": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "patch",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(outputs('Create_lead_in_SharePoint')?['body/ID'])}",
+          "body": {
+            "NextFollowUpDate": "@addDays(utcNow(), 1)"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "value": {
+        "microsoftforms": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/microsoftforms",
+          "connectionName": "microsoftforms",
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/microsoftforms"
+        },
+        "sharepointonline": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/sharepointonline",
+          "connectionName": "sharepointonline", 
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/sharepointonline"
+        },
+        "office365": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/office365",
+          "connectionName": "office365",
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/office365"
+        }
+      }
+    }
+  }
+}
