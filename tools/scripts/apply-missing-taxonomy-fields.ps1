@@ -29,12 +29,14 @@ if (-not $envConfigs.ContainsKey($Environment)) { Write-Log "[mm-apply] ❌ Unkn
 $siteUrl = $envConfigs[$Environment]
 
 # Auth helper
-$authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
-if (Test-Path $authModule) { Import-Module $authModule -Force }
+$__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
+if (Test-Path $__pnpHelper) { . $__pnpHelper }
 
 Write-Log "[mm-apply] 🔗 Connecting to $siteUrl"
-if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId
+if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
+  $fallbackAuth = if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
+  $mode = if ($Auth -in @('Interactive','DeviceLogin')) { 'Delegated' } else { $fallbackAuth }
+  $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
 } else {
   Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
 }

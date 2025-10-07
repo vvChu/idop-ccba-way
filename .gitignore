@@ -42,3 +42,6 @@ Thumbs.db
 # Environment files
 .env.local
 .env.*.local
+
+# Deprecated datamodel file queued for removal
+/datamodel/sharepoint/lists/strategy_crm/client_projects.json

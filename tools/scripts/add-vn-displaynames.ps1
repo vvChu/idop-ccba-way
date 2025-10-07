@@ -39,6 +39,9 @@ $dict = @{
   'ServiceType' = 'Loại hình dịch vụ'
   'Industry' = 'Ngành/Lĩnh vực'
   'Source' = 'Nguồn'
+  'Address' = 'Địa chỉ'
+  'Phone' = 'Điện thoại'
+  'Email' = 'Email'
   'RelatedContracts' = 'Hợp đồng liên quan'
   'RelatedProjects' = 'Dự án liên quan'
   'ExpectedCloseDate' = 'Ngày dự kiến chốt'
@@ -58,6 +61,11 @@ $dict = @{
   'BidTeam' = 'Nhóm dự thầu'
   'ParticipationDecision' = 'Quyết định tham gia'
   'PotentialProject' = 'Tiềm năng dự án'
+  # Customers
+  'CustomerName' = 'Tên khách hàng'
+  'TaxCode' = 'Mã số thuế'
+  'Contacts' = 'Liên hệ'
+  'Opportunities' = 'Cơ hội'
   # PotentialProjects
   'ExpectedContractValue' = 'Giá trị HĐ dự kiến'
   'ProjectType' = 'Loại công trình'

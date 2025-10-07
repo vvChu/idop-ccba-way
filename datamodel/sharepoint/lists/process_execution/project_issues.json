@@ -3,17 +3,56 @@
   "ListName": "ProjectIssues",
   "Description": "Vấn đề dự án",
   "Columns": [
-    { "Name": "ProjectId", "Type": "Lookup",
-      "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "IssueTitle", "Type": "Text", "Required": true },
-    { "Name": "Priority", "Type": "Choice",
-      "Choices": ["High","Medium","Low"] },
-    { "Name": "Description", "Type": "Text" },
-    { "Name": "Owner", "Type": "User" },
-  { "Name": "Status", "Type": "ManagedMetadata",
-      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } },
-    { "Name": "ReportedDate", "Type": "DateTime" },
-    { "Name": "ResolvedDate", "Type": "DateTime" }
+    {
+      "Name": "ProjectId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Projects",
+        "Field": "ID",
+        "Behavior": "restrict"
+      }
+    },
+    {
+      "Name": "IssueTitle",
+      "Type": "Text",
+      "Required": true
+    },
+    {
+      "Name": "Priority",
+      "Type": "Choice",
+      "Choices": [
+        "High",
+        "Medium",
+        "Low"
+      ],
+      "DisplayName": "Mức độ ưu tiên"
+    },
+    {
+      "Name": "Description",
+      "Type": "Text"
+    },
+    {
+      "Name": "Owner",
+      "Type": "User",
+      "DisplayName": "Người phụ trách"
+    },
+    {
+      "Name": "Status",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_TrangThaiChung"
+      },
+      "DisplayName": "Trạng thái"
+    },
+    {
+      "Name": "ReportedDate",
+      "Type": "DateTime"
+    },
+    {
+      "Name": "ResolvedDate",
+      "Type": "DateTime"
+    }
   ],
   "ContentTypes": []
 }

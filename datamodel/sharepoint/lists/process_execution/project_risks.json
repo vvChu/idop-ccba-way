@@ -3,15 +3,47 @@
   "ListName": "ProjectRisks",
   "Description": "Rủi ro dự án",
   "Columns": [
-    { "Name": "ProjectId", "Type": "Lookup",
-      "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "RiskTitle", "Type": "Text", "Required": true },
-    { "Name": "Severity", "Type": "Choice",
-      "Choices": ["Low","Medium","High"] },
-    { "Name": "MitigationPlan", "Type": "Text" },
-    { "Name": "Owner", "Type": "User" },
-  { "Name": "Status", "Type": "ManagedMetadata",
-      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } }
+    {
+      "Name": "ProjectId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Projects",
+        "Field": "ID",
+        "Behavior": "restrict"
+      }
+    },
+    {
+      "Name": "RiskTitle",
+      "Type": "Text",
+      "Required": true
+    },
+    {
+      "Name": "Severity",
+      "Type": "Choice",
+      "Choices": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    {
+      "Name": "MitigationPlan",
+      "Type": "Text"
+    },
+    {
+      "Name": "Owner",
+      "Type": "User",
+      "DisplayName": "Người phụ trách"
+    },
+    {
+      "Name": "Status",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_TrangThaiChung"
+      },
+      "DisplayName": "Trạng thái"
+    }
   ],
-    "ContentTypes": []
+  "ContentTypes": []
 }

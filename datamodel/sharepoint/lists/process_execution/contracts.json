@@ -3,16 +3,55 @@
   "ListName": "Contracts",
   "Description": "Hợp đồng",
   "Columns": [
-    { "Name": "ContractCode", "Type": "Text", "Required": true },
-    { "Name": "ContractName", "Type": "Text", "Required": true },
-    { "Name": "CustomerId", "Type": "Lookup",
-      "Lookup": { "List": "Customers", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "Currency", "Type": "Choice", "Choices": ["VND","USD","EUR"] },
-    { "Name": "VATRate", "Type": "Number" },
-    { "Name": "GrossAmount", "Type": "Number" },
-    { "Name": "NetAmount", "Type": "Number" },
-  { "Name": "Status", "Type": "ManagedMetadata",
-      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } }
+    {
+      "Name": "ContractCode",
+      "Type": "Text",
+      "Required": true
+    },
+    {
+      "Name": "ContractName",
+      "Type": "Text",
+      "Required": true
+    },
+    {
+      "Name": "CustomerId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Customers",
+        "Field": "ID",
+        "Behavior": "restrict"
+      }
+    },
+    {
+      "Name": "Currency",
+      "Type": "Choice",
+      "Choices": [
+        "VND",
+        "USD",
+        "EUR"
+      ]
+    },
+    {
+      "Name": "VATRate",
+      "Type": "Number"
+    },
+    {
+      "Name": "GrossAmount",
+      "Type": "Number"
+    },
+    {
+      "Name": "NetAmount",
+      "Type": "Number"
+    },
+    {
+      "Name": "Status",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_TrangThaiChung"
+      },
+      "DisplayName": "Trạng thái"
+    }
   ],
   "ContentTypes": []
 }

@@ -1,0 +1,27 @@
+{
+  "Groups": [
+    {
+      "Title": "CRM",
+      "Nodes": [
+        { "Title": "Customers", "Url": "/sites/idop-{env}/Lists/Customers" },
+        { "Title": "Contacts", "Url": "/sites/idop-{env}/Lists/Contacts" },
+        { "Title": "Opportunities", "Url": "/sites/idop-{env}/Lists/Opportunities" },
+        { "Title": "Potential Projects", "Url": "/sites/idop-{env}/Lists/PotentialProjects" }
+      ]
+    },
+    {
+      "Title": "Projects",
+      "Nodes": [
+        { "Title": "Projects", "Url": "/sites/idop-{env}/Lists/Projects" },
+        { "Title": "CDE Documents", "Url": "/sites/idop-{env}/Lists/CDEDocuments" }
+      ]
+    },
+    {
+      "Title": "People & Assets",
+      "Nodes": [
+        { "Title": "Employees", "Url": "/sites/idop-{env}/Lists/Employees" },
+        { "Title": "Assets", "Url": "/sites/idop-{env}/Lists/Assets" }
+      ]
+    }
+  ]
+}

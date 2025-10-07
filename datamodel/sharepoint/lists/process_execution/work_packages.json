@@ -3,14 +3,41 @@
   "ListName": "WorkPackages",
   "Description": "Gói công việc",
   "Columns": [
-    { "Name": "PackageName", "Type": "Text", "Required": true },
-    { "Name": "ProjectId", "Type": "Lookup",
-      "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "AssignedTo", "Type": "User" },
-  { "Name": "Status", "Type": "ManagedMetadata",
-      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } },
-    { "Name": "StartDate", "Type": "DateTime" },
-    { "Name": "EndDate", "Type": "DateTime" }
+    {
+      "Name": "PackageName",
+      "Type": "Text",
+      "Required": true
+    },
+    {
+      "Name": "ProjectId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Projects",
+        "Field": "ID",
+        "Behavior": "restrict"
+      }
+    },
+    {
+      "Name": "AssignedTo",
+      "Type": "User"
+    },
+    {
+      "Name": "Status",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_TrangThaiChung"
+      },
+      "DisplayName": "Trạng thái"
+    },
+    {
+      "Name": "StartDate",
+      "Type": "DateTime"
+    },
+    {
+      "Name": "EndDate",
+      "Type": "DateTime"
+    }
   ],
   "ContentTypes": []
 }

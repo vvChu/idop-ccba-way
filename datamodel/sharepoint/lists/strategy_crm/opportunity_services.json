@@ -3,14 +3,58 @@
   "ListName": "OpportunityServices",
   "Description": "Các dòng dịch vụ chi tiết thuộc một cơ hội",
   "Columns": [
-    { "Name": "Opportunity", "Type": "Lookup", "Lookup": { "List": "Opportunities", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "ServiceType", "Type": "ManagedMetadata", "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" } },
-    { "Name": "ServiceDescription", "Type": "Text" },
-    { "Name": "EstimatedValue", "Type": "Number" },
-    { "Name": "Probability", "Type": "Number" },
-    { "Name": "Status", "Type": "Choice", "Choices": ["Draft","Active","Negotiating","Won","Lost","Dropped"] },
-    { "Name": "PlannedStart", "Type": "DateTime" },
-    { "Name": "PlannedEnd", "Type": "DateTime" }
+    {
+      "Name": "Opportunity",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Opportunities",
+        "Field": "ID",
+        "Behavior": "restrict"
+      }
+    },
+    {
+      "Name": "ServiceType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiHinhDichVu"
+      },
+      "DisplayName": "Loại hình dịch vụ"
+    },
+    {
+      "Name": "ServiceDescription",
+      "Type": "Text"
+    },
+    {
+      "Name": "EstimatedValue",
+      "Type": "Number"
+    },
+    {
+      "Name": "Probability",
+      "Type": "Number",
+      "DisplayName": "Xác suất"
+    },
+    {
+      "Name": "Status",
+      "Type": "Choice",
+      "Choices": [
+        "Draft",
+        "Active",
+        "Negotiating",
+        "Won",
+        "Lost",
+        "Dropped"
+      ],
+      "DisplayName": "Trạng thái"
+    },
+    {
+      "Name": "PlannedStart",
+      "Type": "DateTime"
+    },
+    {
+      "Name": "PlannedEnd",
+      "Type": "DateTime"
+    }
   ],
   "ContentTypes": []
 }

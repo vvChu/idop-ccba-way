@@ -35,10 +35,42 @@
       "problemMatcher": []
     },
     {
+      "label": "SP: diff lists (focus failures)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1","-Focus","issues"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: diff lists (changed schemas)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1","-Focus","changed"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: diff lists (only selection)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1","-OnlyLists","CDEDocuments,PotentialProjects,Opportunities"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
       "label": "SP: apply lists (dry-run)",
       "type": "shell",
       "command": "powershell",
       "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\apply-sp-lists.ps1","-DryRun"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: apply lists (only selection, fast)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\apply-sp-lists.ps1","-OnlyLists","CDEDocuments,PotentialProjects,Opportunities","-Fast"],
       "group": "build",
       "problemMatcher": []
     },
@@ -74,6 +106,48 @@
       "problemMatcher": [],
       "group": "build",
       "isBackground": true
+    }
+    ,
+    {
+      "label": "SP: navigation (dry-run)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-DryRun"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: navigation (Dev)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-Environment","Dev"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: navigation (Test)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-Environment","Test"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "SP: navigation (Prod)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-Environment","Prod"],
+      "group": "build",
+      "problemMatcher": []
+    }
+    ,
+    {
+      "label": "SP: validate naming (Dev)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validate-sp-naming.ps1","-Environment","Dev"],
+      "group": "build",
+      "problemMatcher": []
     }
   ]
 }

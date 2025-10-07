@@ -3,17 +3,56 @@
   "ListName": "Projects",
   "Description": "Dự án thực thi",
   "Columns": [
-    { "Name": "ProjectCode", "Type": "Text", "Required": true },
-    { "Name": "ProjectName", "Type": "Text", "Required": true },
-    { "Name": "ContractId", "Type": "Lookup",
-      "Lookup": { "List": "Contracts", "Field": "ID", "Behavior": "restrict" } },
-    { "Name": "Budget", "Type": "Number" },
-  { "Name": "ServiceType", "Type": "ManagedMetadata",
-      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_LoaiHinhDichVu" } },
-  { "Name": "Status", "Type": "ManagedMetadata",
-      "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiChung" } },
-    { "Name": "StartDate", "Type": "DateTime" },
-    { "Name": "EndDate", "Type": "DateTime" }
+    {
+      "Name": "ProjectCode",
+      "Type": "Text",
+      "Required": true,
+      "DisplayName": "Mã dự án"
+    },
+    {
+      "Name": "ProjectName",
+      "Type": "Text",
+      "Required": true
+    },
+    {
+      "Name": "ContractId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Contracts",
+        "Field": "ID",
+        "Behavior": "restrict"
+      }
+    },
+    {
+      "Name": "Budget",
+      "Type": "Number"
+    },
+    {
+      "Name": "ServiceType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiHinhDichVu"
+      },
+      "DisplayName": "Loại hình dịch vụ"
+    },
+    {
+      "Name": "Status",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_TrangThaiChung"
+      },
+      "DisplayName": "Trạng thái"
+    },
+    {
+      "Name": "StartDate",
+      "Type": "DateTime"
+    },
+    {
+      "Name": "EndDate",
+      "Type": "DateTime"
+    }
   ],
   "ContentTypes": []
 }

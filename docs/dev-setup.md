@@ -35,3 +35,41 @@ Mẹo: Bạn có thể ép chế độ khác khi cần
 
 -  `-Auth Interactive`: bật luồng xác thực tương tác.
 -  `-Auth DeviceLogin`: dùng device code (hữu ích khi môi trường hạn chế trình duyệt).
+
+## Kết nối 1 lần cho cả phiên làm việc (pnp-session.ps1)
+
+Để triệt để tránh nhắc đăng nhập lặp lại trong 1 cửa sổ PowerShell, repo cung cấp helper `tools/scripts/pnp-session.ps1`:
+
+1. Nạp helper một lần trong mỗi phiên `pwsh`:
+
+```powershell
+. .\tools\scripts\pnp-session.ps1
+```
+
+2. Chọn chế độ xác thực:
+
+- Dev nhanh (Delegated):
+
+```powershell
+$null = Get-IdopPnPConnection -Url "https://<tenant>.sharepoint.com/sites/IDOP-Dev" -Auth Delegated -SetDefault
+```
+
+- Tự động/CI (App-only certificate):
+
+```powershell
+$env:IDOP_SP_AUTH_MODE = "AppOnly"
+$env:IDOP_SP_TENANT = "<tenant>.onmicrosoft.com"
+$env:IDOP_SP_CLIENT_ID = "<app-client-id>"
+$env:IDOP_SP_CERT_PATH = ".\.secrets\sp-app.pfx"   # hoặc dùng $env:IDOP_SP_CERT_THUMBPRINT
+# tuỳ chọn (nếu muốn nhập tay khi connect thì bỏ qua)
+# $env:IDOP_SP_CERT_PASSWORD = "<pfx-password>"
+
+$null = Get-IdopPnPConnection -Url "https://<tenant>.sharepoint.com/sites/IDOP-Test" -Auth AppOnly -SetDefault
+```
+
+Sau khi chạy, các script (`SP: diff lists`, `SP: apply lists`, `SP: validate schemas`, v.v.) sẽ tự dùng phiên đã mở
+mà không cần đăng nhập lại. Chúng tôi đã tích hợp helper này vào các script chính:
+`apply-sp-lists.ps1`, `sp-diff.ps1`, `create-sp-navigation.ps1`, `validate-sp-naming.ps1`.
+
+Lưu ý bảo mật: ưu tiên dùng `IDOP_SP_CERT_THUMBPRINT` (cert trong CurrentUser store) hoặc nhập mật khẩu PFX khi
+được nhắc; chỉ dùng `IDOP_SP_CERT_PASSWORD` khi đã quản lý bí mật an toàn và đảm bảo không commit vào repo.

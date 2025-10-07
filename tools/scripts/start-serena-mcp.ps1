@@ -26,41 +26,53 @@ function Test-PathExists {
     return $true
 }
 
-# Function to activate venv and run indexing
+# Function to run indexing using available tools (venv python/CLI or uvx fallback)
 function Invoke-Indexing {
     try {
-        Write-Log "Đang kích hoạt venv và index codebase..."
-        
-        # Change to serena directory to use its venv
+        Write-Log "Đang index codebase (không yêu cầu kích hoạt venv)..."
         Push-Location "serena"
-        
-        $venvPath = ".venv\Scripts\Activate.ps1"
-        if (!(Test-PathExists $venvPath "venv activation script")) {
-            Write-Log "Bỏ qua indexing do không tìm thấy venv." "WARNING"
+
+        $pythonExe = ".venv\Scripts\python.exe"
+        $serenaCli = $null
+        if (Test-Path $pythonExe) {
+            # Try using installed serena CLI via python -m
+            Write-Log "Tìm thấy python trong venv: $pythonExe"
+            & $pythonExe -m serena.scripts.index_project 2>$null
+            if ($LASTEXITCODE -eq 0) {
+                Write-Log "Indexing qua python module hoàn tất."
+                Pop-Location
+                return
+            }
+        }
+
+        # Try serena CLI directly if on PATH
+        try {
+            $serenaCli = (Get-Command serena -ErrorAction Stop).Source
+        } catch { $serenaCli = $null }
+        if ($serenaCli) {
+            serena project index .
+            if ($LASTEXITCODE -eq 0) { Write-Log "Indexing bằng serena CLI hoàn tất." } else { Write-Log "Indexing bằng serena CLI có lỗi (mã: $LASTEXITCODE)." "WARNING" }
             Pop-Location
             return
         }
 
-        & $venvPath
-        # Note: venv activation may set LASTEXITCODE to non-zero even when successful
-        # Check if we're actually in the venv by looking for the prompt change
-        if ($env:VIRTUAL_ENV -notlike "*serena*") {
-            Write-Log "Lỗi khi kích hoạt venv - không thể chuyển đến môi trường ảo." "ERROR"
+        # Fallback to uvx if available
+        try {
+            $uvx = (Get-Command uvx -ErrorAction Stop).Source
+        } catch { $uvx = $null }
+        if ($uvx) {
+            Write-Log "Fallback: dùng uvx để index..."
+            uvx --from git+https://github.com/oraios/serena index-project
+            if ($LASTEXITCODE -eq 0) { Write-Log "Indexing bằng uvx hoàn tất." } else { Write-Log "Indexing bằng uvx có lỗi (mã: $LASTEXITCODE)." "WARNING" }
             Pop-Location
             return
         }
 
-        serena project index .
-        if ($LASTEXITCODE -eq 0) {
-            Write-Log "Indexing hoàn thành thành công."
-        } else {
-            Write-Log "Indexing hoàn thành với lỗi (mã thoát: $LASTEXITCODE)." "WARNING"
-        }
-        
+        Write-Log "Không tìm thấy phương thức indexing phù hợp (python/serena/uvx)." "WARNING"
         Pop-Location
     } catch {
         Write-Log "Lỗi trong quá trình indexing: $($_.Exception.Message)" "ERROR"
-        Pop-Location
+        try { Pop-Location } catch {}
     }
 }
 
@@ -69,8 +81,9 @@ function Start-MCPServer {
     param([string]$Context, [string]$Mode, [string]$Transport, [int]$Port)
 
     $serenaPath = "serena\scripts\mcp_server.py"
-    if (!(Test-PathExists $serenaPath "Serena MCP server script")) {
-        exit 1
+    $hasScriptFile = Test-Path $serenaPath
+    if (-not $hasScriptFile) {
+        Write-Log "Không tìm thấy script local, sẽ thử chạy python module 'serena.scripts.mcp_server'" "WARNING"
     }
 
     Write-Log "Đang khởi động Serena MCP server với context: $Context, mode: $Mode, transport: $Transport, port: $Port"
@@ -79,15 +92,21 @@ function Start-MCPServer {
         # Change to serena directory to use its venv
         Push-Location "serena"
         
-        $mcpArgs = @("scripts\mcp_server.py", "--context", $Context, "--mode", $Mode, "--transport", $Transport)
+        $mcpArgs = @()
+        if ($hasScriptFile) {
+            $mcpArgs = @("scripts\mcp_server.py", "--context", $Context, "--mode", $Mode, "--transport", $Transport)
+        } else {
+            # Use -m serena.scripts.mcp_server
+            $mcpArgs = @("-m", "serena.scripts.mcp_server", "--context", $Context, "--mode", $Mode, "--transport", $Transport)
+        }
         if ($Transport -eq 'sse' -or $Transport -eq 'streamablehttp') {
             # Bind MCP HTTP transport to localhost and specified port to avoid collision with dashboard (24282)
             $mcpArgs += @("--host", "127.0.0.1", "--port", $Port)
         }
 
         $pythonExe = ".venv\Scripts\python.exe"
-        if (!(Test-PathExists $pythonExe "Python executable in venv")) {
-            Write-Log "Không tìm thấy Python trong venv, thử dùng python mặc định." "WARNING"
+        if (!(Test-Path $pythonExe)) {
+            Write-Log "Không tìm thấy Python trong venv, thử dùng 'python' trên PATH." "WARNING"
             $pythonExe = "python"
         }
 

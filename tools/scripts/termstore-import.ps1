@@ -28,13 +28,15 @@ $envConfigs = @{
 if (-not $envConfigs.ContainsKey($Environment)) { Write-Log "[termstore-import] ❌ Unknown environment: $Environment" 'ERR'; exit 1 }
 $siteUrl = $envConfigs[$Environment]
 
-# Auth helper
-$authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
-if (Test-Path $authModule) { Import-Module $authModule -Force }
+# Prefer session helper to reuse connection
+$__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
+if (Test-Path $__pnpHelper) { . $__pnpHelper }
 
 Write-Log "[termstore-import] 🔗 Connecting to $siteUrl"
-if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId
+if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
+  $fallbackAuth = if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
+  $mode = if ($Auth -eq 'DeviceLogin') { 'Delegated' } elseif ($Auth -eq 'Interactive') { 'Delegated' } else { $fallbackAuth }
+  $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
 } else {
   Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
 }
@@ -169,7 +171,9 @@ function Ensure-TermRecursive {
 
   if (-not $term) {
     if ($DryRun) {
-      Write-Log "[termstore-import] ⏩ Would create Term '$name' (Id=$id) under '$($ParentTerm?.Name ?? $TermSet.Name)'"
+      $parentNameForLog = $null
+      if ($ParentTerm -and ($ParentTerm.PSObject.Properties.Name -contains 'Name')) { $parentNameForLog = $ParentTerm.Name } else { $parentNameForLog = $TermSet.Name }
+      Write-Log "[termstore-import] ⏩ Would create Term '$name' (Id=$id) under '$parentNameForLog'"
     } else {
       if (-not $id) { $id = [Guid]::NewGuid() }
       if ($ParentTerm) {
@@ -223,15 +227,44 @@ function Validate-ManagedMetadataBindings {
   $missing = @()
   foreach ($file in $jsonFiles) {
     try { $def = Get-Content -Raw -Path $file.FullName | ConvertFrom-Json } catch { continue }
-    if (-not $def.Columns) { continue }
-    foreach ($col in $def.Columns) {
-      if ($col.Type -ne 'ManagedMetadata') { continue }
-      $grp = $col.TermSet.Group; $ts = $col.TermSet.Name
+    # Some JSON files may deserialize to arrays; pick first element or skip if ambiguous
+    if ($def -is [array]) { if ($def.Count -gt 0) { $def = $def[0] } else { continue } }
+    # Extract Columns collection robustly
+    $columns = $null
+    if ($def -is [hashtable]) {
+      if ($def.ContainsKey('Columns')) { $columns = $def['Columns'] }
+    } elseif ($def -and $def.PSObject -and $def.PSObject.Properties['Columns']) {
+      $columns = $def.Columns
+    }
+    if (-not $columns) { continue }
+    # Resolve list name for logging
+    $listName = $null
+    if ($def -is [hashtable]) {
+      if ($def.ContainsKey('ListName')) { $listName = $def['ListName'] }
+    } elseif ($def -and $def.PSObject -and $def.PSObject.Properties['ListName']) {
+      $listName = $def.ListName
+    }
+    foreach ($col in $columns) {
+      # Support both schema notations
+      $type = $null
+      if ($col -and $col.PSObject -and $col.PSObject.Properties['Type']) { $type = [string]$col.Type }
+      if (-not $type) { continue }
+      if (($type -ne 'ManagedMetadata') -and ($type -ne 'Taxonomy')) { continue }
+      # Resolve term set info safely
+      $grp = $null; $ts = $null
+      if ($col.PSObject -and $col.PSObject.Properties['TermSet'] -and $col.TermSet) {
+        $tsObj = $col.TermSet
+        if ($tsObj -and $tsObj.PSObject -and $tsObj.PSObject.Properties['Group']) { $grp = $tsObj.Group }
+        if ($tsObj -and $tsObj.PSObject -and $tsObj.PSObject.Properties['Name'])  { $ts  = $tsObj.Name }
+      }
       if (-not $grp -or -not $ts) { continue }
+      $colName = '(unknown)'
+      if ($col.PSObject -and $col.PSObject.Properties['Name']) { $colName = $col.Name }
+      elseif ($col.PSObject -and $col.PSObject.Properties['InternalName']) { $colName = $col.InternalName }
       $grpObj = Get-PnPTermGroup -Identity $grp -ErrorAction SilentlyContinue
-      if (-not $grpObj) { $missing += "Group '$grp' for $($def.ListName).$($col.Name)"; continue }
+      if (-not $grpObj) { $missing += "Group '$grp' for $listName.$colName"; continue }
       $tsObj = Get-PnPTermSet -Identity $ts -TermGroup $grpObj -ErrorAction SilentlyContinue
-      if (-not $tsObj) { $missing += "TermSet '$ts' in group '$grp' for $($def.ListName).$($col.Name)" }
+      if (-not $tsObj) { $missing += "TermSet '$ts' in group '$grp' for $listName.$colName" }
     }
   }
   if ($missing.Count -eq 0) {

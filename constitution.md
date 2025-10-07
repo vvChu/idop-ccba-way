@@ -273,37 +273,65 @@ Mọi term set, term group, term đều phải được định nghĩa rõ ràng
 
 Mục tiêu: Ràng buộc vận hành trong mục "Tư tưởng cốt lõi" và "Khóa neo" phải phản ánh trực tiếp vào datamodel SharePoint (Lists/Fields/Taxonomy).
 
-- Truy vết nguyên tắc → phần tử dữ liệu:
-  - Security & Compliance by design → `Permissions`, `Retention`, `Audit` fields/views
-  - Data Source of Truth → `uniqueness`, `codes`, `lookup` relationships
-  - ALM & PR → `versioning` policies, `changeLog` list (nếu có)
-- Mẫu ánh xạ (placeholder, sẽ điền khi nhận bối cảnh chi tiết):
-  - Nguyên tắc: [Tên nguyên tắc]
-    - List impacted: `[Domain/ListName]`
-    - Fields: `[FieldA, FieldB...]` (required/regex/choice/managed metadata)
-    - Taxonomy: `[CCBA_*]` tham chiếu
-    - Views/Formatting: `[compact/editable/board]` + JSON formatting nếu có
-    - Policies: `[Retention X ngày, Unique(ProjectCode), Audit trail]`
+- Truy vết nguyên tắc → phần tử dữ liệu (cụ thể hóa):
+  - Security & Compliance by design → Views có `CreatedBy/ModifiedBy`, bật versioning,
+    lưu `SubmissionId`/`ApprovalStatus` ở các list có quy trình; áp `Retention` theo loại hồ sơ.
+  - Data Source of Truth → Bắt buộc mã duy nhất: `CustomerCode`, `ProjectCode`, `ContractCode`,
+    `DocumentCode` (CDE); liên kết `Lookup` chuẩn hóa; hạn chế `FreeText`.
+  - ALM & PR → Mọi thay đổi schema đều qua PR; giữ lịch sử tại commit; tuỳ chọn ghi lại ở `SystemChanges` (tương lai).
+
+- Ánh xạ nguyên tắc → list/field trọng yếu:
+  - Uniqueness & Codes
+    - [strategy_crm/Customers] → `CustomerCode` (Unique, Text, regex `^[A-Z0-9_-]+$`)
+    - [process_execution/Projects] → `ProjectCode` (Unique)
+    - [process_execution/Contracts] → `ContractCode` (Unique)
+    - [process_execution/CDEDocuments] → `DocumentCode` (Unique), `ProjectCode` (denormalized for Power BI join)
+  - Taxonomy consistency
+    - [strategy_crm/Opportunities] → `ServiceType` → `CCBA_LoaiHinhDichVu`; `Industry` → `CCBA_NganhLinhVuc`
+    - [process_execution/CDEDocuments] → `DocumentType` → `CCBA_LoaiTaiLieu`;
+      `Discipline` → `CCBA_ChucDanhXayDung`; `Status` → `CCBA_TrangThaiChung`
+  - Approvals traceability
+    - [system_governance/Submissions] ↔ tham chiếu `SubmissionId` ở `InvoiceRequests`, `OutgoingInvoices`,
+      `Expenses`, `CDEDocuments` khi có trình ký
+  - Retention & Records
+    - [process_execution/CDEDocuments] → `RetentionUntil` (DateTime);
+      [cash_data/*] tuân thủ thời hạn lưu trữ chứng từ theo quy chế
+
+Lưu ý: Khi bổ sung cột mới, phải cập nhật JSON list tương ứng, cập nhật module spec và thêm test/diff.
 
 ## 4c) Ma trận ownership module & phân quyền (Anchor)
 
-- Định nghĩa vai trò chịu trách nhiệm theo module:
-  - Module: `[strategy_crm/process_execution/cash_data/people_assets/performance_okrs/system_governance]`
-  - Owner (BA): `[Tên/Chức danh]`
-  - Lead kỹ thuật: `[Tên]`
-  - Reviewer/Approver: `[Integrator/Phó Giám đốc/Trưởng phòng]`
-- Phân quyền thực thi (mẫu):
-  - `[ListName]` → `[Owner]` (Contribute), `[Dept]` (Edit own), `[PMO]` (Read), `[Directorate]` (Approve)
-  - Field‑level/row‑level access (nếu áp dụng Power Apps/Power BI RLS): mô tả ngắn + liên kết cấu hình.
+- Chủ sở hữu theo domain (starter):
+  - strategy_crm → Owner: Phòng Kinh doanh; Tech Lead: App/SharePoint Lead; Approver: Integrator
+  - process_execution → Owner: PMO; Tech Lead: App/SharePoint Lead; Approver: Integrator
+  - cash_data → Owner: Kế toán/Tài chính; Tech Lead: App/SharePoint Lead; Approver: Giám đốc/Phó GĐ phụ trách
+  - people_assets → Owner: Hành chính–Nhân sự; Tech Lead: App/SharePoint Lead; Approver: Trưởng phòng HCNS
+  - performance_okrs → Owner: PMO/BLĐ; Tech Lead: BI Lead; Approver: Integrator
+  - system_governance → Owner: PMO; Tech Lead: App/SharePoint Lead; Approver: Integrator
+
+- Phân quyền list tiêu biểu:
+  - Projects: PMO (Contribute), Chủ trì/ProjectMembers (Edit own/Contribute), Các phòng khác (Read), BLĐ (Read)
+  - CDEDocuments: Chủ trì dự án/ProjectMembers (Contribute), PMO (Contribute), BLĐ (Read); định nghĩa View theo `ProjectId`
+  - Opportunities & PotentialProjects: Kinh doanh (Contribute), PMO (Read), BLĐ (Read)
+  - Expenses/OutgoingInvoices/InvoiceRequests: Kế toán (Contribute), PMO (Read), BLĐ (Approve qua Submissions)
+
+RLS/Field-level:
+  - Power BI: RLS theo `ProjectId` và `DepartmentId` (mapping từ ProjectMembers/Departments).
+  - Power Apps: Ẩn/sửa quyền một số cột nhạy cảm (VD: `NetAmount`, `VATRate`) với vai trò không liên quan.
 
 ## 4d) Change governance & PR flow (Anchor)
 
-- Quy tắc thay đổi bắt buộc:
-  - Mọi thay đổi datamodel/taxonomy phải có `spec.md` cập nhật, `plan.md` nêu tác động, `tasks.md` có checklist.
-  - Bắt buộc `dry‑run` (diff) trước khi apply; chụp snapshot/bản sao lưu.
-  - Ghi log thay đổi (commit message, changelog module) và liên kết PR.
-- Quy trình PR tóm tắt:
-  1. Soạn đặc tả → cập nhật datamodel JSON/taxonomy
-  2. Validate schema + scripts (CI)
-  3. Mở PR, reviewer kiểm tra mapping/nguyên tắc/rollback
-  4. Merge khi đủ điều kiện → triển khai theo S4
+- Quy tắc bắt buộc:
+  - Cập nhật `spec.md`/`plan.md`/`tasks.md` cùng thay đổi JSON; liên kết commit tới module.
+  - Chạy `SpecKit: check` và `SP: validate schemas` tại PR; PR không pass sẽ không merge.
+  - Luôn chạy `SP: diff lists` (dry-run) và lưu log vào `.serena/logs` trước khi apply.
+  - Sao lưu schema (backup) trước khi apply; đảm bảo đường lui (rollback) khả dụng.
+
+- Quy trình PR chi tiết:
+  1) Design: cập nhật module specs; sửa JSON trong `datamodel/SharePoint/lists/**` hoặc `taxonomy/**`.
+  2) Validate: chạy `SpecKit: check` và `SP: validate schemas` (local/CI).
+  3) Diff: chạy `SP: diff lists` trên Dev, đính kèm tóm tắt và log vào PR.
+  4) Review: Owner domain + Tech Lead + Integrator phê duyệt.
+  5) Merge: vào main; tag phiên bản nếu là thay đổi lớn.
+  6) Deploy: `SP: apply lists (dry-run)` → kiểm tra → chạy apply thực (ngoài repo hiện là TODO phần áp dụng field chi tiết).
+  7) Record: cập nhật `docs/reporting/diff-and-sync.md` trạng thái sync; nếu cần, cập nhật RLS/Power Automate flows.

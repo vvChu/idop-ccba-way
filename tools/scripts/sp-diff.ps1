@@ -5,11 +5,17 @@ param(
   [string]$ReportPath = ".\.serena\logs\sp-diff-$((Get-Date -Format 'yyyyMMdd-HHmmss')).txt",
   [ValidateSet("Cached","Interactive","DeviceLogin")]
   [string]$Auth = "Cached",
-  [string]$Tenant
+  [string]$Tenant,
+  [ValidateSet('all','issues','changed')]
+  [string]$Focus = 'all',
+  [string]$OnlyLists,
+  [string]$SinceGit
 )
 
 $ErrorActionPreference = 'Stop'
 $script:ReportPath = $ReportPath
+${stateDir} = ".\.serena\state"
+${stateFile} = Join-Path $stateDir "sp-diff-last.json"
 
 # Re-exec under PowerShell 7+ if currently running in Windows PowerShell 5.1
 if (-not $PSVersionTable.PSEdition -or $PSVersionTable.PSEdition -ne 'Core' -or $PSVersionTable.PSVersion.Major -lt 7) {
@@ -48,7 +54,8 @@ function NormalizeType {
 }
 
 function ExpectedToSpType {
-  param([string]$e)
+  param($ef)
+  $e = if ($ef -is [hashtable]) { $ef['Type'] } else { $ef.Type }
   if ($e -eq 'Text') { return 'Text' }
   elseif ($e -eq 'Note') { return 'Note' }
   elseif ($e -eq 'Number') { return 'Number' }
@@ -56,11 +63,28 @@ function ExpectedToSpType {
   elseif ($e -eq 'Boolean' -or $e -eq 'YesNo') { return 'Boolean' }
   elseif ($e -eq 'DateTime') { return 'DateTime' }
   elseif ($e -eq 'Choice') { return 'Choice' }
-  elseif ($e -eq 'User') { return 'User' }
+  elseif ($e -eq 'Hyperlink' -or $e -eq 'URL') { return 'URL' }
+  elseif ($e -eq 'User') {
+    $allowMulti = $false
+    try {
+      if ($ef -and $ef.PSObject -and $ef.PSObject.Properties['AllowMultiple']) { $allowMulti = [bool]$ef.AllowMultiple }
+      elseif ($ef -is [hashtable] -and $ef.ContainsKey('AllowMultiple')) { $allowMulti = [bool]$ef['AllowMultiple'] }
+    } catch { $allowMulti = $false }
+    if ($allowMulti) { return 'UserMulti' } else { return 'User' }
+  }
   elseif ($e -eq 'Lookup') { return 'Lookup' }
-  elseif ($e -eq 'URL') { return 'URL' }
   elseif ($e -eq 'ManagedMetadata') { return 'TaxonomyFieldType' }
   else { return $e }
+}
+
+function Get-JsonHash {
+  param([string]$path)
+  try {
+    $bytes = [System.IO.File]::ReadAllBytes($path)
+    $sha = [System.Security.Cryptography.SHA1]::Create()
+    $hash = $sha.ComputeHash($bytes)
+    return ([System.BitConverter]::ToString($hash) -replace '-', '')
+  } catch { return $null }
 }
 
 $clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
@@ -81,12 +105,29 @@ $env = @{ Dev="https://ibstbim.sharepoint.com/sites/idop-dev"; Test="https://ibs
 if (-not $env.ContainsKey($Environment)) { Write-Host "Unknown environment $Environment" -ForegroundColor Red; exit 1 }
 $siteUrl = $env[$Environment]
 
-Write-Host "[sp-diff] Inspect $Environment ($siteUrl) from '$ListsPath'" -ForegroundColor Yellow
+Write-Host "[sp-diff] Inspect $Environment ($siteUrl) from '$ListsPath' (Focus=$Focus)" -ForegroundColor Yellow
 
 # Ensure report directory exists and header
 $reportDir = Split-Path -Path $ReportPath -Parent
 if (-not (Test-Path -LiteralPath $reportDir)) { New-Item -ItemType Directory -Path $reportDir -Force | Out-Null }
-"# sp-diff $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`nEnv: $Environment ($siteUrl)`nListsPath: $ListsPath" | Set-Content -Path $ReportPath
+"# sp-diff $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`nEnv: $Environment ($siteUrl)`nListsPath: $ListsPath`nFocus: $Focus" | Set-Content -Path $ReportPath
+
+# Load previous state if exists
+$lastState = @{}
+if (Test-Path -LiteralPath $stateFile) {
+  try { $lastState = Get-Content -Raw -Path $stateFile | ConvertFrom-Json } catch { $lastState = @{} }
+}
+
+# Ensure state is a hashtable for easy ContainsKey/indexing
+function ConvertTo-Hashtable {
+  param([psobject]$obj)
+  if ($null -eq $obj) { return @{} }
+  if ($obj -is [hashtable]) { return $obj }
+  $ht = @{}
+  foreach ($p in $obj.PSObject.Properties) { $ht[$p.Name] = $p.Value }
+  return $ht
+}
+$lastState = ConvertTo-Hashtable $lastState
 
 try {
   # Infer tenant hostname from site URL if not provided, e.g. ibstbim.onmicrosoft.com
@@ -98,21 +139,23 @@ try {
       if ($tenantBase) { $Tenant = "$tenantBase.onmicrosoft.com" }
     } catch {}
   }
-  if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-    Write-Host "[sp-diff] Using '$Auth' auth via helper..." -ForegroundColor Yellow
-    Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -Tenant $Tenant -ClientId $clientId
-  } else {
-    Write-Host "[sp-diff] Helper missing, using baseline auth '$Auth'..." -ForegroundColor Yellow
-    if ($Auth -eq 'DeviceLogin') {
-      if ($Tenant) { Connect-PnPOnline -Url $siteUrl -DeviceLogin -ClientId $clientId -Tenant $Tenant }
-      else { Connect-PnPOnline -Url $siteUrl -DeviceLogin -ClientId $clientId }
-    } elseif ($Auth -eq 'Interactive') {
-      if ($Tenant) { Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId -Tenant $Tenant }
-      else { Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId }
+  $__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
+  if (Test-Path $__pnpHelper) { . $__pnpHelper }
+  $connected = $false
+  try { $null = Get-PnPWeb -ErrorAction Stop; $connected = $true } catch {}
+  if (-not $connected) {
+    if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
+      $fallbackAuth = 'Delegated'
+      if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $fallbackAuth = $env:IDOP_SP_AUTH_MODE }
+      $mode = 'Delegated'
+      if ($Auth -and ($Auth -ne 'DeviceLogin') -and ($Auth -ne 'Interactive')) { $mode = $fallbackAuth }
+      $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
     } else {
-      # Cached attempt
-      Connect-PnPOnline -Url $siteUrl -PnPManagementShell
+      Write-Host "[sp-diff] Session helper missing, using interactive auth..." -ForegroundColor Yellow
+      Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
     }
+  } else {
+    Write-Log "[sp-diff] Using existing PnP context" Green
   }
   Write-Log "[sp-diff] Connected" Green
 }
@@ -133,11 +176,60 @@ $ok = 0
 $missing = 0
 $fieldIssues = 0
 
+$skipFilesByName = @(
+  # Deprecated or to-be-removed files
+  'client_projects.json'
+)
+
 $jsonFiles = Get-ChildItem -Path $ListsPath -Recurse -Filter *.json
+
+# Build OnlyLists filter set if provided (CSV of List names)
+$onlySet = $null
+if ($OnlyLists -and $OnlyLists.Trim()) {
+  $onlySet = @{}
+  foreach ($n in ($OnlyLists -split ',' | ForEach-Object { $_.Trim() })) { if ($n) { $onlySet[$n] = $true } }
+}
+
+# If SinceGit provided, attempt to narrow files to changes since ref
+if ($SinceGit -and $SinceGit.Trim()) {
+  try {
+    $gitChanged = & git --no-pager diff --name-only $SinceGit -- "$ListsPath" 2>$null
+    if ($LASTEXITCODE -eq 0 -and $gitChanged) {
+      $gitSet = @{}
+      foreach ($p in ($gitChanged -split "`n")) {
+        if ([string]::IsNullOrWhiteSpace($p)) { continue }
+        if ($p -notlike "*.json") { continue }
+        try { $abs = (Resolve-Path $p).Path } catch { $abs = $null }
+        if ($abs) { $gitSet[$abs] = $true }
+      }
+      if ($gitSet.Count -gt 0) {
+        $jsonFiles = $jsonFiles | Where-Object { $gitSet.ContainsKey($_.FullName) }
+      }
+    }
+  } catch {}
+}
 foreach ($jsonFile in $jsonFiles) {
-  $total++
-  $json = Get-Content -Raw -Path $jsonFile.FullName | ConvertFrom-Json
+  if ($skipFilesByName -contains $jsonFile.Name) {
+    Write-Log "Skipping (deprecated): $($jsonFile.FullName)" DarkYellow
+    continue
+  }
+  # Parse JSON early for filters and hash
+  $jsonRaw = Get-Content -Raw -Path $jsonFile.FullName
+  $json = $jsonRaw | ConvertFrom-Json
   $listName = $json.ListName
+  if (-not $listName -or [string]::IsNullOrWhiteSpace($listName)) { Write-Log "Skipping (no ListName): $($jsonFile.FullName)" DarkYellow; continue }
+  if ($onlySet -and -not $onlySet.ContainsKey($listName)) { continue }
+  $jsonHash = Get-JsonHash -path $jsonFile.FullName
+  if ($Focus -ne 'all') {
+    $prev = $null
+    if ($lastState.ContainsKey($listName)) { $prev = $lastState[$listName] }
+    if ($Focus -eq 'issues') {
+      if (-not $prev -or $prev.result -eq 'ok') { continue }
+    } elseif ($Focus -eq 'changed') {
+      if ($prev -and $prev.hash -eq $jsonHash) { continue }
+    }
+  }
+  $total++
   Write-Log "`n=== List: $listName (from $($jsonFile.FullName)) ===" Cyan
 
   $list = Get-PnPList -Identity $listName -ErrorAction SilentlyContinue
@@ -152,21 +244,30 @@ foreach ($jsonFile in $jsonFiles) {
     continue
   }
 
-  $spFields = Get-PnPField -List $list | ForEach-Object { [pscustomobject]@{ InternalName = $_.InternalName; Type = (NormalizeType $_.TypeAsString) } }
+  $spFields = Get-PnPField -List $list | ForEach-Object { [pscustomobject]@{ InternalName = $_.InternalName; Title=$_.Title; Type = (NormalizeType $_.TypeAsString) } }
   $spMap = @{}
   foreach ($f in $spFields) { $spMap[$f.InternalName] = $f }
 
   $listOk = $true
   foreach ($ef in $json.Columns) {
-    if (-not $spMap.ContainsKey($ef.Name)) {
+    # Try by internal name first; if not found, fallback to Title match
+    $spf = $null
+    if ($spMap.ContainsKey($ef.Name)) { $spf = $spMap[$ef.Name] }
+    else {
+      $spf = $spFields | Where-Object { $_.Title -eq $ef.Name } | Select-Object -First 1
+    }
+    # Special-case aliasing: 'Version' may be created with internal name 'DocVersion' to avoid reserved names
+    if (-not $spf -and $ef.Name -eq 'Version') {
+      $spf = $spFields | Where-Object { $_.InternalName -eq 'DocVersion' -or ($_.Title -like 'Version*') } | Select-Object -First 1
+    }
+    if (-not $spf) {
       Write-Log "  Missing field: $($ef.Name) (expected type: $($ef.Type))" Red
       $listOk = $false
       $fieldIssues++
       continue
     }
 
-    $spf = $spMap[$ef.Name]
-    $expectedSpType = ExpectedToSpType $ef.Type
+    $expectedSpType = ExpectedToSpType $ef
     if ($ef.Type -eq 'ManagedMetadata') {
       if ($spf.Type -notmatch 'Taxonomy') {
         Write-Log "  Type mismatch: $($ef.Name) expected Taxonomy, got '$($spf.Type)'" Yellow
@@ -192,10 +293,13 @@ foreach ($jsonFile in $jsonFiles) {
   if ($listOk) {
     Write-Log "  List matches expected schema." Green
     $ok++
+    $curr = @{ result = 'ok'; hash = $jsonHash; path = $jsonFile.FullName; ts = (Get-Date).ToString('s') }
   }
   else {
     Write-Log "  List has discrepancies." Yellow
+    $curr = @{ result = 'issues'; hash = $jsonHash; path = $jsonFile.FullName; ts = (Get-Date).ToString('s') }
   }
+  $lastState[$listName] = $curr
 }
 
 Write-Log "`n=== SUMMARY ===" Cyan
@@ -204,3 +308,9 @@ Write-Log "Lists OK: $ok" Green
 Write-Log "Missing lists: $missing" Red
 Write-Log "Fields with issues: $fieldIssues" Yellow
 Write-Log "Report saved: $ReportPath" Cyan
+
+# Persist state for next focused run
+try {
+  if (-not (Test-Path -LiteralPath $stateDir)) { New-Item -ItemType Directory -Path $stateDir -Force | Out-Null }
+  ($lastState | ConvertTo-Json -Depth 5) | Set-Content -Path $stateFile -Encoding UTF8
+} catch {}

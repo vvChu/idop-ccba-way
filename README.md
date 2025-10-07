@@ -173,6 +173,36 @@ jobs:
 
 ## 🚀 Getting started
 
+### Plan-only preview for SharePoint provisioning
+
+- To review all planned list and field changes without requiring a SharePoint sign-in or making any change, run:
+
+```powershell
+pwsh -NoProfile -ExecutionPolicy Bypass `
+  -File tools/scripts/apply-sp-lists.ps1 -Full -DryRun
+```
+
+- This produces a full plan of actions (create lists/fields, lookups, taxonomy) and exits without connecting to SharePoint.
+
+### Establish a PnP session for DryRun scripts that read data
+
+Some DryRun scripts still need to read from SharePoint (e.g., navigation pruning, bidding folders preview). Connect once, then run the script:
+
+```powershell
+# Connect to the target site (e.g., Dev)
+Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
+
+# Navigation DryRun preview with pruning
+& .\tools\scripts\sync-sp-navigation.ps1 -Environment Dev -Location Top -Prune -DryRun
+
+# Bidding folders DryRun preview with CSV output (uses defaults)
+& .\tools\scripts\opportunity-bidding-folders.ps1 -DryRun -ReportCsv .\bidding_dryrun.csv
+```
+
+You can also use the helper `tools/scripts/pnp-session.ps1` to reuse connections without repeated prompts.
+
+Tip: Don’t start a new PowerShell process (e.g., `pwsh -File`) for these scripts—doing so spawns a fresh session and the PnP connection won’t be available. Use the call operator `&` from the same shell where you ran `Connect-PnPOnline`.
+
 ## 📂 Liên kết nhanh
 
 - **Spec modules:** [`specs/modules/`](specs/modules/)
