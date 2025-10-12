@@ -1,0 +1,317 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$connections": {
+        "defaultValue": {},
+        "type": "Object"
+      },
+      "SiteUrl": {
+        "defaultValue": "https://ibstbim.sharepoint.com/sites/idop-dev",
+        "type": "String"
+      }
+    },
+    "triggers": {
+      "Recurrence": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Hour",
+          "interval": 6,
+          "timeZone": "SE Asia Standard Time"
+        },
+        "metadata": {
+          "description": "Chạy mỗi 6 giờ để kiểm tra leads cần follow-up"
+        }
+      }
+    },
+    "actions": {
+      "Get_leads_ready_for_followup": {
+        "runAfter": {},
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "get",
+          "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items",
+          "queries": {
+            "$filter": "NextFollowUpDate le '@{utcNow()}' and Status ne 'Converted' and Status ne 'Lost' and FollowUpSequenceStage ne 'Completed'",
+            "$select": "ID,LeadName,Email,Company,Position,ProjectDescription,Budget,FollowUpSequenceStage,EmailsSent,LeadScore,Source"
+          }
+        },
+        "metadata": {
+          "description": "Lấy danh sách leads cần gửi email follow-up"
+        }
+      },
+      "Apply_to_each_lead": {
+        "runAfter": {
+          "Get_leads_ready_for_followup": [
+            "Succeeded"
+          ]
+        },
+        "type": "Foreach",
+        "foreach": "@outputs('Get_leads_ready_for_followup')?['body/value']",
+        "actions": {
+          "Switch_on_followup_stage": {
+            "type": "Switch",
+            "expression": "@items('Apply_to_each_lead')?['FollowUpSequenceStage']",
+            "cases": {
+              "Initial": {
+                "case": "Initial",
+                "actions": {
+                  "Send_first_followup_email": {
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                      },
+                      "method": "post",
+                      "path": "/v2/Mail",
+                      "body": {
+                        "To": "@items('Apply_to_each_lead')?['Email']",
+                        "Subject": "Dịch vụ BIM CCBA - Giải pháp cho dự án @{items('Apply_to_each_lead')?['Company']}",
+                        "Body": "@{variables('FirstFollowEmailTemplate')}"
+                      }
+                    }
+                  },
+                  "Update_to_first_follow_stage": {
+                    "runAfter": {
+                      "Send_first_followup_email": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                        }
+                      },
+                      "method": "patch",
+                      "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(items('Apply_to_each_lead')?['ID'])}",
+                      "body": {
+                        "FollowUpSequenceStage": "FirstFollow",
+                        "EmailsSent": "@add(items('Apply_to_each_lead')?['EmailsSent'], 1)",
+                        "LastEmailSent": "@utcNow()",
+                        "NextFollowUpDate": "@addDays(utcNow(), 3)"
+                      }
+                    }
+                  }
+                }
+              },
+              "FirstFollow": {
+                "case": "FirstFollow",
+                "actions": {
+                  "Send_second_followup_email": {
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                      },
+                      "method": "post",
+                      "path": "/v2/Mail",
+                      "body": {
+                        "To": "@items('Apply_to_each_lead')?['Email']",
+                        "Subject": "Case Study BIM - Tối ưu hóa chi phí và thời gian dự án",
+                        "Body": "@{variables('SecondFollowEmailTemplate')}"
+                      }
+                    }
+                  },
+                  "Update_to_second_follow_stage": {
+                    "runAfter": {
+                      "Send_second_followup_email": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                        }
+                      },
+                      "method": "patch",
+                      "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(items('Apply_to_each_lead')?['ID'])}",
+                      "body": {
+                        "FollowUpSequenceStage": "SecondFollow",
+                        "EmailsSent": "@add(items('Apply_to_each_lead')?['EmailsSent'], 1)",
+                        "LastEmailSent": "@utcNow()",
+                        "NextFollowUpDate": "@addDays(utcNow(), 4)"
+                      }
+                    }
+                  }
+                }
+              },
+              "SecondFollow": {
+                "case": "SecondFollow",
+                "actions": {
+                  "Send_third_followup_email": {
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                      },
+                      "method": "post",
+                      "path": "/v2/Mail",
+                      "body": {
+                        "To": "@items('Apply_to_each_lead')?['Email']",
+                        "Subject": "Tư vấn miễn phí BIM cho dự án của @{items('Apply_to_each_lead')?['Company']}",
+                        "Body": "@{variables('ThirdFollowEmailTemplate')}"
+                      }
+                    }
+                  },
+                  "Update_to_third_follow_stage": {
+                    "runAfter": {
+                      "Send_third_followup_email": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                        }
+                      },
+                      "method": "patch",
+                      "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(items('Apply_to_each_lead')?['ID'])}",
+                      "body": {
+                        "FollowUpSequenceStage": "ThirdFollow",
+                        "EmailsSent": "@add(items('Apply_to_each_lead')?['EmailsSent'], 1)",
+                        "LastEmailSent": "@utcNow()",
+                        "NextFollowUpDate": "@addDays(utcNow(), 7)"
+                      }
+                    }
+                  }
+                }
+              },
+              "ThirdFollow": {
+                "case": "ThirdFollow",
+                "actions": {
+                  "Send_final_followup_email": {
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                      },
+                      "method": "post",
+                      "path": "/v2/Mail",
+                      "body": {
+                        "To": "@items('Apply_to_each_lead')?['Email']",
+                        "Subject": "Lời chào cuối cùng từ CCBA BIM",
+                        "Body": "@{variables('FinalFollowEmailTemplate')}"
+                      }
+                    }
+                  },
+                  "Update_to_completed_stage": {
+                    "runAfter": {
+                      "Send_final_followup_email": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "ApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connection": {
+                          "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                        }
+                      },
+                      "method": "patch",
+                      "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('Leads')}/items/@{encodeURIComponent(items('Apply_to_each_lead')?['ID'])}",
+                      "body": {
+                        "FollowUpSequenceStage": "Completed",
+                        "EmailsSent": "@add(items('Apply_to_each_lead')?['EmailsSent'], 1)",
+                        "LastEmailSent": "@utcNow()",
+                        "NextFollowUpDate": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Log_email_activity": {
+            "runAfter": {
+              "Switch_on_followup_stage": [
+                "Succeeded"
+              ]
+            },
+            "type": "ApiConnection",
+            "inputs": {
+              "host": {
+                "connection": {
+                  "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+                }
+              },
+              "method": "post",
+              "path": "/datasets/@{encodeURIComponent(parameters('SiteUrl'))}/tables/@{encodeURIComponent('LeadActivities')}/items",
+              "body": {
+                "LeadId": "@items('Apply_to_each_lead')?['ID']",
+                "ActivityType": "EmailSent",
+                "ActivityDate": "@utcNow()",
+                "ActivityDetails": "Automated follow-up email sent - Stage: @{items('Apply_to_each_lead')?['FollowUpSequenceStage']}",
+                "EmailSubject": "@{outputs('Switch_on_followup_stage')?['body']?['subject']}",
+                "EngagementScore": 5
+              }
+            }
+          }
+        }
+      },
+      "Initialize_email_templates": {
+        "runAfter": {},
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "FirstFollowEmailTemplate",
+              "type": "string",
+              "value": "<div style='font-family: Arial, sans-serif; max-width: 600px;'><h2 style='color: #0066cc;'>Giải pháp BIM cho dự án của bạn</h2><p>Xin chào {{LeadName}},</p><p>Chúng tôi hy vọng bạn đã có thời gian suy nghĩ về dự án {{Company}} mà bạn đã chia sẻ với chúng tôi.</p><p>Với kinh nghiệm 10+ năm trong lĩnh vực BIM, CCBA đã giúp hơn 200 dự án tiết kiệm 15-30% thời gian và chi phí.</p><p><strong>Lợi ích BIM cho dự án của bạn:</strong></p><ul><li>Phát hiện và giải quyết conflict sớm</li><li>Tối ưu hóa design và material</li><li>Quản lý tiến độ hiệu quả</li><li>Giảm rework và wastage</li></ul><p>Chúng tôi rất mong được trao đổi thêm về cách BIM có thể áp dụng cụ thể cho dự án {{ProjectDescription}} của bạn.</p><p>Bạn có 15 phút trong tuần này để chat qua điện thoại không?</p><p>Trân trọng,<br>Đội ngũ CCBA BIM<br>Hotline: 0123.456.789</p></div>"
+            },
+            {
+              "name": "SecondFollowEmailTemplate", 
+              "type": "string",
+              "value": "<div style='font-family: Arial, sans-serif; max-width: 600px;'><h2 style='color: #0066cc;'>Case Study: Dự án tương tự {{Company}}</h2><p>Xin chào {{LeadName}},</p><p>Chúng tôi vừa hoàn thành một dự án BIM cho một công ty trong cùng lĩnh vực với {{Company}}. Kết quả rất ấn tượng:</p><p><strong>📊 Kết quả dự án:</strong></p><ul><li>✅ Giảm 25% thời gian thiết kế</li><li>✅ Phát hiện 48 conflicts trước khi thi công</li><li>✅ Tiết kiệm 18% material cost</li><li>✅ Hoàn thành đúng deadline</li></ul><p>Chúng tôi tin rằng có thể đạt được kết quả tương tự cho dự án {{ProjectDescription}} của bạn.</p><p><strong>🎯 Bước tiếp theo:</strong> Chúng tôi có thể cung cấp một session tư vấn miễn phí 30 phút để:</p><ul><li>Phân tích requirement cụ thể của dự án</li><li>Đề xuất BIM workflow phù hợp</li><li>Ước tính timeline và investment</li></ul><p>Bạn có thể book session tại <a href='https://calendly.com/ccba-bim'>đây</a> hoặc reply email này.</p><p>Trân trọng,<br>Đội ngũ CCBA BIM</p></div>"
+            },
+            {
+              "name": "ThirdFollowEmailTemplate",
+              "type": "string", 
+              "value": "<div style='font-family: Arial, sans-serif; max-width: 600px;'><h2 style='color: #0066cc;'>🚀 Tư vấn miễn phí BIM cho {{Company}}</h2><p>Xin chào {{LeadName}},</p><p>Tôi hiểu rằng bạn có thể đang bận với nhiều ưu tiên khác nhau cho dự án. Tuy nhiên, tôi muốn chia sẻ một cơ hội đặc biệt:</p><p><strong>🎁 Chương trình tư vấn miễn phí trong tháng này:</strong></p><ul><li>✅ Đánh giá BIM readiness cho dự án</li><li>✅ Roadmap implementation chi tiết</li><li>✅ ROI estimation cụ thể</li><li>✅ Pilot project proposal</li></ul><p><strong>📞 Chỉ cần 30 phút call để:</strong></p><ol><li>Hiểu rõ challenges hiện tại của {{Company}}</li><li>Demo BIM workflow phù hợp</li><li>Tính toán potential savings</li></ol><p>Dự án {{ProjectDescription}} của bạn có potential để tiết kiệm đáng kể cost và time với BIM approach đúng.</p><p><strong>📅 Book ngay:</strong> <a href='https://calendly.com/ccba-bim/consultation'>Free 30-min consultation</a></p><p>Hoặc reply email này với thời gian thuận tiện cho bạn.</p><p>Best regards,<br>CCBA BIM Team<br>📧 info@ccba.vn | 📞 0123.456.789</p></div>"
+            },
+            {
+              "name": "FinalFollowEmailTemplate",
+              "type": "string",
+              "value": "<div style='font-family: Arial, sans-serif; max-width: 600px;'><h2 style='color: #0066cc;'>👋 Lời chào cuối cùng từ CCBA BIM</h2><p>Xin chào {{LeadName}},</p><p>Đây sẽ là email cuối cùng tôi gửi về dự án {{ProjectDescription}} của {{Company}}.</p><p>Tôi hiểu rằng timing có thể chưa phù hợp, hoặc bạn đã có hướng giải quyết khác cho dự án.</p><p><strong>🤝 Tuy nhiên, cửa luôn mở:</strong></p><ul><li>Nếu trong tương lai bạn có nhu cầu về BIM</li><li>Khi dự án ready cho BIM implementation</li><li>Hoặc đơn giản chỉ muốn trao đổi về industry trends</li></ul><p>Chúng tôi luôn sẵn sàng hỗ trợ. Đừng ngần ngại liên hệ bất cứ lúc nào:</p><p>📧 {{SalesPersonEmail}}<br>📞 {{SalesPersonPhone}}<br>🌐 <a href='https://ccba.vn'>ccba.vn</a></p><p>Chúc {{Company}} thành công với mọi dự án!</p><p>Trân trọng và cảm ơn,<br>{{SalesPersonName}}<br>CCBA BIM Solutions</p><hr><p style='font-size: 12px; color: #666;'>Bạn sẽ không nhận thêm email marketing từ chúng tôi cho đến khi có interaction mới. Để unsubscribe hoàn toàn, <a href='{{UnsubscribeLink}}'>click đây</a>.</p></div>"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "value": {
+        "sharepointonline": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/sharepointonline",
+          "connectionName": "sharepointonline",
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/sharepointonline"
+        },
+        "office365": {
+          "connectionId": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/connections/office365",
+          "connectionName": "office365",
+          "id": "/subscriptions/{subscription-id}/providers/Microsoft.Web/locations/{location}/managedApis/office365"
+        }
+      }
+    }
+  }
+}
