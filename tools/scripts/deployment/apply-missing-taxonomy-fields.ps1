@@ -9,6 +9,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
+
 function Write-Log([string]$msg, [string]$level = 'INFO') {
   switch ($level) {
     'OK'    { Write-Host $msg -ForegroundColor Green }
@@ -18,28 +22,11 @@ function Write-Log([string]$msg, [string]$level = 'INFO') {
   }
 }
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-  Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-  Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-  Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
-
-if (-not $envConfigs.ContainsKey($Environment)) { Write-Log "[mm-apply] ❌ Unknown environment: $Environment" 'ERR'; exit 1 }
-$siteUrl = $envConfigs[$Environment]
-
-# Auth helper
-$__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
-if (Test-Path $__pnpHelper) { . $__pnpHelper }
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Log "[mm-apply] 🔗 Connecting to $siteUrl"
-if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
-  $fallbackAuth = if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
-  $mode = if ($Auth -in @('Interactive','DeviceLogin')) { 'Delegated' } else { $fallbackAuth }
-  $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
-} else {
-  Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
-}
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
 Write-Log "[mm-apply] ✅ Connected" 'OK'
 
 function Add-TaxonomyFieldIfMissing {

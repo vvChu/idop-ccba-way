@@ -87,9 +87,10 @@ function Get-JsonHash {
   } catch { return $null }
 }
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
+# Import shared modules
 $authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
 if (Test-Path $authModule) { Import-Module $authModule -Force }
+
 $moduleName = 'PnP.PowerShell'
 # Ensure PnP.PowerShell is available; if not, guide the user to install it manually
 if (-not (Get-Module -ListAvailable -Name $moduleName)) {
@@ -101,9 +102,10 @@ if (-not (Get-Module -ListAvailable -Name $moduleName)) {
   exit 4
 }
 Import-Module $moduleName -ErrorAction Stop
-$env = @{ Dev="https://ibstbim.sharepoint.com/sites/idop-dev"; Test="https://ibstbim.sharepoint.com/sites/idop-test"; Prod="https://ibstbim.sharepoint.com/sites/idop-prod" }
-if (-not $env.ContainsKey($Environment)) { Write-Host "Unknown environment $Environment" -ForegroundColor Red; exit 1 }
-$siteUrl = $env[$Environment]
+
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Host "[sp-diff] Inspect $Environment ($siteUrl) from '$ListsPath' (Focus=$Focus)" -ForegroundColor Yellow
 
@@ -139,20 +141,14 @@ try {
       if ($tenantBase) { $Tenant = "$tenantBase.onmicrosoft.com" }
     } catch {}
   }
-  $__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
-  if (Test-Path $__pnpHelper) { . $__pnpHelper }
   $connected = $false
   try { $null = Get-PnPWeb -ErrorAction Stop; $connected = $true } catch {}
   if (-not $connected) {
-    if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
-      $fallbackAuth = 'Delegated'
-      if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $fallbackAuth = $env:IDOP_SP_AUTH_MODE }
-      $mode = 'Delegated'
-      if ($Auth -and ($Auth -ne 'DeviceLogin') -and ($Auth -ne 'Interactive')) { $mode = $fallbackAuth }
-      $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
+    if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
+      Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
     } else {
       Write-Host "[sp-diff] Session helper missing, using interactive auth..." -ForegroundColor Yellow
-      Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+      Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $config.ClientId
     }
   } else {
     Write-Log "[sp-diff] Using existing PnP context" Green

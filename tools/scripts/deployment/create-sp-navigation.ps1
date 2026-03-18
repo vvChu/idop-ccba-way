@@ -40,20 +40,13 @@ if (-not $PSVersionTable.PSEdition -or $PSVersionTable.PSEdition -ne 'Core' -or 
     exit $LASTEXITCODE
 }
 
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
+
 # --- KHỐI LỆNH KẾT NỐI CHUẨN CỦA CCBA ---
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-    Dev = "https://ibstbim.sharepoint.com/sites/idop-dev"
-    Test = "https://ibstbim.sharepoint.com/sites/idop-test" 
-    Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
-
-if (-not $envConfigs.ContainsKey($Environment)) {
-    Write-Host "❌ Environment '$Environment' không hợp lệ. Chọn: Dev, Test, Prod" -ForegroundColor Red
-    exit 1
-}
-
-$siteUrl = $envConfigs[$Environment]
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 Write-Host "[nav] Tạo SharePoint Navigation cho environment: $Environment" -ForegroundColor Green
 Write-Host "[nav] SharePoint Site: $siteUrl" -ForegroundColor Cyan
 
@@ -67,18 +60,10 @@ if (-not (Test-Path -LiteralPath $ListsPath)) {
 }
 Write-Host "[nav] ListsPath: $ListsPath" -ForegroundColor Cyan
 
-# Kết nối SharePoint (ưu tiên helper pnp-session để tái sử dụng phiên)
+# Kết nối SharePoint
 try {
     Write-Host "[nav] Đang kết nối đến SharePoint..." -ForegroundColor Cyan
-    $__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
-    if (Test-Path $__pnpHelper) { . $__pnpHelper }
-    if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
-    $fallbackAuth = if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
-    $mode = if ($Auth -eq 'DeviceLogin') { 'Delegated' } elseif ($Auth -eq 'Interactive') { 'Delegated' } else { $fallbackAuth }
-        $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
-    } else {
-        Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
-    }
+    Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
     Write-Host "[nav] Kết nối thành công." -ForegroundColor Green
 }
 catch {

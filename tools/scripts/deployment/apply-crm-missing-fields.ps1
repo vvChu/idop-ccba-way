@@ -1,10 +1,15 @@
 param(
   [ValidateSet("Dev","Test","Prod")]
   [string]$Environment = "Dev",
-  [string]$ListsPath = "datamodel/sharepoint/lists/strategy_crm"
+  [string]$ListsPath = "datamodel/sharepoint/lists/strategy_crm",
+  [ValidateSet('Cached','Interactive','DeviceLogin')] [string]$Auth = 'Interactive'
 )
 
 $ErrorActionPreference = 'Stop'
+
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
 function Write-Log([string]$msg, [string]$level = 'INFO') {
   switch ($level) {
@@ -15,20 +20,11 @@ function Write-Log([string]$msg, [string]$level = 'INFO') {
   }
 }
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-  Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-  Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-  Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
-
-if (-not $envConfigs.ContainsKey($Environment)) {
-  Write-Log "[crm-apply] ❌ Unknown environment: $Environment" 'ERR'; exit 1
-}
-$siteUrl = $envConfigs[$Environment]
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Log "[crm-apply] 🔗 Connecting to $siteUrl"
-Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
 Write-Log "[crm-apply] ✅ Connected" 'OK'
 
 function Add-LookupFieldIfMissing {

@@ -8,7 +8,6 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
 $moduleName = 'PnP.PowerShell'
 if (-not (Get-Module -ListAvailable -Name $moduleName)) {
   Write-Host "[inspect-view] Missing required module '$moduleName'." -ForegroundColor Red
@@ -16,18 +15,19 @@ if (-not (Get-Module -ListAvailable -Name $moduleName)) {
 }
 Import-Module $moduleName -ErrorAction Stop
 
-$envMap = @{ Dev="https://ibstbim.sharepoint.com/sites/idop-dev"; Test="https://ibstbim.sharepoint.com/sites/idop-test"; Prod="https://ibstbim.sharepoint.com/sites/idop-prod" }
-if (-not $envMap.ContainsKey($Environment)) { Write-Host "Unknown environment $Environment" -ForegroundColor Red; exit 1 }
-$siteUrl = $envMap[$Environment]
-
-Write-Host "[inspect-view] 🔗 Connecting to $siteUrl" -ForegroundColor Yellow
-# Auth helper
+# Import shared modules
 $authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
 if (Test-Path $authModule) { Import-Module $authModule -Force }
+
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
+
+Write-Host "[inspect-view] 🔗 Connecting to $siteUrl" -ForegroundColor Yellow
 if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId
+  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
 } else {
-  Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+  Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $config.ClientId
 }
 Write-Host "[inspect-view] ✅ Connected" -ForegroundColor Green
 

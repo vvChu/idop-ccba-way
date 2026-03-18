@@ -18,26 +18,16 @@ function Write-Log([string]$msg, [string]$level = 'INFO') {
   }
 }
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-  Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-  Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-  Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot '../modules'
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-if (-not $envConfigs.ContainsKey($Environment)) { Write-Log "[cleanup] ❌ Unknown environment: $Environment" 'ERR'; exit 1 }
-$siteUrl = $envConfigs[$Environment]
-
-# Auth helper
-$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
-if (Test-Path $authModule) { Import-Module $authModule -Force }
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Log "[cleanup] 🔗 Connecting to $siteUrl"
-if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId
-} else {
-  Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
-}
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
 Write-Log "[cleanup] ✅ Connected" 'OK'
 
 if (-not (Test-Path $MigrationPlanPath)) { Write-Log "[cleanup] ❌ Migration plan not found: $MigrationPlanPath" 'ERR'; exit 1 }

@@ -87,7 +87,17 @@ function Get-IdopPnPConnection {
   $connection = $null
   if ($Auth -eq 'Delegated') {
     Write-Host "Connecting (delegated) to $Url ..." -ForegroundColor Cyan
-    $cId = if ($PSBoundParameters.ContainsKey('ClientId') -and $ClientId) { $ClientId } elseif ($env:IDOP_SP_CLIENT_ID -and $env:IDOP_SP_CLIENT_ID.Trim()) { $env:IDOP_SP_CLIENT_ID } else { '90ded6f0-b787-4b3c-acea-8baf6403fd63' }
+    # Try to get ClientId from config, fallback to hardcoded value
+    $cId = $ClientId
+    if (-not $cId -or [string]::IsNullOrWhiteSpace($cId)) {
+      try {
+        if (Get-Command -Name Get-IDOPConfig -ErrorAction SilentlyContinue) {
+          $tempConfig = Get-IDOPConfig -Environment "Dev"
+          if ($tempConfig -and $tempConfig.ClientId) { $cId = $tempConfig.ClientId }
+        }
+      } catch {}
+      if (-not $cId) { $cId = '90ded6f0-b787-4b3c-acea-8baf6403fd63' }
+    }
     try {
       $connection = Connect-PnPOnline -Url $Url -Interactive -ClientId $cId -ReturnConnection
     } catch {

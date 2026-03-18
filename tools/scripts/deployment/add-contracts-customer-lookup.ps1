@@ -1,26 +1,21 @@
 param(
   [ValidateSet("Dev","Test","Prod")]
-  [string]$Environment = "Dev"
+  [string]$Environment = "Dev",
+  [ValidateSet('Cached','Interactive','DeviceLogin')] [string]$Auth = 'Interactive'
 )
 
 $ErrorActionPreference = 'Stop'
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-  Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-  Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-  Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-if (-not $envConfigs.ContainsKey($Environment)) {
-  Write-Host "[add-lookup] ❌ Unknown environment: $Environment (Dev/Test/Prod)" -ForegroundColor Red
-  exit 1
-}
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
-$siteUrl = $envConfigs[$Environment]
 Write-Host "[add-lookup] 🔗 Connecting to $siteUrl" -ForegroundColor Cyan
 try {
-  Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
   Write-Host "[add-lookup] ✅ Connected" -ForegroundColor Green
 }
 catch {

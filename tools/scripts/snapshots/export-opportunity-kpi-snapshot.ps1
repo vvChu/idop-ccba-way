@@ -15,16 +15,16 @@ $ts = Get-Date -Format 'yyyyMMdd_HHmmss'
 $outDir = Join-Path $PSScriptRoot 'output'
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-    Dev = "https://ibstbim.sharepoint.com/sites/idop-dev"
-    Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-    Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
-if (-not $envConfigs.ContainsKey($Environment)) { throw "Invalid environment" }
-$siteUrl = $envConfigs[$Environment]
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
+
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
+
 Write-Host "Connecting $siteUrl" -ForegroundColor Cyan
-Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode Interactive -ClientId $config.ClientId
 
 function Get-ListItemsSimplified {
   param($ListName)

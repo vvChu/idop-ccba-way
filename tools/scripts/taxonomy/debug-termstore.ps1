@@ -1,20 +1,20 @@
 # Debug Script để kiểm tra cấu trúc Term
 # CCBA WAY Project - Debug taxonomy hierarchy
 
-# Cấu hình connection
-$AdminUrl = "https://ibstbim-admin.sharepoint.com"
-$ClientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
 param([ValidateSet('Cached','Interactive','DeviceLogin')] [string]$Auth = 'Cached')
 
+# Cấu hình connection
+$AdminUrl = "https://ibstbim-admin.sharepoint.com"
+
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot '../modules'
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
+
+# Get ClientId from config (using Dev as default for admin connection)
+$config = Get-IDOPConfig -Environment Dev
+
 Write-Host "Đang kết nối đến SharePoint Admin..."
-# Auth helper
-$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
-if (Test-Path $authModule) { Import-Module $authModule -Force }
-if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-    Connect-IdopOnline -SiteUrl $AdminUrl -AuthMode $Auth -ClientId $ClientId
-} else {
-    Connect-PnPOnline -Url $AdminUrl -Interactive -ClientId $ClientId
-}
+Connect-IdopOnline -SiteUrl $AdminUrl -AuthMode $Auth -ClientId $config.ClientId
 
 # Lấy một term set có nhiều khả năng có hierarchy
 $termGroup = Get-PnPTermGroup -Identity "CCBA Taxonomy"

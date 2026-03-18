@@ -12,22 +12,16 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$envConfigs = @{
-    Dev = "https://ibstbim.sharepoint.com/sites/idop-dev"
-    Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-    Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-if (-not $envConfigs.ContainsKey($Environment)) {
-    Write-Host "❌ Environment '$Environment' không hợp lệ. Chọn: Dev, Test, Prod" -ForegroundColor Red
-    exit 1
-}
-
-$siteUrl = $envConfigs[$Environment]
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Host "🔗 Kết nối SharePoint..." -ForegroundColor Cyan
-Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode Interactive -ClientId $config.ClientId
 
 # Fetch StageHistory
 $stageList = "OpportunityStageHistory"

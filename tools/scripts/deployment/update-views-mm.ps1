@@ -9,23 +9,16 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# Configuration
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-    Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-    Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-    Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-$siteUrl = $envConfigs[$Environment]
-if (-not $siteUrl) { throw "Unknown Environment '$Environment'" }
+# Configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Host "[views-mm] Environment: $Environment" -ForegroundColor Cyan
 Write-Host "[views-mm] Site: $siteUrl" -ForegroundColor Cyan
-
-# Auth helper
-$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
-if (Test-Path $authModule) { Import-Module $authModule -Force }
 
 # Mapping: list -> pairs of legacy/MM fields to prefer MM in default views
 $viewMappings = @{
@@ -55,11 +48,7 @@ function Connect-IdopSite {
     param([string]$Url)
     try {
         Write-Host "[views-mm] 🔗 Connecting..." -ForegroundColor Yellow
-        if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-            Connect-IdopOnline -SiteUrl $Url -AuthMode $Auth -ClientId $clientId
-        } else {
-            Connect-PnPOnline -Url $Url -Interactive -ClientId $clientId
-        }
+        Connect-IdopOnline -SiteUrl $Url -AuthMode $Auth -ClientId $config.ClientId
         Write-Host "[views-mm] ✅ Connected" -ForegroundColor Green
     }
     catch {

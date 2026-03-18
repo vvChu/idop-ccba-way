@@ -8,16 +8,15 @@ param(
   [string]$Environment = 'Dev'
 )
 
-$clientId = '90ded6f0-b787-4b3c-acea-8baf6403fd63'
-$envConfigs = @{
-  Dev = 'https://ibstbim.sharepoint.com/sites/idop-dev'
-  Test = 'https://ibstbim.sharepoint.com/sites/idop-test'
-  Prod = 'https://ibstbim.sharepoint.com/sites/idop-prod'
-}
-if (-not $envConfigs.ContainsKey($Environment)) { throw 'Invalid environment' }
-$siteUrl = $envConfigs[$Environment]
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
+
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode Interactive -ClientId $config.ClientId
 
 $items = Get-PnPListItem -List 'Opportunities' -PageSize 200 -ScriptBlock { Param($b) $b.Context.ExecuteQuery() }
 $rows = @()

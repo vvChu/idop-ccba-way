@@ -9,20 +9,19 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envMap = @{ Dev="https://ibstbim.sharepoint.com/sites/idop-dev"; Test="https://ibstbim.sharepoint.com/sites/idop-test"; Prod="https://ibstbim.sharepoint.com/sites/idop-prod" }
-$siteUrl = $envMap[$Environment]
 
 Import-Module PnP.PowerShell -ErrorAction Stop
-$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
-if (Test-Path $authModule) { Import-Module $authModule -Force }
+
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot '../modules'
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
+
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Host "[migrate-mm] 🔗 Connecting to $siteUrl" -ForegroundColor Yellow
-if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId
-} else {
-  Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
-}
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
 Write-Host "[migrate-mm] ✅ Connected" -ForegroundColor Green
 
 # Map lists and parallel fields to migrate from *_MM to clean names

@@ -47,17 +47,14 @@ try {
 
     # If AppOnly, establish a single connection upfront and let sub-scripts reuse it
     if ($Auth -eq 'AppOnly') {
-        $envConfigs = @{
-            Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-            Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-            Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-        }
-        if (-not $envConfigs.ContainsKey($Environment)) { throw "Unknown environment: $Environment" }
-        $siteUrl = $envConfigs[$Environment]
-
         $authModule = Join-Path $repoRoot 'tools' | Join-Path -ChildPath 'scripts' | Join-Path -ChildPath 'modules' | Join-Path -ChildPath 'PnPHelpers.psm1'
         if (-not (Test-Path -LiteralPath $authModule)) { throw "Auth helper not found: $authModule" }
         Import-Module $authModule -Force
+
+        # Get environment configuration
+        $config = Get-IDOPConfig -Environment $Environment
+        $siteUrl = $config.SharePointUrl
+
         Write-Host "[RUN] Establishing AppOnly connection to $siteUrl" -ForegroundColor Yellow
         Connect-IdopOnline -SiteUrl $siteUrl -AuthMode 'AppOnly'
         Write-Host "[RUN] AppOnly connection established" -ForegroundColor Green
