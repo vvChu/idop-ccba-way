@@ -1,0 +1,119 @@
+#!/bin/sh
+# IDOP pre-commit hook
+# Validates JSON schemas and naming conventions for staged SharePoint datamodel files.
+# Also triggers Serena MCP re-index when many files change.
+#
+# Install: cp tools/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+
+set -e
+
+# ─── JSON syntax check for staged .json files ────────────────────────
+STAGED_JSON=$(git diff --cached --name-only --diff-filter=ACM | grep '\.json$' || true)
+
+if [ -n "$STAGED_JSON" ]; then
+  echo "[IDOP] Validating staged JSON files..."
+  FAIL=0
+
+  for f in $STAGED_JSON; do
+    if [ ! -f "$f" ]; then continue; fi
+
+    # Basic JSON parse check (prefer node, then python3 — Windows python3 alias can be a stub)
+    if command -v node >/dev/null 2>&1; then
+      if ! node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" 2>/dev/null; then
+        echo "  ✗ Invalid JSON: $f"
+        FAIL=1
+      fi
+    elif python3 -c "import sys" 2>/dev/null; then
+      if ! python3 -c "import json, sys; json.load(open(sys.argv[1], encoding='utf-8'))" "$f" 2>/dev/null; then
+        echo "  ✗ Invalid JSON: $f"
+        FAIL=1
+      fi
+    fi
+  done
+
+  if [ "$FAIL" -ne 0 ]; then
+    echo "[IDOP] JSON validation failed. Fix errors before committing."
+    exit 1
+  fi
+  echo "[IDOP] JSON syntax OK"
+fi
+
+# ─── SharePoint list schema validation (datamodel files only) ────────
+STAGED_LISTS=$(git diff --cached --name-only --diff-filter=ACM | grep '^datamodel/sharepoint/lists/.*\.json$' || true)
+
+if [ -n "$STAGED_LISTS" ]; then
+  SCHEMA="datamodel/sharepoint/schemas/sp-list.schema.json"
+
+  # AJV validation if available
+  if command -v ajv >/dev/null 2>&1 && [ -f "$SCHEMA" ]; then
+    echo "[IDOP] Validating list schemas with AJV..."
+    FAIL=0
+
+    for f in $STAGED_LISTS; do
+      if [ ! -f "$f" ]; then continue; fi
+      if ! ajv validate -s "$SCHEMA" -d "$f" >/dev/null 2>&1; then
+        echo "  ✗ Schema validation failed: $f"
+        ajv validate -s "$SCHEMA" -d "$f" 2>&1 | head -5
+        FAIL=1
+      fi
+    done
+
+    if [ "$FAIL" -ne 0 ]; then
+      echo "[IDOP] Schema validation failed. Run: ajv validate -s $SCHEMA -d <file>"
+      exit 1
+    fi
+    echo "[IDOP] Schema validation OK"
+  fi
+
+  # Field naming convention check (PascalCase) via PowerShell if available
+  if command -v pwsh >/dev/null 2>&1; then
+    echo "[IDOP] Checking naming conventions..."
+    FAIL=0
+
+    for f in $STAGED_LISTS; do
+      if [ ! -f "$f" ]; then continue; fi
+      RESULT=$(pwsh -NoProfile -Command "
+        \$json = Get-Content -Raw '$f' | ConvertFrom-Json -ErrorAction SilentlyContinue
+        if (\$null -eq \$json) { exit 0 }
+        \$issues = @()
+        if (\$json.Columns) {
+          foreach (\$col in \$json.Columns) {
+            if (\$col.Name -and \$col.Name -cnotmatch '^[A-Z][a-zA-Z0-9]*$') {
+              \$issues += \$col.Name
+            }
+          }
+        }
+        if (\$issues.Count -gt 0) {
+          Write-Output (\$issues -join ', ')
+        }
+      " 2>/dev/null)
+
+      if [ -n "$RESULT" ]; then
+        echo "  ✗ Non-PascalCase field names in $f: $RESULT"
+        FAIL=1
+      fi
+    done
+
+    if [ "$FAIL" -ne 0 ]; then
+      echo "[IDOP] Naming convention check failed. Fields must be PascalCase."
+      exit 1
+    fi
+    echo "[IDOP] Naming conventions OK"
+  fi
+fi
+
+# ─── Serena MCP re-index (existing behavior) ─────────────────────────
+CHANGED_FILES=$(git diff --cached --name-only | grep -E '\.(py|js|ts|json|md|sh|ps1)$' | wc -l)
+THRESHOLD=5
+
+if [ "$CHANGED_FILES" -ge "$THRESHOLD" ]; then
+  echo "[Serena MCP] $CHANGED_FILES logic files changed. Re-indexing..."
+  if [ -f ".venv-serena/Scripts/Activate.ps1" ]; then
+    powershell -ExecutionPolicy Bypass -Command "& .\.venv-serena\Scripts\Activate.ps1; serena project index ." 2>/dev/null || true
+  elif [ -f ".venv-serena/bin/activate" ]; then
+    . .venv-serena/bin/activate
+    serena project index . 2>/dev/null || true
+  fi
+fi
+
+echo "[IDOP] Pre-commit checks passed."

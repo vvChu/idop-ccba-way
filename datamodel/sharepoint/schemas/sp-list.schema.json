@@ -1,26 +1,170 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SharePoint List Definition",
+  "description": "Schema for IDOP SharePoint list JSON definitions",
   "type": "object",
   "properties": {
-    "ListName": { "type": "string" },
-    "Description": { "type": "string" },
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "ListName": {
+      "type": "string",
+      "description": "Internal name of the SharePoint list",
+      "pattern": "^[A-Z][a-zA-Z0-9]*$"
+    },
+    "Description": {
+      "type": "string",
+      "description": "List description (Vietnamese)"
+    },
     "Columns": {
       "type": "array",
+      "description": "Field definitions for the list",
       "items": {
-        "type": "object",
-        "properties": {
-          "Name": { "type": "string" },
-          "Type": { "type": "string" },
-          "Required": { "type": "boolean" }
-        },
-        "required": ["Name", "Type"]
-      }
+        "$ref": "#/definitions/Column"
+      },
+      "minItems": 1
     },
     "ContentTypes": {
       "type": "array",
       "items": { "type": "object" }
     }
   },
-  "required": ["ListName", "Columns"]
+  "required": ["ListName", "Columns"],
+  "additionalProperties": false,
+  "definitions": {
+    "Column": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Internal field name (PascalCase)",
+          "pattern": "^[A-Z][a-zA-Z0-9]*$"
+        },
+        "InternalName": {
+          "type": "string",
+          "description": "Override internal name if different from Name"
+        },
+        "DisplayName": {
+          "type": "string",
+          "description": "Vietnamese display name"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "Text",
+            "SingleLine",
+            "Note",
+            "Number",
+            "Currency",
+            "DateTime",
+            "Date",
+            "YesNo",
+            "Boolean",
+            "Choice",
+            "MultiChoice",
+            "Lookup",
+            "User",
+            "URL",
+            "Hyperlink",
+            "ManagedMetadata",
+            "Taxonomy"
+          ]
+        },
+        "Required": {
+          "type": "boolean",
+          "default": false
+        },
+        "Choices": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Required for Choice and MultiChoice types"
+        },
+        "Lookup": {
+          "$ref": "#/definitions/LookupDef",
+          "description": "Required for Lookup type"
+        },
+        "TermSet": {
+          "$ref": "#/definitions/TermSetDef",
+          "description": "Required for ManagedMetadata/Taxonomy type"
+        },
+        "AllowMultiple": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow multiple values (User, ManagedMetadata)"
+        },
+        "UserSelectionMode": {
+          "type": "string",
+          "enum": ["PeopleAndGroups", "PeopleOnly"],
+          "default": "PeopleAndGroups",
+          "description": "User field selection mode"
+        }
+      },
+      "required": ["Name", "Type"],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "Type": { "enum": ["Choice", "MultiChoice"] } }
+          },
+          "then": {
+            "required": ["Choices"]
+          }
+        },
+        {
+          "if": {
+            "properties": { "Type": { "const": "Lookup" } }
+          },
+          "then": {
+            "required": ["Lookup"]
+          }
+        },
+        {
+          "if": {
+            "properties": { "Type": { "enum": ["ManagedMetadata", "Taxonomy"] } }
+          },
+          "then": {
+            "required": ["TermSet"]
+          }
+        }
+      ]
+    },
+    "LookupDef": {
+      "type": "object",
+      "properties": {
+        "List": {
+          "type": "string",
+          "description": "Target list internal name"
+        },
+        "Field": {
+          "type": "string",
+          "description": "Target field to show (default: ID)",
+          "default": "ID"
+        },
+        "Behavior": {
+          "type": "string",
+          "enum": ["restrict", "cascade", "none"],
+          "default": "restrict"
+        }
+      },
+      "required": ["List"]
+    },
+    "TermSetDef": {
+      "type": "object",
+      "properties": {
+        "Group": {
+          "type": "string",
+          "description": "Term store group name"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Term set name"
+        }
+      },
+      "required": ["Group", "Name"]
+    }
+  }
 }
