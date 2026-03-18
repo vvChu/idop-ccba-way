@@ -256,10 +256,7 @@ $config.ClientId       # 90ded6f0-b787-4b3c-acea-8baf6403fd63
 Test the modules work correctly:
 
 ```powershell
-# Run the example script
-.\tools\scripts\example-with-modules.ps1 -Environment Dev
-
-# Or use the unified CLI
+# Use the unified CLI
 .\idop.ps1 validate datamodel
 .\idop.ps1 connect -Environment Dev
 ```
@@ -298,19 +295,6 @@ Disconnect-PnPOnline
 Connect-IDOPSharePoint -Environment Dev -Force
 ```
 
-## Migration from Old Scripts
-
-See [REFACTORING.md](../../../REFACTORING.md) for detailed migration guide.
-
-Quick migration checklist:
-- [ ] Import new modules at script start
-- [ ] Replace hardcoded URLs with `Get-IDOPConfig`
-- [ ] Replace `Connect-PnPOnline` with `Connect-IDOPSharePoint`
-- [ ] Replace `Write-Host` with `Write-IDOP*` functions
-- [ ] Add try-catch with proper error handling
-- [ ] Add timer for performance tracking
-- [ ] Add summary output
-
 ## Contributing
 
 When adding new common functionality:
@@ -325,7 +309,6 @@ When adding new common functionality:
 ## Support
 
 For issues or questions:
-- See [REFACTORING.md](../../../REFACTORING.md) for migration guide
 - See [CLAUDE.md](../../../CLAUDE.md) for project instructions
 - Create a GitHub issue
 - Contact CCBA development team

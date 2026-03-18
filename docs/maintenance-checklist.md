@@ -9,7 +9,7 @@
 - [ ] Validate lookup relationships giữa các lists
 
 ### 1.2 Kiểm thử Triển khai Script
-- [ ] Chạy dry-run deployment: `./tools/scripts/deploy-sp-lists-enhanced.ps1 -DryRun`
+- [ ] Chạy dry-run deployment: `.\idop.ps1 deploy lists -Environment Dev -DryRun`
 - [ ] Kiểm tra log output cho warnings/errors
 - [ ] Verify default view setup cho tất cả lists
 - [ ] Test list formatting application

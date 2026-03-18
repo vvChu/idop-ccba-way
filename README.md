@@ -75,7 +75,7 @@ Hệ thống **IDOP** cho CCBA được scaffold sẵn với:
 - **Datamodel SharePoint** (JSON Lists, Taxonomy)
 
 - **Scripts** apply/export
-- **Tích hợp Spec‑Kit** để làm việc theo phương pháp Spec‑Driven Development với AI Agent (GitHub Copilot) trong VS Code.
+- **Spec‑Driven Development** để làm việc theo phương pháp Spec‑Driven Development với AI Agent (GitHub Copilot) trong VS Code.
 
 ---
 
@@ -92,7 +92,7 @@ flowchart TB
 
   A["**CCBA WAY**\n- Process excellence\n- Data-driven\n- Governance & compliance\n(Strategy)"]:::darkblue
   B["**IDOP**\nIntegrated Digital Operations Platform\n(Platform)"]:::lightblue
-  C["**Spec‑Driven Development**\nSpec‑Kit + AI Agent (Copilot)\n(spec.md, plan.md, tasks.md)\n(Spec)"]:::green
+  C["**Spec‑Driven Development**\nAI Agent (Copilot)\n(spec.md, plan.md, tasks.md)\n(Spec)"]:::green
   D1["[Contracts](specs/modules/cash_data/allocations/spec.md)"]:::orange
   D2["[Projects](specs/modules/process_execution/projects/spec.md)"]:::orange
   D3["[Expenses](specs/modules/cash_data/expenses/spec.md)"]:::orange
@@ -117,7 +117,7 @@ flowchart TB
   classDef purple fill:#f3e8ff,stroke:#6b46c1,stroke-width:1.2,color:#1a202c;
   classDef gray fill:#f7fafc,stroke:#a0aec0,stroke-width:1.0,color:#1a202c;
 
-  A["1) Scaffold & configure\n• IDOP scaffold: JSON datamodel, taxonomy, scripts\n• Init Spec‑Kit: constitution, prompts, templates, scripts\n• Repo + GitHub Actions (stub)"]:::blue
+  A["1) Scaffold & configure\n• IDOP scaffold: JSON datamodel, taxonomy, scripts\n• Init: constitution, prompts, templates, scripts\n• Repo + GitHub Actions (stub)"]:::blue
 
   B["2) Detailed design in VS Code (AI)\n• /specify → generate/update spec.md\n• /plan → generate plan.md from spec\n• /tasks → generate tasks.md from plan\n• Apply constitution + checklist"]:::green
 
@@ -179,7 +179,7 @@ jobs:
 
 ```powershell
 pwsh -NoProfile -ExecutionPolicy Bypass `
-  -File tools/scripts/apply-sp-lists.ps1 -Full -DryRun
+  -File tools/scripts/deployment/apply-sp-lists.ps1 -Full -DryRun
 ```
 
 - This produces a full plan of actions (create lists/fields, lookups, taxonomy) and exits without connecting to SharePoint.
@@ -193,13 +193,11 @@ Some DryRun scripts still need to read from SharePoint (e.g., navigation pruning
 Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
 
 # Navigation DryRun preview with pruning
-& .\tools\scripts\sync-sp-navigation.ps1 -Environment Dev -Location Top -Prune -DryRun
+& .\tools\scripts\deployment\sync-sp-navigation.ps1 -Environment Dev -Location Top -Prune -DryRun
 
 # Bidding folders DryRun preview with CSV output (uses defaults)
-& .\tools\scripts\opportunity-bidding-folders.ps1 -DryRun -ReportCsv .\bidding_dryrun.csv
+& .\tools\scripts\deployment\opportunity-bidding-folders.ps1 -DryRun -ReportCsv .\bidding_dryrun.csv
 ```
-
-You can also use the helper `tools/scripts/pnp-session.ps1` to reuse connections without repeated prompts.
 
 Tip: Don’t start a new PowerShell process (e.g., `pwsh -File`) for these scripts—doing so spawns a fresh session and the PnP connection won’t be available. Use the call operator `&` from the same shell where you ran `Connect-PnPOnline`.
 
@@ -215,9 +213,6 @@ Tip: Don’t start a new PowerShell process (e.g., `pwsh -File`) for these scrip
 
 - **Scripts:** [`tools/scripts/`](tools/scripts/)
 
-- [Hướng dẫn sử dụng script deploy-sp-lists-enhanced.ps1](docs/deploy-sp-lists-enhanced.md)  
-  (Tự động tạo/cập nhật SharePoint Lists từ JSON, hỗ trợ đầy đủ các loại trường, hướng dẫn chi tiết quyền hạn, TermStore, tham số script)
-
 - [Kiểm thử schema SharePoint Lists (validate-sp-schemas.js)](docs/validate-sp-schemas.md)  
   (Hướng dẫn kiểm thử tự động schema JSON, tích hợp CI/CD)
 
@@ -227,17 +222,4 @@ Tip: Don’t start a new PowerShell process (e.g., `pwsh -File`) for these scrip
 - [Thư viện List Formatting (JSON) cho SharePoint Lists](list-formatting/README.md)
 - [Hướng dẫn bảo trì & mở rộng List Formatting](docs/list-formatting-maintenance.md)
 
-- [Hướng dẫn sử dụng Scaffold (README-SCAFFOLD.md)](README-SCAFFOLD.md)  
-  (Hướng dẫn chi tiết sử dụng scaffold đã tinh gọn cho các dự án mới)
-
 ---
-
-## 📦 Scaffold Status
-
-**Repository này đã được tinh gọn thành scaffold gọn nhẹ:**
-
-- **Kích thước:** 7.5MB (giảm từ 1.3GB+ - giảm 99%+)
-- **Thành phần:** Chỉ giữ lại core components cần thiết  
-- **Mục đích:** Làm nền tảng cho các dự án CCBA mới
-
-**Chi tiết xem:** [README-SCAFFOLD.md](README-SCAFFOLD.md)

@@ -115,16 +115,6 @@ Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactiv
 
 ## Development Workflow
 
-### Spec-Driven Development
-
-The repository uses Spec-Kit for AI-assisted development:
-
-1. `/specify` → Generate/update `spec.md` from requirements
-2. `/plan` → Generate `plan.md` from spec
-3. `/tasks` → Generate `tasks.md` from plan
-
-Prompts are located in `.github/prompts/` and templates in `idop-ccba-way/.specify/templates/`.
-
 ### Datamodel Structure
 
 SharePoint Lists are defined as JSON files in `datamodel/sharepoint/lists/` organized by module:
@@ -239,8 +229,6 @@ GitHub Actions workflows in `.github/workflows/`:
 
 - `idop.ps1`: Unified CLI wrapper for all operations
 - `README.md`: Main documentation with architecture diagrams
-- `copilot-instructions.md`: GitHub Copilot instructions
-- `.speckit.yml`: Spec-Kit configuration
 - `tools/config/environments.psd1`: Centralized environment configuration
 - `tools/scripts/modules/`: Shared PowerShell modules
 - `tools/hooks/pre-commit`: Git pre-commit hook (JSON validation, naming checks)
