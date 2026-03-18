@@ -24,7 +24,7 @@ Write-Host "[views-mm] Environment: $Environment" -ForegroundColor Cyan
 Write-Host "[views-mm] Site: $siteUrl" -ForegroundColor Cyan
 
 # Auth helper
-$authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
+$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
 if (Test-Path $authModule) { Import-Module $authModule -Force }
 
 # Mapping: list -> pairs of legacy/MM fields to prefer MM in default views

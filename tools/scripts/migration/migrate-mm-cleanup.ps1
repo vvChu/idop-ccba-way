@@ -14,7 +14,7 @@ $envMap = @{ Dev="https://ibstbim.sharepoint.com/sites/idop-dev"; Test="https://
 $siteUrl = $envMap[$Environment]
 
 Import-Module PnP.PowerShell -ErrorAction Stop
-$authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
+$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
 if (Test-Path $authModule) { Import-Module $authModule -Force }
 
 Write-Host "[migrate-mm] 🔗 Connecting to $siteUrl" -ForegroundColor Yellow

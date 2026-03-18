@@ -46,7 +46,7 @@
         Modules = "tools/scripts/modules"
         Config = "tools/config"
         Logs = ".logs"
-        State = ".serena/state"
+        State = "tools/output/state"
     }
 
     # Modules configuration

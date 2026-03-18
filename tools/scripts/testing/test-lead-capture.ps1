@@ -7,15 +7,13 @@ param(
     [ValidateSet('Cached','Interactive','DeviceLogin')] [string]$Auth = 'Cached'
 )
 
-# Configuration
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-    Dev = "https://ibstbim.sharepoint.com/sites/idop-dev"
-    Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-    Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-$siteUrl = $envConfigs[$Environment]
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Host "🧪 Testing Lead Capture workflow for environment: $Environment" -ForegroundColor Green
 Write-Host "🌐 SharePoint Site: $siteUrl" -ForegroundColor Cyan
@@ -23,14 +21,7 @@ Write-Host "🌐 SharePoint Site: $siteUrl" -ForegroundColor Cyan
 # Connect to SharePoint
 try {
     Write-Host "🔗 Connecting to SharePoint..." -ForegroundColor Cyan
-    # Auth helper
-    $authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
-    if (Test-Path $authModule) { Import-Module $authModule -Force }
-    if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
-        Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId
-    } else {
-        Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
-    }
+    Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
     Write-Host "✅ Connected successfully!" -ForegroundColor Green
 }
 catch {

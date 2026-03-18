@@ -103,12 +103,6 @@ jobs:
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
           Install-Module -Name PnP.PowerShell -Force -Scope CurrentUser
 
-      - name: Health check Serena MCP
-        shell: pwsh
-        run: |
-          Write-Host "🔍 Health checking Serena MCP..."
-          .\tools\scripts\health-check-serena.ps1
-
       - name: Test SharePoint connectivity (Dev)
         shell: pwsh
         run: |
@@ -125,9 +119,8 @@ jobs:
         run: |
           Write-Host "🔧 Validating deployment scripts..."
           $scripts = @(
-            ".\tools\scripts\deploy-sp-lists-actual.ps1",
-            ".\tools\scripts\customize-projects-form.ps1",
-            ".\tools\scripts\start-serena-mcp.ps1"
+            ".\tools\scripts\deployment\apply-sp-lists.ps1",
+            ".\tools\scripts\deployment\customize-projects-form.ps1"
           )
           foreach ($script in $scripts) {
             if (Test-Path $script) {
@@ -170,13 +163,13 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "🚀 Deploying to Test environment..."
-          .\tools\scripts\deploy-sp-lists-actual.ps1 -Environment Test
+          .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment Test
 
       - name: Customize Projects Form
         shell: pwsh
         run: |
           Write-Host "📝 Customizing Projects form in Test..."
-          .\tools\scripts\customize-projects-form.ps1 -Environment Test
+          .\tools\scripts\deployment\customize-projects-form.ps1 -Environment Test
 
       - name: Validate deployment
         shell: pwsh
@@ -204,13 +197,13 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "🚀 Deploying to Production environment..."
-          .\tools\scripts\deploy-sp-lists-actual.ps1 -Environment Prod
+          .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment Prod
 
       - name: Customize Projects Form
         shell: pwsh
         run: |
           Write-Host "📝 Customizing Projects form in Production..."
-          .\tools\scripts\customize-projects-form.ps1 -Environment Prod
+          .\tools\scripts\deployment\customize-projects-form.ps1 -Environment Prod
 
       - name: Post-deployment validation
         shell: pwsh

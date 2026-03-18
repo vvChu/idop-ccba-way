@@ -25,7 +25,7 @@ Write-Host "🌐 SharePoint Site: $siteUrl" -ForegroundColor Cyan
 try {
     Write-Host "🔗 Connecting to SharePoint..." -ForegroundColor Cyan
     # Auth helper
-    $authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
+    $authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
     if (Test-Path $authModule) { Import-Module $authModule -Force }
     if (Get-Command -Name Connect-IdopOnline -ErrorAction SilentlyContinue) {
         Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $clientId

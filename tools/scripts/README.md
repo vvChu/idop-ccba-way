@@ -15,15 +15,6 @@ This directory contains PowerShell scripts for managing the IDOP platform deploy
   - Parameters: `-SchemaDir`, `-ListsPath`
   - Uses AJV for validation
 
-### MCP Scripts
-
-- `start-serena-mcp.ps1`: Starts the Serena MCP server for code operations
-  - Parameters: Context, mode, transport, port
-  - Supports SSE and HTTP transports
-
-- `mcp_call.py`: Python client for MCP server interactions
-  - Calls tools like activate_project, get_symbols_overview
-
 ### Testing
 
 - `apply-sp-lists.Tests.ps1`: Pester tests for deployment script

@@ -39,7 +39,7 @@
   "MD041": false,
   "MD042": false,
   "MD043": false,
-  "MD044": { "names": ["CCBA", "IDOP", "SharePoint", "Power Automate", "Power BI", "Teams", "BIM", "IBST", "Spec-Driven Development", "Serena MCP", "GitHub Copilot"] },
+  "MD044": { "names": ["CCBA", "IDOP", "SharePoint", "Power Automate", "Power BI", "Teams", "BIM", "IBST", "Spec-Driven Development", "GitHub Copilot"] },
   "MD045": false,
   "MD046": { "style": "fenced" },
   "MD047": false,

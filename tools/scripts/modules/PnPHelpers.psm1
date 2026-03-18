@@ -233,10 +233,95 @@ function Invoke-IDOPWithRetry {
     throw "$ErrorMessage after $MaxRetries attempts: $lastError"
 }
 
+<#
+.SYNOPSIS
+    Connects to SharePoint with multiple auth modes (Interactive, Cached, DeviceLogin, AppOnly).
+    Merged from SpAuth.psm1 — used by scripts that call Connect-IdopOnline dynamically.
+.PARAMETER SiteUrl
+    SharePoint site URL
+.PARAMETER AuthMode
+    Authentication mode
+#>
+function Connect-IdopOnline {
+    param(
+        [Parameter(Mandatory)] [string]$SiteUrl,
+        [ValidateSet('Cached','Interactive','DeviceLogin','AppOnly')] [string]$AuthMode = 'Cached',
+        [string]$Tenant,
+        [string]$ClientId,
+        [string]$CertificatePath,
+        [SecureString]$CertificatePassword,
+        [string]$CertificateThumbprint
+    )
+
+    if (-not (Get-Module -ListAvailable -Name PnP.PowerShell)) {
+        throw "PnP.PowerShell not installed"
+    }
+    Import-Module PnP.PowerShell -ErrorAction Stop
+
+    # Reuse existing connection if same site
+    try {
+        $current = Get-PnPConnection -ErrorAction SilentlyContinue
+        if ($current -and $current.SiteUrl -and ($current.SiteUrl.TrimEnd('/') -ieq $SiteUrl.TrimEnd('/'))) {
+            Write-Host "[auth] Reusing existing PnP connection: $SiteUrl" -ForegroundColor Cyan
+            return
+        }
+    } catch {}
+
+    if ($AuthMode -eq 'AppOnly') {
+        $effTenant   = if ($Tenant) { $Tenant } elseif ($env:IDOP_PNP_TENANT_ID) { $env:IDOP_PNP_TENANT_ID } elseif ($env:IDOP_PNP_TENANT) { $env:IDOP_PNP_TENANT } else { $null }
+        $effClientId = if ($ClientId) { $ClientId } elseif ($env:IDOP_PNP_CLIENT_ID) { $env:IDOP_PNP_CLIENT_ID } else { $null }
+        $effCertPath = if ($CertificatePath) { $CertificatePath } elseif ($env:IDOP_PNP_CERT_PATH) { $env:IDOP_PNP_CERT_PATH } else { $null }
+        $effThumb    = if ($CertificateThumbprint) { $CertificateThumbprint } elseif ($env:IDOP_PNP_CERT_THUMBPRINT) { $env:IDOP_PNP_CERT_THUMBPRINT } else { $null }
+        $effCertPwd  = $CertificatePassword
+        if (-not $effCertPwd -and $env:IDOP_PNP_CERT_PASSWORD) {
+            $effCertPwd = ConvertTo-SecureString -String $env:IDOP_PNP_CERT_PASSWORD -AsPlainText -Force
+        }
+        if (-not $effTenant -or -not $effClientId) { throw "AppOnly requires Tenant and ClientId" }
+        if (-not $effThumb -and -not $effCertPath) { throw "AppOnly requires CertificateThumbprint or CertificatePath" }
+
+        $connectParams = @{ Url = $SiteUrl; Tenant = $effTenant; ClientId = $effClientId }
+        if ($effThumb) { $connectParams['CertificateThumbprint'] = $effThumb }
+        else {
+            $connectParams['CertificatePath'] = $effCertPath
+            if ($effCertPwd) { $connectParams['CertificatePassword'] = $effCertPwd }
+        }
+        Connect-PnPOnline @connectParams
+        Write-Host "[auth] Connected using App-Only (certificate)" -ForegroundColor Green
+        return
+    }
+
+    if ($AuthMode -eq 'Cached') {
+        try {
+            $cmd = Get-Command -Name Connect-PnPOnline -ErrorAction Stop
+            if ($cmd.Parameters.ContainsKey('PnPManagementShell')) {
+                if ($Tenant) { Connect-PnPOnline -Url $SiteUrl -PnPManagementShell -Tenant $Tenant -ErrorAction Stop }
+                else { Connect-PnPOnline -Url $SiteUrl -PnPManagementShell -ErrorAction Stop }
+                Write-Host "[auth] Connected using cached token" -ForegroundColor Green
+                return
+            }
+        } catch {}
+    }
+
+    if ($AuthMode -eq 'DeviceLogin') {
+        if ($Tenant -and $ClientId) { Connect-PnPOnline -Url $SiteUrl -DeviceLogin -ClientId $ClientId -Tenant $Tenant }
+        elseif ($ClientId) { Connect-PnPOnline -Url $SiteUrl -DeviceLogin -ClientId $ClientId }
+        else { Connect-PnPOnline -Url $SiteUrl -DeviceLogin }
+        Write-Host "[auth] Connected using Device Login" -ForegroundColor Green
+        return
+    }
+
+    # Default: Interactive
+    if ($Tenant -and $ClientId) { Connect-PnPOnline -Url $SiteUrl -Interactive -ClientId $ClientId -Tenant $Tenant }
+    elseif ($ClientId) { Connect-PnPOnline -Url $SiteUrl -Interactive -ClientId $ClientId }
+    else { Connect-PnPOnline -Url $SiteUrl -Interactive }
+    Write-Host "[auth] Connected using Interactive" -ForegroundColor Green
+}
+
 # Export module members
 Export-ModuleMember -Function @(
     'Get-IDOPConfig',
     'Connect-IDOPSharePoint',
+    'Connect-IdopOnline',
     'Test-IDOPConnection',
     'Assert-PowerShell7',
     'Get-IDOPList',

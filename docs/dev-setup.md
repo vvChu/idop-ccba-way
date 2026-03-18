@@ -4,7 +4,7 @@
 
 Để tránh phải xác thực lại nhiều lần khi chạy các script
 (`sp-diff`, `termstore-import`, `migrate-mm-cleanup`, v.v.), bộ script đã hỗ trợ
-chế độ `-Auth Cached` mặc định qua helper `SpAuth.psm1`.
+chế độ `-Auth Cached` mặc định qua helper `PnPHelpers.psm1`.
 
 Một lần duy nhất cho mỗi tenant, hãy đăng ký ứng dụng PnP Management Shell để
 cấp quyền dùng token cache:

@@ -1,7 +1,6 @@
 #!/bin/sh
 # IDOP pre-commit hook
 # Validates JSON schemas and naming conventions for staged SharePoint datamodel files.
-# Also triggers Serena MCP re-index when many files change.
 #
 # Install: cp tools/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 
@@ -99,20 +98,6 @@ if [ -n "$STAGED_LISTS" ]; then
       exit 1
     fi
     echo "[IDOP] Naming conventions OK"
-  fi
-fi
-
-# ─── Serena MCP re-index (existing behavior) ─────────────────────────
-CHANGED_FILES=$(git diff --cached --name-only | grep -E '\.(py|js|ts|json|md|sh|ps1)$' | wc -l)
-THRESHOLD=5
-
-if [ "$CHANGED_FILES" -ge "$THRESHOLD" ]; then
-  echo "[Serena MCP] $CHANGED_FILES logic files changed. Re-indexing..."
-  if [ -f ".venv-serena/Scripts/Activate.ps1" ]; then
-    powershell -ExecutionPolicy Bypass -Command "& .\.venv-serena\Scripts\Activate.ps1; serena project index ." 2>/dev/null || true
-  elif [ -f ".venv-serena/bin/activate" ]; then
-    . .venv-serena/bin/activate
-    serena project index . 2>/dev/null || true
   fi
 fi
 

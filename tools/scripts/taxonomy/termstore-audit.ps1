@@ -3,10 +3,14 @@ param(
   [string]$Environment = "Dev",
   [string]$ListsRoot = "datamodel/sharepoint/lists",
   [string]$TaxonomyPath = "datamodel/sharepoint/taxonomy",
-  [string]$Output = ".serena/logs/termstore-audit-$Environment.json"
+  [string]$Output = "tools/output/logs/termstore-audit-$Environment.json"
 )
 
 $ErrorActionPreference = 'Stop'
+
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
 function Write-Log([string]$msg, [string]$level = 'INFO') {
   switch ($level) {
@@ -17,20 +21,12 @@ function Write-Log([string]$msg, [string]$level = 'INFO') {
   }
 }
 
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{
-  Dev  = "https://ibstbim.sharepoint.com/sites/idop-dev"
-  Test = "https://ibstbim.sharepoint.com/sites/idop-test"
-  Prod = "https://ibstbim.sharepoint.com/sites/idop-prod"
-}
-
-if (-not $envConfigs.ContainsKey($Environment)) {
-  Write-Log "[ts-audit] ❌ Unknown environment: $Environment" 'ERR'; exit 1
-}
-$siteUrl = $envConfigs[$Environment]
+# Load environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 Write-Log "[ts-audit] 🔗 Connecting to $siteUrl"
-Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId
+Connect-IdopOnline -SiteUrl $siteUrl -AuthMode Interactive -ClientId $config.ClientId
 Write-Log "[ts-audit] ✅ Connected" 'OK'
 
 function Get-TermStoreSafe {

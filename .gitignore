@@ -1,4 +1,4 @@
-# Serena noise control (also useful generally)
+# Dependencies and build output
 node_modules/
 dist/
 build/
@@ -21,10 +21,11 @@ coverage/
 *.bak
 *.orig
 
-# Serena cache and logs
-.serena/
+# IDOP output (logs, state, reports)
+tools/output/*
+!tools/output/logs/.gitkeep
+!tools/output/state/.gitkeep
 *.pkl
-logs/
 
 # Build artifacts
 bin/
@@ -45,3 +46,6 @@ Thumbs.db
 
 # Deprecated datamodel file queued for removal
 /datamodel/sharepoint/lists/strategy_crm/client_projects.json
+
+# Script output files
+*_dryrun_*.csv

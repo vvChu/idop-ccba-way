@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 
 function New-LogDir {
     $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..' '..')).Path
-    $logDir = Join-Path $repoRoot '.serena' | Join-Path -ChildPath 'logs'
+    $logDir = Join-Path $repoRoot 'tools' | Join-Path -ChildPath 'output' | Join-Path -ChildPath 'logs'
     if (-not (Test-Path -LiteralPath $logDir)) {
         New-Item -ItemType Directory -Path $logDir | Out-Null
     }
@@ -55,7 +55,7 @@ try {
         if (-not $envConfigs.ContainsKey($Environment)) { throw "Unknown environment: $Environment" }
         $siteUrl = $envConfigs[$Environment]
 
-        $authModule = Join-Path $repoRoot 'tools' | Join-Path -ChildPath 'scripts' | Join-Path -ChildPath 'modules' | Join-Path -ChildPath 'SpAuth.psm1'
+        $authModule = Join-Path $repoRoot 'tools' | Join-Path -ChildPath 'scripts' | Join-Path -ChildPath 'modules' | Join-Path -ChildPath 'PnPHelpers.psm1'
         if (-not (Test-Path -LiteralPath $authModule)) { throw "Auth helper not found: $authModule" }
         Import-Module $authModule -Force
         Write-Host "[RUN] Establishing AppOnly connection to $siteUrl" -ForegroundColor Yellow

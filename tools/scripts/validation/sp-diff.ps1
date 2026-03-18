@@ -2,7 +2,7 @@ param(
   [string]$ListsPath = "datamodel/sharepoint/lists",
   [ValidateSet("Dev","Test","Prod")]
   [string]$Environment = "Dev",
-  [string]$ReportPath = ".\.serena\logs\sp-diff-$((Get-Date -Format 'yyyyMMdd-HHmmss')).txt",
+  [string]$ReportPath = ".\tools\output\logs\sp-diff-$((Get-Date -Format 'yyyyMMdd-HHmmss')).txt",
   [ValidateSet("Cached","Interactive","DeviceLogin")]
   [string]$Auth = "Cached",
   [string]$Tenant,
@@ -14,7 +14,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $script:ReportPath = $ReportPath
-${stateDir} = ".\.serena\state"
+${stateDir} = ".\tools\output\state"
 ${stateFile} = Join-Path $stateDir "sp-diff-last.json"
 
 # Re-exec under PowerShell 7+ if currently running in Windows PowerShell 5.1
@@ -88,7 +88,7 @@ function Get-JsonHash {
 }
 
 $clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$authModule = Join-Path $PSScriptRoot 'modules/SpAuth.psm1'
+$authModule = Join-Path $PSScriptRoot '../modules/PnPHelpers.psm1'
 if (Test-Path $authModule) { Import-Module $authModule -Force }
 $moduleName = 'PnP.PowerShell'
 # Ensure PnP.PowerShell is available; if not, guide the user to install it manually

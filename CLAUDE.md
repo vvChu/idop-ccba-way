@@ -27,7 +27,7 @@ Each module contains:
 
 ## Unified CLI
 
-**NEW**: The platform now uses a unified CLI wrapper for all operations. Use `idop.ps1` instead of individual scripts.
+The platform uses a unified CLI wrapper for all operations. Use `idop.ps1` instead of individual scripts.
 
 ### Quick Start
 
@@ -99,16 +99,16 @@ Each module contains:
 .\idop.ps1 test lead-capture
 ```
 
-### Legacy Script Usage (Still Supported)
+### Direct Script Usage
 
-You can still run scripts directly if needed:
+You can also run scripts directly:
 
 ```powershell
 # Establish a reusable PnP session
 Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
 
 # Use the call operator (&) to run scripts in the same session
-& .\tools\scripts\apply-sp-lists.ps1 -Environment Dev -DryRun
+& .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment Dev -DryRun
 ```
 
 **Important**: Don't start a new PowerShell process (e.g., `pwsh -File`) for scripts that need PnP connection—use the call operator `&` from the same shell where you ran `Connect-PnPOnline`.
@@ -157,20 +157,36 @@ Managed metadata term sets are in `datamodel/sharepoint/taxonomy/` as JSON files
 - `CCBA_TrangThaiChung.json`: General statuses
 - And 12 more term sets
 
+## Script Organization
+
+Scripts are organized by purpose in `tools/scripts/`:
+
+```
+tools/scripts/
+├── modules/          # Shared PowerShell modules
+├── deployment/       # List provisioning, navigation, lead capture
+├── taxonomy/         # Term store import, export, audit
+├── validation/       # Schema validation, naming checks, sp-diff
+├── migration/        # One-time migration scripts
+├── testing/          # Pester tests, workflow tests
+└── connection/       # PnP session helpers, auth setup
+```
+
 ## Important Conventions
 
 ### Shared Modules
 
 The platform now uses shared PowerShell modules for common functionality:
 
-- **PnPHelpers.psm1**: PnP connection management, session handling, retry logic
+- **PnPHelpers.psm1**: PnP connection management, session handling, retry logic, auth (Connect-IdopOnline)
 - **LoggingHelpers.psm1**: Consistent logging, formatting, progress tracking, timers
 - **ValidationHelpers.psm1**: Schema validation, naming conventions, data integrity checks
+- **SpListDeploy.psm1**: SharePoint list/field provisioning (Ensure-* functions)
 
 Located in `tools/scripts/modules/`. Import in your scripts:
 
 ```powershell
-$ModulePath = Join-Path $PSScriptRoot "modules"
+$ModulePath = Join-Path $PSScriptRoot "../modules"
 Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 Import-Module "$ModulePath/LoggingHelpers.psm1" -Force
 Import-Module "$ModulePath/ValidationHelpers.psm1" -Force
@@ -217,22 +233,17 @@ All scripts use the same Entra App Client ID: `90ded6f0-b787-4b3c-acea-8baf6403f
 
 GitHub Actions workflows in `.github/workflows/`:
 
-- `validate.yml`: Validates JSON schemas and markdown linting
-- `sp-guard.yml`: SharePoint schema validation
-- `taxonomy-sync.yml`: Taxonomy synchronization
-- `power-alm.yml`: Power Platform ALM
+- `validate.yml`: Validates JSON schemas, markdown linting, PowerShell syntax, Pester tests
 
 ## Key Files
 
-- `idop.ps1`: **NEW** Unified CLI wrapper for all operations
-- `REFACTORING.md`: **NEW** Refactoring guide and migration instructions
+- `idop.ps1`: Unified CLI wrapper for all operations
 - `README.md`: Main documentation with architecture diagrams
-- `README-SCAFFOLD.md`: Scaffold usage guide
 - `copilot-instructions.md`: GitHub Copilot instructions
 - `.speckit.yml`: Spec-Kit configuration
-- `constitution.md`: Development rules (in `idop-ccba-way/.specify/memory/`)
-- `tools/config/environments.psd1`: **NEW** Centralized environment configuration
-- `tools/scripts/modules/`: **NEW** Shared PowerShell modules
+- `tools/config/environments.psd1`: Centralized environment configuration
+- `tools/scripts/modules/`: Shared PowerShell modules
+- `tools/hooks/pre-commit`: Git pre-commit hook (JSON validation, naming checks)
 
 ## Testing
 

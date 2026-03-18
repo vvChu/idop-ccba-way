@@ -17,30 +17,23 @@ if (-not $PSVersionTable.PSEdition -or $PSVersionTable.PSEdition -ne 'Core' -or 
   & $pwshCmd @argList; exit $LASTEXITCODE
 }
 
-# Resolve paths and environment
-$clientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-$envConfigs = @{ Dev="https://ibstbim.sharepoint.com/sites/idop-dev"; Test="https://ibstbim.sharepoint.com/sites/idop-test"; Prod="https://ibstbim.sharepoint.com/sites/idop-prod" }
-$siteUrl = $envConfigs[$Environment]
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
+
+# Load environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
+
+# Resolve paths
 try { $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..' '..')).Path } catch { $repoRoot = (Get-Location).Path }
 if (-not (Test-Path -LiteralPath $ListsPath)) { $candidate = Join-Path $repoRoot $ListsPath; if (Test-Path -LiteralPath $candidate) { $ListsPath = $candidate } }
 Write-Host "[naming] Site: $siteUrl" -ForegroundColor Cyan
 Write-Host "[naming] ListsPath: $ListsPath" -ForegroundColor Cyan
 
-# Connect (prefer session helper if available)
+# Connect
 try {
-  $__pnpHelper = Join-Path $PSScriptRoot 'pnp-session.ps1'
-  if (Test-Path $__pnpHelper) { . $__pnpHelper }
-  if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
-  $fallbackAuth = if ($env:IDOP_SP_AUTH_MODE -and $env:IDOP_SP_AUTH_MODE.Trim()) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
-  $mode = if ($Auth -eq 'DeviceLogin') { 'Delegated' } elseif ($Auth -eq 'Interactive') { 'Delegated' } else { $fallbackAuth }
-    $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
-  } else {
-    switch ($Auth) {
-      'DeviceLogin' { Connect-PnPOnline -Url $siteUrl -DeviceLogin -ClientId $clientId }
-      'Interactive' { Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId }
-      default { Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $clientId }
-    }
-  }
+  Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $Auth -ClientId $config.ClientId
   Write-Host "[naming] Connected." -ForegroundColor Green
 } catch { Write-Host "[naming] Connect failed: $($_.Exception.Message)" -ForegroundColor Red; exit 2 }
 

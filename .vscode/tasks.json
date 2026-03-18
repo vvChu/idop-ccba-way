@@ -22,7 +22,7 @@
       "label": "SP: validate schemas",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validate-sp-schemas.ps1"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validation\\validate-sp-schemas.ps1"],
       "group": "build",
       "problemMatcher": []
     },
@@ -30,7 +30,7 @@
       "label": "SP: diff lists",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validation\\sp-diff.ps1"],
       "group": "build",
       "problemMatcher": []
     },
@@ -38,7 +38,7 @@
       "label": "SP: diff lists (focus failures)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1","-Focus","issues"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validation\\sp-diff.ps1","-Focus","issues"],
       "group": "build",
       "problemMatcher": []
     },
@@ -46,7 +46,7 @@
       "label": "SP: diff lists (changed schemas)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1","-Focus","changed"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validation\\sp-diff.ps1","-Focus","changed"],
       "group": "build",
       "problemMatcher": []
     },
@@ -54,7 +54,7 @@
       "label": "SP: diff lists (only selection)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\sp-diff.ps1","-OnlyLists","CDEDocuments,PotentialProjects,Opportunities"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validation\\sp-diff.ps1","-OnlyLists","CDEDocuments,PotentialProjects,Opportunities"],
       "group": "build",
       "problemMatcher": []
     },
@@ -62,7 +62,7 @@
       "label": "SP: apply lists (dry-run)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\apply-sp-lists.ps1","-DryRun"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\deployment\\apply-sp-lists.ps1","-DryRun"],
       "group": "build",
       "problemMatcher": []
     },
@@ -70,7 +70,7 @@
       "label": "SP: apply lists (only selection, fast)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\apply-sp-lists.ps1","-OnlyLists","CDEDocuments,PotentialProjects,Opportunities","-Fast"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\deployment\\apply-sp-lists.ps1","-OnlyLists","CDEDocuments,PotentialProjects,Opportunities","-Fast"],
       "group": "build",
       "problemMatcher": []
     },
@@ -78,41 +78,16 @@
       "label": "SP: import termstore (dry-run)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\termstore-import.ps1","-DryRun"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\taxonomy\\termstore-import.ps1","-DryRun"],
       "group": "build",
       "problemMatcher": []
-    },
-    {
-      "label": "Serena: Add MCP server (workspace)",
-      "type": "shell",
-      "command": "powershell",
-      "args": ["-Command", "claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena-mcp-server --context ide-assistant --project ${workspaceFolder}"],
-      "problemMatcher": [],
-      "group": "build"
-    },
-    {
-      "label": "Serena: Index project",
-      "type": "shell",
-      "command": "powershell",
-      "args": ["-Command", "uvx --from git+https://github.com/oraios/serena index-project"],
-      "problemMatcher": [],
-      "group": "build"
-    },
-    {
-      "label": "Serena: Start MCP server (local)",
-      "type": "shell",
-      "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\start-serena-mcp.ps1","-Context","agent","-Mode","editing","-Transport","sse","-Port","9121"],
-      "problemMatcher": [],
-      "group": "build",
-      "isBackground": true
     }
     ,
     {
       "label": "SP: navigation (dry-run)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-DryRun"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\deployment\\create-sp-navigation.ps1","-DryRun"],
       "group": "build",
       "problemMatcher": []
     },
@@ -120,7 +95,7 @@
       "label": "SP: navigation (Dev)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-Environment","Dev"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\deployment\\create-sp-navigation.ps1","-Environment","Dev"],
       "group": "build",
       "problemMatcher": []
     },
@@ -128,7 +103,7 @@
       "label": "SP: navigation (Test)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-Environment","Test"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\deployment\\create-sp-navigation.ps1","-Environment","Test"],
       "group": "build",
       "problemMatcher": []
     },
@@ -136,7 +111,7 @@
       "label": "SP: navigation (Prod)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\create-sp-navigation.ps1","-Environment","Prod"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\deployment\\create-sp-navigation.ps1","-Environment","Prod"],
       "group": "build",
       "problemMatcher": []
     }
@@ -145,7 +120,7 @@
       "label": "SP: validate naming (Dev)",
       "type": "shell",
       "command": "powershell",
-      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validate-sp-naming.ps1","-Environment","Dev"],
+      "args": ["-ExecutionPolicy","Bypass","-File",".\\tools\\scripts\\validation\\validate-sp-naming.ps1","-Environment","Dev"],
       "group": "build",
       "problemMatcher": []
     }

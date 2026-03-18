@@ -35,25 +35,21 @@ if (-not (Get-Module -ListAvailable -Name 'PnP.PowerShell')) {
 }
 Import-Module PnP.PowerShell -ErrorAction Stop
 
-$envMap = @{ Dev='https://ibstbim.sharepoint.com/sites/idop-dev'; Test='https://ibstbim.sharepoint.com/sites/idop-test'; Prod='https://ibstbim.sharepoint.com/sites/idop-prod' }
-if (-not $envMap.ContainsKey($Environment)) { Write-Host "[bidding] Unknown environment: $Environment" -ForegroundColor Red; exit 1 }
-$siteUrl = $envMap[$Environment]
+# Import shared modules
+$ModulePath = Join-Path $PSScriptRoot "../modules"
+Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 
-# Session helper if available
-$helper = Join-Path $PSScriptRoot 'pnp-session.ps1'
-if (Test-Path $helper) { . $helper }
+# Get environment configuration
+$config = Get-IDOPConfig -Environment $Environment
+$siteUrl = $config.SharePointUrl
 
 # Connect (re-use default if available)
 try {
   $connected = $false
   try { $null = Get-PnPWeb -ErrorAction Stop; $connected = $true } catch {}
   if (-not $connected) {
-    if (Get-Command -Name Get-IdopPnPConnection -ErrorAction SilentlyContinue) {
-      $mode = if ($env:IDOP_SP_AUTH_MODE) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
-      $null = Get-IdopPnPConnection -Url $siteUrl -Auth $mode -SetDefault
-    } else {
-      Connect-PnPOnline -Url $siteUrl -Interactive -ClientId '90ded6f0-b787-4b3c-acea-8baf6403fd63'
-    }
+    $mode = if ($env:IDOP_SP_AUTH_MODE) { $env:IDOP_SP_AUTH_MODE } else { 'Delegated' }
+    Connect-IdopOnline -SiteUrl $siteUrl -AuthMode $mode -ClientId $config.ClientId
   }
   Write-Host "[bidding] Connected to $Environment ($siteUrl)" -ForegroundColor Green
 } catch { Write-Host "[bidding] Connect failed: $($_.Exception.Message)" -ForegroundColor Red; exit 3 }
