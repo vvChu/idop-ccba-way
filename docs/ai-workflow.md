@@ -4,8 +4,8 @@ Tài liệu này mô tả cách làm việc tiêu chuẩn giữa nhóm dự án 
 
 ## 1) Chuẩn bị scaffold
 
-- Chạy kiểm tra môi trường: `./tools/speckit/specify.ps1 check`.
-- Đảm bảo `.speckit.yml`, datamodel JSON, taxonomy, schemas đã đúng chỗ theo Constitution.
+- Validate datamodel: `.\idop.ps1 validate datamodel`
+- Đảm bảo datamodel JSON, taxonomy, schemas đã đúng chỗ theo Constitution.
 
 ## 2) Viết đặc tả với Spec‑Driven Development
 
@@ -25,9 +25,9 @@ Tài liệu này mô tả cách làm việc tiêu chuẩn giữa nhóm dự án 
 ## 4) Triển khai kỹ thuật
 
 - Validate schemas và chạy diff (dry‑run).
-- Áp dụng Lists/Taxonomy bằng script phù hợp OS:
-  - PowerShell: `tools/scripts/apply-sp-lists.ps1`, `tools/scripts/termstore-import.ps1`
-  - POSIX: `tools/scripts/apply-sp-lists.sh`, `tools/scripts/termstore-import.sh`
+- Áp dụng Lists/Taxonomy:
+  - `.\idop.ps1 deploy lists -Environment Dev`
+  - `.\idop.ps1 taxonomy import -Environment Dev`
 
 ## 5) Kiểm thử & chấp nhận
 
@@ -41,8 +41,9 @@ Tài liệu này mô tả cách làm việc tiêu chuẩn giữa nhóm dự án 
 ## Lệnh nhanh
 
 ```powershell
-./tools/speckit/specify.ps1 check
-./tools/speckit/specify.ps1 init --here --ai copilot --script ps
+.\idop.ps1 validate datamodel
+.\idop.ps1 deploy lists -Environment Dev -DryRun
+.\idop.ps1 taxonomy import -Environment Dev -DryRun
 ```
 
 Tham chiếu: xem thêm `constitution.md` để biết nguyên tắc, vai trò, quy ước đặt tên và checklist bắt buộc.

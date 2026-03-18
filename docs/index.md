@@ -12,7 +12,9 @@ Trang này là cổng vào hệ thống tài liệu nội bộ cho nền tảng 
 
 ## Cách bắt đầu nhanh
 
-- Kiểm tra môi trường SpecKit: `./tools/speckit/specify.ps1 check`
-- Đồng bộ scaffold (nếu cần): `./tools/speckit/specify.ps1 init --here --ai copilot --script ps`
+```powershell
+.\idop.ps1 validate datamodel
+.\idop.ps1 connect -Environment Dev
+```
 
 Tài liệu được cập nhật liên tục qua Pull Request và review/approval theo Constitution.

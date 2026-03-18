@@ -1,14 +1,9 @@
 {
   "chat.tools.edits.autoApprove": false,
   "chat.tools.edits.protectedPatterns": [
-    ".speckit.yml",
     "datamodel/sharepoint/lists/**/*.json",
     "datamodel/sharepoint/schemas/*.json",
     "constitution.md",
     "AGENTS.md"
   ]
-  ,
-  "serenaCopilot.contextEnabled": true,
-  "serenaCopilot.topK": 3,
-  "serenaCopilot.endpoint": "http://localhost:11434/search"
 }
