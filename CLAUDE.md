@@ -6,11 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 IDOP-CCBA-WAY is a digital operations platform (IDOP - Integrated Digital Operation Platform) for CCBA (Center for Consulting Services and BIM Application in construction), a unit under the Institute of Building Science and Technology (IBST). The platform digitizes and automates business processes using Microsoft 365 (SharePoint Online, Power Automate, Power BI, Teams).
 
-This is a **scaffold repository** (reduced from 1.3GB+ to 7.5MB) containing core components for deploying the platform, including SharePoint datamodels, taxonomy definitions, automation scripts, and spec-driven development templates.
+This is a **scaffold repository** (reduced from 1.3GB+ to 7.5MB) containing core components for deploying the platform, including SharePoint datamodels, taxonomy definitions, and automation scripts.
 
 ## Architecture Overview
 
-The platform follows a spec-driven development approach with 6 core modules:
+The platform has 6 core modules:
 
 - **strategy_crm**: CRM, opportunities, leads, customers, contacts
 - **process_execution**: Projects, contracts, activities, work packages, PMO
@@ -137,15 +137,7 @@ Each JSON file defines:
 
 ### Taxonomy Structure
 
-Managed metadata term sets are in `datamodel/sharepoint/taxonomy/` as JSON files:
-
-- `CCBA_ChucDanhBIM.json`: BIM positions
-- `CCBA_ChucDanhXayDung.json`: Construction positions
-- `CCBA_DonViPhongBan.json`: Departments
-- `CCBA_LoaiChiPhi.json`: Expense types
-- `CCBA_LoaiHinhDichVu.json`: Service types
-- `CCBA_TrangThaiChung.json`: General statuses
-- And 12 more term sets
+Managed metadata term sets are in `datamodel/sharepoint/taxonomy/` as JSON files (18 term sets covering departments, positions, service types, statuses, expense types, etc.).
 
 ## Script Organization
 
@@ -166,21 +158,24 @@ tools/scripts/
 
 ### Shared Modules
 
-The platform now uses shared PowerShell modules for common functionality:
+The platform uses shared PowerShell modules in `tools/scripts/modules/`:
 
-- **PnPHelpers.psm1**: PnP connection management, session handling, retry logic, auth (Connect-IdopOnline)
-- **LoggingHelpers.psm1**: Consistent logging, formatting, progress tracking, timers
-- **ValidationHelpers.psm1**: Schema validation, naming conventions, data integrity checks
-- **SpListDeploy.psm1**: SharePoint list/field provisioning (Ensure-* functions)
+- **PnPHelpers.psm1**: `Get-IDOPConfig`, `Connect-IDOPSharePoint`, `Connect-IdopOnline`, `Test-IDOPConnection`, `Invoke-IDOPWithRetry`
+- **LoggingHelpers.psm1**: `Write-IDOPHeader`, `Write-IDOPInfo`, `Write-IDOPSuccess`, `Write-IDOPError`, `Write-IDOPSummary`
+- **ValidationHelpers.psm1**: `Test-IDOPDataModel`, `Test-IDOPLookupReferences`, naming convention checks
+- **SpListDeploy.psm1**: `Ensure-*` functions for SharePoint list/field provisioning
 
-Located in `tools/scripts/modules/`. Import in your scripts:
+Import pattern for new scripts:
 
 ```powershell
 $ModulePath = Join-Path $PSScriptRoot "../modules"
 Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 Import-Module "$ModulePath/LoggingHelpers.psm1" -Force
-Import-Module "$ModulePath/ValidationHelpers.psm1" -Force
 ```
+
+### Auth Modes
+
+Scripts accept `-Auth Cached|Interactive|DeviceLogin` (default: `Cached`). Use `Interactive` for first-time auth, `Cached` for subsequent runs.
 
 ### Centralized Configuration
 
@@ -221,9 +216,21 @@ All scripts use the same Entra App Client ID: `90ded6f0-b787-4b3c-acea-8baf6403f
 
 ## CI/CD Workflows
 
-GitHub Actions workflows in `.github/workflows/`:
+GitHub Actions workflow `.github/workflows/validate.yml` runs on push/PR to main:
 
-- `validate.yml`: Validates JSON schemas, markdown linting, PowerShell syntax, Pester tests
+1. **validate**: JSON schema validation (ajv), markdown linting, PowerShell syntax check
+2. **test**: Installs PnP.PowerShell, validates deployment scripts exist, runs Pester tests
+3. **deploy-test**: Deploys to Test environment on push to main
+4. **deploy-prod**: Deploys to Production (manual trigger via `workflow_dispatch`)
+
+## Pre-commit Hook
+
+The hook at `tools/hooks/pre-commit` runs automatically on commit:
+- JSON syntax validation on all staged `.json` files
+- AJV schema validation on staged `datamodel/sharepoint/lists/**/*.json` (if `ajv` is installed)
+- PascalCase field naming check on staged list definitions (if `pwsh` is available)
+
+Install: `cp tools/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
 
 ## Key Files
 
