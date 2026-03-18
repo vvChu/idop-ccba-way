@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -1 tools/scripts/*.ps1)",
+      "Bash(find . -name .pre-commit-config* -o -name .husky -o -name .githooks)",
+      "Bash(mv tools/scripts/apply-sp-lists.ps1 tools/scripts/apply-sp-lists.v1-backup.ps1)",
+      "Bash(mv tools/scripts/apply-sp-lists-v2.ps1 tools/scripts/apply-sp-lists.ps1)",
+      "Bash(mv tools/scripts/termstore-export.ps1 tools/scripts/termstore-export.v1-backup.ps1)",
+      "Bash(mv tools/scripts/termstore-export-v2.ps1 tools/scripts/termstore-export.ps1)",
+      "Bash(python3 -c \"import json, sys; json.load\\(open\\(sys.argv[1], encoding=''utf-8''\\)\\)\" \"datamodel/sharepoint/schemas/sp-list.schema.json\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''datamodel/sharepoint/schemas/sp-list.schema.json'',''utf8''\\)\\)\")"
+    ],
+    "additionalDirectories": [
+      "d:\\idop-ccba-way\\.git\\hooks"
+    ]
+  }
+}

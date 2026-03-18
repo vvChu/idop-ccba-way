@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l tools/scripts/*.ps1)"
+    ],
+    "additionalDirectories": [
+      "d:\\idop-ccba-way\\tools\\scripts\\modules"
+    ]
+  }
+}
