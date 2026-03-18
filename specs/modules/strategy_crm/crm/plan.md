@@ -39,6 +39,6 @@
 
 ## Triển khai & kiểm thử
 - Validate schema lists bằng script `validate-sp-schemas.js`.
-- Triển khai lists bằng script PowerShell `deploy-sp-lists-enhanced.ps1`.
+- Triển khai lists bằng `.\idop.ps1 deploy lists -Environment Dev`.
 - Kiểm thử flows Power Automate với dữ liệu mẫu.
 - Kiểm thử phân quyền, audit log, báo cáo Power BI.

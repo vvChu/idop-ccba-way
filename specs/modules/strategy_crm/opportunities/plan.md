@@ -75,7 +75,7 @@
 ## Triển khai & kiểm thử
 1. Validate tất cả schema (Opportunities, OpportunityServices, OpportunityStakeholders).
 2. Thứ tự tạo lists: Customers → Contacts → Opportunities → OpportunityServices → OpportunityStakeholders.
-3. Chạy script `deploy-sp-lists-enhanced.ps1 -SingleList Opportunities` để smoke test.
+3. Chạy `.\idop.ps1 deploy lists -Environment Dev -OnlyLists Opportunities` để smoke test.
 4. Kiểm thử flows với bộ dữ liệu seed (ít nhất 3 cơ hội đa dịch vụ, 2 có thiếu vai trò → test cảnh báo).
 5. Kiểm thử InfluenceScore tính toán: thay đổi SupportLevel & InfluenceWeight.
 6. Kiểm thử cross-sell: đánh dấu 1 service Won → draft service mới.

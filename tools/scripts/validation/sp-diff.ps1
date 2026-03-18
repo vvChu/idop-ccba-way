@@ -172,10 +172,7 @@ $ok = 0
 $missing = 0
 $fieldIssues = 0
 
-$skipFilesByName = @(
-  # Deprecated or to-be-removed files
-  'client_projects.json'
-)
+$skipFilesByName = @()
 
 $jsonFiles = Get-ChildItem -Path $ListsPath -Recurse -Filter *.json
 

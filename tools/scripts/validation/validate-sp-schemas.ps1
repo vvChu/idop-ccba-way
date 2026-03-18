@@ -4,7 +4,6 @@ param(
 )
 
 Write-Host "[validate-sp-schemas] Validating lists in '$ListsPath' against schemas in '$SchemaDir'" -ForegroundColor Yellow
-# TODO: Invoke Node script or PowerShell-based validation here.
 
 # Find schema files
 $schemaFiles = Get-ChildItem -Path $SchemaDir -Filter *.json
@@ -13,22 +12,13 @@ if ($schemaFiles.Count -eq 0) {
   exit 1
 }
 
-$skipFilesByName = @(
-  # Deprecated list definition retained temporarily for Git clean-up
-  'client_projects.json'
-)
-
 $allValid = $true
 foreach ($schemaFile in $schemaFiles) {
   $schemaPath = $schemaFile.FullName
   Write-Host "[validate] Using schema: $schemaPath" -ForegroundColor Cyan
-  
+
   # Validate all JSON files in ListsPath against this schema
   foreach ($jsonFile in Get-ChildItem -Path $ListsPath -Recurse -Filter *.json) {
-    if ($skipFilesByName -contains $jsonFile.Name) {
-      Write-Host "  Skipping (deprecated): $($jsonFile.FullName)" -ForegroundColor DarkYellow
-      continue
-    }
     Write-Host "  Validating: $($jsonFile.FullName)" -ForegroundColor Gray
     
     # Use ajv if available, otherwise basic JSON validation

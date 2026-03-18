@@ -1,10 +1,10 @@
 # Debug Script để kiểm tra cấu trúc Term
 # CCBA WAY Project - Debug taxonomy hierarchy
 
-param([ValidateSet('Cached','Interactive','DeviceLogin')] [string]$Auth = 'Cached')
-
-# Cấu hình connection
-$AdminUrl = "https://ibstbim-admin.sharepoint.com"
+param(
+    [ValidateSet('Cached','Interactive','DeviceLogin')] [string]$Auth = 'Cached',
+    [string]$AdminUrl = "https://ibstbim-admin.sharepoint.com"
+)
 
 # Import shared modules
 $ModulePath = Join-Path $PSScriptRoot '../modules'

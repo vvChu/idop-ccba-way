@@ -7,13 +7,13 @@
 ## Example Commands
 ```powershell
 # Chỉ xem khác biệt (không thay đổi)
-./tools/scripts/deploy-sp-lists-enhanced.ps1 -Environment Dev -Diff
+.\idop.ps1 deploy lists -Environment Dev -DryRun
 
 # Vừa update field mới vừa xem diff
-./tools/scripts/deploy-sp-lists-enhanced.ps1 -Environment Dev -UpdateExisting -Diff
+.\tools\scripts\validation\sp-diff.ps1 -Environment Dev -Focus all
 
 # Đồng bộ choices sau khi chỉnh JSON
-./tools/scripts/deploy-sp-lists-enhanced.ps1 -Environment Dev -SyncChoices
+.\idop.ps1 deploy lists -Environment Dev
 ```
 
 ## Output Interpretation
@@ -28,7 +28,7 @@
 
 ## Status — latest run (2025-09-21)
 -  Environment: Dev (`https://ibstbim.sharepoint.com/sites/idop-dev`).
--  Schema validation: all JSON lists valid. Deprecated `client_projects.json` removed from scope.
+-  Schema validation: all JSON lists valid.
 -  Lineage corrected to: `Customer → PotentialProjects → Opportunities → Contracts → Projects`.
 -  Expected diff highlights (post-lineage fix):
 -  Create (if missing): `CDEDocuments` (process_execution).

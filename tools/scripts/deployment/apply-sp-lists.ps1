@@ -65,7 +65,7 @@ if (-not (Test-Path $resolvedListsPath)) {
     exit 1
 }
 
-$skipFilesByName = @('client_projects.json')
+$skipFilesByName = @()
 
 # Build filter set
 $onlySet = $null

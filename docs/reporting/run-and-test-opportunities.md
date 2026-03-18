@@ -3,9 +3,9 @@
 ## 1. Triển khai Lists
 ```powershell
 # Dry-run để kiểm tra schema
-./tools/scripts/deploy-sp-lists-enhanced.ps1 -Environment Dev -DryRun
+.\idop.ps1 deploy lists -Environment Dev -DryRun
 # Triển khai thực tế (bao gồm fields mới MultiChoice & Note)
-./tools/scripts/deploy-sp-lists-enhanced.ps1 -Environment Dev -UpdateExisting
+.\idop.ps1 deploy lists -Environment Dev
 ```
 Xác nhận log: không lỗi cho các trường: AdjustedProbability, InfluenceScore, RiskFlags, ServiceMixSummary.
 
