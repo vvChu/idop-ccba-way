@@ -1,0 +1,46 @@
+project_name: IDOP-CCBA-WAY
+version: 2.0.0
+current_milestone: Milestone 2 - Migration & Meta Files Generation
+description: Central Knowledge Base bootstrap configuration for IDOP-CCBA-WAY governance
+  constitution, system blueprint, and module specifications. Serves as the primary
+  entry point for AI Agents and developers.
+database: SharePoint Online Lists & Power Platform Data Model
+architecture_pattern: Hub & Spoke Architecture (IBST-CCBA Root Hub + Specialized Spoke
+  Sites)
+document_groups:
+  governance_constitution:
+    path: .md/governance_constitution
+    description: Legal regulations, project management rules, financial norms, CCBA
+      charter, and IBST science & technology standards.
+    files:
+    - 01_qctk_2815_project_management.md
+    - 02_qcctnb_3209_financial_norms.md
+    - 03_ccba_charter_2026.md
+    - 04_ibst_science_tech_regulations.md
+  system_blueprint:
+    path: .md/system_blueprint
+    description: System architecture, operations & finance flows, technical implementation
+      blueprints, and enterprise architecture.
+    files:
+    - 01_idop_v2_architecture.md
+    - 02_idop_v2_operations_finance.md
+    - 03_idop_v2_technical_implementation.md
+    - 04_idop_v2_enterprise_architecture.md
+  module_specifications:
+    path: specs/modules
+    description: 21 module specification files mapped across 6 operational domains
+      (cash_data, people_assets, performance_okrs, process_execution, strategy_crm,
+      system_governance).
+    total_specs: 21
+initial_reading_sequence:
+- .md/workspace_context.yaml
+- .md/INDEX.md
+- .md/cross_references.yaml
+- .md/governance_constitution/01_qctk_2815_project_management.md
+- .md/governance_constitution/02_qcctnb_3209_financial_norms.md
+- .md/governance_constitution/03_ccba_charter_2026.md
+- .md/governance_constitution/04_ibst_science_tech_regulations.md
+- .md/system_blueprint/01_idop_v2_architecture.md
+- .md/system_blueprint/02_idop_v2_operations_finance.md
+- .md/system_blueprint/03_idop_v2_technical_implementation.md
+- .md/system_blueprint/04_idop_v2_enterprise_architecture.md

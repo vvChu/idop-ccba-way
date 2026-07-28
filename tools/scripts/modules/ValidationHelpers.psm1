@@ -37,7 +37,7 @@ function Test-IDOPListSchema {
     $errors = @()
 
     # Required properties
-    $requiredProps = @('Title', 'InternalName', 'Description', 'Fields')
+    $requiredProps = @('ListName', 'Columns')
 
     foreach ($prop in $requiredProps) {
         if (-not $json.PSObject.Properties.Name.Contains($prop)) {
@@ -45,25 +45,26 @@ function Test-IDOPListSchema {
         }
     }
 
-    # Validate InternalName format (lowercase with underscores)
-    if ($json.InternalName -and $json.InternalName -cnotmatch '^[a-z_]+$') {
-        $errors += "InternalName must be lowercase with underscores only: $($json.InternalName)"
+    # Validate ListName format (PascalCase)
+    if ($json.ListName -and $json.ListName -notmatch '^[A-Z][a-zA-Z0-9]*$') {
+        $errors += "ListName must be PascalCase: $($json.ListName)"
     }
 
-    # Validate Fields array
-    if ($json.Fields) {
-        foreach ($field in $json.Fields) {
-            if (-not $field.InternalName) {
-                $errors += "Field missing InternalName"
+    # Validate Columns array
+    if ($json.Columns) {
+        foreach ($field in $json.Columns) {
+            $fieldName = if ($field.Name) { $field.Name } else { $field.InternalName }
+            if (-not $fieldName) {
+                $errors += "Column missing Name"
             }
 
             if (-not $field.Type) {
-                $errors += "Field '$($field.InternalName)' missing Type"
+                $errors += "Column '$fieldName' missing Type"
             }
 
-            # Validate field InternalName format (PascalCase)
-            if ($field.InternalName -and $field.InternalName -notmatch '^[A-Z][a-zA-Z0-9]*$') {
-                $errors += "Field InternalName must be PascalCase: $($field.InternalName)"
+            # Validate column Name format (PascalCase)
+            if ($fieldName -and $fieldName -notmatch '^[A-Z][a-zA-Z0-9]*$') {
+                $errors += "Column Name must be PascalCase: $fieldName"
             }
         }
     }
@@ -245,22 +246,26 @@ function Test-IDOPTaxonomyJson {
     $errors = @()
 
     # Required properties for taxonomy
-    $requiredProps = @('Name', 'Id', 'Terms')
-
-    foreach ($prop in $requiredProps) {
-        if (-not $json.PSObject.Properties.Name.Contains($prop)) {
-            $errors += "Missing required property: $prop"
+    if (-not $json.TermSetInfo) {
+        $errors += "Missing required property: TermSetInfo"
+    } else {
+        if (-not $json.TermSetInfo.Name) {
+            $errors += "TermSetInfo missing Name property"
+        }
+        if (-not $json.TermSetInfo.Id) {
+            $errors += "TermSetInfo missing Id property"
+        } else {
+            try {
+                [System.Guid]::Parse($json.TermSetInfo.Id) | Out-Null
+            }
+            catch {
+                $errors += "Invalid GUID format for TermSetInfo Id: $($json.TermSetInfo.Id)"
+            }
         }
     }
 
-    # Validate GUID format for Id
-    if ($json.Id) {
-        try {
-            [System.Guid]::Parse($json.Id) | Out-Null
-        }
-        catch {
-            $errors += "Invalid GUID format for Id: $($json.Id)"
-        }
+    if (-not $json.PSObject.Properties.Name.Contains('Terms')) {
+        $errors += "Missing required property: Terms"
     }
 
     # Validate Terms structure
@@ -307,7 +312,10 @@ function Test-IDOPLookupReferences {
     $allLists = @{}
     foreach ($file in $listFiles) {
         $json = Get-Content -Path $file.FullName -Raw | ConvertFrom-Json
-        $allLists[$json.InternalName] = $json
+        $listKey = if ($json.ListName) { $json.ListName } else { $json.InternalName }
+        if ($listKey) {
+            $allLists[$listKey] = $json
+        }
     }
 
     # Check lookup field references

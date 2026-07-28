@@ -9,13 +9,13 @@
 
 ## Data model
 - List: Customers (Khách hàng)
-	- Trường: CustomerName, CustomerType (taxonomy), Industry (taxonomy), Source (taxonomy), Contacts (lookup), Opportunities (lookup), ...
+	- Trường: CustomerName, CustomerType (taxonomy), Industry (taxonomy), Source (taxonomy), Contacts (lookup), Opportunities (lookup) và các trường thuộc tính khác.
 - List: Opportunities (Cơ hội)
-	- Trường: OpportunityName, Customer (lookup), Stage (choice), Value, ExpectedCloseDate, Status, ...
+	- Trường: OpportunityName, Customer (lookup), Stage (choice), Value, ExpectedCloseDate, Status và các trường thuộc tính khác.
 - List: Contacts (Liên hệ)
-	- Trường: ContactName, Role (taxonomy), Email, Phone, Customer (lookup), ...
+	- Trường: ContactName, Role (taxonomy), Email, Phone, Customer (lookup) và các trường thuộc tính khác.
 - List: Transactions (Giao dịch)
-	- Trường: TransactionName, Opportunity (lookup), Amount, Status, ApprovalState, ...
+	- Trường: TransactionName, Opportunity (lookup), Amount, Status, ApprovalState và các trường thuộc tính khác.
 - Chuẩn hóa các trường taxonomy: loại khách hàng, lĩnh vực, nguồn gốc, vai trò liên hệ.
 
 ## Flows

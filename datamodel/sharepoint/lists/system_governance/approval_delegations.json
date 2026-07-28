@@ -1,0 +1,13 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "ApprovalDelegations",
+  "Description": "Ủy quyền phê duyệt tạm thời khi vắng mặt",
+  "Columns": [
+    { "Name": "Delegator", "Type": "User", "Description": "Người ủy quyền" },
+    { "Name": "Delegatee", "Type": "User", "Description": "Người được ủy quyền" },
+    { "Name": "FromDate", "Type": "DateTime", "Description": "Thời điểm bắt đầu hiệu lực ủy quyền" },
+    { "Name": "ToDate", "Type": "DateTime", "Description": "Thời điểm kết thúc hiệu lực ủy quyền" },
+    { "Name": "IsActive", "Type": "YesNo", "Description": "Trạng thái kích hoạt ủy quyền" }
+  ],
+  "ContentTypes": []
+}

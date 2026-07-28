@@ -27,7 +27,7 @@
 	- RiskFlag (Choice: None/InfluenceLow/MissingRoles/StakeholderOpposition)
 	- RelatedContracts (Lookup: Contracts)
 	- RelatedProjects (Lookup: Projects)
-	- Audit fields (Created, Modified, ...)
+	- Audit fields (Created, Modified, Author, Editor, SystemVersion)
 
 ### List: OpportunityServices
 	- Opportunity (Lookup: Opportunities)

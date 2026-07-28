@@ -6,6 +6,9 @@
 "Columns": [
   { "Name": "EmployeeId", "Type": "Lookup",
     "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "ProjectId", "Type": "Lookup",
+    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" },
+    "DisplayName": "Dự án" },
   { "Name": "Date", "Type": "DateTime" },
   { "Name": "HoursWorked", "Type": "Number" },
   { "Name": "Notes", "Type": "Text" }

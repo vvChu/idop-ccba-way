@@ -1,0 +1,1908 @@
+metadata:
+  generated_at: '2026-07-28'
+  project: IDOP-CCBA-WAY
+  milestone: Milestone 2
+  description: Bi-directional cross-reference mapping matrix linking all 21 spec.md
+    files in specs/modules/ to exact Articles, Clauses, Sections in Governance Constitution
+    documents (.md/governance_constitution/) and System Blueprint files (.md/system_blueprint/).
+  total_spec_modules: 21
+  total_mapped_references: 259
+modules:
+- module_id: cash_data_allocations
+  domain: cash_data
+  spec_file: specs/modules/cash_data/allocations/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Allocations (Cơ chế Phân bổ Kinh phí 3 Tầng
+    & Quyết toán Hợp đồng)'
+  mapped_references_count: 12
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Thiết lập quy tắc phân bổ tài chính 3 tầng (3-Tier Financial Allocation
+      Mechanism) chính xác 100% theo Bảng 1 QCTK 2815 và QCCTNB 3209 cho tất cả các '
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 1.1 Mục tiêu
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'Thiết lập quy tắc phân bổ tài chính 3 tầng (3-Tier Financial Allocation
+      Mechanism) chính xác 100% theo Bảng 1 QCTK 2815 và QCCTNB 3209 cho tất cả các '
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Ma trận tỷ lệ giao khoán theo Bảng 1 QCTK 2815 cho 10 nhóm Hợp đồng kỹ
+      thuật (N1a, N1b, N2a, N2b, N2c, N2d, N2e, N2f, N2g, N3, N4).
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 11.1
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-ALC-03**: Là *Phòng Tài chính - Kế toán (TCKT Viện)*, tôi kiểm tra
+      và trình Lãnh đạo Viện phê duyệt Tờ phân phối quyết toán hợp đồng trong vòng
+      03 '
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 4.1 Quy trình Step 7 Quyết toán & Phân phối Kinh phí 3 Tầng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: '[Xác nhận Tiền về Tài khoản Viện] -> [Tra cứu Tỷ lệ Bảng 1 QCTK] ->
+      [Tính toán Tờ phân phối 3 Tầng] -> [TCKT & Lãnh đạo Viện Phê duyệt] -> [Chuyển
+      kho'
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa Step 7 Quyết toán & Phân phối Hợp đồng (`quyet_toan_thanh_ly`)
+      trong Chuỗi 7 bước nghiệp vụ IDOP.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Tích hợp 1-to-1 với SharePoint Lists: `AllocationRules` (`datamodel/sharepoint/lists/cash_data/allocation_rules.json`)
+      và `SharedCostAllocations` (`da'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 11 (Step 7 Operational Flow)*: Quyết toán và phân phối hợp đồng.
+      TCKT giải ngân trong vòng không quá 03 ngày làm việc kể từ khi đủ hồ sơ chứng
+      từ'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: cash_data_expenses
+  domain: cash_data
+  spec_file: specs/modules/cash_data/expenses/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Expenses (Quản lý Chi phí Dự án & Định mức
+    Chi tiêu Nội bộ)'
+  mapped_references_count: 13
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 12.4
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Đảm bảo 100% các khoản chi tuân thủ tuyệt đối định mức chi tiêu nội bộ
+      tại QCCTNB 3209 (tiền lương, bảo hiểm, ăn ca, đồng phục, công tác phí, hội nghị
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: Điều 12.4
+    section_context: 1.1 Mục tiêu
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: Đảm bảo 100% các khoản chi tuân thủ tuyệt đối định mức chi tiêu nội bộ
+      tại QCCTNB 3209 (tiền lương, bảo hiểm, ăn ca, đồng phục, công tác phí, hội nghị
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 2.1 User Stories
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'US-EXP-02**: Là *Kế toán viên CCBA / Phòng TCKT Viện*, tôi muốn kiểm
+      tra `ExpenseChecklists` để đảm bảo đầy đủ hóa đơn hợp pháp và đúng định mức
+      QCCTN'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 4.1 Quy trình Quản lý & Phê duyệt Chi phí Dự án
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: Kế toán đối soát định mức QCCTNB 3209.
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'AC-EXP-03**: Mọi khoản chi công tác phí vượt quá 500.000đ/ngày phụ cấp
+      lưu trú hoặc chi đồng phục vượt 5.000.000đ/năm phải bị hệ thống tự động chặn
+      và'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Tích hợp 1-to-1 với SharePoint Lists: `Expenses` (`datamodel/sharepoint/lists/cash_data/expenses.json`)
+      và `ExpenseChecklists` (`datamodel/sharepoint/'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Chi trả tiền mặt trực tiếp từ thủ quỹ (chỉ quản lý hồ sơ đề nghị thanh
+      toán và chứng từ trên IDOP).
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Kiểm soát rủi ro tài chính và lưu vết chứng từ chi phí điện
+      tử trên nền tảng IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: cash_data_finance
+  domain: cash_data
+  spec_file: specs/modules/cash_data/finance/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Finance (Quản lý Kế hoạch Tài chính, Hóa đơn
+    & Đối tác)'
+  mapped_references_count: 12
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 11
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Quản lý toàn bộ Kế hoạch tài chính (`FinancialPlans`), Quy trình Yêu
+      cầu và Phát hành Hóa đơn GTGT (Step 6 Nghiệm thu & Xuất hóa đơn theo Điều 11
+      QCTK
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 'List 1: `FinancialPlans` (`datamodel/sharepoint/lists/cash_data/financial_plans.json`)'
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: '| `PlanName` | Text | Yes | - | Tên kế hoạch tài chính (ví dụ: Kế hoạch
+      Tài chính CCBA năm 2026) |'
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa 100% Step 6 Nghiệm thu & Xuất hóa đơn (`nghiem_thu_xuat_hoa_don`)
+      trong Chuỗi 7 bước nghiệp vụ IDOP.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Tích hợp 1-to-1 với 7 SharePoint Lists: `FinancialPlans`, `InvoiceRequests`,
+      `OutgoingInvoices`, `InputInvoices`, `BankAccounts`, `Vendors`, `Document'
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 2.1 User Stories
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'US-FIN-05**: Là *Ban Giám đốc (BGD Viện/CCBA)*, tôi xem Kế hoạch Tài
+      chính năm (`FinancialPlans`) và báo cáo tổng hợp hóa đơn đầu ra/đầu vào trên
+      IDOP'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 11.1 (Step 6 Operational Flow - Nghiệm thu & Xuất hóa đơn)*:'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Số hóa quy trình quản lý hóa đơn và đối soát công nợ tự động
+      trên IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: cash_data
+  domain: cash_data
+  spec_file: specs/modules/cash_data/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Tổng Thể Module: Cash Data (Quản lý Dòng tiền & Tài
+    chính Tập trung)'
+  mapped_references_count: 20
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 11, Điều 12
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Số hóa 100% Step 6 Nghiệm thu (`nghiem_thu_xuat_hoa_don`) theo Điều 11
+      QCTK 2815 và Step 7 Quyết toán (`quyet_toan_thanh_ly`) theo Điều 12 & Bảng 1
+      QC
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 1.1 Mục tiêu
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: Đảm bảo tuân thủ tuyệt đối các định mức chi tiêu nội bộ tại QCCTNB 3209,
+      quy định hạch toán hạch toán kế toán và quản lý công nợ, bảo toàn vốn Nhà nướ
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 11.1
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-CSH-02**: Là *Phòng Tài chính - Kế toán (TCKT Viện)*, tôi muốn kiểm
+      tra chứng từ hoàn chỉnh, xuất hóa đơn tài chính GTGT, hạch toán tiền về và thực'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 4.1 Quy trình Nghiệm thu, Xuất Hóa đơn (Step 6) & Quyết toán
+      Phân phối 3 Tầng (Step 7)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Căn cứ Bảng 1 QCTK 2815, TCKT trình Lãnh đạo Viện ký Tờ phân phối Hợp
+      đồng:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 11.1
+    section_context: 4.1 Quy trình Nghiệm thu, Xuất Hóa đơn (Step 6) & Quyết toán
+      Phân phối 3 Tầng (Step 7)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Trong vòng không quá 03 ngày làm việc kể từ khi đủ hồ sơ tiền về, TCKT
+      thực hiện chuyển tiền giải ngân cho CCBA và PM (Điều 11.1 QCTK 2815).
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Điều 11.1
+    section_context: 4.1 Quy trình Nghiệm thu, Xuất Hóa đơn (Step 6) & Quyết toán
+      Phân phối 3 Tầng (Step 7)
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: Trong vòng không quá 03 ngày làm việc kể từ khi đủ hồ sơ tiền về, TCKT
+      thực hiện chuyển tiền giải ngân cho CCBA và PM (Điều 11.1 QCTK 2815).
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 5.2 Tiêu chí Chấp nhận Tổng thể (Acceptance Criteria)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'AC-CSH-02**: Mọi giao dịch tài chính bắt buộc tuân thủ đúng tỷ lệ giao
+      khoán Bảng 1 QCTK 2815 và định mức chi QCCTNB 3209.'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 5.2 Tiêu chí Chấp nhận Tổng thể (Acceptance Criteria)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'AC-CSH-02**: Mọi giao dịch tài chính bắt buộc tuân thủ đúng tỷ lệ giao
+      khoán Bảng 1 QCTK 2815 và định mức chi QCCTNB 3209.'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Quản lý toàn bộ vòng đời tài chính, dòng tiền (Cash Flow), kế hoạch ngân
+      sách, hóa đơn đầu vào/đầu ra, chi phí dự án và cơ chế phân bổ kinh phí 3 tầng
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa 100% Step 6 Nghiệm thu (`nghiem_thu_xuat_hoa_don`) theo Điều 11
+      QCTK 2815 và Step 7 Quyết toán (`quyet_toan_thanh_ly`) theo Điều 12 & Bảng 1
+      QC
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tích hợp liên thông 10 SharePoint Lists tài chính với các module `contracts`,
+      `projects`, `pmo`.
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Chi trả lương trực tiếp qua ATM Ngân hàng (chỉ quản lý bảng phân bổ và
+      chứng từ thanh toán trên IDOP).
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 2.1 User Stories
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'US-CSH-05**: Là *Ban Giám đốc (BGD Viện/CCBA)*, tôi truy xuất báo cáo
+      tài chính tổng thể, tỷ lệ thu hồi nợ, doanh thu thực hiện và dòng tiền tồn quỹ
+      t'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 11 (Quyết toán thanh lý Hợp đồng - Step 6 & Step 7 Operational
+      Flow)*:'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Minh bạch dòng tiền và quản lý tài chính tập trung trên nền
+      tảng IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Danh mục SharePoint Lists thuộc Module `cash_data`
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Danh mục SharePoint Lists thuộc Module `cash_data
+- module_id: people_assets_assets
+  domain: people_assets
+  spec_file: specs/modules/people_assets/assets/spec.md
+  spec_title: 'Module: People & Assets - Assets (Quản lý Tài sản, Thiết bị BIM & Nhật
+    ký Bảo trì)'
+  mapped_references_count: 8
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 18 (Quản lý Tài sản số & Trang thiết bị)*: Quy định quy trình bàn
+      giao, bảo quản tài sản công, đăng ký thiết bị BIM và nhật ký bảo trì số trên
+      ID'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Danh sách `Assets` (`lists/people_assets/assets.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
+      / Taxonomy Mapping | Business Rules & Validation |'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 6.2. Cấu trúc Audit Trail & Lưu vết Kiểm toán Nội bộ
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Báo cáo kiểm kê tài sản hàng năm được đối chiếu trực tiếp giữa danh mục
+      `Assets` trên IDOP và thực tế kiểm kê tại công trường.
+- module_id: people_assets_hr
+  domain: people_assets
+  spec_file: specs/modules/people_assets/hr/spec.md
+  spec_title: 'Module: People & Assets - HR (Quản lý Nhân sự & Bảng chấm công)'
+  mapped_references_count: 8
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 4.2. Diễn giải Quy trình Nghiệp vụ & Tích hợp Cơ chế Tài chính
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: '5. **Bước 5: Tích hợp Tài chính**: Dữ liệu `Timesheets` được chuyển
+      sang module Cash & Data để KHTC tính chi phí nhân công thực tế vào Hợp đồng
+      theo đ'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Danh sách `Employees` (`lists/people_assets/employees.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
+      / Taxonomy Mapping | Business Rules & Validation |'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 6.2. Cấu trúc Audit Trail & Lưu vết Kiểm toán Nội bộ
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Mọi thao tác thêm/sửa/xóa hồ sơ nhân sự, hợp đồng và chấm công đều ghi
+      vết tự động thông qua các trường hệ thống SharePoint (`Created`, `CreatedBy`,
+      `
+- module_id: performance_okrs_performance
+  domain: performance_okrs
+  spec_file: specs/modules/performance_okrs/performance/spec.md
+  spec_title: 'Module: Performance & OKRs - Performance (Đánh giá Hiệu suất OKR/KPI
+    & Quỹ thưởng Tầng 3)'
+  mapped_references_count: 12
+  governance_constitution_references:
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'Mục tiêu**: Quản lý và theo dõi mục tiêu chiến lược (Objectives) và
+      kết quả then chốt (Key Results) cấp Trung tâm, Phòng ban và Cá nhân theo từng
+      Quý '
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Mục tiêu**: Quản lý và theo dõi mục tiêu chiến lược (Objectives) và
+      kết quả then chốt (Key Results) cấp Trung tâm, Phòng ban và Cá nhân theo từng
+      Quý '
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 4.1. Sơ đồ Quy trình Đánh giá OKR & Phân bổ Quỹ Thưởng Tầng 3
+      (Mermaid BPMN)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: G --> H[KHTC Cung cấp Tổng Quỹ Thưởng Sản xuất Tầng 3 QCCTNB 3209]
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 4.2. Diễn giải Quy trình Nghiệp vụ & Tích hợp Cơ chế Tài chính
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: KHTC xác định tổng giá trị Quỹ thưởng sản xuất Tầng 3 trích lập từ kết
+      quả kinh doanh quý theo QCCTNB 3209.
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: '[ ] Kết quả đánh giá OKR/KPI liên thông trực tiếp với thuật toán phân
+      bổ Quỹ thưởng sản xuất Tầng 3 theo QCCTNB 3209.'
+  system_blueprint_references:
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 12 (Đánh giá Hiệu suất & Quản trị Theo Mục tiêu)*: Bắt buộc áp
+      dụng phương pháp OKRs kết hợp KPI Scorecard trên nền tảng IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Danh sách `OKRSObjectives` (`lists/performance_okrs/okrs_objectives.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
+      / Taxonomy Mapping | Business Rules & Validation |'
+- module_id: performance_okrs_reports
+  domain: performance_okrs
+  spec_file: specs/modules/performance_okrs/reports/spec.md
+  spec_title: 'Module: Performance & OKRs - Reports (Báo cáo Hiệu suất & Phân tích
+    OKR/KPI)'
+  mapped_references_count: 9
+  governance_constitution_references:
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: Báo cáo tổng hợp xếp loại thi đua, hiệu suất đóng góp nhân sự và phân
+      bổ Quỹ thưởng sản xuất Tầng 3 theo QCCTNB 3209.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 4.1. Sơ đồ Quy trình Tổng hợp Báo cáo Hiệu suất (Mermaid BPMN)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: C --> D[KHTC Kết xuất Số liệu Quỹ Thưởng Tầng 3 QCCTNB 3209]
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: '[ ] Báo cáo phân bổ Quỹ thưởng sản xuất Tầng 3 liên thông chính xác
+      với số liệu tài chính trích lập từ QCCTNB 3209.'
+  system_blueprint_references:
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 12 & Điều 24 (Hệ thống Báo cáo Quản trị IDOP)*: Bắt buộc chuẩn
+      hóa hệ thống báo cáo hiệu suất tự động, không sử dụng báo cáo thủ công qua file
+      rả'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Aggregated List Mapping cho Báo cáo Hiệu suất
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Báo cáo Performance & OKRs tích hợp dữ liệu từ các SharePoint List JSON
+      sau:'
+- module_id: process_execution_cde_documents
+  domain: process_execution
+  spec_file: specs/modules/process_execution/cde_documents/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: CDE Documents (Quản lý Tài liệu Môi trường
+    Dữ liệu Chung CDE)'
+  mapped_references_count: 10
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 9.8
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-CDE-05**: Là *Phòng Tổ chức - Hành chính (TCHC Viện)*, tôi tiếp nhận
+      danh mục tài liệu hoàn thành, thiết lập ngày hết hạn lưu trữ (`RetentionUntil`'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tích hợp 1-to-1 với SharePoint List `CDEDocuments` (`datamodel/sharepoint/lists/process_execution/cde_documents.json`).
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Lưu trữ trực tiếp các tệp tin binary bản vẽ dung lượng lớn trong SharePoint
+      List (chỉ lưu URL/Link kết nối tới SharePoint Document Library / OneDrive '
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Bắt buộc áp dụng tiêu chuẩn CDE/ISO 19650 trong quản lý tài
+      liệu dự án BIM trên nền tảng IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'AC-CDE-01**: `Title` bắt buộc nhập. Trường `FileUrl` bắt buộc chứa liên
+      kết URL hợp lệ chỉ tới SharePoint/OneDrive.'
+- module_id: process_execution_contracts
+  domain: process_execution
+  spec_file: specs/modules/process_execution/contracts/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Contracts (Quản lý Ký kết & Lưu trữ Hợp đồng
+    Kinh tế)'
+  mapped_references_count: 14
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 6
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Số hóa 100% Step 2 Trình ký Hợp đồng (`trinh_ky_hd`) trong Chuỗi 7 bước
+      nghiệp vụ IDOP theo đúng quy định tại Điều 6 QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 6.1
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Phân loại thẩm quyền ký kết Hợp đồng theo hạn mức và loại hình (Điều
+      6.1 QCTK 2815): HĐ Nhóm 1, HĐ Kỹ thuật phức tạp, HĐ giá trị lớn (>= 2 tỷ kiểm
+      địn'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 6.3
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Quy trình lưu trữ hợp đồng trong vòng 30 ngày kể từ ngày ký đủ các bên
+      (Điều 6.3 QCTK 2815).
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 9.6
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-CON-03**: Là *Phòng Kế hoạch - Kỹ thuật (KHKT Viện)*, tôi muốn thẩm
+      tra tính hợp lệ, đầy đủ của hồ sơ pháp lý, ký tắt xác nhận trong vòng 01 ngày
+      l'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 6.3
+    section_context: 4.1 Quy trình Step 2 Trình ký Hợp đồng (`trinh_ky_hd`)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Nộp lưu trữ đúng quy định tại Điều 6.3 QCTK 2815.
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa 100% Step 2 Trình ký Hợp đồng (`trinh_ky_hd`) trong Chuỗi 7 bước
+      nghiệp vụ IDOP theo đúng quy định tại Điều 6 QCTK 2815.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tích hợp 1-to-1 với SharePoint List `Contracts` (`datamodel/sharepoint/lists/process_execution/contracts.json`).
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Áp dụng ký số Hợp đồng điện tử trên hệ thống IDOP và lưu trữ
+      tập trung.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'AC-CON-02**: Trường `CustomerId` bắt buộc liên kết với 01 bản ghi hợp
+      lệ trong SharePoint List `Customers`.'
+- module_id: process_execution_lessons_learned
+  domain: process_execution
+  spec_file: specs/modules/process_execution/lessons_learned/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Lessons Learned (Quản lý Bài học Kinh nghiệm
+    & Kiểm tra Nội bộ)'
+  mapped_references_count: 17
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 10
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Số hóa 100% Step 5 Kiểm tra nội bộ (`kiem_tra_noi_bo`) trong Chuỗi 7
+      bước nghiệp vụ IDOP theo đúng quy định tại Điều 10 QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 10
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Quy trình Kiểm tra nội bộ định kỳ/đột xuất theo Điều 10 QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 14
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Xử lý kỷ luật cán bộ vi phạm (thực hiện theo Hội đồng Kỷ luật Viện quy
+      định tại Điều 14 QCTK 2815).
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 10
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-LL-02**: Là *Đoàn Kiểm tra Nội bộ Viện (KHKT, TCKT, TCHC)*, tôi muốn
+      lập bản ghi bài học kinh nghiệm sau khi phát hiện sai sót trong đợt kiểm tra
+      đ'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 10
+    section_context: 4.1 Quy trình Step 5 Kiểm tra Nội bộ & Ghi nhận Lessons Learned
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: '[Thực hiện Kiểm tra Nội bộ (Điều 10 QCTK)] -> [Lập Biên bản Kiểm tra]
+      -> [Nhận diện Bài học / Cải tiến] -> [Nhập bản ghi Lessons Learned] -> [TPM/BGD '
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa 100% Step 5 Kiểm tra nội bộ (`kiem_tra_noi_bo`) trong Chuỗi 7
+      bước nghiệp vụ IDOP theo đúng quy định tại Điều 10 QCTK 2815.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tích hợp 1-to-1 với SharePoint List `LessonsLearned` (`datamodel/sharepoint/lists/process_execution/lessons_learned.json`).
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 10 (Kiểm tra Nội bộ - Step 5 Operational Flow)*:'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Xây dựng văn hóa học tập liên tục và chia sẻ tri thức số trên
+      hạ tầng IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 4.1 Quy trình Step 5 Kiểm tra Nội bộ & Ghi nhận Lessons Learned
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '[Thực hiện Kiểm tra Nội bộ (Điều 10 QCTK)] -> [Lập Biên bản Kiểm tra]
+      -> [Nhận diện Bài học / Cải tiến] -> [Nhập bản ghi Lessons Learned] -> [TPM/BGD '
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 4.1 Quy trình Step 5 Kiểm tra Nội bộ & Ghi nhận Lessons Learned
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Bản ghi được công khai trên kho tri thức IDOP để toàn thể VCNLĐ truy
+      cập tra cứu.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'AC-LL-03**: Khi bản ghi `LessonsLearned` được phê duyệt, hệ thống hỗ
+      trợ tính năng tìm kiếm full-text theo từ khóa `Description` trên giao diện IDOP.'
+- module_id: process_execution_pmo
+  domain: process_execution
+  spec_file: specs/modules/process_execution/pmo/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: PMO (Quản lý Phân công Công việc & Phiếu Giao
+    việc PGV)'
+  mapped_references_count: 17
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 7
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Số hóa 100% Step 3 Giao việc (`giao_viec_pgv`) trong Chuỗi 7 bước nghiệp
+      vụ IDOP theo đúng quy định tại Điều 7 QCTK 2815 với 4 luồng phê duyệt PGV riê
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 7.1
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Quy trình 4 luồng giao việc (Điều 7.1 QCTK 2815):'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 7.4
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Phân định thẩm quyền và điều kiện của các chức danh (Điều 7.4-7.6 QCTK
+      2815): Người chỉ đạo HĐ, Đơn vị chủ trì/phối hợp, Chủ trì HĐ, Chủ trì kỹ thuật '
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Xác định tỷ lệ phân chia giá trị giao việc giữa các đơn vị/cá nhân theo
+      Bảng 1 QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 7.7
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Điều 7.7 (Kinh phí giao thực hiện)*: Theo Bảng 1 QCTK 2815.'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 4.1 Quy trình Step 3 Giao việc (`giao_viec_pgv`) 4 Luồng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Nhập tỷ lệ phân chia kinh phí thực hiện theo Bảng 1 QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 7.1
+    section_context: 4.1 Quy trình Step 3 Giao việc (`giao_viec_pgv`) 4 Luồng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Thực hiện trình ký và phê duyệt theo đúng 4 Luồng quy định tại Điều 7.1.c
+      QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'AC-PMO-04**: Tỷ lệ giao khoán trên PGV không được vượt quá định mức
+      tại Bảng 1 QCTK 2815 đối với từng nhóm Hợp đồng.'
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa 100% Step 3 Giao việc (`giao_viec_pgv`) trong Chuỗi 7 bước nghiệp
+      vụ IDOP theo đúng quy định tại Điều 7 QCTK 2815 với 4 luồng phê duyệt PGV riê
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Tích hợp 1-to-1 với 3 SharePoint Lists: `JobAssignments`, `AssignmentDetails`,
+      `Activities`.'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 2.1 User Stories
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'US-PMO-01**: Là *Chủ trì Hợp đồng / PM*, tôi muốn soạn Phiếu đề nghị
+      giao việc và Quyết định giao việc trên IDOP để phân công nhân sự và xác định
+      tỷ l'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Nguyên tắc trách nhiệm cá nhân và giải trình đơn nhất của Chủ
+      trì HĐ/PM trên hệ thống IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: process_execution_projects
+  domain: process_execution
+  spec_file: specs/modules/process_execution/projects/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Projects (Quản lý Thực thi Dự án & 5 Luồng
+    Quản lý)'
+  mapped_references_count: 17
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 8 & 9
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Số hóa 100% Step 4 Thực hiện (`thuc_hien_du_an`) trong Chuỗi 7 bước nghiệp
+      vụ IDOP theo đúng quy định tại Điều 8 & 9 QCTK 2815 với 5 luồng quản lý thự
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 8 & 9
+    section_context: 1.2 Phạm vi
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Quy trình 5 Luồng Quản lý Thực hiện Hợp đồng (Điều 8 & 9 QCTK 2815):'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Điều 3.2, Điều 4.3, Điều 8.5
+    section_context: 1.2 Phạm vi
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Luồng 5*: Mô hình Quản lý Tập trung CCBA (Điều 3.2.p, Điều 4.3, Điều
+      8.5).'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 9.1
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-PRJ-03**: Là *Trưởng phòng Chuyên môn (TPM CCBA)*, tôi kiểm soát
+      giải pháp kỹ thuật, duyệt kế hoạch ứng phó rủi ro (`MitigationPlan`) và chịu
+      trách'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Điều 9.1
+    section_context: 2.1 User Stories
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'US-PRJ-03**: Là *Trưởng phòng Chuyên môn (TPM CCBA)*, tôi kiểm soát
+      giải pháp kỹ thuật, duyệt kế hoạch ứng phó rủi ro (`MitigationPlan`) và chịu
+      trách'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 9.6
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-PRJ-05**: Là *Phòng Kế hoạch - Kỹ thuật (KHKT Viện)*, tôi kiểm tra
+      định kỳ hoặc đột xuất tiến độ, khối lượng và chất lượng thực hiện các dự án
+      (Điề'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Quản lý chi phí ngân sách dự án (`Budget`) trong phạm vi kinh phí giao
+      khoán tại Bảng 1 QCTK 2815.
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 4.1 Quy trình Step 4 Thực hiện Dự án (`thuc_hien_du_an`) 5 Luồng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: '└───> [Luồng 5: Mô hình Tập trung CCBA] ───> GĐ CCBA Trực tiếp Điều
+      hành ────┘'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 10
+    section_context: 4.1 Quy trình Step 4 Thực hiện Dự án (`thuc_hien_du_an`) 5 Luồng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Hoàn thành sản phẩm kỹ thuật, chuẩn bị hồ sơ cho Step 5 Kiểm tra nội
+      bộ (Điều 10 QCTK 2815).
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa 100% Step 4 Thực hiện (`thuc_hien_du_an`) trong Chuỗi 7 bước nghiệp
+      vụ IDOP theo đúng quy định tại Điều 8 & 9 QCTK 2815 với 5 luồng quản lý thự
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Tích hợp 1-to-1 với 4 SharePoint Lists: `Projects`, `ProjectHistory`,
+      `ProjectIssues`, `ProjectRisks`.'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Áp dụng quy chuẩn số IDOP trong theo dõi và giám sát tiến độ
+      thực thi dự án.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: process_execution_work_packages
+  domain: process_execution
+  spec_file: specs/modules/process_execution/work_packages/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Work Packages (Quản lý Gói Công việc & Cấu
+    trúc Phân chia WBS)'
+  mapped_references_count: 8
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Khởi tạo và phân chia gói công việc thuộc Dự án theo các chuyên ngành
+      (BIM Architecture, Structure, MEP, QA/QC, Thử nghiệm, Kiểm định).
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tích hợp 1-to-1 với SharePoint List `WorkPackages` (`datamodel/sharepoint/lists/process_execution/work_packages.json`).
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Chuẩn hóa quy trình giao việc theo gói WBS để đo lường hiệu
+      suất công việc trên IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: strategy_crm_crm
+  domain: strategy_crm
+  spec_file: specs/modules/strategy_crm/crm/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: CRM (Quản lý Quan hệ Khách hàng)'
+  mapped_references_count: 9
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026 (Quyết định ban hành năm 2026)**:'
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Thiết lập nền tảng dữ liệu khách hàng liên thông với chu trình 7 bước
+      nghiệp vụ IDOP: CRM → Trình ký HĐ → PGV → Thực thi → Kiểm tra nội bộ → Nghiệm
+      th'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3 (Nguyên tắc quản trị cốt trị)*: Trách nhiệm giải trình đơn nhất
+      của Trưởng phòng/PM trong việc giao tiếp và lưu trữ dữ liệu thông tin khách
+      hàn'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 4.1 Quy trình Tiếp nhận & Xử lý Thông tin Khách hàng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '2. **Bước 2: Kiểm tra trùng lặp (Deduplication)**: Kiểm tra `TaxCode`,
+      `CustomerName`, `Phone` trên SharePoint List `Customers` để tránh tạo trùng.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 6.2 Nhật ký Kiểm toán (Audit Trail)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| `SystemVersion` | Integer | Số phiên bản ghi nhận thay đổi (SharePoint
+      Versioning enabled) |'
+- module_id: strategy_crm_lead_capture
+  domain: strategy_crm
+  spec_file: specs/modules/strategy_crm/lead_capture/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Lead Capture (Tiếp nhận & Chuyển đổi Khách
+    hàng Tiềm năng)'
+  mapped_references_count: 8
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.2 Phạm vi
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tích hợp Microsoft Forms webhook / Power Automate đẩy dữ liệu nộp form
+      trực tiếp vào SharePoint List `Leads`.
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3 (Ứng dụng công nghệ số)*: Bắt buộc thu thập dữ liệu Lead qua
+      cổng số IDOP/MS Forms để minh bạch hóa pipeline bán hàng.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 4.1 Quy trình Xử lý & Chuyển đổi Lead
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '1. **Bước 1: Tiếp nhận Lead tự động**: Dữ liệu từ MS Form gửi qua Power
+      Automate flow, tạo bản ghi mới trong list `Leads` với `Status = "New"`.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: strategy_crm_opportunities
+  domain: strategy_crm
+  spec_file: specs/modules/strategy_crm/opportunities/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Opportunities (Quản lý Cơ hội Kinh doanh &
+    Đấu thầu)'
+  mapped_references_count: 14
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 5
+    section_context: 1.1 Mục tiêu
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Số hóa Step 1 Đấu thầu (`dot_thau`) trong Chuỗi 7 bước nghiệp vụ IDOP
+      theo đúng quy định tại Điều 5 QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 5.1
+    section_context: 2.1 User Stories
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'US-OPP-03**: Là *Phòng Kế hoạch - Kỹ thuật (KHKT Viện)*, tôi nhận thông
+      báo về Cơ hội mới, thực hiện thẩm tra tư cách pháp nhân và báo cáo Lãnh đạo
+      Vi'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: Điều 5.1
+    section_context: 4.1 Quy trình Step 1 Đấu thầu (`dot_thau`) & Quản lý Cơ hội
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: '2. **Bước 1.2: Đăng ký Đơn vị Đầu mối (Điều 5.1.c QCTK 2815)**:'
+  system_blueprint_references:
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Số hóa Step 1 Đấu thầu (`dot_thau`) trong Chuỗi 7 bước nghiệp vụ IDOP
+      theo đúng quy định tại Điều 5 QCTK 2815.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1.1 Mục tiêu
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Tự động tạo cấu trúc Thư mục Hồ sơ thầu (Bidding Folder) trên SharePoint/OneDrive,
+      phân công nhóm dự thầu (Bid Team) và liên kết chặt chẽ dữ liệu Cơ h
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 5.1 (Đấu thầu & Tìm kiếm việc làm - Step 1 Operational Flow)*:'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 3*: Minh bạch thông tin dự thầu và lưu trữ tập trung Hồ sơ thầu
+      số trên hạ tầng CDE/IDOP.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4.1 Quy trình Step 1 Đấu thầu (`dot_thau`) & Quản lý Cơ hội
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Sau khi Lãnh đạo Viện chấp thuận, hệ thống tự động gọi API tạo thư mục
+      Bidding Folder trên SharePoint.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 'List 1: `Opportunities` (`datamodel/sharepoint/lists/strategy_crm/opportunities.json`)'
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| `BiddingFolderDriveItemId` | Text | No | - | ID thư mục Hồ sơ thầu
+      trên OneDrive/SharePoint |'
+- module_id: strategy_crm_potential_projects
+  domain: strategy_crm
+  spec_file: specs/modules/strategy_crm/potential_projects/spec.md
+  spec_title: 'Đặc Tả Kỹ Thuật Module: Potential Projects (Quản lý Tiềm năng Dự án)'
+  mapped_references_count: 6
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815 (Quyết định số 2815/QĐ-VKH ngày 01/12/2025)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209 (Quyết định số 3209/QĐ-VKH ngày 31/12/2025)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 4.1 Quy trình Quản lý & Chuyển đổi Tiềm năng Dự án
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Khi Hợp đồng Kinh tế chính thức được ký kết (Step 2 Hợp đồng trong 7
+      bước IDOP), người dùng bấm "Chuyển đổi sang Dự án".
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.1 Bảng Áp dụng Dữ liệu 1-1 (SharePoint List Mapping)
+- module_id: system_governance_approvals
+  domain: system_governance
+  spec_file: specs/modules/system_governance/approvals/spec.md
+  spec_title: 'Module: System Governance - Approvals (Engine Trình ký, Phê duyệt Đa
+    cấp & Polymorphic Soft Key)'
+  mapped_references_count: 15
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'Mục tiêu**: Xây dựng Engine trình ký và phê duyệt đa cấp dùng chung
+      cho toàn bộ hệ thống IDOP-CCBA-WAY. Áp dụng mô hình **Polymorphic Soft Key**
+      thông'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Mục tiêu**: Xây dựng Engine trình ký và phê duyệt đa cấp dùng chung
+      cho toàn bộ hệ thống IDOP-CCBA-WAY. Áp dụng mô hình **Polymorphic Soft Key**
+      thông'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 2.1. User Stories theo 5 Phòng Ban & 3 Chức danh CCBA
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: Là Kế toán Trưởng, tôi muốn nhận thông báo trình ký các phiếu đề nghị
+      thanh toán, hóa đơn (`Invoice`) và phê duyệt theo hạn mức quy định tại QCCTNB
+      32
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: '[ ] Quy trình phê duyệt hỗ trợ linh hoạt 05 cấp duyệt theo chuẩn QCTK
+      2815.'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 2. Danh sách `ApprovalWorkflows` (`lists/system_governance/approval_workflows.json`)
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: '| `Steps` | Số cấp phê duyệt | Number | No | N/A | Tổng số bước duyệt
+      (VD: 5 cho luồng 5 cấp QCTK 2815) |'
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 6.2. Cấu trúc Audit Trail & Lưu vết Kiểm toán Nội bộ
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Mọi quyết định phê duyệt đều lưu kèm SHA-256 Checksum hash của tài liệu
+      trình ký để đảm bảo tính toàn vẹn tài liệu kiểm toán theo QCTK 2815.
+  system_blueprint_references:
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Mục tiêu**: Xây dựng Engine trình ký và phê duyệt đa cấp dùng chung
+      cho toàn bộ hệ thống IDOP-CCBA-WAY. Áp dụng mô hình **Polymorphic Soft Key**
+      thông'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 5, 6, 7, 8 & 10 (Hệ thống Kiểm soát Nội bộ 05 Cấp)*: Bắt buộc mọi
+      hồ sơ dịch vụ kỹ thuật (Dự toán, Hợp đồng, Phiếu giao việc, Hồ sơ nghiệm thu,
+      T'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 15 (Trình ký Số & Ủy quyền Phê duyệt)*: Quy định giá trị pháp lý
+      của chữ ký số/luồng phê duyệt IDOP và điều kiện ủy quyền công tác (`ApprovalDele'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Danh sách `Submissions` (`lists/system_governance/submissions.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
+      / Taxonomy Mapping | Business Rules & Validation |'
+- module_id: system_governance_forms
+  domain: system_governance
+  spec_file: specs/modules/system_governance/forms/spec.md
+  spec_title: 'Module: System Governance - Forms (Biểu mẫu Động & Cấu hình Hệ thống)'
+  mapped_references_count: 17
+  governance_constitution_references:
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 2.1. User Stories theo 5 Phòng Ban & 3 Chức danh CCBA
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: Là Kế toán Trưởng, tôi muốn tùy chỉnh biểu mẫu đề nghị thanh toán, phiếu
+      thu/chi và kiểm soát các trường bắt buộc nhập theo đúng định mức QCCTNB 3209.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 2.1. User Stories theo 5 Phòng Ban & 3 Chức danh CCBA
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: Là PM, tôi muốn sử dụng biểu mẫu khởi tạo dự án và giao việc chuẩn hóa
+      theo đúng mẫu quy định tại QCTK 2815.
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Mục tiêu**: Quản lý engine biểu mẫu động (Dynamic Forms) và cấu hình
+      hệ thống (System Settings) phục vụ nhập liệu chuẩn hóa trên nền tảng IDOP-CCBA-WA'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Định nghĩa quy tắc validation, định dạng hiển thị và ánh xạ dữ liệu 1-1
+      với SharePoint JSON schemas.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 4 & Điều 8 (Chuẩn hóa Biểu mẫu Kỹ thuật số)*: Bắt buộc 100% hồ
+      sơ, chứng từ, phiếu giao việc và báo cáo phải sử dụng đúng định dạng biểu mẫu
+      điện'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4.1. Sơ đồ Quy trình Định nghĩa & Hiển thị Biểu mẫu Động (Mermaid
+      BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: A[Admin Thiết lập Schema Form trong DynamicForms] --> B[Cấu hình Field
+      Rules & Validations]
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4.1. Sơ đồ Quy trình Định nghĩa & Hiển thị Biểu mẫu Động (Mermaid
+      BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: D --> E[Người dùng Nhập dữ liệu & Kiểm tra Validation Client-side]
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4.1. Sơ đồ Quy trình Định nghĩa & Hiển thị Biểu mẫu Động (Mermaid
+      BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: F -->|Có| H[Đẩy Dữ liệu vào SharePoint Target List 1-to-1]
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 4.2. Diễn giải Quy trình Nghiệp vụ & Tích hợp Cơ chế Tài chính
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '4. **Bước 4: Submit & Ánh xạ Dữ liệu**: Dữ liệu sau khi kiểm tra hợp
+      lệ được ghi trực tiếp vào SharePoint List tương ứng (VD: Form Hợp đồng ghi vào
+      `C'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Danh sách `EnvironmentVariables` (`lists/system_governance/environment_variables.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
+      / Taxonomy Mapping | Business Rules & Validation |'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 2. Danh sách `DynamicForms` (`lists/system_governance/dynamic_forms.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| `TargetList` | Danh sách mục tiêu | Text | No | N/A | Tên danh sách
+      SharePoint mục tiêu ánh xạ dữ liệu |'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 6.2. Cấu trúc Audit Trail & Lưu vết Kiểm toán Nội bộ
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Mọi thay đổi về cấu hình Form, thêm trường mới hoặc sửa đổi quy tắc Validation
+      đều được ghi phiên bản (Versioning) và lưu log chi tiết `ModifiedBy`, `
+- module_id: system_governance_governance
+  domain: system_governance
+  spec_file: specs/modules/system_governance/governance/spec.md
+  spec_title: 'Module: System Governance - Governance (Quản trị Hệ thống, Tham số
+    & Phân quyền)'
+  mapped_references_count: 13
+  governance_constitution_references:
+  - document: 01_qctk_2815_project_management.md
+    document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
+    article_clause: QCTK 2815 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
+    excerpt: 'QCTK 2815/QĐ-VKH (Quy chế Triển khai)**:'
+  - document: 02_qcctnb_3209_financial_norms.md
+    document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
+    article_clause: QCCTNB 3209 Rules
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
+    excerpt: 'QCCTNB 3209/QĐ-VKH (Quy chế Chi tiêu Nội bộ)**:'
+  - document: 03_ccba_charter_2026.md
+    document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
+    article_clause: Quy chế CCBA 2026
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
+    excerpt: 'Quy chế CCBA 2026**:'
+  system_blueprint_references:
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Mục tiêu**: Đảm bảo toàn bộ hệ thống IDOP-CCBA-WAY vận hành ổn định,
+      an toàn, tuân thủ kiến trúc Hub & Spoke và các quy định bảo mật thông tin. Quản
+      l'
+  - document: 01_idop_v2_architecture.md
+    document_title: IDOP v2.0 F1 Kiến trúc Tổng quan
+    section: Phần III & IV Kiến trúc 8 lớp
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Quản lý và thiết lập biến môi trường (`EnvironmentVariables`) cho toàn
+      bộ 6 module của IDOP.
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Mục tiêu & Phạm vi (Goal & Scope)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Quản trị ma trận phân quyền bảo mật 5 phòng ban + 3 chức danh CCBA trên
+      SharePoint Online & Power Platform.
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 3. Cơ sở Pháp lý & Quy chế Áp dụng
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 'Điều 1 & Điều 24 (Quản trị Vận hành IDOP)*: Quy định thẩm quyền của
+      Ban Giám đốc và Bộ phận Quản trị Hệ thống trong việc cài đặt biến môi trường,
+      bảo '
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+  - document: 02_idop_v2_operations_finance.md
+    document_title: IDOP v2.0 F2 Vận hành & Tài chính 7 Bước
+    section: Phần IX Quy trình vận hành 7 bước
+    section_context: 4.2. Diễn giải Quy trình Nghiệp vụ & Tích hợp Cơ chế Tài chính
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '3. **Bước 3: Tự động Đồng bộ**: Các ứng dụng trong hệ thống IDOP đọc
+      trực tiếp biến từ `EnvironmentVariables` để áp dụng công thức và logic tính
+      toán '
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '[ ] Ma trận phân quyền RBAC được cấu hình chuẩn xác trên SharePoint
+      Groups và Azure AD App Roles.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '[ ] Bộ từ khóa Taxonomy (CCBA Taxonomy) được quản lý tập trung và áp
+      dụng đồng nhất trên tất cả 52 SharePoint Lists.'
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: 5.2. Bảng Mapping 1-to-1 Chi tiết với SharePoint List JSON
+  - document: 03_idop_v2_technical_implementation.md
+    document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
+    section: Phần XII Yêu cầu kỹ thuật & Flows
+    section_context: 1. Danh sách `EnvironmentVariables` (`lists/system_governance/environment_variables.json`)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
+      / Taxonomy Mapping | Business Rules & Validation |'

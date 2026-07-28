@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/sp-list.schema.json",
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   "ListName": "Activities",
   "Description": "Hoạt động CRM/Marketing/R&D/Admin",
   "Columns": [

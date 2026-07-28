@@ -8,6 +8,16 @@ IDOP-CCBA-WAY is a digital operations platform (IDOP - Integrated Digital Operat
 
 This is a **scaffold repository** (reduced from 1.3GB+ to 7.5MB) containing core components for deploying the platform, including SharePoint datamodels, taxonomy definitions, and automation scripts.
 
+## Governance Knowledge Base
+
+AI Agents working in this repository MUST read `.md/workspace_context.yaml` first when starting a working session to load project bootstrap information, document hierarchy, and initial reading sequences.
+
+The Knowledge Base in `.md/` is structured into two core document groups:
+- **`governance_constitution`** (`.md/governance_constitution/`): Immutable legal regulations and governance rules (QCTK 2815 - Quy chế quản lý dự án, QCCTNB 3209 - Quy chế chi tiêu nội bộ, Điều lệ CCBA, and Quy chế KHCN IBST).
+- **`system_blueprint`** (`.md/system_blueprint/`): Evolvable system design requirements and operational blueprints (IDOP v2.0 F1-F4).
+
+When requiring the legal basis or governance source for any module/specification located in `specs/modules/`, AI Agents MUST look up `.md/cross_references.yaml` to trace specs back to their underlying governance rules.
+
 ## Architecture Overview
 
 The platform has 6 core modules:

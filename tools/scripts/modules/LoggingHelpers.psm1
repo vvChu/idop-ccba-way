@@ -91,7 +91,7 @@ function Write-IDOPHeader {
         [char]$Char = '='
     )
 
-    $line = $Char * $Title.Length
+    $line = [string]$Char * $Title.Length
     Write-Host ""
     Write-Host $Title -ForegroundColor $script:Colors.Accent
     Write-Host $line -ForegroundColor $script:Colors.Muted

@@ -1,0 +1,17 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "SystemSettings",
+  "Description": "Tham số cấu hình ứng dụng và thiết lập hệ thống",
+  "Columns": [
+    { "Name": "SettingKey", "Type": "Text", "Required": true, "Description": "Khoá tham số cấu hình hệ thống" },
+    { "Name": "SettingValue", "Type": "Text", "Description": "Giá trị tham số cấu hình" },
+    {
+      "Name": "Category",
+      "Type": "Choice",
+      "Choices": ["UI", "Finance", "Workflow", "Security"],
+      "Description": "Phân loại nhóm tham số cấu hình"
+    },
+    { "Name": "IsEncrypted", "Type": "YesNo", "Description": "Cờ đánh dấu mã hóa giá trị tham số" }
+  ],
+  "ContentTypes": []
+}

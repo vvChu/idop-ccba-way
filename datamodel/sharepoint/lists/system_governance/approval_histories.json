@@ -1,0 +1,24 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "ApprovalHistories",
+  "Description": "Nhật ký lưu vết thao tác và lịch sử phê duyệt",
+  "Columns": [
+    {
+      "Name": "SubmissionId",
+      "Type": "Lookup",
+      "Lookup": { "List": "Submissions", "Field": "ID", "Behavior": "restrict" },
+      "Description": "Hồ sơ trình ký liên quan"
+    },
+    { "Name": "StepNumber", "Type": "Number", "Description": "Thứ tự cấp duyệt" },
+    { "Name": "Approver", "Type": "User", "Description": "Người thực hiện phê duyệt" },
+    {
+      "Name": "Action",
+      "Type": "Choice",
+      "Choices": ["Approve", "Reject", "Delegate", "RequestInfo"],
+      "Description": "Hành động phê duyệt"
+    },
+    { "Name": "Comment", "Type": "Text", "Description": "Ý kiến phê duyệt hoặc lý do từ chối" },
+    { "Name": "Timestamp", "Type": "DateTime", "Description": "Thời điểm ghi nhận thao tác" }
+  ],
+  "ContentTypes": []
+}

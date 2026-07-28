@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/sp-list.schema.json",
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   "ListName": "CDEDocuments",
   "Description": "Chỉ mục tài liệu CDE theo dự án, quản lý siêu dữ liệu & liên kết đến thư mục/URL thực tế.",
   "Columns": [
