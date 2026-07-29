@@ -81,6 +81,15 @@
       "DisplayName": "Mức độ ưu tiên"
     },
     {
+      "Name": "FundingSource",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NguonVon"
+      },
+      "DisplayName": "Nguồn vốn dự án"
+    },
+    {
       "Name": "Stage",
       "Type": "Choice",
       "Choices": [

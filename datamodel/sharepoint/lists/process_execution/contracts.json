@@ -53,6 +53,15 @@
       "DisplayName": "Nhóm HĐKT chính (Phụ lục 7)"
     },
     {
+      "Name": "CooperatingDepartment",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_DonViPhongBan"
+      },
+      "DisplayName": "Đơn vị phối hợp (Viện IBST)"
+    },
+    {
       "Name": "Status",
       "Type": "ManagedMetadata",
       "TermSet": {

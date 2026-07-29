@@ -46,6 +46,24 @@
       "DisplayName": "Trạng thái"
     },
     {
+      "Name": "CooperatingDepartment",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_DonViPhongBan"
+      },
+      "DisplayName": "Đơn vị phối hợp"
+    },
+    {
+      "Name": "FundingSource",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NguonVon"
+      },
+      "DisplayName": "Nguồn vốn"
+    },
+    {
       "Name": "StartDate",
       "Type": "DateTime"
     },
