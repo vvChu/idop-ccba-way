@@ -1,0 +1,180 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_NhomHopDongKT",
+    "Id": "e58b1001-923f-4e0a-b312-7da381909a41",
+    "Description": "10 Nhóm Hợp đồng kinh tế và định mức tỷ lệ phân bổ chi phí theo Phụ lục 7 & Phụ lục 8 QCCTNB 3209",
+    "CreatedDate": "2026-07-29T13:51:00.000Z",
+    "LastModifiedDate": "2026-07-29T13:51:00.000Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "a1010001-1111-4000-8000-000000000001",
+      "Name": "N1a - Giám định XD ＆ Sự cố theo yêu cầu CQCN",
+      "IsRoot": true,
+      "PathOfTerm": "N1a - Giám định XD ＆ Sự cố theo yêu cầu CQCN",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N1a",
+        "TyLeGiaoDonVi": "96.00",
+        "TyLeVienCPQL": "2.00",
+        "TyLeVienKHTS": "2.00",
+        "KhungNhanCongMin": "0",
+        "KhungNhanCongMax": "100"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010002-2222-4000-8000-000000000002",
+      "Name": "N2a - TVQLDA, TV Đầu tư XD ＆ CGCN",
+      "IsRoot": true,
+      "PathOfTerm": "N2a - TVQLDA, TV Đầu tư XD ＆ CGCN",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2a",
+        "TyLeGiaoDonVi": "91.00",
+        "TyLeVienCPQL": "7.00",
+        "TyLeVienKHTS": "2.00",
+        "KhungNhanCongMin": "50.00",
+        "KhungNhanCongMax": "65.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010003-3333-4000-8000-000000000003",
+      "Name": "N2b - Chứng nhận HCHQ ＆ Hiệu chuẩn thiết bị",
+      "IsRoot": true,
+      "PathOfTerm": "N2b - Chứng nhận HCHQ ＆ Hiệu chuẩn thiết bị",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2b",
+        "TyLeGiaoDonVi": "85.00",
+        "TyLeVienCPQL": "13.00",
+        "TyLeVienKHTS": "2.00",
+        "KhungNhanCongMin": "50.00",
+        "KhungNhanCongMax": "65.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010004-4444-4000-8000-000000000004",
+      "Name": "N2c - Tập huấn ＆ Đào tạo",
+      "IsRoot": true,
+      "PathOfTerm": "N2c - Tập huấn ＆ Đào tạo",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2c",
+        "TyLeGiaoDonVi": "85.00",
+        "TyLeVienCPQL": "13.00",
+        "TyLeVienKHTS": "2.00",
+        "KhungNhanCongMin": "50.00",
+        "KhungNhanCongMax": "65.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010005-5555-4000-8000-000000000005",
+      "Name": "N2d - Khảo sát XD, Kiểm định CLCT, Quan trắc ＆ TN hiện trường",
+      "IsRoot": true,
+      "PathOfTerm": "N2d - Khảo sát XD, Kiểm định CLCT, Quan trắc ＆ TN hiện trường",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2d",
+        "TyLeGiaoDonVi": "87.00",
+        "TyLeVienCPQL": "8.00",
+        "TyLeVienKHTS": "5.00",
+        "KhungNhanCongMin": "30.00",
+        "KhungNhanCongMax": "55.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010006-6666-4000-8000-000000000006",
+      "Name": "N2e - Thí nghiệm VL hiện trường ＆ Cấu kiện trong phòng",
+      "IsRoot": true,
+      "PathOfTerm": "N2e - Thí nghiệm VL hiện trường ＆ Cấu kiện trong phòng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2e",
+        "TyLeGiaoDonVi": "82.00",
+        "TyLeVienCPQL": "8.00",
+        "TyLeVienKHTS": "10.00",
+        "KhungNhanCongMin": "30.00",
+        "KhungNhanCongMax": "55.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010007-7777-4000-8000-000000000007",
+      "Name": "N2f - Thí nghiệm VL trong phòng",
+      "IsRoot": true,
+      "PathOfTerm": "N2f - Thí nghiệm VL trong phòng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2f",
+        "TyLeGiaoDonVi": "74.00",
+        "TyLeVienCPQL": "16.00",
+        "TyLeVienKHTS": "10.00",
+        "KhungNhanCongMin": "25.00",
+        "KhungNhanCongMax": "40.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010008-8888-4000-8000-000000000008",
+      "Name": "N2g - Thí nghiệm đặc thù (Chịu lửa, Bao che, Khí động, Động đất)",
+      "IsRoot": true,
+      "PathOfTerm": "N2g - Thí nghiệm đặc thù (Chịu lửa, Bao che, Khí động, Động đất)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N2g",
+        "TyLeGiaoDonVi": "91.00",
+        "TyLeVienCPQL": "6.00",
+        "TyLeVienKHTS": "3.00",
+        "KhungNhanCongMin": "40.00",
+        "KhungNhanCongMax": "55.00"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010009-9999-4000-8000-000000000009",
+      "Name": "N3 - Thi công xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "N3 - Thi công xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N3",
+        "TyLeGiaoDonVi": "95.00",
+        "TyLeVienCPQL": "4.50",
+        "TyLeVienKHTS": "0.50",
+        "KhungNhanCongMin": "0",
+        "KhungNhanCongMax": "100"
+      },
+      "Children": []
+    },
+    {
+      "Id": "a1010010-0000-4000-8000-000000000010",
+      "Name": "N4 - Cung ứng vật tư, máy móc, thiết bị",
+      "IsRoot": true,
+      "PathOfTerm": "N4 - Cung ứng vật tư, máy móc, thiết bị",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {
+        "NhomCode": "N4",
+        "TyLeGiaoDonVi": "96.00",
+        "TyLeVienCPQL": "3.50",
+        "TyLeVienKHTS": "0.50",
+        "KhungNhanCongMin": "10.00",
+        "KhungNhanCongMax": "30.00"
+      },
+      "Children": []
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 10,
+    "TotalTermsWithChildren": 0,
+    "MaxDepth": 0,
+    "ExportDate": "2026-07-29 13:51:00"
+  }
+}

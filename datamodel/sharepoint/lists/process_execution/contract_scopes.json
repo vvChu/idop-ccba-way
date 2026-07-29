@@ -1,0 +1,81 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "ContractScopes",
+  "Description": "Hạng mục chi tiết thuộc Hợp đồng theo Nhóm HĐKT (Phụ lục 7 & Phụ lục 8 QCCTNB 3209)",
+  "Columns": [
+    {
+      "Name": "ContractId",
+      "Type": "Lookup",
+      "Required": true,
+      "Lookup": {
+        "List": "Contracts",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Hợp đồng"
+    },
+    {
+      "Name": "NhomHopDongKT",
+      "Type": "ManagedMetadata",
+      "Required": true,
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NhomHopDongKT"
+      },
+      "DisplayName": "Nhóm HĐKT (Phụ lục 7)"
+    },
+    {
+      "Name": "ScopeName",
+      "Type": "Text",
+      "Required": true,
+      "DisplayName": "Tên hạng mục / Gói công việc"
+    },
+    {
+      "Name": "AmountBeforeVAT",
+      "Type": "Number",
+      "Required": true,
+      "DisplayName": "Giá trị trước thuế (VND)"
+    },
+    {
+      "Name": "TyLeGiaoDonVi",
+      "Type": "Number",
+      "DisplayName": "Tỷ lệ giao đơn vị (%)"
+    },
+    {
+      "Name": "GiaTriGiaoDonVi",
+      "Type": "Number",
+      "DisplayName": "Kinh phí giao đơn vị (VND)"
+    },
+    {
+      "Name": "TyLeVienCPQL",
+      "Type": "Number",
+      "DisplayName": "Tỷ lệ Viện CPQL (%)"
+    },
+    {
+      "Name": "GiaTriVienCPQL",
+      "Type": "Number",
+      "DisplayName": "Kinh phí Viện CPQL (VND)"
+    },
+    {
+      "Name": "TyLeVienKHTS",
+      "Type": "Number",
+      "DisplayName": "Tỷ lệ Viện KHTS (%)"
+    },
+    {
+      "Name": "GiaTriVienKHTS",
+      "Type": "Number",
+      "DisplayName": "Kinh phí Viện KHTS (VND)"
+    },
+    {
+      "Name": "KhungNhanCongMin",
+      "Type": "Number",
+      "DisplayName": "Khung Nhân công Min (%)"
+    },
+    {
+      "Name": "KhungNhanCongMax",
+      "Type": "Number",
+      "DisplayName": "Khung Nhân công Max (%)"
+    }
+  ],
+  "ContentTypes": []
+}

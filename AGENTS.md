@@ -113,7 +113,7 @@ Agent sử dụng duy nhất CLI Wrapper `idop.ps1` từ root folder:
 # 2. Kiểm tra & Validate Schema/Lookups/Taxonomy
 .\idop.ps1 validate datamodel
 
-# 3. Import 19 Taxonomy Term Sets vào Term Store CCBA
+# 3. Import 20 Taxonomy Term Sets vào Term Store CCBA
 .\idop.ps1 taxonomy import -Environment IDOP
 
 # 4. Triển khai 57 SharePoint Lists (DryRun hoặc Deploy thật)

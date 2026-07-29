@@ -44,6 +44,15 @@
       "Type": "Number"
     },
     {
+      "Name": "PrimaryContractGroup",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NhomHopDongKT"
+      },
+      "DisplayName": "Nhóm HĐKT chính (Phụ lục 7)"
+    },
+    {
       "Name": "Status",
       "Type": "ManagedMetadata",
       "TermSet": {
