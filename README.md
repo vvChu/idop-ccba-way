@@ -189,11 +189,11 @@ pwsh -NoProfile -ExecutionPolicy Bypass `
 Some DryRun scripts still need to read from SharePoint (e.g., navigation pruning, bidding folders preview). Connect once, then run the script:
 
 ```powershell
-# Connect to the target site (e.g., Dev)
-Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
+# Connect to the IDOP Operations Engine (Interactive mode — dùng Interactive ClientId)
+Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
 
 # Navigation DryRun preview with pruning
-& .\tools\scripts\deployment\sync-sp-navigation.ps1 -Environment Dev -Location Top -Prune -DryRun
+& .\tools\scripts\deployment\sync-sp-navigation.ps1 -Environment IDOP -Location Top -Prune -DryRun
 
 # Bidding folders DryRun preview with CSV output (uses defaults)
 & .\tools\scripts\deployment\opportunity-bidding-folders.ps1 -DryRun -ReportCsv .\bidding_dryrun.csv

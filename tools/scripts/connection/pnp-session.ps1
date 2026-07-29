@@ -96,7 +96,7 @@ function Get-IdopPnPConnection {
           if ($tempConfig -and $tempConfig.ClientId) { $cId = $tempConfig.ClientId }
         }
       } catch {}
-      if (-not $cId) { $cId = '90ded6f0-b787-4b3c-acea-8baf6403fd63' }
+      if (-not $cId) { $cId = '90ded6f0-b787-4b3c-acea-8baf6403fd63' } # Interactive fallback
     }
     try {
       $connection = Connect-PnPOnline -Url $Url -Interactive -ClientId $cId -ReturnConnection

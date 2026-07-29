@@ -46,41 +46,41 @@ The platform uses a unified CLI wrapper for all operations. Use `idop.ps1` inste
 .\idop.ps1 help
 
 # Connect to SharePoint environment
-.\idop.ps1 connect -Environment Dev
+.\idop.ps1 connect -Environment IDOP
 ```
 
 ### Deployment Commands
 
 ```powershell
 # Deploy SharePoint Lists (dry-run first)
-.\idop.ps1 deploy lists -Environment Dev -DryRun
-.\idop.ps1 deploy lists -Environment Dev
+.\idop.ps1 deploy lists -Environment IDOP -DryRun
+.\idop.ps1 deploy lists -Environment IDOP
 
 # Deploy specific lists only
-.\idop.ps1 deploy lists -Environment Dev -OnlyLists projects,contracts
+.\idop.ps1 deploy lists -Environment IDOP -OnlyLists projects,contracts
 
 # Deploy by module
-.\idop.ps1 deploy lists -Environment Dev -Module strategy_crm
+.\idop.ps1 deploy lists -Environment IDOP -Module strategy_crm
 
 # Deploy navigation
-.\idop.ps1 deploy navigation -Environment Dev -Prune -DryRun
+.\idop.ps1 deploy navigation -Environment IDOP -Prune -DryRun
 
 # Deploy lead capture workflow
-.\idop.ps1 deploy lead-capture -Environment Prod
+.\idop.ps1 deploy lead-capture -Environment IDOP
 ```
 
 ### Taxonomy Management
 
 ```powershell
 # Import taxonomy (dry-run first)
-.\idop.ps1 taxonomy import -Environment Dev -DryRun
-.\idop.ps1 taxonomy import -Environment Dev
+.\idop.ps1 taxonomy import -Environment IDOP -DryRun
+.\idop.ps1 taxonomy import -Environment IDOP
 
 # Export taxonomy
-.\idop.ps1 taxonomy export -Environment Dev
+.\idop.ps1 taxonomy export -Environment IDOP
 
 # Audit taxonomy usage
-.\idop.ps1 taxonomy audit -Environment Dev
+.\idop.ps1 taxonomy audit -Environment IDOP
 ```
 
 ### Validation
@@ -114,11 +114,11 @@ The platform uses a unified CLI wrapper for all operations. Use `idop.ps1` inste
 You can also run scripts directly:
 
 ```powershell
-# Establish a reusable PnP session
-Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
+# Establish a reusable PnP session (Interactive mode — dùng Interactive ClientId)
+Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
 
 # Use the call operator (&) to run scripts in the same session
-& .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment Dev -DryRun
+& .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment IDOP -DryRun
 ```
 
 **Important**: Don't start a new PowerShell process (e.g., `pwsh -File`) for scripts that need PnP connection—use the call operator `&` from the same shell where you ran `Connect-PnPOnline`.
@@ -193,25 +193,29 @@ All environment configuration is centralized in `tools/config/environments.psd1`
 
 ```powershell
 # Load configuration
-$config = Get-IDOPConfig -Environment Dev
+$config = Get-IDOPConfig -Environment IDOP
 
 # Access properties
-$config.SharePointUrl     # https://ibstbim.sharepoint.com/sites/idop-dev
-$config.ClientId          # 90ded6f0-b787-4b3c-acea-8baf6403fd63
+$config.SharePointUrl     # https://ibstbim.sharepoint.com/sites/idop
+$config.ClientId          # c055c7a4-9150-4bd5-bf01-445c65467feb
+$config.TenantId          # d7aa4978-363e-47aa-a77e-7da957b32bf3
 $config.Paths.DataModelLists  # datamodel/sharepoint/lists
 ```
 
 **Don't hardcode environment values** - always use `Get-IDOPConfig`.
 
-### Environment URLs
+### Environment Architecture (Single Production)
 
-- **Dev**: `https://ibstbim.sharepoint.com/sites/idop-dev`
-- **Test**: `https://ibstbim.sharepoint.com/sites/idop-test`
-- **Prod**: `https://ibstbim.sharepoint.com/sites/idop-prod`
+| Tầng | URL |
+|:---|:---|
+| 🌐 Portal | `https://ibstbim.sharepoint.com/` |
+| ⚙️ IDOP Engine | `https://ibstbim.sharepoint.com/sites/idop` |
+| 🏗️ CDE | `https://ibstbim.sharepoint.com/sites/iCDE` |
 
-### Client ID
+### App Registration
 
-All scripts use the same Entra App Client ID: `90ded6f0-b787-4b3c-acea-8baf6403fd63`
+- **Primary (AppOnly)**: `c055c7a4-9150-4bd5-bf01-445c65467feb` — Certificate-based, dùng cho CLI & CI/CD
+- **Interactive fallback**: `90ded6f0-b787-4b3c-acea-8baf6403fd63` — Browser-based, dùng cho developer
 
 ### Field Naming
 

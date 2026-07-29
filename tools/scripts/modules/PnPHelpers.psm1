@@ -21,7 +21,7 @@ function Get-IDOPConfig {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
-        [ValidateSet('Dev', 'Test', 'Prod')]
+        [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
         [string]$Environment = 'Dev'
     )
 
@@ -54,7 +54,7 @@ function Connect-IDOPSharePoint {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
-        [ValidateSet('Dev', 'Test', 'Prod')]
+        [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
         [string]$Environment = 'Dev',
 
         [Parameter(Mandatory = $false)]

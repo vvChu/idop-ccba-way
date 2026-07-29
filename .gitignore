@@ -9,6 +9,10 @@ target/
 !.vscode/tasks.json
 .venv/
 .env
+*.pfx
+*.cer
+*.pem
+*.key
 coverage/
 *.zip
 *.tar

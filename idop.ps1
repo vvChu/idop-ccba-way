@@ -35,8 +35,8 @@ param(
     [string]$SubCommand,
 
     [Parameter(Mandatory = $false)]
-    [ValidateSet('Dev', 'Test', 'Prod')]
-    [string]$Environment = 'Dev',
+    [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
+    [string]$Environment = 'IDOP',
 
     [Parameter(Mandatory = $false)]
     [switch]$DryRun,

@@ -172,25 +172,26 @@ Environment configuration is centralized in `tools/config/environments.psd1`:
 ```powershell
 @{
     Common = @{
-        ClientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-        TenantId = "ibstbim.onmicrosoft.com"
+        ClientId = "c055c7a4-9150-4bd5-bf01-445c65467feb"
+        TenantId = "d7aa4978-363e-47aa-a77e-7da957b32bf3"
+        TenantDomain = "ibstbim.onmicrosoft.com"
     }
 
-    Dev = @{
-        SharePointUrl = "https://ibstbim.sharepoint.com/sites/idop-dev"
+    IDOP = @{
+        SharePointUrl = "https://ibstbim.sharepoint.com/sites/idop"
         AllowDestructiveOperations = $true
     }
 
-    # ... Test, Prod ...
+    # ... Dev, Test, Prod (legacy) ...
 }
 ```
 
 Access via `Get-IDOPConfig`:
 
 ```powershell
-$config = Get-IDOPConfig -Environment Dev
-$config.SharePointUrl  # https://ibstbim.sharepoint.com/sites/idop-dev
-$config.ClientId       # 90ded6f0-b787-4b3c-acea-8baf6403fd63
+$config = Get-IDOPConfig -Environment IDOP
+$config.SharePointUrl  # https://ibstbim.sharepoint.com/sites/idop
+$config.ClientId       # c055c7a4-9150-4bd5-bf01-445c65467feb
 ```
 
 ## Best Practices
