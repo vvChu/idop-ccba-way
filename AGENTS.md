@@ -68,7 +68,7 @@ Khi tạo code, script hoặc đề xuất bất kỳ giải pháp nào, Agent *
    - Tương tác với Viện chỉ ghi nhận dưới dạng **Status Fields** (như `Submitted_to_IBST`, `IBST_Approved`, `IBST_Disbursed`).
 
 2. **Metadata-First & 5TB Master Storage Offloading**:
-   - 57 SharePoint Lists trên `sites/idop` **CHỈ lưu Metadata (Text, Numbers, Lookups, Taxonomy & URL Links)**. Dung lượng toàn bộ 57 lists < 5GB.
+   - 58 SharePoint Lists trên `sites/idop` **CHỈ lưu Metadata (Text, Numbers, Lookups, Taxonomy & URL Links)**. Dung lượng toàn bộ 58 lists < 5GB.
    - **CẤM đính kèm file binary trực tiếp** vào SharePoint List Items để bảo vệ 2TB SharePoint Tenant Quota.
    - File chính thức (PDF, HSMT/HSDT, Scan HĐ, Hóa đơn) được tự động phân luồng sang **5TB Master OneDrive (`ccba@ibst-bim.vn`)** theo 5 thư mục module (`01_Bidding`, `02_Contracts`, `03_Finance`, `04_HR_Assets`, `05_Projects`).
 
@@ -97,7 +97,7 @@ Khi mới bắt đầu một phiên làm việc, Agent nên đọc tài liệu t
 4. .md/system_blueprint/05_ccba_ibst_boundary_map.md ──► Bản đồ ranh giới CCBA ↔ Viện IBST & 7 bước
 5. .md/system_blueprint/07_m365_storage_and_offloading_architecture.md ──► Kiến trúc lưu trữ 5TB
 6. specs/modules/<module>/<submodule>/spec.md   ──► Đặc tả chi tiết từng tính năng
-7. datamodel/sharepoint/lists/                  ──► 57 JSON Schemas thực tế của SharePoint Lists
+7. datamodel/sharepoint/lists/                  ──► 58 JSON Schemas thực tế của SharePoint Lists
 ```
 
 ---
@@ -116,7 +116,7 @@ Agent sử dụng duy nhất CLI Wrapper `idop.ps1` từ root folder:
 # 3. Import 20 Taxonomy Term Sets vào Term Store CCBA
 .\idop.ps1 taxonomy import -Environment IDOP
 
-# 4. Triển khai 57 SharePoint Lists (DryRun hoặc Deploy thật)
+# 4. Triển khai 58 SharePoint Lists (DryRun hoặc Deploy thật)
 .\idop.ps1 deploy lists -Environment IDOP -DryRun
 .\idop.ps1 deploy lists -Environment IDOP -Full
 

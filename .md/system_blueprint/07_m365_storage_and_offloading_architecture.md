@@ -15,8 +15,8 @@
 
 ### 1.2 Nguyên tắc "Metadata-First & Master Storage Offloading"
 1. **SharePoint `sites/idop` (Lightweight Engine)**:
-   - CHỈ lưu trữ dữ liệu Metadata dạng văn bản (Text, Numbers, Dates, Choice, Lookup, Taxonomy) trên 57 SharePoint Lists.
-   - **TÓC ĐỘ CẮT GIẢM**: Tuyệt đối không lưu đính kèm binary trực tiếp vào List Items. Dung lượng 57 lists dự kiến chỉ chiếm < 5GB cho hàng chục ngàn bản ghi.
+   - CHỈ lưu trữ dữ liệu Metadata dạng văn bản (Text, Numbers, Dates, Choice, Lookup, Taxonomy) trên 58 SharePoint Lists.
+   - **TÓC ĐỘ CẮT GIẢM**: Tuyệt đối không lưu đính kèm binary trực tiếp vào List Items. Dung lượng 58 lists dự kiến chỉ chiếm < 5GB cho hàng chục ngàn bản ghi.
 2. **Master Storage Hub (`ccba@ibst-bim.vn` - 5TB OneDrive)**:
    - Tận dụng tài khoản OneDrive Master 5TB chính thức của Trung tâm (`ccba@ibst-bim.vn`) làm kho lưu trữ tệp tin binary chính thức tập trung.
    - Khi cần thêm dung lượng trong tương lai, có thể nâng cấp gói M365/OneDrive mà không ảnh hưởng tới cấu trúc IDOP.
