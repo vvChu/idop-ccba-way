@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('Dev','Test','Prod')]
+  [ValidateSet('Dev','Test','Prod','IDOP')]
   [string]$Environment = 'Test',
   [ValidateSet('all','issues','changed')]
   [string]$Focus = 'all',

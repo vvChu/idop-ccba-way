@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('Dev','Test','Prod')]
+  [ValidateSet('Dev','Test','Prod','IDOP')]
   [string]$Environment = 'Test',
   [string[]]$Lists = @('Projects','Customers','Contacts','Submissions','Opportunities')
 )
