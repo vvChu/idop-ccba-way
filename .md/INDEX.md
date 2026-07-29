@@ -21,6 +21,8 @@ Hệ thống tài liệu gốc gồm 8 văn bản chính được chia làm 2 nh
 6. **`02_idop_v2_operations_finance.md`** - IDOP v2.0 F2: Quy trình Vận hành 7 Bước & Quản lý Tài chính (Operations & Finance).
 7. **`03_idop_v2_technical_implementation.md`** - IDOP v2.0 F3: Yêu cầu Kỹ thuật, Power Automate Flows & Copilot (Technical Implementation).
 8. **`04_idop_v2_enterprise_architecture.md`** - IDOP v2.0 F4: Kiến trúc Doanh nghiệp Mở rộng 10 Lớp & Taxonomy (Enterprise Architecture Extension).
+9. **`05_ccba_ibst_boundary_map.md`** - Bản đồ ranh giới hệ thống CCBA - IBST (Boundary Map).
+10. **`06_ccba_org_role_matrix.md`** - Ma trận Vai trò và Tổ chức CCBA (Org & Role Matrix).
 
 ---
 
@@ -123,6 +125,31 @@ Hệ thống tài liệu gốc gồm 8 văn bản chính được chia làm 2 nh
   - [2.3 - Lớp 10 (Mới): External Ecosystem Layer (Tích hợp Hệ thống Công)](system_blueprint/04_idop_v2_enterprise_architecture.md#23-lớp-10-mới---external-ecosystem-layer)
   - [Phần 3 - Dữ liệu & Taxonomy Mở rộng (7 SharePoint Lists KHCN)](system_blueprint/04_idop_v2_enterprise_architecture.md#phần-3-dữ-liệu--taxonomy-mở-rộng)
 
+#### 9. `05_ccba_ibst_boundary_map.md` (Bản đồ Ranh giới CCBA - IBST)
+- **Tóm tắt cốt lõi**: Phác thảo phạm vi ranh giới hệ thống nội bộ CCBA (IDOP) với đối ngoại Viện IBST. Gồm 6 phần chính: IDOP scope, quy trình đối ngoại 7 bước, vai trò Gateway của Phòng Tổng hợp qua 4 trục, quy trình 2 luồng Hợp đồng (Viện ký vs CCBA ký), quản trị định mức tài chính liên quan và quản lý nhiệm vụ KH&CN.
+- **Phạm vi ứng dụng**: Hướng dẫn cho Spec Authors và nhân sự CCBA hiểu rõ ranh giới tương tác hệ thống.
+- **Anchor Links tới các Phần quan trọng**:
+  - [Phần 1 - Nguyên tắc Thiết kế: IDOP = Nội bộ CCBA](system_blueprint/05_ccba_ibst_boundary_map.md#phần-1--nguyên-tắc-thiết-kế-idop--nội-bộ-ccba)
+  - [Phần 3 - Vai trò Gateway của Phòng Tổng Hợp](system_blueprint/05_ccba_ibst_boundary_map.md#phần-3--vai-trò-gateway-của-phòng-tổng-hợp-4-trục)
+  - [Phần 4 - 2 luồng HĐ (Viện ký vs CCBA ký)](system_blueprint/05_ccba_ibst_boundary_map.md#phần-4--2-luồng-hợp-đồng-viện-ký-vs-ccba-ký)
+
+#### 10. `06_ccba_org_role_matrix.md` (Ma trận Vai trò IDOP)
+- **Tóm tắt cốt lõi**: Nguồn sự thật duy nhất (SSOT) về cơ cấu tổ chức và ma trận vai trò cho hệ thống IDOP của CCBA. Cung cấp Sơ đồ tổ chức chuẩn hóa, ma trận quyền hành chi tiết theo 6 nhóm tính năng chính, ánh xạ quyền cho SharePoint và hướng dẫn bắt buộc cho Spec Authors trong việc tạo User Story.
+- **Phạm vi ứng dụng**: Dùng để tham chiếu chuẩn hóa khi thiết kế phân quyền hệ thống và viết chi tiết User Story.
+- **Anchor Links tới các Phần quan trọng**:
+  - [Phần 1 - Sơ đồ Tổ chức CCBA](system_blueprint/06_ccba_org_role_matrix.md#phần-1--sơ-đồ-tổ-chức-ccba)
+
+#### 11. `07_m365_storage_and_offloading_architecture.md` (Kiến trúc Lưu trữ Hạ tầng M365 & Chiến lược Phân luồng Dung lượng)
+- **Tóm tắt cốt lõi**: Giải quyết rào cản giới hạn dung lượng SharePoint Online (2TB Quota Limit) bằng nguyên tắc "Metadata-First & Master Storage Offloading". IDOP Engine trên SharePoint (`sites/idop`) chỉ lưu text/metadata nhẹ (<5GB), toàn bộ binary tệp tin lớn được phân luồng tự động về tài khoản Master OneDrive 5TB (`ccba@ibst-bim.vn`) theo 5 phân hệ nghiệp vụ (`01_Bidding`, `02_Contracts`, `03_Finance`, `04_HR_Assets`, `05_Projects`).
+- **Phạm vi ứng dụng**: Chuẩn lưu trữ và tự động hóa phân luồng cho toàn bộ tệp tin đính kèm trong hệ thống IDOP.
+- **Anchor Links tới các Phần quan trọng**:
+  - [Phần 1 - Bối cảnh & Nguyên tắc Tối ưu Dung lượng](system_blueprint/07_m365_storage_and_offloading_architecture.md#1-bối-cảnh--nguyên-tắc-tối-ưu-dung-lượng)
+  - [Phần 2 - Cấu trúc Cây Thư mục 5TB Master OneDrive](system_blueprint/07_m365_storage_and_offloading_architecture.md#2-cấu-trúc-cây-thư-mục-5tb-master-onedrive-ccbaibst-bimvn)
+  - [Phần 3 & 4 - Sơ đồ Luồng Tự động hóa & Bảng Ánh xạ Entity](system_blueprint/07_m365_storage_and_offloading_architecture.md#3-sơ-đồ-luồng-tự-động-hóa-power-automate--pnp-powershell)
+  - [Phần 5 - Quy trình Đóng băng & Lưu trữ theo Vòng đời](system_blueprint/07_m365_storage_and_offloading_architecture.md#5-quy-trình-đóng-băng--lưu-trữ-theo-vòng-đời-lifecycle-archiving)
+  - [Phần 2 - Ma trận Vai trò IDOP (Role Matrix)](system_blueprint/06_ccba_org_role_matrix.md#phần-2--ma-trận-vai-trò-idop-role-matrix)
+  - [Phần 4 - Hướng dẫn Spec Authors](system_blueprint/06_ccba_org_role_matrix.md#phần-4--hướng-dẫn-spec-authors)
+
 ---
 
 ## 3. MA TRẬN TRA CỨU NHANH (QUICK LOOKUP TABLE)
@@ -145,6 +172,8 @@ Hệ thống tài liệu gốc gồm 8 văn bản chính được chia làm 2 nh
 | **Danh mục 40+ Power Automate Flows & Validations** | `03_idop_v2_technical_implementation.md` | [Phần XII (12.6 & 12.7)](system_blueprint/03_idop_v2_technical_implementation.md#126-danh-mục-power-automate-flows-40) | Danh sách tên Flow, Trigger, Actions và các quy tắc Validation dữ liệu tài chính/quy trình |
 | **Tích hợp Trợ lý AI Copilot Agent vào IDOP** | `03_idop_v2_technical_implementation.md`<br>`03_ccba_charter_2026.md` | [F3 Section 12.5](system_blueprint/03_idop_v2_technical_implementation.md#125-yêu-cầu-copilotai)<br>[CCBA SOP 01](governance_constitution/03_ccba_charter_2026.md#sop-01-quy-trình-phát-triển-kinh-doanh--tự-động-hóa-nhập-liệu-copilot-agent) | Kiến trúc Copilot Studio, Prompts, Tự động hóa trích xuất hợp đồng và tạo Lead |
 | **Nâng cấp Kiến trúc Enterprise 10 Lớp & Taxonomy** | `04_idop_v2_enterprise_architecture.md` | [Phần 2 & 3](system_blueprint/04_idop_v2_enterprise_architecture.md#phần-2-kiến-trúc-enterprise-10-lớp) | Lớp Năng lực Nghiệp vụ (Lớp 3), Lớp Hệ sinh thái Bên ngoài (Lớp 10) & 7 SharePoint Lists mới |
+| **Tương tác Gateway CCBA - IBST (2 Luồng, 4 Trục)** | `05_ccba_ibst_boundary_map.md` | [Phần 3, 4](system_blueprint/05_ccba_ibst_boundary_map.md#phần-3--vai-trò-gateway-của-phòng-tổng-hợp-4-trục) | Tương tác 4 trục qua Phòng TH, ranh giới 2 luồng Hợp đồng (Viện ký vs CCBA ký) |
+| **Vai trò & Cơ cấu Tổ chức IDOP (SSOT)** | `06_ccba_org_role_matrix.md` | [Phần 1, 2](system_blueprint/06_ccba_org_role_matrix.md#phần-2--ma-trận-vai-trò-idop-role-matrix) | Sơ đồ tổ chức chuẩn hóa, ma trận quyền trên 6 module và quy tắc viết User Story |
 | **Bản đồ Tham chiếu 21 Phân hệ Chức năng (Specs)** | `cross_references.yaml` | [Full Matrix Mapping](cross_references.yaml) | Ma trận YAML kết nối 21 file spec.md với hơn 150+ Điều/Khoản trong 8 tài liệu gốc |
 
 ---

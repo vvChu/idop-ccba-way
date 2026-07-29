@@ -848,6 +848,12 @@ modules:
     topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
     excerpt: Số hóa 100% Step 2 Trình ký Hợp đồng (`trinh_ky_hd`) trong Chuỗi 7 bước
       nghiệp vụ IDOP theo đúng quy định tại Điều 6 QCTK 2815.
+  - document: 05_ccba_ibst_boundary_map.md
+    document_title: IDOP v2.0 F5 Bản đồ Ranh giới CCBA - IBST
+    section: Phần 4
+    section_context: 2 luồng HĐ (Viện ký vs CCBA ký)
+    topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
+    excerpt: Xác định quy trình trình ký Hợp đồng theo thẩm quyền Viện hoặc CCBA.
   - document: 03_idop_v2_technical_implementation.md
     document_title: IDOP v2.0 F3 Triển khai Kỹ thuật & Flows
     section: Phần XII Yêu cầu kỹ thuật & Flows
@@ -1906,3 +1912,9 @@ modules:
     topic: Thiết kế hệ thống, luồng dữ liệu & tự động hóa IDOP
     excerpt: '| Internal Field Name | Display Name | Field Type | Required | Lookup
       / Taxonomy Mapping | Business Rules & Validation |'
+  - document: 06_ccba_org_role_matrix.md
+    document_title: Ma trận Vai trò và Phân quyền Tổ chức CCBA
+    section: Ph?n 2 Role Matrix
+    section_context: Ma tr?n quy?n trn 6 module
+    topic: Phn quy?n h? th?ng
+    excerpt: 'Vai tr -> SharePoint Permission Groups'

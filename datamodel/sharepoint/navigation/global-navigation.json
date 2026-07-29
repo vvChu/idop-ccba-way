@@ -1,6 +1,13 @@
 {
   "Groups": [
     {
+      "Title": "Intranet Portal",
+      "Nodes": [
+        { "Title": "Trang chủ CCBA Portal", "Url": "https://ibstbim.sharepoint.com/" },
+        { "Title": "Quy chế & Tri thức", "Url": "https://ibstbim.sharepoint.com/SitePages/QuyCheTriThuc.aspx" }
+      ]
+    },
+    {
       "Title": "CRM",
       "Nodes": [
         { "Title": "Customers", "Url": "/sites/idop-{env}/Lists/Customers" },
@@ -10,10 +17,12 @@
       ]
     },
     {
-      "Title": "Projects",
+      "Title": "Projects & CDE",
       "Nodes": [
         { "Title": "Projects", "Url": "/sites/idop-{env}/Lists/Projects" },
-        { "Title": "CDE Documents", "Url": "/sites/idop-{env}/Lists/CDEDocuments" }
+        { "Title": "CDE Documents", "Url": "/sites/idop-{env}/Lists/CDEDocuments" },
+        { "Title": "iCDE System", "Url": "/sites/iCDE" },
+        { "Title": "Hồ sơ Mời thầu (OneDrive)", "Url": "https://ibstbim-my.sharepoint.com/:f:/g/personal/ccba_ibst-bim_vn/IgAtDFNJbUThRLib9LDlUVSvAdqbX7255GPQj4dIjHGnrzE?e=ccDiFK" }
       ]
     },
     {
