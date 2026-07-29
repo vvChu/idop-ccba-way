@@ -11,7 +11,7 @@
 ## Technical Tasks
 
 - [x] **Data Model Complete:** Projects, WorkPackages, ProjectHistory lists created with proper schema
-- [x] **Environment Setup:** Dev/Test environments configured with Client ID 90ded6f0-b787-4b3c-acea-8baf6403fd63
+- [x] **Environment Setup:** IDOP environment configured with Client ID c055c7a4-9150-4bd5-bf01-445c65467feb
 - [ ] Xây dựng API quản lý Project, WorkPackage, Milestone, ProjectHistory
 - [ ] Thiết lập Power Automate trigger phê duyệt, cảnh báo tiến độ, đóng dự án
 - [ ] Xây dựng data model Project, WorkPackage, Milestone, ProjectHistory
@@ -54,7 +54,7 @@
 ## Dependencies & Prerequisites
 
 - ✅ **SharePoint Site:** idop-dev.sharepoint.com and idop-test.sharepoint.com configured
-- ✅ **Client ID:** 90ded6f0-b787-4b3c-acea-8baf6403fd63 registered and authorized
+- ✅ **Client ID:** c055c7a4-9150-4bd5-bf01-445c65467feb registered and authorized
 - ✅ **PnP.PowerShell:** Module installed and configured
 - ✅ **Taxonomy:** TermStore deployed with project-related terms
 - ⏳ **Power Automate:** License and environment setup needed

@@ -21,24 +21,34 @@
 
 ## 2. User Stories & Ma trận Vai trò (Role Matrix)
 
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 4 (Hướng dẫn Spec Authors)
+
 ### 2.1 User Stories
-- **US-LC-01**: Là *Khách hàng tiềm năng*, tôi điền thông tin vào MS Form yêu cầu dịch vụ BIM để được tư vấn và nhận báo giá từ CCBA.
-- **US-LC-02**: Là *Chuyên viên Marketing/Kinh doanh CCBA*, tôi nhận thông báo có Lead mới, xem Lead Score để ưu tiên liên hệ tư vấn.
-- **US-LC-03**: Là *Trưởng phòng Chuyên môn (TPM CCBA)*, tôi muốn xem danh sách Leads thuộc lĩnh vực phòng mình để phân công cán bộ phụ trách (`AssignedTo`).
-- **US-LC-04**: Là *Chuyên viên phụ trách*, tôi chuyển đổi Lead đủ điều kiện (`Qualified`) thành `Customer` và `Opportunity` bằng một thao tác click.
-- **US-LC-05**: Là *Ban Giám đốc CCBA*, tôi xem báo cáo về số lượng Lead nhận được theo kênh, tỷ lệ chuyển đổi (`Conversion Rate`) và hiệu quả của các chuỗi email chăm sóc.
+| Mã US | Vai trò | Mô tả User Story | Tham chiếu |
+| :--- | :--- | :--- | :--- |
+| US-LC-01 | `ROLE_DEPUTY_DIRECTOR` — Phó Giám đốc Khối DV&KD | Với tư cách Phó Giám đốc Khối DV&KD, tôi muốn phân công xử lý các Lead trên IDOP để đảm bảo chỉ tiêu doanh số và phễu khách hàng | Phụ lục 01 Quy chế CCBA |
+| US-LC-02 | `ROLE_STAFF` — NLĐ | Với tư cách Viên chức NLĐ, tôi muốn tạo Lead trên IDOP trong phạm vi công việc của mình để ghi nhận thông tin khách hàng tiềm năng mới | QCTK 2815 |
+| US-LC-03 | `ROLE_HEAD_RD` — Trưởng phòng R&D | Với tư cách Trưởng phòng R&D, tôi muốn cập nhật thông tin Lead trên IDOP để hỗ trợ tư vấn kỹ thuật chuyên sâu (Pre-sales) | Phụ lục 01 Quy chế CCBA |
+| US-LC-04 | `ROLE_DIRECTOR` — Giám đốc Trung tâm | Với tư cách Giám đốc Trung tâm, tôi muốn xem và phê duyệt danh sách Lead quan trọng trên IDOP để định hướng chiến lược tiếp cận | Phụ lục 01 Quy chế CCBA |
+| US-LC-05 | `ROLE_HEAD_BIM_DESIGN` — Trưởng phòng BIM TK | Với tư cách Trưởng phòng BIM Thiết kế, tôi muốn tạo Lead trên IDOP khi có khách hàng quan tâm đến dịch vụ thiết kế để theo dõi cơ hội | Phụ lục 01 Quy chế CCBA |
+| US-LC-06 | `ROLE_PROJECT_MANAGER` — Chủ trì HĐ | Với tư cách Chủ trì HĐ, tôi muốn cập nhật trạng thái Lead do mình phụ trách trên IDOP để phản ánh đúng tình trạng liên hệ với khách hàng | QCTK 2815 |
 
 ### 2.2 Ma trận Vai trò (Role Matrix)
 
-| Vai trò / Phòng ban | Tạo mới (C) | Xem (R) | Cập nhật (U) | Xóa (D) | Phê duyệt (A) | Trích xuất (E) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Phòng Tổ chức - Hành chính (TCHC)** | - | R | - | - | - | R |
-| **Phòng Kế hoạch - Tài chính (KHTC/KHKT/TCKT Viện)** | - | R | - | - | - | R |
-| **Phòng Kỹ thuật - Đào tạo (KTDT)** | - | R | - | - | - | R |
-| **Các Phòng Chuyên môn / Tư vấn (PCM)** | C (Hệ thống/Form) | R (Nội bộ) | U (Ghi chú/Hẹn) | - | - | E |
-| **Ban Giám đốc (BGD Viện/CCBA)** | C | R (Toàn bộ) | U | D | A | E |
-| **Chủ nhiệm Dự án (PM CCBA)** | - | R (Được phân công) | U | - | - | E |
-| **Trưởng phòng Chuyên môn (TPM CCBA)** | C | R (Phòng) | U (Phân công) | - | A (Chuyển đổi) | E |
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md)
+> Ký hiệu: C = Create, R = Read, U = Update, A = Approve, * = phạm vi giới hạn
+
+| Vai trò | lead_capture |
+|:---|:---:|
+| `ROLE_DIRECTOR` | R, A |
+| `ROLE_DEPUTY_DIRECTOR` | C, R, U, A |
+| `ROLE_LEGAL_QA` | R |
+| `ROLE_HEAD_ADMIN` | R |
+| `ROLE_HEAD_RD` | C, R, U |
+| `ROLE_HEAD_BIM_DESIGN` | C*, R |
+| `ROLE_HEAD_BIM_PROJECT` | C*, R |
+| `ROLE_PROJECT_MANAGER` | C, R, U |
+| `ROLE_STAFF` | C*, R* |
 
 ---
 
@@ -126,10 +136,12 @@
 
 ### 6.1 Phân quyền Truy cập (Permission Matrix)
 
-- **Công khai (Guest/Anonymous)**: Nộp thông tin qua Microsoft Forms.
-- **Ban Giám đốc CCBA / Viện**: Xem toàn bộ Leads và báo cáo chuyển đổi.
-- **Trưởng phòng Chuyên môn (TPM)**: Xem toàn bộ Leads của phòng; Phân công cán bộ (`AssignedTo`); Phê duyệt chuyển đổi.
-- **Cán bộ phụ trách (AssignedTo)**: Xem và cập nhật trạng thái, ghi chú liên hệ, đặt lịch follow-up đối với Lead được giao.
+> Tham chiếu: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 3 (SharePoint Permission Groups)
+
+- `CCBA_BanGiamDoc`: Full Control (Phê duyệt và quản lý toàn bộ Leads)
+- `CCBA_PhongRD_HTQT` + `CCBA_TruongPhong_All`: Contribute (Thêm và cập nhật Lead, hỗ trợ Pre-sales)
+- `CCBA_ChuTri_All`: Contribute (Cập nhật Lead phụ trách)
+- `CCBA_VCNLD_All`: Contribute (Hạn chế tạo và xem Lead trong phạm vi công việc)
 
 ### 6.2 Nhật ký Kiểm toán (Audit Trail)
 

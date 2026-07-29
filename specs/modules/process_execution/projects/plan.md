@@ -23,7 +23,7 @@
 ## Env & security
 
 - **Environments:** Dev (ibstbim.sharepoint.com/sites/idop-dev), Test (ibstbim.sharepoint.com/sites/idop-test), Prod (ibstbim.sharepoint.com/sites/idop-prod)
-- **Client ID:** 90ded6f0-b787-4b3c-acea-8baf6403fd63 (đã đăng ký)
+- **Client ID:** c055c7a4-9150-4bd5-bf01-445c65467feb (IDOP-SPO-Deploy AppOnly)
 - **Biến môi trường:** SHAREPOINT_URL, TENANT_ID, ENVIRONMENT_ID, FINANCE_API_URL, HR_API_URL.
 - **Phân quyền:** PMO (CRUD), Quản lý (Read/Approve), Thành viên (Update), Kiểm toán viên (Read).
 - **Audit log:** Ghi nhận mọi thao tác tạo/cập nhật/đóng dự án, thay đổi trạng thái.

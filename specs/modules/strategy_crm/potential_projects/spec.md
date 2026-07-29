@@ -21,24 +21,34 @@
 
 ## 2. User Stories & Ma trận Vai trò (Role Matrix)
 
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 4 (Hướng dẫn Spec Authors)
+
 ### 2.1 User Stories
-- **US-PP-01**: Là *Chuyên viên Kinh doanh CCBA*, tôi muốn tạo bản ghi Tiềm năng dự án từ Cơ hội kinh doanh đã thắng thầu (`OpportunityId`) để chuẩn bị hồ sơ chuyển tiếp cho bộ phận thực thi.
-- **US-PP-02**: Là *Trưởng phòng Chuyên môn (TPM CCBA)*, tôi muốn xem danh sách Tiềm năng dự án để đánh giá nguồn lực nhân sự hiện có và chuẩn bị các tiêu chuẩn/quy chuẩn kỹ thuật tương ứng.
-- **US-PP-03**: Là *Chủ nhiệm Dự án (PM)*, tôi muốn xem lịch sử và các thông tin thỏa thuận sơ bộ trong Tiềm năng dự án để lập đề xuất Phiếu giao việc (PGV).
-- **US-PP-04**: Là *Phòng Kế hoạch - Kỹ thuật (KHKT Viện)*, tôi đối soát danh mục Tiềm năng dự án với kế hoạch sản lượng năm của CCBA.
-- **US-PP-05**: Là *Ban Giám đốc (BGD Viện/CCBA)*, tôi truy xuất báo cáo dự báo sản lượng (`Pipeline Revenue Forecast`) dựa trên giá trị dự kiến của các Tiềm năng dự án.
+| Mã US | Vai trò | Mô tả User Story | Tham chiếu |
+| :--- | :--- | :--- | :--- |
+| US-PP-01 | `ROLE_DEPUTY_DIRECTOR` — Phó Giám đốc Khối DV&KD | Với tư cách Phó Giám đốc Khối DV&KD, tôi muốn xem tiềm năng dự án trên IDOP để lập kế hoạch doanh thu dự kiến | Điều 8 QCCTNB 3209 |
+| US-PP-02 | `ROLE_HEAD_BIM_DESIGN` — Trưởng phòng BIM TK | Với tư cách Trưởng phòng BIM Thiết kế, tôi muốn xem tiềm năng dự án trên IDOP để chuẩn bị nguồn lực thiết kế | Phụ lục 01 Quy chế CCBA |
+| US-PP-03 | `ROLE_HEAD_BIM_PROJECT` — Trưởng phòng BIM DA | Với tư cách Trưởng phòng BIM Dự án, tôi muốn xem tiềm năng dự án trên IDOP để chuẩn bị nhân sự giám sát và quản lý dự án | Phụ lục 01 Quy chế CCBA |
+| US-PP-04 | `ROLE_DIRECTOR` — Giám đốc Trung tâm | Với tư cách Giám đốc Trung tâm, tôi muốn phê duyệt danh mục tiềm năng dự án trên IDOP để định hướng chiến lược phân bổ nguồn lực | Điều 9 Quy chế CCBA |
+| US-PP-05 | `ROLE_HEAD_ADMIN` — Trưởng phòng Tổng Hợp | Với tư cách Trưởng phòng Tổng Hợp, tôi muốn xem danh sách tiềm năng dự án trên IDOP để chuẩn bị thủ tục đối ngoại khi ký HĐ | Điều 5 QCTK 2815 |
+| US-PP-06 | `ROLE_STAFF` — NLĐ | Với tư cách Viên chức NLĐ, tôi muốn xem thông tin dự án tiềm năng trên IDOP trong phạm vi dự án mình sắp tham gia để chuẩn bị kế hoạch công việc | Điều 9 QCTK 2815 |
 
 ### 2.2 Ma trận Vai trò (Role Matrix)
 
-| Vai trò / Phòng ban | Tạo mới (C) | Xem (R) | Cập nhật (U) | Xóa (D) | Phê duyệt (A) | Trích xuất (E) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Phòng Tổ chức - Hành chính (TCHC)** | - | R | - | - | - | R |
-| **Phòng Kế hoạch - Tài chính (KHKT/TCKT Viện)** | R | R (Toàn Viện) | U (Kế hoạch sản lượng) | - | - | E |
-| **Phòng Kỹ thuật - Đào tạo (KTDT)** | - | R | - | - | - | R |
-| **Các Phòng Chuyên môn / Tư vấn (PCM)** | C | R (Phòng) | U (Chuẩn bị kỹ thuật) | - | - | E |
-| **Ban Giám đốc (BGD Viện/CCBA)** | C | R (Toàn bộ) | U | D | A (Phê duyệt kế hoạch) | E |
-| **Chủ nhiệm Dự án (PM CCBA)** | C | R (Dự án giao) | U | - | - | E |
-| **Trưởng phòng Chuyên môn (TPM CCBA)** | C | R (Phòng) | U (Phân bổ nguồn lực) | - | A (Đồng ý chuyển đổi) | E |
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md)
+> Ký hiệu: C = Create, R = Read, U = Update, A = Approve, * = phạm vi giới hạn
+
+| Vai trò | potential_projects |
+|:---|:---:|
+| `ROLE_DIRECTOR` | R, A |
+| `ROLE_DEPUTY_DIRECTOR` | R, A |
+| `ROLE_LEGAL_QA` | R |
+| `ROLE_HEAD_ADMIN` | R |
+| `ROLE_HEAD_RD` | R |
+| `ROLE_HEAD_BIM_DESIGN` | R |
+| `ROLE_HEAD_BIM_PROJECT` | R |
+| `ROLE_PROJECT_MANAGER` | R |
+| `ROLE_STAFF` | R* |
 
 ---
 
@@ -112,10 +122,11 @@
 
 ### 6.1 Phân quyền Truy cập (Permission Matrix)
 
-- **Ban Giám đốc Viện / CCBA**: Xem toàn bộ Tiềm năng dự án; Duyệt kế hoạch doanh thu dự báo.
-- **Trưởng phòng Chuyên môn (TPM)**: Xem và cập nhật dữ liệu các Tiềm năng dự án do phòng mình đảm nhận.
-- **Chủ nhiệm Dự án (PM)**: Xem và cập nhật tiến độ dự kiến, ghi chú của Tiềm năng dự án được giao.
-- **Phòng KHKT Viện**: Xem toàn bộ để tổng hợp báo cáo sản lượng dự kiến toàn Viện.
+> Tham chiếu: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 3 (SharePoint Permission Groups)
+
+- `CCBA_BanGiamDoc`: Full Control (Phê duyệt và quản lý toàn bộ Tiềm năng dự án)
+- `CCBA_TruongPhong_All`, `CCBA_ChuTri_All`, `CCBA_PhongTongHop`, `CCBA_Legal_QA`: Read (Xem thông tin tiềm năng dự án)
+- `CCBA_VCNLD_All`: Read (Hạn chế xem phạm vi được giao)
 
 ### 6.2 Nhật ký Kiểm toán (Audit Trail)
 

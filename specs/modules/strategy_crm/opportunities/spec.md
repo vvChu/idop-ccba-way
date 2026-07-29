@@ -22,24 +22,34 @@
 
 ## 2. User Stories & Ma trận Vai trò (Role Matrix)
 
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 4 (Hướng dẫn Spec Authors)
+
 ### 2.1 User Stories
-- **US-OPP-01**: Là *Chuyên viên Kinh doanh CCBA*, tôi muốn đăng ký thông tin Cơ hội kinh doanh mới và đề xuất tham gia đấu thầu gói thầu tư vấn BIM.
-- **US-OPP-02**: Là *Trưởng phòng Chuyên môn (TPM CCBA)*, tôi muốn xem xét hồ sơ năng lực, đánh giá `InfluenceScore` và `RiskFlags` để trình Ban Giám đốc quyết định tham gia dự thầu.
-- **US-OPP-03**: Là *Phòng Kế hoạch - Kỹ thuật (KHKT Viện)*, tôi nhận thông báo về Cơ hội mới, thực hiện thẩm tra tư cách pháp nhân và báo cáo Lãnh đạo Viện chỉ đạo đơn vị làm đầu mối đấu thầu (Điều 5.1 QCTK 2815).
-- **US-OPP-04**: Là *Chủ nhiệm Dự thầu / PM*, tôi được phân công phụ trách `BidTeam`, quản lý thư mục Hồ sơ thầu tự động tạo ra để tải lên các tài liệu HSDT/HSDX.
-- **US-OPP-05**: Là *Ban Giám đốc (BGD Viện/CCBA)*, tôi duyệt quyết định tham gia đấu thầu (`ParticipationDecision = Yes`), ký các văn bản thỏa thuận liên danh hoặc thư ủy quyền dự thầu.
+| Mã US | Vai trò | Mô tả User Story | Tham chiếu |
+| :--- | :--- | :--- | :--- |
+| US-OPP-01 | `ROLE_DEPUTY_DIRECTOR` — Phó Giám đốc Khối DV&KD | Với tư cách Phó Giám đốc Khối DV&KD, tôi muốn phê duyệt cơ hội dự thầu trên IDOP để quyết định việc tham gia đấu thầu | Điều 5 QCTK 2815 |
+| US-OPP-02 | `ROLE_HEAD_RD` — Trưởng phòng R&D | Với tư cách Trưởng phòng R&D, tôi muốn cập nhật giải pháp kỹ thuật cho cơ hội trên IDOP để hỗ trợ Pre-sales | Phụ lục 01 Quy chế CCBA |
+| US-OPP-03 | `ROLE_LEGAL_QA` — Cố vấn Pháp lý | Với tư cách Cố vấn Pháp lý, tôi muốn thẩm định hồ sơ dự thầu trên IDOP để đảm bảo tính hợp lệ pháp lý của cơ hội | QCTK 2815 |
+| US-OPP-04 | `ROLE_HEAD_ADMIN` — Trưởng phòng Tổng Hợp | Với tư cách Trưởng phòng Tổng Hợp, tôi muốn theo dõi cơ hội trên IDOP để đăng ký đơn vị đầu mối với Viện | Điều 5.1c QCTK 2815 |
+| US-OPP-05 | `ROLE_PROJECT_MANAGER` — Chủ trì HĐ | Với tư cách Chủ trì HĐ, tôi muốn cập nhật hồ sơ dự thầu trên IDOP để chuẩn bị tham gia đấu thầu | Điều 5.1d QCTK 2815 |
+| US-OPP-06 | `ROLE_DIRECTOR` — Giám đốc Trung tâm | Với tư cách Giám đốc Trung tâm, tôi muốn phê duyệt các cơ hội đấu thầu trên IDOP để trình Lãnh đạo Viện khi cần | Điều 6.1 QCTK 2815 |
 
 ### 2.2 Ma trận Vai trò (Role Matrix)
 
-| Vai trò / Phòng ban | Tạo mới (C) | Xem (R) | Cập nhật (U) | Xóa (D) | Phê duyệt (A) | Trích xuất (E) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Phòng Tổ chức - Hành chính (TCHC)** | - | R | - | - | - | R |
-| **Phòng Kế hoạch - Tài chính (KHKT/TCKT Viện)** | C | R (Toàn Viện) | U (Mã thầu/Đầu mối) | - | A (Đơn vị đầu mối) | E |
-| **Phòng Kỹ thuật - Đào tạo (KTDT)** | - | R | - | - | - | R |
-| **Các Phòng Chuyên môn / Tư vấn (PCM)** | C | R (Phòng) | U (Hồ sơ thầu) | - | - | E |
-| **Ban Giám đốc (BGD Viện/CCBA)** | C | R (Toàn bộ) | U | D | A (Quyết định thầu) | E |
-| **Chủ nhiệm Dự án (PM / Leader Bid Team)** | C | R (Cơ hội giao) | U (Dự thầu) | - | - | E |
-| **Trưởng phòng Chuyên môn (TPM CCBA)** | C | R (Phòng) | U (Đánh giá rủi ro) | - | A (Đề xuất dự thầu) | E |
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md)
+> Ký hiệu: C = Create, R = Read, U = Update, A = Approve, * = phạm vi giới hạn
+
+| Vai trò | opportunities |
+|:---|:---:|
+| `ROLE_DIRECTOR` | R, A |
+| `ROLE_DEPUTY_DIRECTOR` | C, R, U, A |
+| `ROLE_LEGAL_QA` | R, A (thẩm định HSDT) |
+| `ROLE_HEAD_ADMIN` | R |
+| `ROLE_HEAD_RD` | C, R, U (Pre-sales) |
+| `ROLE_HEAD_BIM_DESIGN` | C*, R, U* |
+| `ROLE_HEAD_BIM_PROJECT` | C*, R, U* |
+| `ROLE_PROJECT_MANAGER` | C, R, U |
+| `ROLE_STAFF` | R* |
 
 ---
 
@@ -61,6 +71,8 @@
 ---
 
 ## 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+
+> Tham chiếu: [05_ccba_ibst_boundary_map.md](../../../../.md/system_blueprint/05_ccba_ibst_boundary_map.md) — Phần 2, Bước 1 (Đấu thầu, Điều 5 QCTK 2815)
 
 ### 4.1 Quy trình Step 1 Đấu thầu (`dot_thau`) & Quản lý Cơ hội
 
@@ -178,11 +190,13 @@
 
 ### 6.1 Phân quyền Truy cập (Permission Matrix)
 
-- **Lãnh đạo Viện**: Xem toàn bộ cơ hội dự thầu của Viện; Phê duyệt quyết định tham gia đấu thầu gói thầu lớn.
-- **Ban Giám đốc CCBA**: Quản lý toàn bộ Cơ hội của CCBA; Phê duyệt đề xuất dự thầu và phân công Leader Bid Team.
-- **Phòng KHKT Viện**: Xem và đối soát thông tin đơn vị đầu mối, mã thầu, thỏa thuận liên danh.
-- **Bid Team (Nhóm dự thầu)**: Có quyền Xem/Sửa trên bản ghi Cơ hội và Thư mục Bidding Folder tương ứng.
-- **Viên chức khác**: Không có quyền truy cập thông tin các gói thầu bảo mật/cạnh tranh.
+> Tham chiếu: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 3 (SharePoint Permission Groups)
+
+- `CCBA_BanGiamDoc`: Full Control (Phê duyệt Quyết định thầu)
+- `CCBA_Legal_QA`: Contribute + Approve (Thẩm định pháp lý HSDT)
+- `CCBA_PhongRD_HTQT`, `CCBA_ChuTri_All`: Contribute (Thêm/Sửa giải pháp và HSDT)
+- `CCBA_PhongTongHop`: Read (Theo dõi cơ hội để đăng ký đơn vị đầu mối)
+- `CCBA_VCNLD_All`: Read (Hạn chế xem phạm vi được giao)
 
 ### 6.2 Nhật ký Kiểm toán (Audit Trail)
 

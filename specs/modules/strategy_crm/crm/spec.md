@@ -21,24 +21,34 @@
 
 ## 2. User Stories & Ma trận Vai trò (Role Matrix)
 
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 4 (Hướng dẫn Spec Authors)
+
 ### 2.1 User Stories
-- **US-CRM-01**: Là *Chuyên viên Kinh doanh CCBA*, tôi muốn tạo và cập nhật thông tin khách hàng cùng các liên hệ liên quan để theo dõi lịch sử làm việc và xây dựng mối quan hệ bền vững.
-- **US-CRM-02**: Là *Trưởng phòng Chuyên môn (TPM)*, tôi muốn xem thông tin khách hàng và danh mục dịch vụ phù hợp để lập phương án đề xuất kỹ thuật - báo giá.
-- **US-CRM-03**: Là *Chủ nhiệm Dự án (PM)*, tôi muốn tra cứu thông tin người đại diện bên A (khách hàng) để trao đổi công việc, gửi báo cáo tiến độ và biên bản nghiệm thu.
-- **US-CRM-04**: Là *Phòng Kế hoạch - Kỹ thuật (KHKT Viện)*, tôi muốn đối soát mã số thuế và tư cách pháp nhân khách hàng trước khi trình Lãnh đạo Viện phê duyệt Hợp đồng.
-- **US-CRM-05**: Là *Ban Giám đốc (BGD CCBA/Viện)*, tôi muốn xem báo cáo phân tích nhóm khách hàng, tỷ lệ quay lại và doanh thu đóng góp theo từng ngành nghề.
+| Mã US | Vai trò | Mô tả User Story | Tham chiếu |
+| :--- | :--- | :--- | :--- |
+| US-CRM-01 | `ROLE_DEPUTY_DIRECTOR` — Phó Giám đốc Khối DV&KD | Với tư cách Phó Giám đốc Khối DV&KD, tôi muốn cập nhật thông tin khách hàng trọng điểm trên IDOP để quản lý doanh số và phát triển thị trường | Phụ lục 01 Quy chế CCBA |
+| US-CRM-02 | `ROLE_PROJECT_MANAGER` — Chủ trì HĐ | Với tư cách Chủ trì HĐ, tôi muốn tra cứu thông tin liên hệ của khách hàng trên IDOP để trao đổi công việc và đôn đốc nghiệm thu dự án | QCTK 2815 |
+| US-CRM-03 | `ROLE_HEAD_ADMIN` — Trưởng phòng Tổng Hợp | Với tư cách Trưởng phòng Tổng Hợp, tôi muốn theo dõi danh sách khách hàng trên IDOP để phối hợp với các phòng chức năng của Viện IBST khi cần đối ngoại | Phụ lục 01 Quy chế CCBA |
+| US-CRM-04 | `ROLE_DIRECTOR` — Giám đốc Trung tâm | Với tư cách Giám đốc Trung tâm, tôi muốn xem báo cáo danh mục khách hàng trên IDOP để định hướng chiến lược kinh doanh và đối ngoại | Phụ lục 01 Quy chế CCBA |
+| US-CRM-05 | `ROLE_LEGAL_QA` — Cố vấn Pháp lý | Với tư cách Cố vấn Pháp lý, tôi muốn tra cứu hồ sơ khách hàng trên IDOP để thẩm định tính hợp lệ pháp nhân trước khi ký HĐ | Điều 9 Quy chế CCBA |
+| US-CRM-06 | `ROLE_STAFF` — NLĐ | Với tư cách Viên chức NLĐ, tôi muốn xem thông tin cơ bản của khách hàng trong dự án mình tham gia trên IDOP để phục vụ công việc chuyên môn | QCTK 2815 |
 
 ### 2.2 Ma trận Vai trò (Role Matrix)
 
-| Vai trò / Phòng ban | Tạo mới (C) | Xem (R) | Cập nhật (U) | Xóa (D) | Phê duyệt (A) | Trích xuất (E) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Phòng Tổ chức - Hành chính (TCHC)** | R | R | - | - | - | R |
-| **Phòng Kế hoạch - Tài chính (KHTC/KHKT/TCKT Viện)** | R | R | U (TaxCode) | - | A (Pháp lý) | E |
-| **Phòng Kỹ thuật - Đào tạo (KTDT)** | - | R | - | - | - | R |
-| **Các Phòng Chuyên môn / Tư vấn (PCM)** | C | R (Nội bộ) | U (Phụ trách) | - | - | E |
-| **Ban Giám đốc (BGD Viện/CCBA)** | C | R (Toàn bộ) | U | D | A | E |
-| **Chủ nhiệm Dự án (PM CCBA)** | C | R (Dự án giao) | U (Liên hệ) | - | - | E |
-| **Trưởng phòng Chuyên môn (TPM CCBA)** | C | R (Phòng) | U (Phòng) | - | A (Khách hàng mới) | E |
+> Tham chiếu SSOT: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md)
+> Ký hiệu: C = Create, R = Read, U = Update, A = Approve, * = phạm vi giới hạn
+
+| Vai trò | crm (customers / contacts / service_catalog) |
+|:---|:---:|
+| `ROLE_DIRECTOR` | R, A |
+| `ROLE_DEPUTY_DIRECTOR` | C, R, U |
+| `ROLE_LEGAL_QA` | R |
+| `ROLE_HEAD_ADMIN` | R |
+| `ROLE_HEAD_RD` | R |
+| `ROLE_HEAD_BIM_DESIGN` | R |
+| `ROLE_HEAD_BIM_PROJECT` | R |
+| `ROLE_PROJECT_MANAGER` | C, R, U |
+| `ROLE_STAFF` | R* |
 
 ---
 
@@ -55,6 +65,8 @@
 ---
 
 ## 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow & BPMN)
+
+> Tham chiếu: [05_ccba_ibst_boundary_map.md](../../../../.md/system_blueprint/05_ccba_ibst_boundary_map.md) — Phần 3 Trục 1 (Kỹ thuật với Phòng KHKT)
 
 ### 4.1 Quy trình Tiếp nhận & Xử lý Thông tin Khách hàng
 
@@ -126,11 +138,12 @@
 
 ### 6.1 Phân quyền Truy cập (Permission Matrix)
 
-- **Viện trưởng / BGD Viện**: Xem, xuất báo cáo toàn bộ dữ liệu CRM của các đơn vị.
-- **Ban Giám đốc CCBA**: Toàn quyền (Full Control) đối với dữ liệu CRM của Trung tâm CCBA.
-- **Trưởng phòng Chuyên môn (TPM)**: Xem/Sửa toàn bộ khách hàng và liên hệ thuộc phòng chuyên môn quản lý.
-- **Chuyên viên / PM CCBA**: Xem toàn bộ danh mục khách hàng; Tạo và sửa các khách hàng/liên hệ do mình trực tiếp phụ trách (`Owner`).
-- **Phòng KHKT / TCKT Viện**: Xem thông tin pháp nhân (`TaxCode`, `Address`, `CustomerName`) để thực hiện thủ tục hợp đồng và hóa đơn.
+> Tham chiếu: [06_ccba_org_role_matrix.md](../../../../.md/system_blueprint/06_ccba_org_role_matrix.md) — Phần 3 (SharePoint Permission Groups)
+
+- `CCBA_BanGiamDoc`: Full Control (Phê duyệt và quản lý toàn bộ dữ liệu CRM)
+- `CCBA_ChuTri_All`: Contribute (Thêm và cập nhật khách hàng liên quan đến dự án)
+- `CCBA_PhongTongHop` + `CCBA_Legal_QA`: Read / Contribute (Để kiểm tra pháp nhân và liên hệ đối ngoại)
+- `CCBA_VCNLD_All`: Read (Hạn chế xem trong phạm vi dự án tham gia)
 
 ### 6.2 Nhật ký Kiểm toán (Audit Trail)
 
