@@ -46,7 +46,7 @@
     IDOP = @{
         Name = "IDOP CCBA Operational Architecture"
         PortalSiteUrl = "https://ibstbim.sharepoint.com/"
-        SharePointUrl = "https://ibstbim.sharepoint.com/sites/idop"
+        SharePointUrl = "https://ibstbim.sharepoint.com/sites/idop-Prod"
         CdeSiteUrl = "https://ibstbim.sharepoint.com/sites/iCDE"
         BiddingStorageUrl = "https://ibstbim-my.sharepoint.com/:f:/g/personal/ccba_ibst-bim_vn/IgAtDFNJbUThRLib9LDlUVSvAdqbX7255GPQj4dIjHGnrzE?e=ccDiFK"
         SiteAlias = "idop"

@@ -65,7 +65,7 @@ function Connect-IDOPSharePoint {
 
     try {
         # Check if already connected
-        $existingConnection = Get-PnPConnection -ErrorAction SilentlyContinue
+        $existingConnection = try { Get-PnPConnection -ErrorAction Stop } catch { $null }
 
         if ($existingConnection -and -not $Force) {
             $currentUrl = $existingConnection.Url
@@ -83,12 +83,33 @@ function Connect-IDOPSharePoint {
         Write-Host "Connecting to $Environment environment..." -ForegroundColor Cyan
         Write-Host "  URL: $($config.SharePointUrl)" -ForegroundColor Gray
 
-        $connection = Connect-PnPOnline `
-            -Url $config.SharePointUrl `
-            -Interactive `
-            -ClientId $config.ClientId `
-            -ReturnConnection `
-            -ErrorAction Stop
+        $connection = $null
+        $certPath = $env:IDOP_SP_CERT_PATH
+        $tenantId = if ($env:IDOP_SP_TENANT) { $env:IDOP_SP_TENANT } else { $config.TenantId }
+        $clientId = if ($env:IDOP_SP_CLIENT_ID) { $env:IDOP_SP_CLIENT_ID } else { $config.ClientId }
+        $certPwd  = $env:IDOP_SP_CERT_PASSWORD
+
+        if ($certPath -and (Test-Path $certPath) -and $tenantId -and $clientId -and $certPwd) {
+            Write-Host "  Auth Mode: AppOnly Certificate ($certPath)" -ForegroundColor DarkGray
+            $secPwd = ConvertTo-SecureString $certPwd -AsPlainText -Force
+            $connection = Connect-PnPOnline `
+                -Url $config.SharePointUrl `
+                -ClientId $clientId `
+                -Tenant $tenantId `
+                -CertificatePath $certPath `
+                -CertificatePassword $secPwd `
+                -ReturnConnection `
+                -ErrorAction Stop
+        } else {
+            Write-Host "  Auth Mode: Interactive Browser" -ForegroundColor DarkGray
+            $interactiveId = if ($config.InteractiveClientId) { $config.InteractiveClientId } else { "90ded6f0-b787-4b3c-acea-8baf6403fd63" }
+            $connection = Connect-PnPOnline `
+                -Url $config.SharePointUrl `
+                -Interactive `
+                -ClientId $interactiveId `
+                -ReturnConnection `
+                -ErrorAction Stop
+        }
 
         Write-Host "✓ Successfully connected to $Environment" -ForegroundColor Green
         return $connection
