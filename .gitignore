@@ -53,3 +53,7 @@ Thumbs.db
 
 # Script output files
 *_dryrun_*.csv
+
+# AI Agent working files (auto-generated, not project source)
+.agents/
+ORIGINAL_REQUEST.md
