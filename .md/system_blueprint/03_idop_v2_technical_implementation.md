@@ -403,166 +403,97 @@ KPI 0.8-1.2 áp dụng quyết toán
 # PHẦN XIII. LỘ TRÌNH TRIỂN KHAI
 
 
-## 13.1. Phương pháp luận: CCBA Hybrid Workflow
+## 13.1. Phương pháp luận & Chiến lược Triển khai PROD-First
 
-Spec-Driven Planning - Lập kế hoạch theo đặc tả
+Spec-Driven Planning - Lập kế hoạch theo đặc tả kỹ thuật và 59 List Schemas
 
-Coding Modularization - Mô-đun hóa code
+PROD-First Strategy - Triển khai trực tiếp vào PROD (`https://ibstbim.sharepoint.com/sites/idop`) để tối ưu tiến độ, bỏ qua DEV/UAT ban đầu
 
-AI-Enhanced Collaboration - Cộng tác hỗ trợ bởi AI
+Copy-Back Strategy - Sau khi môi trường PROD vận hành ổn định, tiến hành copy back snapshot cấu trúc và dữ liệu chuẩn sang môi trường DEV/UAT phục vụ công tác bảo trì, kiểm thử và R&D
 
-Decentralized Deployment - Triển khai phi tập trung
+Safety Protocol (Giao thức An toàn):
+- Git Versioning: Quản lý phiên bản 100% Data Model Schemas (59 Lists), PnP PowerShell scripts, và Power Automate flow definitions trên Git Repository.
+- PnP Template Snapshots: Tự động chụp snapshot hiện trạng PROD (Site Columns, Content Types, List Schemas) bằng PnP PowerShell trước mọi thao tác thay đổi để đảm bảo khả năng Rollback 1-click.
+- Soft-Launch with Core Users: Vận hành thử nghiệm giới hạn với nhóm Core Users (Phòng BIM Dự án & Phòng Tổng hợp) để kiểm chứng thực tế trước khi phát hành diện rộng.
 
-Transparent Logging & Feedback - Log minh bạch và phản hồi
+AI-Enhanced Collaboration - Cộng tác hỗ trợ bởi AI và tự động hóa
 
+Transparent Logging & Feedback - Log minh bạch và cơ chế phản hồi liên tục
 
-## 13.2. Sáu giai đoạn triển khai
 
+## 13.2. Năm giai đoạn triển khai (5-Stage / 5-Month Strategy)
 
-### Giai đoạn 0 - Thiết lập nền tảng (1 tháng)
 
-DEV/UAT/PROD environments
+### Giai đoạn 1 - PROD-First Infrastructure & Core Data Model (Tháng 1)
 
-Entra ID Groups
+Khởi tạo trực tiếp trên môi trường PROD (`sites/idop`)
 
-Term Store enterprise
+Entra ID Groups (15 ROLE_ID chuẩn hóa) & Permission Baseline
 
-Hub & Spoke
+Triển khai 21 Taxonomy Term Sets vào Term Store enterprise
 
-Naming convention
+Triển khai 59 SharePoint List Schemas & Content Types qua PnP PowerShell (`idop.ps1`)
 
+Chụp PnP Template snapshot baseline trên PROD & đẩy Git versioning
 
-### Giai đoạn 1 - Script hóa & Phiên bản hóa (1 tháng)
 
-Infrastructure as Code (PnP PowerShell)
+### Giai đoạn 2 - Cấu hình Tài chính & Core Workflows theo QCCTNB 3209 (Tháng 2)
 
-33 List schemas
+Cấu hình Phụ lục 7 (Bảng định mức) & Phụ lục 8 (Tỷ lệ nhân công)
 
-Content Types
+Tạm ứng 90% (auto-block & tracking theo Điều 22.2)
 
-Permission baseline
+Định mức công tác phí, hội họp & Thanh toán không tiền mặt ≥5tr
 
-Site provisioning templates
+Hoàn thuế GTGT (80%/100%), Quản lý 5 Quỹ, Khấu trừ TNCN
 
+Auto-calc P2 + P2_GT, TK141 tracking & Clawback monitoring 12 tháng
 
-### Giai đoạn 2 - Pipeline CI/CD (1 tháng)
+Triển khai 40+ Core, Financial & AI Power Automate Flows
 
-DEV → UAT → PROD pipeline
 
-Automated testing
+### Giai đoạn 3 - Soft-Launch & Thí điểm với Core Users (Tháng 3)
 
-Approval gates
+Soft-Launch vận hành thực tế trên PROD với nhóm Core Users (Phòng BIM Dự án + Phòng Tổng hợp)
 
-Rollback strategy
+Chạy thí điểm 2-3 dự án thực tế end-to-end (Đấu thầu → HĐKT → PGV → QA/QC 5 cấp → Quyết toán)
 
+Đánh giá hiệu năng, bảo mật và thu thập phản hồi thực tế
 
-### Giai đoạn 3 - Cấu hình Tài chính theo QCCTNB (MỚI - 1 tháng)
+Chụp PnP Template snapshot & tinh chỉnh cấu hình workflows trên PROD
 
-Cấu hình Phụ lục 7 (Bảng định mức)
 
-Cấu hình Phụ lục 8 (Tỷ lệ nhân công)
+### Giai đoạn 4 - Triển khai Diện rộng & Copy-Back DEV/UAT (Tháng 4 - 5)
 
-Tạm ứng 90% (cập nhật từ 70%)
+Triển khai diện rộng cho tất cả 5 phòng/ban + 3 vị trí chuyên trách & Chi nhánh TP.HCM (cơ chế 80/20)
 
-Định mức công tác phí, hội họp
+Tích hợp luồng giao tiếp Gateway Viện IBST (`ROLE_HEAD_ADMIN`)
 
-Hoàn thuế GTGT 80%/100%
+Đào tạo toàn diện người dùng & Go-live chính thức toàn hệ thống
 
-Thanh toán không TM
+**Copy-Back Strategy**: Xuất PnP Template & Schema từ PROD đã vận hành ổn định, khởi tạo môi trường DEV & UAT chuẩn hóa phục vụ bảo trì và R&D lâu dài
 
-Quản lý quỹ
 
-Khấu trừ TNCN
+### Giai đoạn 5 - Vận hành, Bảo trì & Cải tiến Liên tục (Tháng 6+)
 
-Auto-calc P2 + P2_GT
+Vận hành hệ thống ổn định trên PROD
 
-TK141 tracking
+Quản lý luồng nâng cấp/phát triển tính năng mới qua quy trình chuẩn: DEV → UAT → PROD (sau khi đã copy-back)
 
+Tích hợp nâng cấp AI/Copilot Flows (OCR, Email Tender Parser, Risk Prediction)
 
-### Giai đoạn 4 - Thí điểm (2 tháng)
+Cải tiến quy trình theo vòng lặp EOS & OKRs Quý
 
-Pilot: Phòng BIM Dự án + Phòng Tổng hợp
 
-2-3 dự án thí điểm
+## 13.3. Roadmap tổng (5-Month PROD-First Strategy)
 
-Vận hành thử nghiệm
-
-Thu thập phản hồi
-
-
-### Giai đoạn 5 - Triển khai diện rộng (3 tháng)
-
-5 phòng + 3 vị trí chuyên trách
-
-Triển khai TP.HCM (cơ chế 80/20)
-
-Tích hợp Viện IBST
-
-Đào tạo toàn diện
-
-Go-live chính thức
-
-
-### Giai đoạn 6 - Duy trì và phát triển (liên tục)
-
-Vận hành ổn định
-
-Nâng cấp tính năng
-
-AI/Automation mới
-
-Cải tiến vòng lặp EOS
-
-
-## 13.3. Roadmap tổng
-
-Tháng
-
-Giai đoạn
-
-Nội dung
-
-1
-
-GĐ 0
-
-Thiết lập nền tảng
-
-2
-
-GĐ 1
-
-Script hóa & Phiên bản hóa
-
-3
-
-GĐ 2
-
-CI/CD Pipeline
-
-4
-
-GĐ 3
-
-Cấu hình Tài chính (MỚI)
-
-5-6
-
-GĐ 4
-
-Thí điểm
-
-7-9
-
-GĐ 5
-
-Triển khai diện rộng
-
-10+
-
-GĐ 6
-
-Vận hành & cải tiến
+Tháng | Giai đoạn | Nội dung Triển khai | Ghi chú Safety / Environment
+--- | --- | --- | ---
+1 | GĐ 1 | PROD-First Infrastructure & Core Data Model | Deploy 59 Lists + 21 Taxonomy trên PROD; Git versioning & PnP Snapshot Baseline
+2 | GĐ 2 | Cấu hình Tài chính & Core Workflows (QCCTNB 3209) | Build 40+ Flows, cấu hình Phụ lục 7, 8, Tạm ứng 90%, P2/P2_GT
+3 | GĐ 3 | Soft-Launch & Thí điểm với Core Users | Thí điểm Phòng BIM Dự án & Phòng Tổng hợp (2-3 dự án); PnP Snapshot
+4-5 | GĐ 4 | Triển khai Diện rộng & Copy-Back DEV/UAT | Full Go-Live 5 phòng ban + TP.HCM + Gateway Viện; **Copy-back PROD → DEV/UAT**
+6+ | GĐ 5 | Vận hành, Bảo trì & Cải tiến | Môi trường DEV/UAT sẵn sàng cho R&D; CI/CD pipeline cho các tính năng mới
 
 💡 Mở rộng FILE 4: Roadmap v2.1 → v4.0 với 4 giai đoạn Enterprise (KH&CN, IBST, Enterprise Platform, AI-driven) - xem FILE 4 Phần 6.
 
@@ -686,11 +617,11 @@ Auto-block, dashboard cảnh báo
 
 10        ↓
 
-11     LỚP 4: Data Layer - 33 Lists + Libraries + CDE
+11     LỚP 4: Data Layer - 59 Lists + Libraries + CDE
 
 12        ↓
 
-13     LỚP 5: Taxonomy - Term Store enterprise
+13     LỚP 5: Taxonomy - Term Store enterprise (21 Taxonomy Term Sets)
 
 14        ↓
 
