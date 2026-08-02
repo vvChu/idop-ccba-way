@@ -1,29 +1,19 @@
-# Implementation Plan - IDOP CCBA v2.0 Data Model & PMO Spec Upgrade
+# Implementation Plan: Knowledge Base Restructuring for IDOP-CCBA-WAY
 
 ## Overview
-Implement 6 JSON schema updates/creations in `datamodel/sharepoint/lists/process_execution/`, update `specs/modules/process_execution/pmo/spec.md`, and validate clean execution with `.\idop.ps1 validate datamodel`.
+Restructure project knowledge base by migrating source documents from `extracted_docs/` to `.md/governance_constitution/` and `.md/system_blueprint/`, creating metadata indexing files (`workspace_context.yaml`, `INDEX.md`, `cross_references.yaml`), updating agent discoverability (`CLAUDE.md`, `README.md`), and ensuring zero regression via `.\idop.ps1 validate datamodel`.
 
-## Milestone Plan
-
-### Milestone 1: Exploration & Architecture Assessment
-- Dispatch `teamwork_preview_explorer` agents to analyze:
-  1. Existing JSON schemas in `datamodel/sharepoint/lists/process_execution/` and lookup conventions across the codebase.
-  2. The validation engine in `tools/` / `idop.ps1` to understand lookup validation rules.
-  3. `specs/modules/process_execution/pmo/spec.md` and related governance documents (QCTK 2815, QCCTNB 3209, Law 135/2025/QH15, NĐ 217/2026/NĐ-CP).
-
-### Milestone 2: Data Model JSON Schemas Implementation (R1)
-- Dispatch `teamwork_preview_worker` to:
-  1. Update `contract_scopes.json`, `projects.json`, `job_assignments.json`, `assignment_details.json`, and `cde_documents.json`.
-  2. Create `scope_department_allocations.json` with lookup reference to `ContractScopes`.
-  3. Run `.\idop.ps1 validate datamodel` to verify syntax and schema structure.
-- Dispatch `teamwork_preview_reviewer` to review schema correctness and lookup integrity.
-
-### Milestone 3: PMO Specification & Documentation Update (R2)
-- Dispatch `teamwork_preview_worker` to:
-  1. Update `specs/modules/process_execution/pmo/spec.md` documenting the 5-step PGV sequence, role distinctions, multi-scope & multi-department allocation rules, statutory compliance (Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP), 3-tier role hierarchy, and Ubiquitous Language matrix.
-- Dispatch `teamwork_preview_reviewer` to review specification completeness.
-
-### Milestone 4: Data Model Validation & Final Forensic Audit (R3)
-- Dispatch `teamwork_preview_worker` to run `.\idop.ps1 validate datamodel` and verify 0 validation errors.
-- Dispatch `teamwork_preview_challenger` for empirical stress testing of schemas & validator.
-- Dispatch `teamwork_preview_auditor` for forensic integrity audit.
+## Milestone Structure
+1. **M1: Exploration & Baseline Verification**
+   - Dispatch `teamwork_preview_explorer` to inspect `extracted_docs/`, `specs/modules/`, `CLAUDE.md`, `README.md`.
+   - Dispatch `teamwork_preview_worker` to run baseline validation `.\idop.ps1 validate datamodel`.
+2. **M2: Migration & Meta Files Generation**
+   - Dispatch `teamwork_preview_worker` to migrate 8 files into `.md/governance_constitution/` and `.md/system_blueprint/` with strict content preservation.
+   - Remove `extracted_docs/` directory after verifying file copy integrity.
+   - Scan all `spec.md` files in `specs/modules/` to generate `cross_references.yaml` mapping (>=15 spec files, ~150 references).
+   - Generate `workspace_context.yaml` and `INDEX.md` (with summaries, lookup table, and anchor links).
+3. **M3: Agent Discoverability Updates**
+   - Dispatch `teamwork_preview_worker` to update `CLAUDE.md` (`## Governance Knowledge Base`) and `README.md` (`## 📚 Knowledge Base (.md/)`).
+4. **M4: E2E Verification & Forensic Audit**
+   - Dispatch `teamwork_preview_reviewer` & `teamwork_preview_challenger` to verify YAML validity, link integrity, and run `.\idop.ps1 validate datamodel`.
+   - Dispatch `teamwork_preview_auditor` to audit content integrity, absence of hardcoded bypasses/cheating, and git status / file boundary compliance.

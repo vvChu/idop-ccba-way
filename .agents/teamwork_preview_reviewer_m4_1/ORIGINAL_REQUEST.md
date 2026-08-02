@@ -1,21 +1,11 @@
-## 2026-08-02T07:51:15Z
+## 2026-07-28T08:51:25Z
+You are teamwork_preview_reviewer_m4_1. Your working directory is d:\idop-ccba-way\.agents\teamwork_preview_reviewer_m4_1\. Create your directory if needed.
 
-You are Reviewer 1 (teamwork_preview_reviewer) for Milestone 4 of project IDOP-CCBA-WAY.
-Working directory: d:\idop-ccba-way\.agents\teamwork_preview_reviewer_m4_1
-
-Your task is to independently review and verify the 6 updated/created SharePoint list JSON schemas in `datamodel/sharepoint/lists/process_execution/`:
-1. `contract_scopes.json`
-2. `scope_department_allocations.json`
-3. `projects.json`
-4. `job_assignments.json`
-5. `assignment_details.json`
-6. `cde_documents.json`
-
-Verify:
-- All 6 JSON schemas parse cleanly as valid JSON.
-- Lookup references are valid (`ContractScopes` -> `Contracts`, `ScopeDepartmentAllocations` -> `ContractScopes`, `JobAssignments` -> `Projects`, `AssignmentDetails` -> `JobAssignments`, `ContractScopes`, `ScopeDepartmentAllocations`).
-- Field limits (<= 28 fields) and lookup limits (<= 8 lookups) per list are respected.
-- Execute `.\idop.ps1 validate datamodel` using `run_command` and verify that the CLI validator passes with 0 errors across all list schemas.
-
-Write your review report to `d:\idop-ccba-way\.agents\teamwork_preview_reviewer_m4_1\handoff.md`.
-Send a completion message when done.
+Your task: Independently review and verify all deliverables for IDOP-CCBA-WAY Knowledge Base Restructuring.
+1. Check .md/governance_constitution/ (4 files with exact names) and .md/system_blueprint/ (4 files with exact names).
+2. Check that extracted_docs/ has been completely removed.
+3. Validate YAML syntax for .md/workspace_context.yaml and .md/cross_references.yaml.
+4. Check .md/INDEX.md for 8 document summaries, quick lookup table, and anchor links.
+5. Check CLAUDE.md for ## Governance Knowledge Base section and README.md for ## 📚 Knowledge Base (.md/) section.
+6. Run `.\idop.ps1 validate datamodel` using run_command tool and confirm 0 errors.
+7. Write your review report to d:\idop-ccba-way\.agents\teamwork_preview_reviewer_m4_1\handoff.md and send completion message to parent orchestrator.

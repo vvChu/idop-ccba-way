@@ -1,48 +1,47 @@
-# BRIEFING — 2026-08-02T07:53:00Z
+# BRIEFING — 2026-07-28T15:56:00+07:00
 
 ## Mission
-Forensic integrity audit for Milestone 4: process_execution data models & PMO spec.
+Perform a Forensic Integrity Audit on all work products for IDOP-CCBA-WAY Knowledge Base Restructuring.
 
 ## 🔒 My Identity
 - Archetype: forensic_auditor
-- Roles: critic, specialist, auditor
+- Roles: [critic, specialist, auditor]
 - Working directory: d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1
-- Original parent: 57e49422-7846-4e01-9c23-31812bbc93e4
-- Target: Milestone 4 (process_execution data model & PMO spec)
+- Original parent: 850b6f7a-6d2c-483f-b817-91fe61aeb839
+- Target: IDOP-CCBA-WAY Knowledge Base Restructuring
 
 ## 🔒 Key Constraints
 - Audit-only — do NOT modify implementation code
 - Trust NOTHING — verify everything independently
-- Provide explicit binary verdict: CLEAN or VIOLATION
+- Provide empirical evidence for all claims
 
 ## Current Parent
-- Conversation ID: 57e49422-7846-4e01-9c23-31812bbc93e4
-- Updated: 2026-08-02T07:53:00Z
+- Conversation ID: 850b6f7a-6d2c-483f-b817-91fe61aeb839
+- Updated: 2026-07-28T15:56:00+07:00
 
 ## Audit Scope
-- **Work product**: datamodel/sharepoint/lists/process_execution/ & specs/modules/process_execution/pmo/spec.md
-- **Profile loaded**: General Project
-- **Audit type**: forensic integrity check
+- Work product: Knowledge Base Restructuring (.md directory, extracted_docs, specs, datamodel, tools, CLAUDE.md, README.md)
+- Profile loaded: General Project Forensic Audit
+- Audit type: forensic integrity check
 
 ## Audit Progress
-- **Phase**: completed
-- **Checks completed**:
-  - JSON schema validation against `sp-list.schema.json` (13/13 list schemas in process_execution valid, 59/59 workspace list schemas valid)
-  - Lookup and TermSet cross-reference integrity checks (0 errors)
-  - Prohibited pattern search (0 hardcoded outputs, 0 facade implementations, 0 pre-populated logs)
-  - Specification audit of `specs/modules/process_execution/pmo/spec.md` (genuine spec with QCTK 2815, QCCTNB 3209, Luật 135/2025, NĐ 217/2026 compliance)
-  - Live CLI command execution `.\idop.ps1 validate datamodel` (0 errors across 59 lists & 21 taxonomy sets)
-- **Checks remaining**: none
-- **Findings so far**: CLEAN
+- Phase: reporting
+- Checks completed:
+  - 1. Check for genuine implementation vs dummy/facade bypasses or hardcoded test returns (PASS)
+  - 2. Verify 100% content integrity of 8 migrated files in .md/governance_constitution/ and .md/system_blueprint/ (DISK PASS / ATTESTATION FLAGGED)
+  - 3. Verify that extracted_docs/ was deleted (PASS)
+  - 4. Verify that NO files in specs/, datamodel/, tools/ were modified (TASK PASS / GIT STATUS DIRTY FLAGGED)
+  - 5. Verify valid YAML syntax of .md/workspace_context.yaml and .md/cross_references.yaml (PASS)
+  - 6. Verify CLAUDE.md and README.md discoverability updates (PASS)
+- Findings so far: Verdict INTEGRITY VIOLATION due to worker attestation SHA-256 fabrication and git working tree dirty status in protected dirs.
 
 ## Key Decisions Made
-- Initialized audit briefing and workspace
-- Validated all 13 process execution JSON schemas against `sp-list.schema.json`
-- Ran live CLI validation via `pwsh -ExecutionPolicy Bypass -Command ".\idop.ps1 validate datamodel"`
-- Generated handoff report `handoff.md` with explicit binary verdict: CLEAN
+- Executed empirical Python and PowerShell tests for all 6 requirements.
+- Generated audit report at `d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\handoff.md`.
 
 ## Artifact Index
-- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\ORIGINAL_REQUEST.md — original request record
-- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\BRIEFING.md — working memory
-- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\progress.md — progress log
-- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\handoff.md — audit handoff report
+- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\ORIGINAL_REQUEST.md — Initial request
+- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\BRIEFING.md — Context briefing
+- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\progress.md — Execution progress
+- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\verify_sha.py — Empirical SHA verification script
+- d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\handoff.md — Final Forensic Audit Report

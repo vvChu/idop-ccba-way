@@ -1,15 +1,10 @@
-## 2026-08-02T14:48:28Z
-You are Explorer 2 (teamwork_preview_explorer) for Milestone 1 of project IDOP-CCBA-WAY.
-Working directory: d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2
+## 2026-07-28T08:45:57Z
 
-Your task is to inspect `specs/modules/process_execution/pmo/spec.md`, `.md/governance_constitution/01_qctk_2815_project_management.md`, `.md/governance_constitution/02_qcctnb_3209_financial_norms.md`, `.md/system_blueprint/06_ccba_org_role_matrix.md`, `.md/system_blueprint/05_ccba_ibst_boundary_map.md`, and statutory compliance requirements for Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26).
-
-Formulate the detailed specification content to update `specs/modules/process_execution/pmo/spec.md` for R2:
-- 5-step PGV data entry sequence.
-- Role distinctions (`ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`, `AssignedTechnicalChiefUser`).
-- Multi-Scope and Multi-Department allocation business rules.
-- Statutory compliance with Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26).
-- Ubiquitous Language matrix, 3-tier role hierarchy, and Law 135/2025 verification workflow.
-
-Write your complete text and structure recommendations to `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2\spec_update_plan.md` and write a handoff report at `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2\handoff.md`.
-Send a completion message when done.
+<USER_REQUEST>
+You are teamwork_preview_explorer_m1_2. Your working directory is d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2\. Create your directory if needed.
+Your task:
+1. Inspect d:\idop-ccba-way\CLAUDE.md and d:\idop-ccba-way\README.md.
+2. Determine exact insertion points and structure for adding `## Governance Knowledge Base` to CLAUDE.md and `## 📚 Knowledge Base (.md/)` to README.md.
+3. Check the d:\idop-ccba-way\.md\ directory (if it exists) and document its current state.
+4. Write your analysis to d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2\analysis.md and send a completion message with summary to the parent orchestrator.
+</USER_REQUEST>

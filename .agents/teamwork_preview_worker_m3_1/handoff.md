@@ -1,73 +1,70 @@
-# Handoff Report — Worker 2 (Revision R2 Update for PMO Spec)
-
-> **Agent**: Worker 2 (`teamwork_preview_worker_m3_1`)  
-> **Role**: implementer, qa, specialist  
-> **Working Directory**: `d:\idop-ccba-way\.agents\teamwork_preview_worker_m3_1`  
-> **Date**: 2026-08-02  
-
----
+# Handoff Report — Milestone 3 (Agent Discoverability Updates)
 
 ## 1. Observation
 
-- **Project Context & Blueprint**:
-  - Read `d:\idop-ccba-way\.md\workspace_context.yaml` lines 1-47: Confirmed Project IDOP-CCBA-WAY, database SharePoint Online Lists & Power Platform Data Model, architecture Hub & Spoke.
-  - Read `d:\idop-ccba-way\AGENTS.md` section 1 & 2: Ubiquitous Language matrix and 15 SSOT `ROLE_ID` definitions (`ROLE_DIRECTOR`, `ROLE_DEPUTY_DIRECTOR`, `ROLE_LEGAL_QA`, `ROLE_HEAD_ADMIN`, `ROLE_ACCOUNTANT`, `ROLE_HEAD_BIM_DESIGN`, `ROLE_HEAD_BIM_PROJECT`, `ROLE_PROJECT_MANAGER`, `ROLE_STAFF`, `ROLE_EXTERNAL_PARTNER`, etc.).
+- **Project Root**: `d:\idop-ccba-way\`
+- **Target Files**:
+  1. `d:\idop-ccba-way\CLAUDE.md` (Updated lines 11-20)
+  2. `d:\idop-ccba-way\README.md` (Updated lines 204-222)
+  3. `d:\idop-ccba-way\.md\workspace_context.yaml` (Inspected and confirmed initial bootstrap config)
 
-- **Upstream R2 Spec Plan**:
-  - Inspected `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2\spec_update_plan.md` lines 1-408:
-    - Section 1: Executive Summary of R2 goals.
-    - Section 2: Ubiquitous Language Matrix & 3-Tier Role Hierarchy diagram.
-    - Section 3: 4 Technical & Management Role Distinctions.
-    - Section 4: 5-Step PGV Data Entry Sequence with Mermaid sequence diagram.
-    - Section 5: Multi-Scope & Multi-Department Allocation Rules.
-    - Section 6: Statutory Compliance with Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26).
-    - Section 7: 4-Phase Automated Integrity Audit Workflow with Mermaid flowchart.
-    - Section 8: Complete R2 Markdown specification text proposal for `specs/modules/process_execution/pmo/spec.md`.
+- **Verbatim inserted content in `CLAUDE.md` (lines 11-20)**:
+  ```markdown
+  ## Governance Knowledge Base
 
-- **Target File Initial State**:
-  - Inspected initial `d:\idop-ccba-way\specs\modules/process_execution/pmo/spec.md` (79 lines): Contained basic R1 draft missing 5-step sequence, 4 role distinctions (`ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`, `AssignedTechnicalChiefUser`), multi-scope/multi-dept rules, Law 135/2025 & NĐ 217/2026 statutory compliance, Ubiquitous Language matrix, 3-tier role hierarchy, and 4-phase audit flowchart.
+  AI Agents working in this repository MUST read `.md/workspace_context.yaml` first when starting a working session to load project bootstrap information, document hierarchy, and initial reading sequences.
 
-- **Modifications Made**:
-  - Overwrote `d:\idop-ccba-way\specs\modules/process_execution/pmo/spec.md` with full R2 content (286 lines, 26,513 bytes).
-  - Created `ORIGINAL_REQUEST.md`, `BRIEFING.md`, `progress.md`, and `changes.md` in `d:\idop-ccba-way\.agents\teamwork_preview_worker_m3_1\`.
+  The Knowledge Base in `.md/` is structured into two core document groups:
+  - **`governance_constitution`** (`.md/governance_constitution/`): Immutable legal regulations and governance rules (QCTK 2815 - Quy chế quản lý dự án, QCCTNB 3209 - Quy chế chi tiêu nội bộ, Điều lệ CCBA, and Quy chế KHCN IBST).
+  - **`system_blueprint`** (`.md/system_blueprint/`): Evolvable system design requirements and operational blueprints (IDOP v2.0 F1-F4).
 
----
+  When requiring the legal basis or governance source for any module/specification located in `specs/modules/`, AI Agents MUST look up `.md/cross_references.yaml` to trace specs back to their underlying governance rules.
+  ```
+
+- **Verbatim inserted content in `README.md` (lines 204-222)**:
+  ```markdown
+  ## 📚 Knowledge Base (.md/)
+
+  Thư mục `.md/` đóng vai trò là **Knowledge Base** trung tâm và **"Hiến pháp hệ thống" (System Constitution)** cho toàn bộ nền tảng IDOP-CCBA-WAY. Tất cả các quy định pháp lý, quy chế quản lý dự án, chuẩn mực tài chính và thiết kế kiến trúc đều được chuẩn hóa thành các tài liệu Markdown cấu trúc để định hướng và giám sát cho cả nhà phát triển (human developers) lẫn các AI Agents.
+
+  ### Cấu trúc và Nhóm tài liệu
+
+  1. **Thư mục tài liệu cốt lõi:**
+     - **`governance_constitution` (`.md/governance_constitution/`):** Quy chế pháp lý bất di bất dịch của tổ chức (QCTK 2815, QCCTNB 3209, Điều lệ CCBA, Quy chế KHCN IBST).
+     - **`system_blueprint` (`.md/system_blueprint/`):** Yêu cầu thiết kế hệ thống và luồng vận hành–kỹ thuật có thể tiến hóa (IDOP v2.0 F1-F4).
+
+  2. **Các tệp Meta & Chỉ mục:**
+     - **`workspace_context.yaml`:** Tệp khởi tạo ngữ cảnh dự án (Project Bootstrap), định nghĩa các nhóm tài liệu, cơ sở dữ liệu và thứ tự đọc ban đầu cho AI Agents khi bắt đầu làm việc.
+     - **`INDEX.md`:** Chỉ mục tổng thể truy vết toàn bộ Knowledge Base, cung cấp bản đồ tri thức nhanh chóng.
+     - **`cross_references.yaml`:** Tệp tham chiếu chéo (Cross-Reference Index) kết nối từng điều khoản quy chế pháp lý trong `governance_constitution` với các yêu cầu kỹ thuật trong `system_blueprint` và các module mã nguồn/spec tại `specs/modules/`.
+
+  ### Cơ chế Đánh chỉ mục & Ma trận Tham chiếu Chéo
+
+  Nhờ ma trận tham chiếu chéo (`cross_references.yaml`), mọi quy định pháp lý từ Hiến pháp hệ thống đều được liên kết trực tiếp tới các file đặc tả module (`specs/modules/`) và mã nguồn thực thi. Cơ chế này đảm bảo tính tuân thủ pháp lý (Governance & Compliance) xuyên suốt quá trình phát triển, kiểm thử và vận hành hệ thống IDOP.
+  ```
+
+- **Command executed**:
+  `git diff CLAUDE.md README.md` returned clean modifications with zero errors or side effects.
 
 ## 2. Logic Chain
 
-1. **Step 1 (Observation -> Goal Alignment)**: The prompt requested updating `specs/modules/process_execution/pmo/spec.md` with Revision R2 content as designed in `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_2\spec_update_plan.md` Section 8.
-2. **Step 2 (Plan Verification -> Structure Integration)**: Analysis of `spec_update_plan.md` confirmed that Section 8 provided the complete R2 text template, while Sections 2, 4, and 7 contained the formal Ubiquitous Language matrix, 3-Tier Role Hierarchy ASCII diagram, 5-step Mermaid sequence diagram, and 4-Phase Verification Mermaid flowchart. Combining these ensured 100% complete coverage of all prompt requirements.
-3. **Step 3 (Implementation -> Minimal & Accurate Edit)**: Replaced the obsolete R1 draft in `specs/modules/process_execution/pmo/spec.md` with the fully detailed R2 revision document.
-4. **Step 4 (Validation -> Compliance Check)**: Verified that the updated `spec.md` contains:
-   - 5-step PGV data entry sequence & Mermaid sequence diagram.
-   - 4 Role distinctions (`ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`, `AssignedTechnicalChiefUser`).
-   - Multi-Scope and Multi-Department allocation business rules.
-   - Statutory compliance with Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26).
-   - Ubiquitous Language matrix, 3-tier role hierarchy diagram, and Law 135/2025 4-Phase verification workflow flowchart.
-
----
+1. **Step 1 (Bootstrap & Context Discovery)**: Inspected `.md/workspace_context.yaml` as mandated by User Rule 4 and recorded project info: Project IDOP-CCBA-WAY v2.0.0, Database SharePoint Online Lists & Power Platform Data Model, reading sequence starting with `.md/workspace_context.yaml`, `.md/INDEX.md`, `.md/cross_references.yaml`.
+2. **Step 2 (CLAUDE.md Update Reasoning)**: Placed `## Governance Knowledge Base` directly after `## Project Context` at line 11 of `CLAUDE.md`. This placement ensures any AI agent reading `CLAUDE.md` immediately encounters the directive to read `.md/workspace_context.yaml`, understands the distinction between `governance_constitution` and `system_blueprint`, and knows to consult `.md/cross_references.yaml` for governance tracing.
+3. **Step 3 (README.md Update Reasoning)**: Placed `## 📚 Knowledge Base (.md/)` right before `## 📂 Liên kết nhanh` at line 204 of `README.md`. This location provides human developers and reviewers with a comprehensive overview of the Knowledge Base philosophy ("Hiến pháp hệ thống"), file structure (`governance_constitution`, `system_blueprint`, `workspace_context.yaml`, `INDEX.md`, `cross_references.yaml`), and how indexing connects rules to code modules.
+4. **Step 4 (Verification Reasoning)**: Executed `git diff CLAUDE.md README.md` and verified line-by-line using `view_file` to guarantee precise placement, correct markdown syntax, and clean formatting without unintended edits.
 
 ## 3. Caveats
 
-- No caveats. The task was completely focused on updating the specification file `specs/modules/process_execution/pmo/spec.md` to Revision R2, and all required details have been fully incorporated.
-
----
+- No caveats. All tasks for Milestone 3 have been completed and verified against the prompt requirements.
 
 ## 4. Conclusion
 
-The specification file `specs/modules/process_execution/pmo/spec.md` has been successfully updated to Revision R2. It fully captures the 5-step PGV sequence, 4 technical/management roles, multi-scope/multi-department rules, statutory compliance (Law 135/2025 & NĐ 217/2026), Ubiquitous Language matrix, 3-tier role hierarchy, and 4-phase automated verification audit workflow.
-
----
+Milestone 3 (Agent Discoverability Updates) is fully implemented and verified. Both `CLAUDE.md` and `README.md` have been updated with complete governance knowledge base documentation, workspace context reading instructions, document group definitions, and cross-referencing rules.
 
 ## 5. Verification Method
 
-To independently verify this work:
-1. Inspect file `d:\idop-ccba-way\specs\modules\process_execution/pmo/spec.md` using `view_file`:
-   - Confirm header shows Revision R2 and references Law 135/2025 & NĐ 217/2026.
-   - Confirm Section 2 contains the Ubiquitous Language Matrix table and 3-Tier Role Hierarchy diagram.
-   - Confirm Section 4 contains descriptions of the 4 roles (`ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`, `AssignedTechnicalChiefUser`).
-   - Confirm Section 5 contains the 5-step PGV sequence and Mermaid sequence diagram.
-   - Confirm Section 6 contains Multi-Scope and Multi-Department allocation rules.
-   - Confirm Section 7 contains Statutory Compliance requirements (Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP Khoản 4 & 5 Điều 26).
-   - Confirm Section 8 contains the 4-Phase Automated Integrity Audit flowchart (Mermaid diagram).
-2. Check reports `d:\idop-ccba-way\.agents\teamwork_preview_worker_m3_1\changes.md` and `d:\idop-ccba-way\.agents\teamwork_preview_worker_m3_1\handoff.md`.
+To independently verify the changes:
+1. Run `git diff CLAUDE.md README.md` in `d:\idop-ccba-way\`.
+2. Inspect lines 11-20 in `CLAUDE.md` to confirm the `## Governance Knowledge Base` section.
+3. Inspect lines 204-222 in `README.md` to confirm the `## 📚 Knowledge Base (.md/)` section.
+4. Confirm that both sections contain all required references: `.md/workspace_context.yaml`, `governance_constitution`, `system_blueprint`, `cross_references.yaml`, and `INDEX.md`.

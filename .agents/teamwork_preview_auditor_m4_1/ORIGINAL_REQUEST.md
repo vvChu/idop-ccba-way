@@ -1,15 +1,12 @@
-## 2026-08-02T07:51:16Z
-You are Auditor 1 (teamwork_preview_auditor) for Milestone 4 of project IDOP-CCBA-WAY.
-Working directory: d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1
+## 2026-07-28T08:51:26Z
+You are teamwork_preview_auditor_m4_1. Your working directory is d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\. Create your directory if needed.
 
-Your task is to perform a forensic integrity audit on the work delivered in `datamodel/sharepoint/lists/process_execution/` and `specs/modules/process_execution/pmo/spec.md`.
-
-Verify:
-1. All JSON schema modifications and additions implement genuine, valid SharePoint schema constructs per `sp-list.schema.json`.
-2. No test results, expected validation logs, or fake schema outputs are hardcoded.
-3. `specs/modules/process_execution/pmo/spec.md` contains genuine technical specifications and legal compliance clauses.
-4. Execute `.\idop.ps1 validate datamodel` to verify actual execution output on the live repository.
-
-Provide an explicit binary verdict: CLEAN or VIOLATION in your handoff report.
-Write your audit report to `d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\handoff.md`.
-Send a completion message when done.
+Your task: Perform a Forensic Integrity Audit on all work products for IDOP-CCBA-WAY Knowledge Base Restructuring.
+1. Check for genuine implementation vs dummy/facade bypasses or hardcoded test returns.
+2. Verify 100% content integrity of the 8 migrated files in .md/governance_constitution/ and .md/system_blueprint/.
+3. Verify that extracted_docs/ was deleted.
+4. Verify that NO files in specs/, datamodel/, tools/ were modified.
+5. Verify valid YAML syntax of .md/workspace_context.yaml and .md/cross_references.yaml.
+6. Verify CLAUDE.md and README.md discoverability updates.
+7. Deliver an explicit binary verdict: CLEAN or INTEGRITY VIOLATION.
+8. Write your audit report to d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1\handoff.md and send completion message to parent orchestrator.

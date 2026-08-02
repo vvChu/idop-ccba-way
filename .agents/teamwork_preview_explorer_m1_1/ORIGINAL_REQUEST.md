@@ -1,18 +1,9 @@
-## 2026-08-02T07:48:28Z
-You are Explorer 1 (teamwork_preview_explorer) for Milestone 1 of project IDOP-CCBA-WAY.
-Working directory: d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_1
-
-Your task is to inspect all existing JSON schemas in `datamodel/sharepoint/lists/process_execution/` as well as other directories in `datamodel/sharepoint/lists/` and `tools/idop.ps1` validation rules.
-
-Analyze and design the exact JSON schema specifications for R1:
-1. `contract_scopes.json`: Add financial tier 1 allocation fields (`NhomHopDongKT`, `TyLeGiaoDonVi`, `TyLeVienCPQL`, `TyLeVienKHTS`, `GiaTriGiaoDonVi`).
-2. `scope_department_allocations.json` [NEW]: Create schema for multi-department scope allocations (`ContractScopeId`, `Department`, `Role`, `AllocationShare`, `AllocatedAmount`, `DepartmentHead`). Must define valid Lookup reference to `ContractScopes`.
-3. `projects.json`: Add `NationalProjectID` and `ServiceType`.
-4. `job_assignments.json`: Add `ContractScopeId`, `ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`.
-5. `assignment_details.json`: Add `ContractScopeId`, `ScopeDeptAllocId`, `GenericRoleName`, `AssignedTechnicalChiefUser`, `ResolvedLegalRole`, `RequiresCertCheck`, `DisciplineLead`, `TeamMembers`, `QCChecker`, `AllocatedHours`. Must define valid Lookup references to `JobAssignments`, `ContractScopes`, and `ScopeDepartmentAllocations`.
-6. `cde_documents.json`: Update ISO 19650 approval status (`S0`->`S1`->`S2`->`S3`->`A1`) and naming metadata fields.
-
-Check the exact schema format (field names, `Type`, `DisplayName`, `Required`, `Choices`, `LookupList`, `LookupField`, etc.) expected by `tools/idop.ps1` validator by inspecting `tools/idop.ps1` and existing list schemas.
-
-Write your findings and exact JSON structure recommendations to `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_1\schema_design.md` and write a handoff report at `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_1\handoff.md`.
-Send a completion message when done.
+## 2026-07-28T08:45:56Z
+<USER_REQUEST>
+You are teamwork_preview_explorer_m1_1. Your working directory is d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_1\. Create your directory if needed.
+Your task:
+1. Inspect d:\idop-ccba-way\extracted_docs\ and record the 8 files, their exact names, sizes, and headers.
+2. List all spec.md files in d:\idop-ccba-way\specs\modules\.
+3. Perform regex/grep search across specs/modules/ for references to QCTK 2815, QCCTNB 3209, CCBA Charter, IBST, IDOP v2. Count total reference occurrences and list which spec.md files contain them.
+4. Write your analysis to d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_1\analysis.md and send a completion message with summary to the parent orchestrator.
+</USER_REQUEST>
