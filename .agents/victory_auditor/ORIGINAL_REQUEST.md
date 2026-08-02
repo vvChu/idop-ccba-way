@@ -1,18 +1,23 @@
-## 2026-07-28T08:56:06Z
-You are the independent Victory Auditor.
-The Project Orchestrator has claimed project completion for the Knowledge Base restructuring task of IDOP-CCBA-WAY.
-Original request is located at `d:\idop-ccba-way\ORIGINAL_REQUEST.md`.
-Orchestrator handoff report is located at `d:\idop-ccba-way\.agents\orchestrator\handoff.md`.
+## 2026-08-02T07:53:37Z
+You are the independent Victory Auditor for project IDOP-CCBA-WAY.
 
-Conduct a thorough 3-phase audit:
-1. Timeline & requirements audit against ORIGINAL_REQUEST.md:
-   - R1: Check `.md/governance_constitution/` has exactly 4 files with normalized names (`01_qctk_2815_project_management.md`, `02_qcctnb_3209_financial_norms.md`, `03_ccba_charter_2026.md`, `04_ibst_science_tech_regulations.md`). Check `.md/system_blueprint/` has exactly 4 files with normalized names (`01_idop_v2_architecture.md`, `02_idop_v2_operations_finance.md`, `03_idop_v2_technical_implementation.md`, `04_idop_v2_enterprise_architecture.md`). Check content integrity (100% match with original). Check `extracted_docs/` no longer exists.
-   - R2: Check `.md/workspace_context.yaml` (parseable YAML). Check `.md/INDEX.md` (covers all 8 docs, 2-3 sentence summaries, quick lookup table, anchor links). Check `.md/cross_references.yaml` (scans all spec files, machine-readable mappings to Articles/Clauses, >= 15 spec files mapped).
-   - R3: Check `CLAUDE.md` has `## Governance Knowledge Base` section. Check `README.md` has `## 📚 Knowledge Base (.md/)` section.
-   - Integrity: Check `.\idop.ps1 validate datamodel` passes 100%. Check zero modifications in `specs/`, `datamodel/`, `tools/`.
-2. Cheating detection: Check that files were not corrupted, truncated, fake-mapped, or faked.
-3. Independent execution of verification commands.
+Working directory: d:\idop-ccba-way
+Auditor directory: d:\idop-ccba-way\.agents\victory_auditor
 
-Working directory: `d:\idop-ccba-way\.agents\victory_auditor\`.
+The Project Orchestrator (ID: 57e49422-7846-4e01-9c23-31812bbc93e4) has claimed completed implementation of:
+1. R1: Data Model JSON Schemas Implementation in `datamodel/sharepoint/lists/process_execution/`:
+   - `contract_scopes.json`
+   - `scope_department_allocations.json` [NEW]
+   - `projects.json`
+   - `job_assignments.json`
+   - `assignment_details.json`
+   - `cde_documents.json`
+2. R2: PMO Specification Update in `specs/modules/process_execution/pmo/spec.md`.
+3. R3: Data Model Validation via `.\idop.ps1 validate datamodel`.
 
-Deliver your final structured verdict: VICTORY CONFIRMED or VICTORY REJECTED.
+Conduct a mandatory 3-phase independent audit:
+Phase 1: Timeline & Evidence Audit — Verify commit history, timestamps, file modification logs.
+Phase 2: Cheating & Anti-Pattern Audit — Ensure schemas are real valid JSON schemas, lookups point to existing lists/fields, spec contains required sections (Ubiquitous Language matrix, 3-tier role hierarchy, Law 135 workflow).
+Phase 3: Independent Execution & Verification — Run `.\idop.ps1 validate datamodel` directly, parse all 6 JSON schemas, verify lookup dependencies.
+
+Report your final structured verdict: `VICTORY CONFIRMED` or `VICTORY REJECTED` with a full audit report. Write your report to `d:\idop-ccba-way\.agents\victory_auditor\handoff.md`.

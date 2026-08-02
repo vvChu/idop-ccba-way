@@ -74,3 +74,45 @@ Cập nhật 2 file có sẵn để AI Agent mới tự động phát hiện b�
 ### No Regression
 - [ ] Lệnh `.\idop.ps1 validate datamodel` vẫn pass 100% (migration không ảnh hưởng code logic)
 - [ ] Không có file nào trong `specs/`, `datamodel/`, `tools/` bị thay đổi
+
+## Follow-up — 2026-08-02T07:47:46Z
+
+Implement and validate the IDOP CCBA v2.0 Data Model JSON Schemas and PMO Specification according to the comprehensive architectural consensus (Law 135/2025/QH15 compliance, Multi-Scope, Multi-Department allocation, and Polymorphic Role binding).
+
+Working directory: d:\idop-ccba-way
+Integrity mode: demo
+
+## Requirements
+
+### R1. Data Model JSON Schemas Implementation
+Update and create the 6 core SharePoint list JSON schemas in datamodel/sharepoint/lists/process_execution/:
+- contract_scopes.json: Add financial tier 1 allocation fields (NhomHopDongKT, TyLeGiaoDonVi, TyLeVienCPQL, TyLeVienKHTS, GiaTriGiaoDonVi).
+- scope_department_allocations.json [NEW]: Create schema for multi-department scope allocations (ContractScopeId, Department, Role, AllocationShare, AllocatedAmount, DepartmentHead).
+- projects.json: Add NationalProjectID and ServiceType.
+- job_assignments.json: Add ContractScopeId, ContractLeadUser, DesignChiefUser, FinancialOfficerUser.
+- assignment_details.json: Add ContractScopeId, ScopeDeptAllocId, GenericRoleName, AssignedTechnicalChiefUser, ResolvedLegalRole, RequiresCertCheck, DisciplineLead, TeamMembers, QCChecker, AllocatedHours.
+- cde_documents.json: Update ISO 19650 approval status (S0->S1->S2->S3->A1) and naming metadata fields.
+
+### R2. PMO Specification & Documentation Update
+Update specs/modules/process_execution/pmo/spec.md to document:
+- The 5-step PGV data entry sequence.
+- Role distinctions (ContractLeadUser, DesignChiefUser, FinancialOfficerUser, AssignedTechnicalChiefUser).
+- Multi-Scope and Multi-Department allocation business rules.
+- Statutory compliance with Law 135/2025/QH15 & NĐ 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26).
+
+### R3. Data Model Validation
+Execute .\idop.ps1 validate datamodel to ensure all 58 list schemas, lookup dependencies, and JSON syntax pass validation cleanly without errors.
+
+## Acceptance Criteria
+
+### Schema Integrity & Syntax
+- [ ] All 6 JSON schema files in datamodel/sharepoint/lists/process_execution/ pass valid JSON schema parsing.
+- [ ] scope_department_allocations.json is created with valid Lookup references to ContractScopes.
+- [ ] assignment_details.json contains valid Lookup references to JobAssignments, ContractScopes, and ScopeDepartmentAllocations.
+
+### CLI Validation
+- [ ] Running .\idop.ps1 validate datamodel returns 0 validation errors.
+
+### PMO Specification Completeness
+- [ ] specs/modules/process_execution/pmo/spec.md includes the Ubiquitous Language matrix, 3-tier role hierarchy, and Law 135/2025 verification workflow.
+

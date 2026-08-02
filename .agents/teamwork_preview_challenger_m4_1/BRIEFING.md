@@ -1,46 +1,42 @@
-# BRIEFING — 2026-07-28T08:51:25Z
+# BRIEFING — 2026-08-02T14:54:15+07:00
 
 ## Mission
-Empirically stress-test and verify deliverables for IDOP-CCBA-WAY Knowledge Base Restructuring.
+Empirically stress test data model schemas and CLI validator (`.\idop.ps1 validate datamodel`) for Milestone 4 of IDOP-CCBA-WAY.
 
 ## 🔒 My Identity
 - Archetype: EMPIRICAL CHALLENGER
 - Roles: critic, specialist
 - Working directory: d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1
-- Original parent: 850b6f7a-6d2c-483f-b817-91fe61aeb839
-- Milestone: M4
+- Original parent: 57e49422-7846-4e01-9c23-31812bbc93e4
+- Milestone: Milestone 4 - Stress Test & Empirical Validation
 - Instance: 1 of 1
 
 ## 🔒 Key Constraints
-- Review-only — do NOT modify implementation code or project specs
-- Empirical verification required for all claims; write and execute tests / commands directly
+- Review-only & Empirical Challenger — do NOT modify implementation/schema code unless instructed to test; report findings.
+- Must execute verification commands via `run_command` directly.
+- Must inspect schema cross-references, taxonomy term set bindings, and lookup graph consistency.
 
 ## Current Parent
-- Conversation ID: 850b6f7a-6d2c-483f-b817-91fe61aeb839
-- Updated: 2026-07-28T08:51:25Z
+- Conversation ID: 57e49422-7846-4e01-9c23-31812bbc93e4
+- Updated: 2026-08-02T14:54:15+07:00
 
 ## Review Scope
-- **Files to review**: `specs/`, `datamodel/`, `tools/`, `.md/workspace_context.yaml`, `.md/cross_references.yaml`, `specs/modules/*.md`
-- **Interface contracts**: PROJECT.md, milestone M4 goals
-- **Review criteria**: Zero modified files in specs/datamodel/tools, valid YAML syntax, full mapping of 21 spec.md files, successful execution of `.\idop.ps1 validate datamodel`.
+- **Files to review**: `datamodel/sharepoint/lists/**/*.json`, `datamodel/sharepoint/taxonomy/*.json`, `tools/scripts/modules/ValidationHelpers.psm1`, `idop.ps1`
+- **Target schema graph**: `AssignmentDetails`, `JobAssignments`, `ScopeDepartmentAllocations`, `ContractScopes`, `Projects`, taxonomy term set bindings, and all 59 list schemas.
+- **Review criteria**: Empirical CLI execution (exit code 0, 0 errors), cross-reference consistency, lookup reference integrity.
 
-## Attack Surface
-- **Hypotheses tested**:
-  1. "ZERO files in specs/, datamodel/, and tools/ were created, modified, or deleted." -> REJECTED. Found 17 modified + 5 untracked files in datamodel/, 26 modified + 4 untracked dirs in specs/, 2 modified in tools/.
-  2. "YAML structure of workspace_context.yaml and cross_references.yaml is valid, and all 21 spec.md files in specs/modules/ are mapped." -> CONFIRMED. Both load without YAML errors and 21/21 spec.md files match 1-to-1.
-  3. ".\idop.ps1 validate datamodel executes with exit code 0." -> CONFIRMED. 57 lists checked & valid, 19 taxonomies checked & valid, 0 errors, exit code 0.
-- **Vulnerabilities found**: Git workspace contains uncommitted changes across core specification and datamodel folders, violating strict clean-git assertion if required for release hygiene.
-- **Untested angles**: Runtime performance of PowerShell scripts under large list size scaling.
-
-## Loaded Skills
-- None specified by orchestrator.
-
-## Key Decisions Made
-- Performed empirical verification using git status, custom Python YAML parser & matcher scripts, and PowerShell execution harness.
-- Formulated handoff report documenting 2 passing checks and 1 failing hypothesis.
+## Key Decisions & Discoveries Made
+- Confirmed project IDOP-CCBA-WAY v2.0.0 datamodel structure (59 list JSON schemas, 21 taxonomy term set JSON schemas).
+- Ran `.\idop.ps1 validate datamodel`: returned 0 errors, exit code 0.
+- Executed `jsonschema` validation against `sp-list.schema.json`: 59/59 list schemas are 100% compliant.
+- Verified 44 `ManagedMetadata` taxonomy columns: 100% valid, binding to all 21 taxonomy files.
+- Verified 62 `Lookup` columns: 100% valid targets.
+- Evaluated 5-list process execution graph (`AssignmentDetails`, `JobAssignments`, `ScopeDepartmentAllocations`, `ContractScopes`, `Projects`): closed, valid relational graph.
+- **CRITICAL CRITIC FINDING**: Uncovered bug in CLI helper `ValidationHelpers.psm1` (`Test-IDOPLookupReferences`), which uses `$list.Fields` and `$field.LookupList` instead of `$list.Columns` and `$field.Lookup.List`.
 
 ## Artifact Index
-- d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\ORIGINAL_REQUEST.md — Original request log
-- d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\progress.md — Progress heartbeat log
-- d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\handoff.md — Final challenge report
-
+- `d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\ORIGINAL_REQUEST.md` — Original request
+- `d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\BRIEFING.md` — Briefing document
+- `d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\progress.md` — Liveness heartbeat & progress log
+- `d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\verify_datamodel.py` — Empirical verification script
+- `d:\idop-ccba-way\.agents\teamwork_preview_challenger_m4_1\handoff.md` — Handoff report

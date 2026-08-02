@@ -1,64 +1,56 @@
-# BRIEFING — 2026-07-28
+# BRIEFING — 2026-08-02T14:51:00+07:00
 
 ## Mission
-Implement Milestone 2: File Migration & Cleanup, Meta Files Generation (workspace_context.yaml, INDEX.md, cross_references.yaml), and Handoff Report.
+Implement and update 6 SharePoint list JSON schemas in `datamodel/sharepoint/lists/process_execution/` per `schema_design.md` specifications and validate cleanly using `.\idop.ps1 validate datamodel`.
 
 ## 🔒 My Identity
-- Archetype: implementer/qa/specialist
+- Archetype: implementer
 - Roles: implementer, qa, specialist
 - Working directory: d:\idop-ccba-way\.agents\teamwork_preview_worker_m2_1
-- Original parent: 850b6f7a-6d2c-483f-b817-91fe61aeb839
-- Milestone: Milestone 2
+- Original parent: 57e49422-7846-4e01-9c23-31812bbc93e4
+- Milestone: Milestone 2 (M2)
 
 ## 🔒 Key Constraints
-- Minimal change principle.
-- Full integrity verification (compare size/lines before removing `extracted_docs/`).
-- Valid YAML outputs (parse verification required).
-- Scan all 21 spec.md files in `specs/modules/` to map cross-references to original governance/blueprint documents (~150+ references).
-- Output reports to `.agents/teamwork_preview_worker_m2_1/handoff.md`.
+- Strictly adhere to `schema_design.md` JSON schemas.
+- Ensure all 6 target schemas pass `.\idop.ps1 validate datamodel` with 0 errors.
+- Minimal change principle. No hardcoding or facade implementations.
+- Write implementation report to `changes.md` and handoff report to `handoff.md`.
 
 ## Current Parent
-- Conversation ID: 850b6f7a-6d2c-483f-b817-91fe61aeb839
-- Updated: 2026-07-28
+- Conversation ID: 57e49422-7846-4e01-9c23-31812bbc93e4
+- Updated: 2026-08-02T14:51:00+07:00
 
 ## Task Summary
-- **What to build**: Migration of 8 extracted docs to `.md/governance_constitution/` and `.md/system_blueprint/`, cleanup of `extracted_docs/`, creation of `workspace_context.yaml`, `INDEX.md`, and `cross_references.yaml`.
-- **Success criteria**: 100% content integrity, clean removal of extracted_docs, valid YAML files, complete INDEX.md and cross_references.yaml mapping 21 specs.
-- **Interface contracts**: PROJECT.md / User Rules (.md directory rules).
-- **Code layout**: Project root `d:\idop-ccba-way`.
+- **What to build**: Update `contract_scopes.json`, `projects.json`, `job_assignments.json`, `assignment_details.json`, `cde_documents.json` and create `scope_department_allocations.json`.
+- **Success criteria**: All list schemas pass `.\idop.ps1 validate datamodel` cleanly with 0 errors across 59 lists.
+- **Interface contracts**: `datamodel/sharepoint/schemas/sp-list.schema.json`
+- **Code layout**: `datamodel/sharepoint/lists/process_execution/`
+
+## Key Decisions Made
+- Implemented exact JSON structure and column definitions from `schema_design.md`.
 
 ## Change Tracker
 - **Files modified**:
-  - `.md/governance_constitution/01_qctk_2815_project_management.md` (copied & verified)
-  - `.md/governance_constitution/02_qcctnb_3209_financial_norms.md` (copied & verified)
-  - `.md/governance_constitution/03_ccba_charter_2026.md` (copied & verified)
-  - `.md/governance_constitution/04_ibst_science_tech_regulations.md` (copied & verified)
-  - `.md/system_blueprint/01_idop_v2_architecture.md` (copied & verified)
-  - `.md/system_blueprint/02_idop_v2_operations_finance.md` (copied & verified)
-  - `.md/system_blueprint/03_idop_v2_technical_implementation.md` (copied & verified)
-  - `.md/system_blueprint/04_idop_v2_enterprise_architecture.md` (copied & verified)
-  - `.md/workspace_context.yaml` (created & verified)
-  - `.md/INDEX.md` (created)
-  - `.md/cross_references.yaml` (created & verified - 259 refs)
-  - `.md/scripts/build_meta.py` (created)
-- **Build status**: Complete & Verified (Pass)
-- **Pending issues**: None
+  - `datamodel/sharepoint/lists/process_execution/contract_scopes.json`: Formatted schema with 12 fields including financial tier 1 allocation fields (`NhomHopDongKT`, `TyLeGiaoDonVi`, `TyLeVienCPQL`, `TyLeVienKHTS`, `GiaTriGiaoDonVi`).
+  - `datamodel/sharepoint/lists/process_execution/scope_department_allocations.json`: Created new schema with 6 fields (`ContractScopeId`, `Department`, `Role`, `AllocationShare`, `AllocatedAmount`, `DepartmentHead`).
+  - `datamodel/sharepoint/lists/process_execution/projects.json`: Updated schema to add `NationalProjectID` and `ServiceType` (11 fields total).
+  - `datamodel/sharepoint/lists/process_execution/job_assignments.json`: Updated schema to add `ContractScopeId`, `ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser` (9 fields total).
+  - `datamodel/sharepoint/lists/process_execution/assignment_details.json`: Updated schema to add `ContractScopeId`, `ScopeDeptAllocId`, `GenericRoleName`, `AssignedTechnicalChiefUser`, `ResolvedLegalRole`, `RequiresCertCheck`, `DisciplineLead`, `TeamMembers`, `QCChecker`, `AllocatedHours` (14 fields total).
+  - `datamodel/sharepoint/lists/process_execution/cde_documents.json`: Updated schema with ISO 19650 metadata fields (`Originator`, `ZoneVolume`, `LevelLocation`, `IsoDocumentName`) and 5-stage `ApprovalStatus` choice values (`S0`, `S1`, `S2`, `S3`, `A1`) (18 fields total).
+- **Build status**: PASS (59/59 lists valid, 0 errors).
+- **Pending issues**: None.
 
 ## Quality Status
-- **Build/test result**: All 8 files 100% SHA-256 verified, YAML safe load test passed.
-- **Lint status**: N/A (Markdown / YAML)
-- **Tests added/modified**: Automated integrity & YAML validation scripts executed.
+- **Build/test result**: PASS (`.\idop.ps1 validate datamodel` executed, 59 lists valid, 0 errors).
+- **Lint status**: 0 errors.
+- **Tests added/modified**: Datamodel schema validation pass.
 
 ## Loaded Skills
-- None
-
-## Key Decisions Made
-- Migrated 8 files and verified 100% byte-for-byte before deleting `extracted_docs/`.
-- Generated `workspace_context.yaml`, `INDEX.md`, and `cross_references.yaml` with 259 mapped references.
-- Placed generator script in `.md/scripts/build_meta.py`.
+- None loaded.
 
 ## Artifact Index
-- `.agents/teamwork_preview_worker_m2_1/ORIGINAL_REQUEST.md` — Original prompt text
-- `.agents/teamwork_preview_worker_m2_1/BRIEFING.md` — Briefing document
-- `.agents/teamwork_preview_worker_m2_1/progress.md` — Progress log
-- `.agents/teamwork_preview_worker_m2_1/handoff.md` — Handoff report
+- `ORIGINAL_REQUEST.md` — Original prompt request text.
+- `BRIEFING.md` — Agent briefing and persistent working memory.
+- `progress.md` — Liveness heartbeat and progress tracking.
+- `changes.md` — Implementation changes report.
+- `handoff.md` — 5-component handoff report.

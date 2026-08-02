@@ -1,29 +1,22 @@
-## 2026-07-28T08:48:48Z
-You are teamwork_preview_worker_m2_1. Your working directory is d:\idop-ccba-way\.agents\teamwork_preview_worker_m2_1\. Create your directory if needed.
+## 2026-08-02T07:50:20Z
 
-Your task: Implement Milestone 2 (Migration & Meta Files Generation).
+You are Worker 1 (teamwork_preview_worker) for Milestone 2 of project IDOP-CCBA-WAY.
+Working directory: d:\idop-ccba-way\.agents\teamwork_preview_worker_m2_1
 
-1. FILE MIGRATION & CLEANUP:
-   - Create directories `.md/governance_constitution` and `.md/system_blueprint`.
-   - Copy/move 8 files from `extracted_docs/` to their new locations:
-     Group A -> `.md/governance_constitution/`:
-     - `qctk_01.12.2025.md` -> `01_qctk_2815_project_management.md`
-     - `qcctnb_2025.md` -> `02_qcctnb_3209_financial_norms.md`
-     - `Du thao_QuyCheToChucHoatDong_CCBA_2026_v2.2.md` -> `03_ccba_charter_2026.md`
-     - `quy_che_khcn_ibst_01.12.2025.md` -> `04_ibst_science_tech_regulations.md`
-     Group B -> `.md/system_blueprint/`:
-     - `IDOP_v2.0_F1_Architecture.md` -> `01_idop_v2_architecture.md`
-     - `IDOP_v2.0_F2_Operations_Finance.md` -> `02_idop_v2_operations_finance.md`
-     - `IDOP_v2.0_F3_Technical_Implementation.md` -> `03_idop_v2_technical_implementation.md`
-     - `IDOP_v2.0_F4_Enterprise_Architecture.md` -> `04_idop_v2_enterprise_architecture.md`
-   - Verify 100% content integrity (compare file size/content line by line).
-   - Remove `extracted_docs/` folder completely once verified.
+MANDATORY INTEGRITY WARNING:
+DO NOT CHEAT. All implementations must be genuine. DO NOT hardcode test results, create dummy/facade implementations, or circumvent the intended task. A Forensic Auditor will independently verify your work. Integrity violations WILL be detected and your work WILL be rejected.
 
-2. GENERATE META FILES IN `.md/`:
-   - `workspace_context.yaml`: Valid YAML bootstrap configuration for AI Agents (project_name, version, current_milestone, document_groups, initial_reading_sequence).
-   - `INDEX.md`: Table of contents for all 8 documents with 2-3 sentence summaries, quick lookup table ("Tôi cần biết về X -> đọc file Y, Điều/Phần Z"), and anchor links to key Articles/Clauses in governance rules.
-   - `cross_references.yaml`: Valid YAML file mapping all 21 `spec.md` files in `specs/modules/` to specific Articles/Clauses/Sections in original governance constitution & system blueprint documents. Scan all 21 `spec.md` files to extract exact real-world references (~150+ references).
+Your task is to implement the 6 target SharePoint list JSON schemas in `datamodel/sharepoint/lists/process_execution/`:
+1. `contract_scopes.json`: Update schema with financial tier 1 allocation fields (`NhomHopDongKT`, `TyLeGiaoDonVi`, `TyLeVienCPQL`, `TyLeVienKHTS`, `GiaTriGiaoDonVi`).
+2. `scope_department_allocations.json` [NEW]: Create schema for multi-department scope allocations (`ContractScopeId`, `Department`, `Role`, `AllocationShare`, `AllocatedAmount`, `DepartmentHead`). Must define valid Lookup reference to `ContractScopes`.
+3. `projects.json`: Add `NationalProjectID` and `ServiceType`.
+4. `job_assignments.json`: Add `ContractScopeId`, `ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`.
+5. `assignment_details.json`: Add `ContractScopeId`, `ScopeDeptAllocId`, `GenericRoleName`, `AssignedTechnicalChiefUser`, `ResolvedLegalRole`, `RequiresCertCheck`, `DisciplineLead`, `TeamMembers`, `QCChecker`, `AllocatedHours`. Must define valid Lookup references to `JobAssignments`, `ContractScopes`, and `ScopeDepartmentAllocations`.
+6. `cde_documents.json`: Update ISO 19650 approval status (`S0`->`S1`->`S2`->`S3`->`A1`) and naming metadata fields (`Originator`, `ZoneVolume`, `LevelLocation`, `IsoDocumentName`).
 
-3. REPORT & HANDOFF:
-   - Document your work, file paths created, verification results, and YAML parsing checks in `d:\idop-ccba-way\.agents\teamwork_preview_worker_m2_1\handoff.md`.
-   - Send completion message to parent orchestrator.
+Refer to the design specifications in `d:\idop-ccba-way\.agents\teamwork_preview_explorer_m1_1\schema_design.md` for exact JSON structure.
+
+After modifying/creating the JSON files, execute `.\idop.ps1 validate datamodel` using `run_command` to verify that all list schemas pass validation cleanly with 0 errors.
+
+Write your implementation report to `d:\idop-ccba-way\.agents\teamwork_preview_worker_m2_1\changes.md` and write a 5-component handoff report at `d:\idop-ccba-way\.agents\teamwork_preview_worker_m2_1\handoff.md`.
+Send a completion message when done.

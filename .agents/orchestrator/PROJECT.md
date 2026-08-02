@@ -1,31 +1,61 @@
-# Project: IDOP-CCBA-WAY Knowledge Base Restructuring
+# Project: IDOP-CCBA-WAY Data Model & PMO Spec Upgrade
 
 ## Architecture
-- Source files: `extracted_docs/` (8 files - migrated and folder removed)
-- Governance constitution target: `.md/governance_constitution/` (4 legal regulations - migrated & verified)
-- System blueprint target: `.md/system_blueprint/` (4 system architecture & design specs - migrated & verified)
-- Meta files: `.md/workspace_context.yaml`, `.md/INDEX.md`, `.md/cross_references.yaml`
-- Discoverability files: `CLAUDE.md`, `README.md` (updated with Governance KB sections)
-- Modules specs directory: `specs/modules/` (21 spec.md files scanned, 259 cross-references mapped)
+- SharePoint Online List Schemas (`datamodel/sharepoint/lists/process_execution/`)
+- Module Specifications (`specs/modules/process_execution/pmo/spec.md`)
+- PowerShell CLI Engine (`tools/idop.ps1` -> `validate datamodel`)
 
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 1 | M1 Exploration & Pre-validation | Verify extracted_docs, specs/modules, run pre-migration datamodel validation | none | DONE |
-| 2 | M2 File Migration & Meta Files | Move 8 files, create workspace_context.yaml, INDEX.md, cross_references.yaml, remove extracted_docs/ | M1 | DONE |
-| 3 | M3 Agent Discoverability | Update CLAUDE.md (## Governance Knowledge Base) & README.md (## 📚 Knowledge Base (.md/)) | M2 | DONE |
-| 4 | M4 E2E Verification & Forensic Audit | Run datamodel validation, check file integrity, no changes in specs/datamodel/tools, forensic audit | M3 | DONE |
+| M1 | Exploration & Architecture Assessment | Read schemas, validator, specs, and produce field specs | None | DONE |
+| M2 | Data Model JSON Schemas Implementation (R1) | Update 5 schemas and create `scope_department_allocations.json` | M1 | DONE |
+| M3 | PMO Specification & Documentation Update (R2) | Update `specs/modules/process_execution/pmo/spec.md` | M1 | DONE |
+| M4 | Data Model Validation & Final Forensic Audit (R3) | Execute `.\idop.ps1 validate datamodel`, Challenger, and Forensic Audit | M2, M3 | DONE |
 
-## Interface Contracts & Guidelines
-- File renaming map:
-  - `qctk_01.12.2025.md` -> `.md/governance_constitution/01_qctk_2815_project_management.md` (DONE)
-  - `qcctnb_2025.md` -> `.md/governance_constitution/02_qcctnb_3209_financial_norms.md` (DONE)
-  - `Du thao_QuyCheToChucHoatDong_CCBA_2026_v2.2.md` -> `.md/governance_constitution/03_ccba_charter_2026.md` (DONE)
-  - `quy_che_khcn_ibst_01.12.2025.md` -> `.md/governance_constitution/04_ibst_science_tech_regulations.md` (DONE)
-  - `IDOP_v2.0_F1_Architecture.md` -> `.md/system_blueprint/01_idop_v2_architecture.md` (DONE)
-  - `IDOP_v2.0_F2_Operations_Finance.md` -> `.md/system_blueprint/02_idop_v2_operations_finance.md` (DONE)
-  - `IDOP_v2.0_F3_Technical_Implementation.md` -> `.md/system_blueprint/03_idop_v2_technical_implementation.md` (DONE)
-  - `IDOP_v2.0_F4_Enterprise_Architecture.md` -> `.md/system_blueprint/04_idop_v2_enterprise_architecture.md` (DONE)
-- YAML syntax requirement: Valid YAML for `workspace_context.yaml` and `cross_references.yaml`.
-- Content integrity: 100% exact copy of contents without modification.
-- Validation script: `.\idop.ps1 validate datamodel` must pass.
+## Interface Contracts & Schemas
+### 1. `contract_scopes.json`
+- `NhomHopDongKT`: Choice (Group 1, Group 2, etc.) / Text
+- `TyLeGiaoDonVi`: Number / Float (%)
+- `TyLeVienCPQL`: Number / Float (%)
+- `TyLeVienKHTS`: Number / Float (%)
+- `GiaTriGiaoDonVi`: Currency / Number
+
+### 2. `scope_department_allocations.json` [NEW]
+- `ContractScopeId`: Lookup -> `ContractScopes`
+- `Department`: Choice / Text
+- `Role`: Choice / Text
+- `AllocationShare`: Number / Float (%)
+- `AllocatedAmount`: Currency / Number
+- `DepartmentHead`: User / Principal
+
+### 3. `projects.json`
+- `NationalProjectID`: Single line of text
+- `ServiceType`: Choice / Text
+
+### 4. `job_assignments.json`
+- `ContractScopeId`: Lookup -> `ContractScopes`
+- `ContractLeadUser`: User / Principal
+- `DesignChiefUser`: User / Principal
+- `FinancialOfficerUser`: User / Principal
+
+### 5. `assignment_details.json`
+- `ContractScopeId`: Lookup -> `ContractScopes`
+- `ScopeDeptAllocId`: Lookup -> `ScopeDepartmentAllocations`
+- `GenericRoleName`: Text
+- `AssignedTechnicalChiefUser`: User / Principal
+- `ResolvedLegalRole`: Text / Choice
+- `RequiresCertCheck`: Boolean
+- `DisciplineLead`: User / Principal
+- `TeamMembers`: User (Multi)
+- `QCChecker`: User / Principal
+- `AllocatedHours`: Number
+
+### 6. `cde_documents.json`
+- Approval Status lifecycle: S0 -> S1 -> S2 -> S3 -> A1
+- Naming metadata fields: ISO 19650 compliant metadata
+
+## Code Layout
+- Schemas: `datamodel/sharepoint/lists/process_execution/*.json`
+- Specs: `specs/modules/process_execution/pmo/spec.md`
+- CLI: `idop.ps1` / `tools/`

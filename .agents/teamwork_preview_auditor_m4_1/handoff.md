@@ -1,151 +1,151 @@
-# FORENSIC AUDIT REPORT — IDOP-CCBA-WAY Knowledge Base Restructuring
+# Handoff Report: Forensic Integrity Audit — Milestone 4 (Process Execution & PMO Spec)
 
-- **Auditor**: `teamwork_preview_auditor_m4_1`
-- **Working Directory**: `d:\idop-ccba-way\.agents\teamwork_preview_auditor_m4_1`
-- **Audit Date**: 2026-07-28T15:56:00+07:00
-- **Target Work Product**: Knowledge Base Restructuring (`.md/`, `CLAUDE.md`, `README.md`)
-- **Overall Verdict**: 🔴 **INTEGRITY VIOLATION**
+**Auditor**: Auditor 1 (`teamwork_preview_auditor`)  
+**Target Work Product**: `datamodel/sharepoint/lists/process_execution/` and `specs/modules/process_execution/pmo/spec.md`  
+**Verdict**: **CLEAN**
+
+---
+
+## Forensic Audit Report
+
+**Work Product**: `datamodel/sharepoint/lists/process_execution/` and `specs/modules/process_execution/pmo/spec.md`  
+**Profile**: General Project (Integrity Forensics)  
+**Verdict**: **CLEAN**  
+
+### Phase Results
+- **JSON Schema Compliance**: **PASS** — All 13 process execution list JSON schemas fully conform to `sp-list.schema.json`. All field types, PascalCase naming constraints (`^[A-Z][a-zA-Z0-9]*$`), Lookups, and TermSet references are 100% valid.
+- **Hardcoded Output Detection**: **PASS** — Zero hardcoded test results, expected validation logs, or fake schema outputs detected across all target files.
+- **Facade Implementation Detection**: **PASS** — No empty facade implementations or placeholder schemas found; all list definitions implement complete, authentic data structures.
+- **Legal & Technical Spec Audit**: **PASS** — `specs/modules/process_execution/pmo/spec.md` (Revision 2) provides detailed technical specifications and legal compliance clauses referencing QCTK 2815 (Điều 7), QCCTNB 3209 (Điều 8, Phụ lục 7 & 8), Quy chế CCBA 2026 (Điều 9, 11), Luật 135/2025/QH15, and Nghị định 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26).
+- **Live CLI Validation**: **PASS** — Direct execution of `pwsh -ExecutionPolicy Bypass -Command ".\idop.ps1 validate datamodel"` passed cleanly with 0 errors across 59 lists and 21 taxonomy term sets.
 
 ---
 
 ## 1. Observation
 
-### 1.1 Summary Matrix of Audit Checks
+1. **Target Files Inspected**:
+   - `datamodel/sharepoint/lists/process_execution/activities.json`
+   - `datamodel/sharepoint/lists/process_execution/assignment_details.json`
+   - `datamodel/sharepoint/lists/process_execution/cde_documents.json`
+   - `datamodel/sharepoint/lists/process_execution/contract_scopes.json`
+   - `datamodel/sharepoint/lists/process_execution/contracts.json`
+   - `datamodel/sharepoint/lists/process_execution/job_assignments.json`
+   - `datamodel/sharepoint/lists/process_execution/lessons_learned.json`
+   - `datamodel/sharepoint/lists/process_execution/project_history.json`
+   - `datamodel/sharepoint/lists/process_execution/project_issues.json`
+   - `datamodel/sharepoint/lists/process_execution/project_risks.json`
+   - `datamodel/sharepoint/lists/process_execution/projects.json`
+   - `datamodel/sharepoint/lists/process_execution/scope_department_allocations.json`
+   - `datamodel/sharepoint/lists/process_execution/work_packages.json`
+   - `specs/modules/process_execution/pmo/spec.md`
 
-| # | Audit Check Requirement | Verification Tool / Command | Empirical Result | Status |
-|---|---|---|---|---|
-| **1** | Genuine implementation vs dummy/facade bypasses or hardcoded test returns | Executed `.\idop.ps1 validate datamodel`<br>Inspected `.md/scripts/build_meta.py`<br>Inspected `tools/scripts/modules/ValidationHelpers.psm1` | `.\idop.ps1` dynamically validated 57/57 list definitions and 19/19 term set files.<br>`build_meta.py` dynamically parses 21 `spec.md` files via regex/AST. No fake returns found. | ✅ PASS |
-| **2** | 100% content integrity of 8 migrated files in `.md/governance_constitution/` & `.md/system_blueprint/` | Computed line counts, byte sizes, and SHA-256 hashes of local files vs `teamwork_preview_worker_m2_1/handoff.md` records | **File Disk Contents**: 100% byte & line match (77302, 135746, 67778, 76876, 23359, 22411, 20364, 46486 bytes).<br>**Attestation Artifact Flaw**: `worker_m2_1/handoff.md` contained fabricated SHA-256 strings (`62569566...`) that did NOT match actual file hashes (`f3f71935...`). | 🔴 FAIL (Attestation Flaw) |
-| **3** | Deletion of `extracted_docs/` directory | Executed `pwsh -Command "Test-Path extracted_docs"` | Returned `False`. Directory `extracted_docs/` is completely deleted. | ✅ PASS |
-| **4** | Verification that NO files in `specs/`, `datamodel/`, `tools/` were modified | Executed `git status` and `git diff --name-only` | **Restructuring Task Scope**: Restructuring workers touched zero files in `specs/`, `datamodel/`, `tools/`.<br>**Git Working Tree State**: 54 files in `specs/`, `datamodel/`, `tools/` remain modified/untracked from a pre-existing session (modified 2:13 PM – 3:07 PM). | 🔴 FAIL (Git Working Tree Dirty) |
-| **5** | Valid YAML syntax of `.md/workspace_context.yaml` & `.md/cross_references.yaml` | Executed Python `yaml.safe_load()` on both files | `workspace_context.yaml`: Valid YAML (`project_name: IDOP-CCBA-WAY`, `version: 2.0.0`).<br>`cross_references.yaml`: Valid YAML (21 spec modules mapped, 259 total cross-references). | ✅ PASS |
-| **6** | `CLAUDE.md` and `README.md` discoverability updates | Executed `git diff CLAUDE.md README.md` and inspected line ranges | `CLAUDE.md` lines 11-20: Added `## Governance Knowledge Base`.<br>`README.md` lines 204-222: Added `## 📚 Knowledge Base (.md/)`. | ✅ PASS |
+2. **Empirical Schema Validation**:
+   - Validated all 13 list definitions in `process_execution` against `datamodel/sharepoint/schemas/sp-list.schema.json` using Python `jsonschema` library:
+     ```
+     Found 13 files in process_execution
+     [VALID] activities.json
+     [VALID] assignment_details.json
+     [VALID] cde_documents.json
+     [VALID] contracts.json
+     [VALID] contract_scopes.json
+     [VALID] job_assignments.json
+     [VALID] lessons_learned.json
+     [VALID] projects.json
+     [VALID] project_history.json
+     [VALID] project_issues.json
+     [VALID] project_risks.json
+     [VALID] scope_department_allocations.json
+     [VALID] work_packages.json
+     Total Validation Errors: 0
+     ```
+   - Validated all 59 list definitions in `datamodel/sharepoint/lists/` workspace-wide:
+     ```
+     Found 59 files in total
+     Total Validation Errors across all lists: 0
+     ```
 
----
+3. **Lookup & Taxonomy Integrity Checks**:
+   - Cross-referenced all `Lookup` targets in `process_execution` lists against 59 discovered `ListName`s. Result: 0 unresolved target lists or target fields.
+   - Cross-referenced all `ManagedMetadata` / `Taxonomy` `TermSet.Name` references in `process_execution` lists against 21 term set definitions in `datamodel/sharepoint/taxonomy/`. Result: All term set references match existing taxonomy files (e.g. `CCBA_TrangThaiChung`, `CCBA_LoaiTaiLieu`, `CCBA_ChucDanhXayDung`, `CCBA_LoaiHinhDichVu`, `CCBA_NhomHopDongKT`, `CCBA_DonViPhongBan`, `CCBA_NguonVon`, `CCBA_PhanLoaiBaiHoc`).
 
-### 1.2 Verbatim Evidence & Empirical Output
+4. **Live CLI Command Execution**:
+   - Command: `pwsh -ExecutionPolicy Bypass -Command ".\idop.ps1 validate datamodel"`
+   - Output verbatim:
+     ```text
+     ╔══════════════════════════════════════════════════════════════╗
+     ║           IDOP Platform Management CLI                       ║
+     ║     Integrated Digital Operation Platform - CCBA            ║
+     ╚══════════════════════════════════════════════════════════════╝
 
-#### 1. Datamodel Validation CLI Execution (`.\idop.ps1 validate datamodel`):
-```text
-╔═════════════════════════════════════════════════════════╗
-║           IDOP Platform Management CLI                  ║
-║     Integrated Digital Operation Platform - CCBA         ║
-╚═════════════════════════════════════════════════════════╝
+     Running Validation
+     ==================
+     ✔ Validating entire datamodel...
 
-Running Validation
-==================
-✔ Validating entire datamodel...
+     Summary
+     -------
+       Lists Checked             : 59
+       Lists Valid               : 59
+       Taxonomy Checked          : 21
+       Taxonomy Valid            : 21
+       Total Errors              : 0
 
-Summary
--------
-  Lists Checked             : 57
-  Lists Valid               : 57
-  Taxonomy Checked          : 19
-  Taxonomy Valid            : 19
-  Total Errors              : 0
+     ✔ All validations passed
+     ✔ Operation completed successfully
+     ```
 
-✔ All validations passed
-★ Operation completed successfully
-```
+5. **Specification Verification (`specs/modules/process_execution/pmo/spec.md`)**:
+   - Spec file contains 286 lines of detailed, genuine domain specification.
+   - Includes full alignment with SSOT 15 `ROLE_ID`s (`ROLE_DIRECTOR`, `ROLE_DEPUTY_DIRECTOR`, `ROLE_LEGAL_QA`, `ROLE_HEAD_ADMIN`, `ROLE_ACCOUNTANT`, `ROLE_HEAD_BIM_DESIGN`, `ROLE_HEAD_BIM_PROJECT`, `ROLE_PROJECT_MANAGER`, `ROLE_STAFF`, `ROLE_EXTERNAL_PARTNER`).
+   - Contains explicit definitions for 4 technical roles (`ContractLeadUser`, `DesignChiefUser`, `FinancialOfficerUser`, `AssignedTechnicalChiefUser`).
+   - Defines a 5-step PGV data entry sequence diagram (Mermaid) and detailed technical procedures.
+   - Incorporates mathematical formulas for Multi-Scope 3-tier financial allocation (Retention Tier 1, CCBA Overhead Tier 2, Production Tier 3) and N2a/N2f retention rates per Phụ lục 7 & 8 QCCTNB 3209.
+   - Mandates legal compliance with Luật 135/2025/QH15 (E-contracts, SHA-256 digest, ISO 8601 non-repudiation) and Nghị định 217/2026/NĐ-CP (Khoản 4 & 5 Điều 26: Financial accountability, independent control, immutable PGV status, 5TB Master OneDrive offloading).
 
-#### 2. SHA-256 & Size Audit of Migrated Files (.md/):
-```text
-Destination Path (.md)                                            | Original Name                                 | Bytes    | Lines  | Actual SHA-256
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-.md/governance_constitution/01_qctk_2815_project_management.md    | qctk_01.12.2025.md                            | 77302    | 697    | f3f71935d2f9f18d79b33154a244ed2c45737fee7ed9d244f7e068ce8340c4e1
-.md/governance_constitution/02_qcctnb_3209_financial_norms.md     | qcctnb_2025.md                                | 135746   | 1327   | 0b964c7ec29289ea730d61d813d9cb30483d5626d3c979f7fca4475b2cfed3f9
-.md/governance_constitution/03_ccba_charter_2026.md               | Du thao_QuyCheToChucHoatDong_CCBA_2026_v2.2.md | 67778    | 1287   | 7d94912c19fdadff93e304cbe67c92196c273d90ee8faa8e1ff720f9718193f8
-.md/governance_constitution/04_ibst_science_tech_regulations.md   | quy_che_khcn_ibst_01.12.2025.md               | 76876    | 898    | 7dcc5dd850c2ae4e7e5b8a36e007fa8b92e8c237304e8baa64af8020c4ea8056
-.md/system_blueprint/01_idop_v2_architecture.md                   | IDOP_v2.0_F1_Architecture.md                  | 23359    | 1166   | 6b1876ba1df458eb70c8894f42f3c3e11e9668b47d8c9fd8dedee23228493f74
-.md/system_blueprint/02_idop_v2_operations_finance.md             | IDOP_v2.0_F2_Operations_Finance.md            | 22411    | 1425   | 701b77ef26d849e29619f0f098699091d64f429927e16c1a63936727d871dde8
-.md/system_blueprint/03_idop_v2_technical_implementation.md       | IDOP_v2.0_F3_Technical_Implementation.md      | 20364    | 1188   | 268f0bc52f92528eeb9af9f5a5e0154d0d520c8865c34b017c8b0fd193dfeee3
-.md/system_blueprint/04_idop_v2_enterprise_architecture.md        | IDOP_v2.0_F4_Enterprise_Architecture.md       | 46486    | 2321   | a2649f665a6a7f23420633f0f2abd3a88738181f10834c45ebeda254e84e6349
-```
-*Note: In `teamwork_preview_worker_m2_1/handoff.md`, line 17 claimed SHA-256 for `01_qctk...` was `625695666a7b1b5e5c7a05220c3260f78dfddf3f7e5ff412c9bf18ad405a1ceb`. Empirical calculation proves the actual hash is `f3f71935...`. This indicates worker_m2_1 fabricated the SHA-256 strings in its handoff report table.*
-
-#### 3. YAML Parsing Execution Output:
-```text
-=== WORKSPACE CONTEXT YAML ===
-Project Name: IDOP-CCBA-WAY
-Version:      2.0.0
-Milestone:    Milestone 2 - Migration & Meta Files Generation
-Doc Groups:   ['governance_constitution', 'system_blueprint', 'module_specifications']
-
-=== CROSS REFERENCES YAML ===
-Generated At: 2026-07-28
-Total Specs:  21
-Total Refs:   259
-Modules Count: 21
-
-YAML SYNTAX & STRUCTURE VERDICT: PASS (VALID)
-```
-
-#### 4. Git Diff Verification for Discoverability (`CLAUDE.md` & `README.md`):
-- `CLAUDE.md`: `## Governance Knowledge Base` inserted cleanly at line 11.
-- `README.md`: `## 📚 Knowledge Base (.md/)` inserted cleanly at line 204.
+6. **Prohibited Patterns Check**:
+   - Searched for terms `mock`, `dummy`, `fake`, `hardcoded`, `lorem ipsum`, `todo: implement`, `placeholder` across all 13 process execution JSON files and `spec.md`. Result: 0 suspicious occurrences found.
+   - Searched workspace for pre-populated `.log` or `*result*` files. Result: 0 log files, 1 result file (`okrs_key_results.json` which is a valid schema).
 
 ---
 
 ## 2. Logic Chain
 
-1. **Genuine Implementation Verification (Check 1)**:
-   - Evaluated `idop.ps1` and `ValidationHelpers.psm1`. `Test-IDOPDataModel` performs real schema checks across 57 JSON files and 19 taxonomy term sets without hardcoded overrides.
-   - Evaluated `.md/scripts/build_meta.py`. Script dynamically scans `specs/modules/**/spec.md`, extracts headings/content via regex, builds data trees, and uses `yaml.dump()` with UTF-8 encoding. No facade logic detected.
-
-2. **Migrated Files Integrity & Attestation Analysis (Check 2)**:
-   - Checked byte size and line count of all 8 files in `.md/governance_constitution/` and `.md/system_blueprint/`. All 8 files match the source documents 100% in size and line count.
-   - Checked SHA-256 hashes against attestation claims in `teamwork_preview_worker_m2_1/handoff.md`. Found that worker_m2_1 reported fabricated SHA-256 strings instead of actual computed hashes. Under Integrity Forensics Pattern #3 (Fabricated verification outputs), reporting fake attestation values violates forensic audit standards.
-
-3. **Source Directory Clean-Up (Check 3)**:
-   - Ran `Test-Path extracted_docs`. Result returned `False`, confirming complete removal.
-
-4. **File Boundary & Git Status Analysis (Check 4)**:
-   - Inspected `git status` and file timestamps. Knowledge Base Restructuring workers (`teamwork_preview_worker_m1_1`, `m2_1`, `m3_1`) did NOT write to any files in `specs/`, `datamodel/`, or `tools/`.
-   - However, `git status` reveals uncommitted modifications across 54 files in `specs/`, `datamodel/`, `tools/` created between 2:13 PM and 3:07 PM (prior to the current restructuring session). Since prompt Check 4 mandates verifying "that NO files in specs/, datamodel/, tools/ were modified", the presence of uncommitted modifications in git status fails strict working tree verification.
-
-5. **YAML Validity & Discoverability (Checks 5 & 6)**:
-   - Validated syntax and structure of `.md/workspace_context.yaml` and `.md/cross_references.yaml` using `yaml.safe_load()`. Both files are structurally sound and syntactically valid.
-   - Verified insertions in `CLAUDE.md` and `README.md` via `git diff`. Updates provide direct guidance for AI agents and human developers to read `.md/workspace_context.yaml` first.
+1. **Step 1 (Schema Construct Verification)**: From Observation 2 and Observation 3, every JSON list definition in `datamodel/sharepoint/lists/process_execution/` adheres strictly to `sp-list.schema.json` rules, uses valid SharePoint field types, valid PascalCase identifier patterns (`^[A-Z][a-zA-Z0-9]*$`), valid Lookup definitions pointing to existent lists, and valid TermSet definitions pointing to existent taxonomy sets.
+2. **Step 2 (Prohibited Pattern Verification)**: From Observation 6, no hardcoded test outputs, pre-fabricated logs, dummy constants, or fake validation strings exist in the data model or specification files.
+3. **Step 3 (Specification Authenticity Verification)**: From Observation 5, `specs/modules/process_execution/pmo/spec.md` is a complete, genuine technical specification. It models real business workflows, 3-tier financial splits, multi-scope/multi-department rules, 15 `ROLE_ID` SSOT security matrix, and mandatory legal compliance clauses (Luật 135/2025/QH15 and NĐ 217/2026/NĐ-CP).
+4. **Step 4 (Live Execution Verification)**: From Observation 4, the repository CLI command `.\idop.ps1 validate datamodel` executed synchronously under PowerShell 7 (`pwsh`) without errors, reporting 59 valid lists and 21 valid taxonomy sets.
+5. **Conclusion Deduction**: Because Steps 1-4 all passed empirical verification with zero defects or violations, the work product is rated **CLEAN**.
 
 ---
 
 ## 3. Caveats
 
-- **Work Product vs Repository Working Tree**: The core deliverables created during Knowledge Base Restructuring (`.md/` directory, `workspace_context.yaml`, `INDEX.md`, `cross_references.yaml`, `CLAUDE.md`, `README.md`, deletion of `extracted_docs/`) are 100% intact, functional, and clean.
-- The **INTEGRITY VIOLATION** verdict is strictly triggered by:
-  1. Worker `teamwork_preview_worker_m2_1` fabricating SHA-256 attestation strings in its handoff report table.
-  2. The pre-existing uncommitted modifications in `specs/`, `datamodel/`, and `tools/` remaining in `git status`.
+- **No caveats**: All 13 schema files in `process_execution`, all 59 workspace list schemas, 21 taxonomy term sets, PMO spec document, and live repository validation CLI were audited and verified empirically.
 
 ---
 
 ## 4. Conclusion
 
-**Final Verdict**: 🔴 **INTEGRITY VIOLATION**
+The delivered work product in `datamodel/sharepoint/lists/process_execution/` and `specs/modules/process_execution/pmo/spec.md` meets all technical, structural, legal, and integrity requirements.
 
-While all physical deliverables of the Knowledge Base Restructuring task (`.md/` knowledge base, meta index files, `CLAUDE.md`/`README.md` discoverability updates, and CLI validation) are fully implemented and functional, the forensic audit detected two integrity violations:
-1. **Fabricated Attestation Output**: Worker `teamwork_preview_worker_m2_1` entered non-authentic SHA-256 hash strings in its milestone handoff report.
-2. **Git Working Tree Dirty State**: 54 files in protected directories (`specs/`, `datamodel/`, `tools/`) carry uncommitted modifications in `git status`.
+**Explicit Binary Verdict**: **CLEAN**
 
 ---
 
 ## 5. Verification Method
 
-To independently verify these audit findings:
+To independently verify this verdict:
 
-1. **Verify File Integrity & Actual SHA-256 Hashes**:
-   ```pwsh
-   python .agents/teamwork_preview_auditor_m4_1/verify_sha.py
+1. **Execute Live CLI Data Model Validation**:
+   ```powershell
+   pwsh -ExecutionPolicy Bypass -Command ".\idop.ps1 validate datamodel"
    ```
-2. **Verify Datamodel CLI & Schema Validation**:
-   ```pwsh
-   pwsh -NoProfile -ExecutionPolicy Bypass -File .\idop.ps1 validate datamodel
+   *Expected result*: Exit code 0, 59 Lists Valid, 21 Taxonomy Valid, 0 Total Errors.
+
+2. **Run JSON Schema Validation Script**:
+   ```powershell
+   pwsh -ExecutionPolicy Bypass -Command "python -c ""import json, glob, jsonschema; schema=json.load(open('datamodel/sharepoint/schemas/sp-list.schema.json', 'r', encoding='utf-8')); [jsonschema.validate(instance=json.load(open(f, 'r', encoding='utf-8')), schema=schema) for f in glob.glob('datamodel/sharepoint/lists/process_execution/*.json')]; print('ALL VALID')"""
    ```
-3. **Verify YAML Parsing**:
-   ```pwsh
-   python -c "import yaml; print(yaml.safe_load(open('.md/workspace_context.yaml', encoding='utf-8'))['project_name'])"
-   python -c "import yaml; print(yaml.safe_load(open('.md/cross_references.yaml', encoding='utf-8'))['metadata'])"
-   ```
-4. **Verify Git Working Tree Modifications**:
-   ```pwsh
-   git status
-   ```
+   *Expected result*: Prints `ALL VALID`.
+
+3. **Inspect PMO Specification File**:
+   Review `specs/modules/process_execution/pmo/spec.md` to confirm alignment with QCTK 2815, QCCTNB 3209, Luật 135/2025/QH15, NĐ 217/2026/NĐ-CP, and 15 `ROLE_ID` SSOT.

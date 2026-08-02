@@ -1,68 +1,69 @@
-# BRIEFING — 2026-07-28T16:03:52+07:00
+# BRIEFING — 2026-08-02T14:48:15+07:00
 
 ## Mission
-Orchestrate Knowledge Base Restructuring for IDOP-CCBA-WAY (R1 Migration, R2 Meta Files, R3 Discoverability, No Regression Verification).
+Orchestrate IDOP CCBA v2.0 Data Model JSON Schemas Implementation & PMO Specification Update (Law 135/2025/QH15 compliance, Multi-Scope, Multi-Department allocation, Polymorphic Role binding, and Datamodel Validation).
 
 ## 🔒 My Identity
 - Archetype: Project Orchestrator
 - Roles: orchestrator, user_liaison, human_reporter, successor
 - Working directory: d:\idop-ccba-way\.agents\orchestrator
 - Original parent: top-level
-- Original parent conversation ID: 850b6f7a-6d2c-483f-b817-91fe61aeb839
+- Original parent conversation ID: 82c5217c-7908-419f-85b7-3803f501dfd5
 
 ## 🔒 My Workflow
 - **Pattern**: Project Pattern
 - **Scope document**: d:\idop-ccba-way\.agents\orchestrator\PROJECT.md
-1. **Decompose**: Decompose into 4 milestones (M1: Exploration & Pre-validation, M2: Migration & Meta Files Generation, M3: Discoverability Updates, M4: Final E2E Verification & Audit)
+1. **Decompose**: Decompose into 4 milestones (M1: Exploration & Architecture Assessment, M2: Data Model JSON Schemas Implementation, M3: PMO Specification & Documentation Update, M4: Data Model Validation & Final Forensic Audit)
 2. **Dispatch & Execute**: Project Pattern iteration loop per milestone
 3. **On failure**: Retry -> Replace -> Skip -> Redistribute -> Redesign
 4. **Succession**: Threshold 16 spawns
 - **Work items**:
-  1. M1 Exploration & Pre-validation [done]
-  2. M2 File Migration & Meta Files [done]
-  3. M3 Agent Discoverability Updates [done]
-  4. M4 Final Verification & Audit [done]
+  1. M1 Exploration & Architecture Assessment [done]
+  2. M2 Data Model JSON Schemas Implementation [done]
+  3. M3 PMO Specification & Documentation Update [done]
+  4. M4 Data Model Validation & Final Forensic Audit [done]
 - **Current phase**: 4
-- **Current focus**: Project Completed Successfully
+- **Current focus**: Project Completed Successfully (Validation 0 errors, Audit CLEAN)
 
 ## 🔒 Key Constraints
 - NEVER write, modify, or create source code files directly (only orchestrator .md metadata files)
 - NEVER run build/test commands yourself — require workers to run them and submit evidence
-- Do NOT modify files in `specs/`, `datamodel/`, `tools/`
-- Zero regression: `.\idop.ps1 validate datamodel` must pass
+- Ensure strict compliance with Law 135/2025/QH15 and NĐ 217/2026/NĐ-CP (Khoản 4 & Khoản 5 Điều 26)
+- Zero regression: `.\idop.ps1 validate datamodel` must pass cleanly (0 errors across all 59 list schemas)
 
 ## Current Parent
-- Conversation ID: 850b6f7a-6d2c-483f-b817-91fe61aeb839
-- Updated: 2026-07-28T16:03:52+07:00
+- Conversation ID: 82c5217c-7908-419f-85b7-3803f501dfd5
+- Updated: 2026-08-02T14:53:23+07:00
 
 ## Key Decisions Made
-- All 4 milestones completed and verified.
-- Auditor 2 confirmed binary verdict CLEAN.
+- Decomposed follow-up requirements into 4 distinct milestones (M1-M4).
+- Confirmed project context from `.md/workspace_context.yaml`: Project IDOP-CCBA-WAY (v2.0.0, Hub & Spoke), 59 SharePoint List schemas, PMO module specification.
+- All 4 milestones completed, Reviewer 1 & 2 APPROVED, Challenger 1 PASSED, Forensic Auditor 1 verdict CLEAN.
 
 ## Team Roster
 | Agent | Type | Work Item | Status | Conv ID |
 |-------|------|-----------|--------|---------|
-| Explorer 1 | teamwork_preview_explorer | M1: Extracted Docs & Spec Modules | completed | 09de80ba-b00b-4653-b6c5-b5995aded5e8 |
-| Explorer 2 | teamwork_preview_explorer | M1: Discoverability & MD Structure | completed | f2b10091-5885-4623-a641-bc83369ae14f |
-| Worker 1 | teamwork_preview_worker | M1: Baseline Datamodel Validation | completed | 5005a707-d86b-4c80-8d36-45b89ef6c1fb |
-| Worker 2 | teamwork_preview_worker | M2: File Migration & Meta Files | completed | 6ac494b0-9038-4638-a1d1-19954075c386 |
-| Worker 3 | teamwork_preview_worker | M3: Discoverability Updates | completed | 8c3d2b7b-e03d-4031-b69a-ebed774e5204 |
-| Reviewer 1 | teamwork_preview_reviewer | M4: Final Review & Validation | completed | b5133779-0f68-428e-bf4b-0bfb5876eb52 |
-| Challenger 1 | teamwork_preview_challenger | M4: Empirical Stress Test & Diff Audit | completed | b2b7d415-b824-44b6-9bd3-ce3302a4fe35 |
-| Auditor 1 | teamwork_preview_auditor | M4: Forensic Integrity Audit | completed (VIOLATION) | 5e0972f2-9f57-46d3-86ab-4a5d48adb6bf |
-| Explorer 3 | teamwork_preview_explorer | M4-Iteration 2: Audit Remediation Analysis | completed | 9c0ca9f8-d522-41ba-9857-45e39327d506 |
-| Worker 4 | teamwork_preview_worker | M4-Iteration 2: Audit Remediation Execution | completed | 567ad562-5b22-4504-80e5-4762881f55a2 |
-| Auditor 2 | teamwork_preview_auditor | M4-Iteration 2: Re-audit Forensic Integrity | completed (CLEAN) | 1db78d6b-ce88-4aed-a103-9a6ab104131d |
+| Explorer 1 | teamwork_preview_explorer | M1: Schema & Validator Design | failed (stale state) | e3a3a358-5471-4122-9aba-51f7d44829b9 |
+| Explorer 2 | teamwork_preview_explorer | M1: PMO Spec & Governance Design | completed | 472bfe26-42e6-43fc-bc1f-466087bf1cae |
+| Explorer 3 | teamwork_preview_explorer | M1: Schema & Validator Design (Fresh) | completed | ce759708-4fc2-41e0-aafb-bc99b8489e9c |
+| Worker 1 | teamwork_preview_worker | M2: Data Model JSON Schemas Implementation | completed | 6e83b51d-b47b-4a61-b284-aeca99126b60 |
+| Worker 2 | teamwork_preview_worker | M3: PMO Specification Update | completed | e901f6d3-f9b4-45a7-ae3c-3da4774e7ac3 |
+| Reviewer 1 | teamwork_preview_reviewer | M4: Data Model Schemas Review | completed (APPROVED) | a7f6a321-f795-4dce-827b-307fa84a5046 |
+| Reviewer 2 | teamwork_preview_reviewer | M4: PMO Specification Review | completed (APPROVED) | 98e72d87-a18e-4171-930d-298975a383fe |
+| Challenger 1 | teamwork_preview_challenger | M4: Empirical Schema & Validator Stress Test | completed (PASSED) | 7270a51c-673e-490e-b327-004cb4190efd |
+| Auditor 1 | teamwork_preview_auditor | M4: Forensic Integrity Audit | completed (CLEAN) | 3b27a844-9524-4105-bc66-53bbdf15206b |
 
 ## Succession Status
 - Succession required: no
-- Spawn count: 11 / 16
+- Spawn count: 9 / 16
 - Pending subagents: none
+- Predecessor: none
+- Successor: not yet spawned
 - Predecessor: none
 - Successor: not yet spawned
 
 ## Active Timers
-- Heartbeat cron: 850b6f7a-6d2c-483f-b817-91fe61aeb839/task-15
+- Heartbeat cron: none
 - Safety timer: none
 
 ## Artifact Index
@@ -70,4 +71,4 @@ Orchestrate Knowledge Base Restructuring for IDOP-CCBA-WAY (R1 Migration, R2 Met
 - d:\idop-ccba-way\.agents\orchestrator\PROJECT.md — Project scope & milestone decomposition
 - d:\idop-ccba-way\.agents\orchestrator\plan.md — Action plan
 - d:\idop-ccba-way\.agents\orchestrator\progress.md — Execution progress & liveness heartbeat
-- d:\idop-ccba-way\.agents\orchestrator\handoff.md — Final Handoff Report
+- d:\idop-ccba-way\.agents\orchestrator\handoff.md — Handoff Report
