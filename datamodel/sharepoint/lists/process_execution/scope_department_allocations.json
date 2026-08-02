@@ -1,0 +1,50 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "ScopeDepartmentAllocations",
+  "Description": "Phân bổ kinh phí hạng mục hợp đồng theo đơn vị / phòng ban",
+  "Columns": [
+    {
+      "Name": "ContractScopeId",
+      "Type": "Lookup",
+      "Required": true,
+      "Lookup": {
+        "List": "ContractScopes",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Hạng mục hợp đồng"
+    },
+    {
+      "Name": "Department",
+      "Type": "ManagedMetadata",
+      "Required": true,
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_DonViPhongBan"
+      },
+      "DisplayName": "Đơn vị / Phòng ban"
+    },
+    {
+      "Name": "Role",
+      "Type": "Text",
+      "DisplayName": "Vai trò đơn vị"
+    },
+    {
+      "Name": "AllocationShare",
+      "Type": "Number",
+      "DisplayName": "Tỷ lệ phân bổ (%)"
+    },
+    {
+      "Name": "AllocatedAmount",
+      "Type": "Number",
+      "DisplayName": "Kinh phí phân bổ (VND)"
+    },
+    {
+      "Name": "DepartmentHead",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Trưởng đơn vị / Trưởng phòng"
+    }
+  ],
+  "ContentTypes": []
+}

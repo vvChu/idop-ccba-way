@@ -1,17 +1,97 @@
 {
   "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
-  
-"ListName": "JobAssignments",
-"Description": "Phân công công việc",
-"Columns": [
-  { "Name": "ProjectId", "Type": "Lookup",
-    "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
-  { "Name": "EmployeeId", "Type": "Lookup",
-    "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
-  { "Name": "Role", "Type": "Text" },
-  { "Name": "StartDate", "Type": "DateTime" },
-  { "Name": "EndDate", "Type": "DateTime" }
-],
-"ContentTypes": []
-
+  "ListName": "JobAssignments",
+  "Description": "Phân công công việc (Phiếu Giao Việc PGV)",
+  "Columns": [
+    {
+      "Name": "ProjectId",
+      "Type": "Lookup",
+      "Required": true,
+      "Lookup": {
+        "List": "Projects",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Dự án"
+    },
+    {
+      "Name": "ContractScopeId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "ContractScopes",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Hạng mục hợp đồng"
+    },
+    {
+      "Name": "EmployeeId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Employees",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Nhân viên phân công"
+    },
+    {
+      "Name": "Role",
+      "Type": "Text",
+      "DisplayName": "Vai trò giao việc"
+    },
+    {
+      "Name": "ContractLeadUser",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Chủ trì hợp đồng (PM)"
+    },
+    {
+      "Name": "ScopeChiefsSummary",
+      "Type": "Note",
+      "DisplayName": "Tổng hợp Chủ nhiệm KT theo Scope (Rollup)",
+      "Description": "Tự động bởi Power Automate từ ContractScopes.ScopeChiefUser. VD: 'TVTK: Nguyễn A (TK-I-xxx) | KSXD: Lê C (KS-I-zzz)'"
+    },
+    {
+      "Name": "FinancialOfficerUser",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Phụ trách tài chính (nếu có)",
+      "Description": "Tùy chọn. Gán khi HĐ cần người riêng phụ trách quản lý tài chính dự án. Đối với HĐ nhỏ, Chủ trì HĐ tự phụ trách. Thường là Phụ trách Kế toán Đơn vị (Ghế ⑤ CCBA) hoặc cán bộ được Trưởng đơn vị cử"
+    },
+    {
+      "Name": "StartDate",
+      "Type": "DateTime",
+      "DisplayName": "Ngày bắt đầu"
+    },
+    {
+      "Name": "EndDate",
+      "Type": "DateTime",
+      "DisplayName": "Ngày kết thúc"
+    },
+    {
+      "Name": "TotalAllocatedHours",
+      "Type": "Number",
+      "DisplayName": "Tổng số giờ phân bổ (Rollup)",
+      "Description": "Tổng hợp tự động từ AssignmentDetails.AllocatedHours bằng Power Automate"
+    },
+    {
+      "Name": "TotalDisciplinesCount",
+      "Type": "Number",
+      "DisplayName": "Số bộ môn tham gia (Rollup)",
+      "Description": "Đếm tự động số dòng AssignmentDetails distinct DisciplineCode"
+    },
+    {
+      "Name": "TotalStaffCount",
+      "Type": "Number",
+      "DisplayName": "Tổng số cán bộ tham gia (Rollup)",
+      "Description": "Đếm tự động tổng TeamMembers + DisciplineLead từ AssignmentDetails"
+    },
+    {
+      "Name": "DisciplineTeamSummary",
+      "Type": "Note",
+      "DisplayName": "Tổng hợp đội ngũ theo bộ môn (Rollup)",
+      "Description": "Tự động bởi Power Automate từ AssignmentDetails. VD: '[ARC] CT: Trần B | Nhóm: Hà E, Minh F (3 người, 400h)'"
+    }
+  ],
+  "ContentTypes": []
 }

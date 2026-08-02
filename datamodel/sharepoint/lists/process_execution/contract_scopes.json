@@ -75,6 +75,19 @@
       "Name": "KhungNhanCongMax",
       "Type": "Number",
       "DisplayName": "Khung Nhân công Max (%)"
+    },
+    {
+      "Name": "ScopeChiefUser",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Chủ nhiệm theo hoạt động XD (Điều 3.2b)",
+      "Description": "CN Thiết kế / CN Khảo sát / CN Thẩm tra / GĐ QLDA — xác định theo NhomHopDongKT của Scope. Chủ trì bộ môn chi tiết quản lý tại AssignmentDetails"
+    },
+    {
+      "Name": "ScopeChiefCertNo",
+      "Type": "Text",
+      "DisplayName": "Số CCHN Chủ nhiệm",
+      "Description": "Số Chứng chỉ Hành nghề của Chủ nhiệm gắn với hoạt động XD của Scope này"
     }
   ],
   "ContentTypes": []

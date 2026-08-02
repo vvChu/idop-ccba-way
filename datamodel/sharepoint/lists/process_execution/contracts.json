@@ -69,6 +69,48 @@
         "Name": "CCBA_TrangThaiChung"
       },
       "DisplayName": "Trạng thái"
+    },
+    {
+      "Name": "LoaiKyKet",
+      "Type": "Choice",
+      "Choices": [
+        "VienKy",
+        "CCBAKy",
+        "LienDanh"
+      ],
+      "DisplayName": "Loại ký kết HĐ",
+      "Description": "Thẩm quyền ký HĐ: VienKy (> hạn mức GĐ CCBA), CCBAKy (trong hạn mức), LienDanh (nhiều đơn vị). Ref: QCTK 2815 Điều 6.1"
+    },
+    {
+      "Name": "SignDate",
+      "Type": "DateTime",
+      "DisplayName": "Ngày ký hợp đồng"
+    },
+    {
+      "Name": "OpportunityId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Opportunities",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Cơ hội kinh doanh (CRM)",
+      "Description": "Liên kết ngược về Opportunity trên strategy_crm để truy vết nguồn gốc HĐ"
+    },
+    {
+      "Name": "ServiceType",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_LoaiHinhDichVu"
+      },
+      "DisplayName": "Loại hình dịch vụ chính"
+    },
+    {
+      "Name": "DocumentUrl",
+      "Type": "Hyperlink",
+      "DisplayName": "Liên kết file HĐ (OneDrive)",
+      "Description": "URL trỏ đến file HĐ scan/ký số trên 5TB Master OneDrive (02_Contracts/)"
     }
   ],
   "ContentTypes": []

@@ -12,7 +12,14 @@
     {
       "Name": "ProjectName",
       "Type": "Text",
-      "Required": true
+      "Required": true,
+      "DisplayName": "Tên dự án"
+    },
+    {
+      "Name": "NationalProjectID",
+      "Type": "Text",
+      "DisplayName": "Mã dự án quốc gia / Viện IBST",
+      "Description": "Mã định danh dự án cấp quốc gia / Viện IBST theo QCTK 2815"
     },
     {
       "Name": "ContractId",
@@ -21,11 +28,13 @@
         "List": "Contracts",
         "Field": "ID",
         "Behavior": "restrict"
-      }
+      },
+      "DisplayName": "Hợp đồng"
     },
     {
       "Name": "Budget",
-      "Type": "Number"
+      "Type": "Number",
+      "DisplayName": "Ngân sách dự án (VND)"
     },
     {
       "Name": "ServiceType",
@@ -65,11 +74,13 @@
     },
     {
       "Name": "StartDate",
-      "Type": "DateTime"
+      "Type": "DateTime",
+      "DisplayName": "Ngày bắt đầu"
     },
     {
       "Name": "EndDate",
-      "Type": "DateTime"
+      "Type": "DateTime",
+      "DisplayName": "Ngày kết thúc"
     }
   ],
   "ContentTypes": []
