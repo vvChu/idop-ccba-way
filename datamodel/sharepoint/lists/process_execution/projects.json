@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/sp-list.schema.json",
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   "ListName": "Projects",
   "Description": "Dự án thực thi",
   "Columns": [
@@ -12,7 +12,14 @@
     {
       "Name": "ProjectName",
       "Type": "Text",
-      "Required": true
+      "Required": true,
+      "DisplayName": "Tên dự án"
+    },
+    {
+      "Name": "NationalProjectID",
+      "Type": "Text",
+      "DisplayName": "Mã dự án quốc gia / Viện IBST",
+      "Description": "Mã định danh dự án cấp quốc gia / Viện IBST theo QCTK 2815"
     },
     {
       "Name": "ContractId",
@@ -21,11 +28,13 @@
         "List": "Contracts",
         "Field": "ID",
         "Behavior": "restrict"
-      }
+      },
+      "DisplayName": "Hợp đồng"
     },
     {
       "Name": "Budget",
-      "Type": "Number"
+      "Type": "Number",
+      "DisplayName": "Ngân sách dự án (VND)"
     },
     {
       "Name": "ServiceType",
@@ -46,12 +55,32 @@
       "DisplayName": "Trạng thái"
     },
     {
+      "Name": "CooperatingDepartment",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_DonViPhongBan"
+      },
+      "DisplayName": "Đơn vị phối hợp"
+    },
+    {
+      "Name": "FundingSource",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NguonVon"
+      },
+      "DisplayName": "Nguồn vốn"
+    },
+    {
       "Name": "StartDate",
-      "Type": "DateTime"
+      "Type": "DateTime",
+      "DisplayName": "Ngày bắt đầu"
     },
     {
       "Name": "EndDate",
-      "Type": "DateTime"
+      "Type": "DateTime",
+      "DisplayName": "Ngày kết thúc"
     }
   ],
   "ContentTypes": []

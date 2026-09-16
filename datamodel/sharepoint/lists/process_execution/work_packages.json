@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/sp-list.schema.json",
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   "ListName": "WorkPackages",
   "Description": "Gói công việc",
   "Columns": [

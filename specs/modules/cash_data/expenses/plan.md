@@ -1,25 +1,23 @@
-# Kế hoạch kỹ thuật — Expenses
+# Kế hoạch Kỹ thuật Module: Expenses
 
 ## Kiến trúc
+- Kiến trúc quản lý chi phí dự án và kiểm soát định mức chi tiêu nội bộ QCCTNB 3209.
 
-...
-
-## Data model
-
-...
+## Data Model
+- SharePoint Lists: `Expenses`, `ExpenseChecklists`.
+- Foreign Lookup links: `Projects`.
 
 ## Flows
+1. Khởi tạo Đề nghị thanh toán chi phí dự án (`Expenses`).
+2. Kiểm tra danh mục chứng từ hợp lệ qua `ExpenseChecklists`.
+3. Duyệt cấp Phòng/TPM và Kế toán TCKT.
+4. Lãnh đạo CCBA / Viện phê duyệt lệnh chi và giải ngân.
 
-...
+## Env & Security
+- Phân quyền theo Role Matrix: PM, TPM, TCKT, BGD Viện/CCBA.
 
-## Env & security
+## Tích hợp & Cấu hình Đặc thù
+- Tự động áp dụng trần định mức: Phụ cấp lưu trú công tác tối đa 500.000đ/ngày, trang phục 5.000.000đ/năm, ăn ca 1.500.000đ/tháng.
 
-...
-
-## Tích hợp & cấu hình đặc thù
-
-_(Mô tả cách hiện thực các ràng buộc đặc thù: API, xử lý lỗi, biến môi trường, connection refs. Nếu chưa có, để trống và bổ sung khi phát sinh.)_
-
-## Triển khai & kiểm thử
-
-...
+## Triển khai & Kiểm thử
+- Kiểm thử quy trình kiểm soát chứng từ và phát hiện cảnh báo chi vượt định mức.

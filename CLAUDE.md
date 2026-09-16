@@ -6,11 +6,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 IDOP-CCBA-WAY is a digital operations platform (IDOP - Integrated Digital Operation Platform) for CCBA (Center for Consulting Services and BIM Application in construction), a unit under the Institute of Building Science and Technology (IBST). The platform digitizes and automates business processes using Microsoft 365 (SharePoint Online, Power Automate, Power BI, Teams).
 
-This is a **scaffold repository** (reduced from 1.3GB+ to 7.5MB) containing core components for deploying the platform, including SharePoint datamodels, taxonomy definitions, automation scripts, and spec-driven development templates.
+This is a **scaffold repository** (reduced from 1.3GB+ to 7.5MB) containing core components for deploying the platform, including SharePoint datamodels, taxonomy definitions, and automation scripts.
+
+## Governance Knowledge Base
+
+AI Agents working in this repository MUST read `.md/workspace_context.yaml` first when starting a working session to load project bootstrap information, document hierarchy, and initial reading sequences.
+
+The Knowledge Base in `.md/` is structured into two core document groups:
+- **`governance_constitution`** (`.md/governance_constitution/`): Immutable legal regulations and governance rules (QCTK 2815 - Quy chế quản lý dự án, QCCTNB 3209 - Quy chế chi tiêu nội bộ, Điều lệ CCBA, and Quy chế KHCN IBST).
+- **`system_blueprint`** (`.md/system_blueprint/`): Evolvable system design requirements and operational blueprints (IDOP v2.0 F1-F4).
+
+When requiring the legal basis or governance source for any module/specification located in `specs/modules/`, AI Agents MUST look up `.md/cross_references.yaml` to trace specs back to their underlying governance rules.
 
 ## Architecture Overview
 
-The platform follows a spec-driven development approach with 6 core modules:
+The platform has 6 core modules:
 
 - **strategy_crm**: CRM, opportunities, leads, customers, contacts
 - **process_execution**: Projects, contracts, activities, work packages, PMO
@@ -36,41 +46,41 @@ The platform uses a unified CLI wrapper for all operations. Use `idop.ps1` inste
 .\idop.ps1 help
 
 # Connect to SharePoint environment
-.\idop.ps1 connect -Environment Dev
+.\idop.ps1 connect -Environment IDOP
 ```
 
 ### Deployment Commands
 
 ```powershell
 # Deploy SharePoint Lists (dry-run first)
-.\idop.ps1 deploy lists -Environment Dev -DryRun
-.\idop.ps1 deploy lists -Environment Dev
+.\idop.ps1 deploy lists -Environment IDOP -DryRun
+.\idop.ps1 deploy lists -Environment IDOP
 
 # Deploy specific lists only
-.\idop.ps1 deploy lists -Environment Dev -OnlyLists projects,contracts
+.\idop.ps1 deploy lists -Environment IDOP -OnlyLists projects,contracts
 
 # Deploy by module
-.\idop.ps1 deploy lists -Environment Dev -Module strategy_crm
+.\idop.ps1 deploy lists -Environment IDOP -Module strategy_crm
 
 # Deploy navigation
-.\idop.ps1 deploy navigation -Environment Dev -Prune -DryRun
+.\idop.ps1 deploy navigation -Environment IDOP -Prune -DryRun
 
 # Deploy lead capture workflow
-.\idop.ps1 deploy lead-capture -Environment Prod
+.\idop.ps1 deploy lead-capture -Environment IDOP
 ```
 
 ### Taxonomy Management
 
 ```powershell
 # Import taxonomy (dry-run first)
-.\idop.ps1 taxonomy import -Environment Dev -DryRun
-.\idop.ps1 taxonomy import -Environment Dev
+.\idop.ps1 taxonomy import -Environment IDOP -DryRun
+.\idop.ps1 taxonomy import -Environment IDOP
 
 # Export taxonomy
-.\idop.ps1 taxonomy export -Environment Dev
+.\idop.ps1 taxonomy export -Environment IDOP
 
 # Audit taxonomy usage
-.\idop.ps1 taxonomy audit -Environment Dev
+.\idop.ps1 taxonomy audit -Environment IDOP
 ```
 
 ### Validation
@@ -104,11 +114,11 @@ The platform uses a unified CLI wrapper for all operations. Use `idop.ps1` inste
 You can also run scripts directly:
 
 ```powershell
-# Establish a reusable PnP session
-Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
+# Establish a reusable PnP session (Interactive mode — dùng Interactive ClientId)
+Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
 
 # Use the call operator (&) to run scripts in the same session
-& .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment Dev -DryRun
+& .\tools\scripts\deployment\apply-sp-lists.ps1 -Environment IDOP -DryRun
 ```
 
 **Important**: Don't start a new PowerShell process (e.g., `pwsh -File`) for scripts that need PnP connection—use the call operator `&` from the same shell where you ran `Connect-PnPOnline`.
@@ -137,15 +147,7 @@ Each JSON file defines:
 
 ### Taxonomy Structure
 
-Managed metadata term sets are in `datamodel/sharepoint/taxonomy/` as JSON files:
-
-- `CCBA_ChucDanhBIM.json`: BIM positions
-- `CCBA_ChucDanhXayDung.json`: Construction positions
-- `CCBA_DonViPhongBan.json`: Departments
-- `CCBA_LoaiChiPhi.json`: Expense types
-- `CCBA_LoaiHinhDichVu.json`: Service types
-- `CCBA_TrangThaiChung.json`: General statuses
-- And 12 more term sets
+Managed metadata term sets are in `datamodel/sharepoint/taxonomy/` as JSON files (18 term sets covering departments, positions, service types, statuses, expense types, etc.).
 
 ## Script Organization
 
@@ -166,21 +168,24 @@ tools/scripts/
 
 ### Shared Modules
 
-The platform now uses shared PowerShell modules for common functionality:
+The platform uses shared PowerShell modules in `tools/scripts/modules/`:
 
-- **PnPHelpers.psm1**: PnP connection management, session handling, retry logic, auth (Connect-IdopOnline)
-- **LoggingHelpers.psm1**: Consistent logging, formatting, progress tracking, timers
-- **ValidationHelpers.psm1**: Schema validation, naming conventions, data integrity checks
-- **SpListDeploy.psm1**: SharePoint list/field provisioning (Ensure-* functions)
+- **PnPHelpers.psm1**: `Get-IDOPConfig`, `Connect-IDOPSharePoint`, `Connect-IdopOnline`, `Test-IDOPConnection`, `Invoke-IDOPWithRetry`
+- **LoggingHelpers.psm1**: `Write-IDOPHeader`, `Write-IDOPInfo`, `Write-IDOPSuccess`, `Write-IDOPError`, `Write-IDOPSummary`
+- **ValidationHelpers.psm1**: `Test-IDOPDataModel`, `Test-IDOPLookupReferences`, naming convention checks
+- **SpListDeploy.psm1**: `Ensure-*` functions for SharePoint list/field provisioning
 
-Located in `tools/scripts/modules/`. Import in your scripts:
+Import pattern for new scripts:
 
 ```powershell
 $ModulePath = Join-Path $PSScriptRoot "../modules"
 Import-Module "$ModulePath/PnPHelpers.psm1" -Force
 Import-Module "$ModulePath/LoggingHelpers.psm1" -Force
-Import-Module "$ModulePath/ValidationHelpers.psm1" -Force
 ```
+
+### Auth Modes
+
+Scripts accept `-Auth Cached|Interactive|DeviceLogin` (default: `Cached`). Use `Interactive` for first-time auth, `Cached` for subsequent runs.
 
 ### Centralized Configuration
 
@@ -188,25 +193,29 @@ All environment configuration is centralized in `tools/config/environments.psd1`
 
 ```powershell
 # Load configuration
-$config = Get-IDOPConfig -Environment Dev
+$config = Get-IDOPConfig -Environment IDOP
 
 # Access properties
-$config.SharePointUrl     # https://ibstbim.sharepoint.com/sites/idop-dev
-$config.ClientId          # 90ded6f0-b787-4b3c-acea-8baf6403fd63
+$config.SharePointUrl     # https://ibstbim.sharepoint.com/sites/idop
+$config.ClientId          # c055c7a4-9150-4bd5-bf01-445c65467feb
+$config.TenantId          # d7aa4978-363e-47aa-a77e-7da957b32bf3
 $config.Paths.DataModelLists  # datamodel/sharepoint/lists
 ```
 
 **Don't hardcode environment values** - always use `Get-IDOPConfig`.
 
-### Environment URLs
+### Environment Architecture (Single Production)
 
-- **Dev**: `https://ibstbim.sharepoint.com/sites/idop-dev`
-- **Test**: `https://ibstbim.sharepoint.com/sites/idop-test`
-- **Prod**: `https://ibstbim.sharepoint.com/sites/idop-prod`
+| Tầng | URL |
+|:---|:---|
+| 🌐 Portal | `https://ibstbim.sharepoint.com/` |
+| ⚙️ IDOP Engine | `https://ibstbim.sharepoint.com/sites/idop` |
+| 🏗️ CDE | `https://ibstbim.sharepoint.com/sites/iCDE` |
 
-### Client ID
+### App Registration
 
-All scripts use the same Entra App Client ID: `90ded6f0-b787-4b3c-acea-8baf6403fd63`
+- **Primary (AppOnly)**: `c055c7a4-9150-4bd5-bf01-445c65467feb` — Certificate-based, dùng cho CLI & CI/CD
+- **Interactive fallback**: `90ded6f0-b787-4b3c-acea-8baf6403fd63` — Browser-based, dùng cho developer
 
 ### Field Naming
 
@@ -221,9 +230,21 @@ All scripts use the same Entra App Client ID: `90ded6f0-b787-4b3c-acea-8baf6403f
 
 ## CI/CD Workflows
 
-GitHub Actions workflows in `.github/workflows/`:
+GitHub Actions workflow `.github/workflows/validate.yml` runs on push/PR to main:
 
-- `validate.yml`: Validates JSON schemas, markdown linting, PowerShell syntax, Pester tests
+1. **validate**: JSON schema validation (ajv), markdown linting, PowerShell syntax check
+2. **test**: Installs PnP.PowerShell, validates deployment scripts exist, runs Pester tests
+3. **deploy-test**: Deploys to Test environment on push to main
+4. **deploy-prod**: Deploys to Production (manual trigger via `workflow_dispatch`)
+
+## Pre-commit Hook
+
+The hook at `tools/hooks/pre-commit` runs automatically on commit:
+- JSON syntax validation on all staged `.json` files
+- AJV schema validation on staged `datamodel/sharepoint/lists/**/*.json` (if `ajv` is installed)
+- PascalCase field naming check on staged list definitions (if `pwsh` is available)
+
+Install: `cp tools/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
 
 ## Key Files
 

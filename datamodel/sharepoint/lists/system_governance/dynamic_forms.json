@@ -1,0 +1,12 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "DynamicForms",
+  "Description": "Cấu hình và định nghĩa biểu mẫu động",
+  "Columns": [
+    { "Name": "FormCode", "Type": "Text", "Required": true, "Description": "Mã biểu mẫu định danh duy nhất" },
+    { "Name": "FormTitle", "Type": "Text", "Description": "Tiêu đề hiển thị của biểu mẫu" },
+    { "Name": "TargetList", "Type": "Text", "Description": "Danh sách SharePoint mục tiêu ánh xạ dữ liệu" },
+    { "Name": "JsonSchema", "Type": "Note", "Description": "Cấu trúc định nghĩa JSON layout và field rules" }
+  ],
+  "ContentTypes": []
+}

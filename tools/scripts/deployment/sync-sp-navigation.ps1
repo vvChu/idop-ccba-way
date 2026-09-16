@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('Dev','Test','Prod')]
+  [ValidateSet('Dev','Test','Prod','IDOP')]
   [string]$Environment = $(if ($env:IDOP_ENVIRONMENT) { $env:IDOP_ENVIRONMENT } else { 'Dev' }),
   [string]$ConfigPath = "datamodel/sharepoint/navigation/global-navigation.json",
   [ValidateSet('Top','QuickLaunch')]
@@ -66,8 +66,12 @@ function Resolve-UrlToken {
   param([string]$u)
   if ([string]::IsNullOrWhiteSpace($u)) { return $u }
   $out = $u
-  # Replace tokens
-  $out = $out.Replace('{env}', $Environment.ToLower())
+  if ($Environment -eq 'IDOP' -or $Environment -eq 'Prod') {
+    $out = $out.Replace('/sites/idop-{env}', '/sites/idop')
+    $out = $out.Replace('{env}', 'idop')
+  } else {
+    $out = $out.Replace('{env}', $Environment.ToLower())
+  }
   $out = $out.Replace('{site}', $siteUrl.TrimEnd('/'))
   return $out
 }
@@ -76,6 +80,7 @@ function Get-NavLocationConst {
   if ($Location -eq 'QuickLaunch') { return 'QuickLaunch' } else { return 'TopNavigationBar' }
 }
 
+$navLoc = Get-NavLocationConst
 Write-Host "[nav] Syncing navigation from '$ConfigPath' (DryRun=$DryRun, Location=$Location, Prune=$Prune)" -ForegroundColor Cyan
 
 foreach ($g in $groups) {
@@ -83,55 +88,77 @@ foreach ($g in $groups) {
   $nodes = ConvertTo-NodeArray $g.Nodes
   Write-Host "[nav] Group: $groupTitle" -ForegroundColor Yellow
 
-  # Find existing node or create group container (as a heading link to site root)
-  $navLoc = Get-NavLocationConst
-  $rootNodes = Get-PnPNavigationNode -Location $navLoc -Tree
+  # Find existing group node or create group container
+  $rootNodes = Get-PnPNavigationNode -Location $navLoc
   $groupNode = $rootNodes | Where-Object { $_.Title -eq $groupTitle } | Select-Object -First 1
-  if (-not $groupNode) {
-    if ($DryRun) { Write-Host "[nav] (dry-run) Would add group '$groupTitle'" -ForegroundColor DarkCyan }
-    else { $groupNode = Add-PnPNavigationNode -Title $groupTitle -Location $navLoc -Url $siteUrl -ErrorAction Stop }
+
+  # Clean up duplicate group nodes if more than one exists
+  $duplicateGroups = $rootNodes | Where-Object { $_.Title -eq $groupTitle }
+  if ($duplicateGroups.Count -gt 1) {
+    Write-Host "[nav] Cleaning up duplicate group nodes for '$groupTitle'..." -ForegroundColor DarkYellow
+    for ($i = 1; $i -lt $duplicateGroups.Count; $i++) {
+      try { Remove-PnPNavigationNode -Identity $duplicateGroups[$i].Id -Force } catch {}
+    }
   }
 
-  foreach ($n in $nodes) {
-    $title = $n.Title; $url = Resolve-UrlToken $n.Url
-    $child = $null
-    if ($groupNode -and $groupNode.Children) {
-      $child = $groupNode.Children | Where-Object { $_.Title -eq $title } | Select-Object -First 1
+  if (-not $groupNode) {
+    if ($DryRun) {
+      Write-Host "[nav] (dry-run) Would add group '$groupTitle'" -ForegroundColor DarkCyan
+      continue
     } else {
-      # refetch children when group node was just created
-      $rootNodes = Get-PnPNavigationNode -Location $navLoc -Tree
-      $groupNode = $rootNodes | Where-Object { $_.Title -eq $groupTitle } | Select-Object -First 1
-      if ($groupNode) { $child = $groupNode.Children | Where-Object { $_.Title -eq $title } | Select-Object -First 1 }
+      Write-Host "[nav] Adding group node '$groupTitle'..." -ForegroundColor Gray
+      $groupNode = Add-PnPNavigationNode -Title $groupTitle -Location $navLoc -Url $siteUrl -ErrorAction Stop
     }
+  }
+
+  if (-not $groupNode) {
+    Write-Host "[nav] (warn) Could not resolve or create group node '$groupTitle'" -ForegroundColor Red
+    continue
+  }
+
+  # Fetch current child nodes SPECIFICALLY under this group node
+  $groupDetail = Get-PnPNavigationNode -Id $groupNode.Id
+  $existingChildren = @($groupDetail.Children)
+
+  foreach ($n in $nodes) {
+    $title = $n.Title
+    $url = Resolve-UrlToken $n.Url
+
+    # Check if child node already exists under this specific group
+    $child = $existingChildren | Where-Object { $_.Title -eq $title } | Select-Object -First 1
 
     if (-not $child) {
-      if ($DryRun) { Write-Host "[nav] (dry-run) Would add link '$title' -> $url under '$groupTitle'" -ForegroundColor DarkCyan }
-      else { Add-PnPNavigationNode -Title $title -Location $navLoc -Url $url -Parent $groupNode -ErrorAction Stop | Out-Null }
+      if ($DryRun) {
+        Write-Host "[nav] (dry-run) Would add link '$title' -> $url under '$groupTitle'" -ForegroundColor DarkCyan
+      } else {
+        Write-Host "[nav] Adding link '$title' ($url) under '$groupTitle'..." -ForegroundColor Gray
+        try {
+          Add-PnPNavigationNode -Title $title -Location $navLoc -Url $url -Parent $groupNode.Id -ErrorAction Stop | Out-Null
+        } catch {
+          Write-Host "[nav] (fallback external) Adding link '$title' with -External..." -ForegroundColor DarkGray
+          Add-PnPNavigationNode -Title $title -Location $navLoc -Url $url -Parent $groupNode.Id -External -ErrorAction Stop | Out-Null
+        }
+      }
     } else {
       # Update if URL changed
       $currentUrl = $child.Url
       if ($currentUrl -ne $url) {
-        if ($DryRun) { Write-Host "[nav] (dry-run) Would update link '$title' URL: $currentUrl -> $url" -ForegroundColor DarkCyan }
-        else {
-          try { Remove-PnPNavigationNode -Identity $child.Id -Force -Location $navLoc } catch {}
-          Add-PnPNavigationNode -Title $title -Location $navLoc -Url $url -Parent $groupNode -ErrorAction Stop | Out-Null
+        if ($DryRun) {
+          Write-Host "[nav] (dry-run) Would update link '$title' URL: $currentUrl -> $url" -ForegroundColor DarkCyan
+        } else {
+          Write-Host "[nav] Updating link '$title' URL..." -ForegroundColor Gray
+          try { Remove-PnPNavigationNode -Identity $child.Id -Force } catch {}
+          try {
+            Add-PnPNavigationNode -Title $title -Location $navLoc -Url $url -Parent $groupNode.Id -ErrorAction Stop | Out-Null
+          } catch {
+            Add-PnPNavigationNode -Title $title -Location $navLoc -Url $url -Parent $groupNode.Id -External -ErrorAction Stop | Out-Null
+          }
         }
-      }
-    }
-  }
-
-  if ($Prune -and $groupNode) {
-    # Remove existing child nodes not present in config
-    $desiredTitles = @($nodes | ForEach-Object { $_.Title })
-    $currentChildren = @()
-    try { $currentChildren = ($groupNode.Children | ForEach-Object { $_ }) } catch { $currentChildren = @() }
-    foreach ($c in $currentChildren) {
-      if ($desiredTitles -notcontains $c.Title) {
-        if ($DryRun) { Write-Host "[nav] (dry-run) Would remove unmanaged link '$($c.Title)' under '$groupTitle'" -ForegroundColor DarkCyan }
-        else { try { Remove-PnPNavigationNode -Identity $c.Id -Force -Location $navLoc } catch { Write-Host "[nav] (warn) Failed to remove '$($c.Title)': $($_.Exception.Message)" -ForegroundColor DarkYellow } }
+      } else {
+        Write-Host "[nav] Link '$title' already up to date" -ForegroundColor DarkGray
       }
     }
   }
 }
 
-Write-Host "[nav] Navigation sync completed." -ForegroundColor Green
+Write-Host "[nav] Navigation sync completed successfully." -ForegroundColor Green

@@ -8,7 +8,16 @@
     "Lookup": { "List": "Expenses", "Field": "ID", "Behavior": "restrict" } },
   { "Name": "AllocationRuleId", "Type": "Lookup",
     "Lookup": { "List": "AllocationRules", "Field": "ID", "Behavior": "restrict" } },
-  { "Name": "Amount", "Type": "Number" }
+  { "Name": "Amount", "Type": "Number", "DisplayName": "Số tiền phân bổ (VND)" },
+  {
+    "Name": "AllocationCategory",
+    "Type": "ManagedMetadata",
+    "TermSet": {
+      "Group": "CCBA Taxonomy",
+      "Name": "CCBA_LoaiChiPhiPhanBo"
+    },
+    "DisplayName": "Hạng mục phân bổ 3 tầng"
+  }
 ],
 "ContentTypes": []
 

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/sp-list.schema.json",
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   "ListName": "PotentialProjects",
   "Description": "Tiềm năng dự án hình thành từ CRM, tiền đề để chuyển thành Projects sau khi ký HĐKT.",
   "Columns": [
@@ -8,6 +8,16 @@
       "Type": "Text",
       "Required": true,
       "DisplayName": "Tiêu đề"
+    },
+    {
+      "Name": "OpportunityId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "Opportunities",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Cơ hội CRM"
     },
     {
       "Name": "Customer",
@@ -69,6 +79,15 @@
         "Name": "CCBA_MucDoUuTien"
       },
       "DisplayName": "Mức độ ưu tiên"
+    },
+    {
+      "Name": "FundingSource",
+      "Type": "ManagedMetadata",
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_NguonVon"
+      },
+      "DisplayName": "Nguồn vốn dự án"
     },
     {
       "Name": "Stage",

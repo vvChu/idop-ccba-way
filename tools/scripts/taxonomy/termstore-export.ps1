@@ -29,7 +29,7 @@
 #Requires -Version 7.0
 
 param(
-    [ValidateSet('Dev', 'Test', 'Prod')]
+    [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
     [string]$Environment = 'Dev',
 
     [string]$TaxonomyPath = "datamodel/sharepoint/taxonomy",

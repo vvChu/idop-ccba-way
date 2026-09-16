@@ -1,0 +1,17 @@
+{
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
+  "ListName": "ApprovalNodes",
+  "Description": "Định nghĩa các nút duyệt từng cấp trong quy trình phê duyệt",
+  "Columns": [
+    {
+      "Name": "WorkflowId",
+      "Type": "Lookup",
+      "Lookup": { "List": "ApprovalWorkflows", "Field": "ID", "Behavior": "restrict" },
+      "Description": "Quy trình phê duyệt liên quan"
+    },
+    { "Name": "StepOrder", "Type": "Number", "Description": "Thứ tự cấp duyệt (1-5)" },
+    { "Name": "ApproverRole", "Type": "Text", "Description": "Chức danh / Vai trò người duyệt" },
+    { "Name": "RequiredThreshold", "Type": "Number", "Description": "Hạn mức tài chính yêu cầu (VNĐ)" }
+  ],
+  "ContentTypes": []
+}

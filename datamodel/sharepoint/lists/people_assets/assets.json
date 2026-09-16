@@ -9,6 +9,11 @@
   { "Name": "AssignedTo", "Type": "Lookup",
     "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
   { "Name": "PurchaseDate", "Type": "DateTime" },
+  { "Name": "OriginalValue", "Type": "Number", "Description": "Nguyên giá tài sản (VNĐ)" },
+  { "Name": "DepreciationRate", "Type": "Number", "Description": "Tỷ lệ khấu hao hàng năm (%)" },
+  { "Name": "AccumulatedDepreciation", "Type": "Number", "Description": "Khấu hao lũy kế (VNĐ)" },
+  { "Name": "SerialNumber", "Type": "Text", "Description": "Số sê-ri thiết bị / sản phẩm" },
+  { "Name": "Location", "Type": "Text", "Description": "Vị trí đặt / lưu giữ tài sản" },
   { "Name": "Status", "Type": "ManagedMetadata",
     "TermSet": { "Group": "CCBA Taxonomy", "Name": "CCBA_TrangThaiTaiSan" } }
 ],

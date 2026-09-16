@@ -1,0 +1,373 @@
+Total spec.md files found: 21
+============================================================
+
+--- 1. EXACT PHRASE MATCHES SUMMARY ---
+
+Term: 'QCTK 2815' -> Total Occurrences: 65 (in 21 files)
+  - cash_data/allocations/spec.md: 4
+  - cash_data/expenses/spec.md: 2
+  - cash_data/finance/spec.md: 2
+  - cash_data/spec.md: 8
+  - people_assets/assets/spec.md: 1
+  - people_assets/hr/spec.md: 1
+  - performance_okrs/performance/spec.md: 1
+  - performance_okrs/reports/spec.md: 1
+  - process_execution/cde_documents/spec.md: 2
+  - process_execution/contracts/spec.md: 6
+  - process_execution/lessons_learned/spec.md: 5
+  - process_execution/pmo/spec.md: 9
+  - process_execution/projects/spec.md: 7
+  - process_execution/work_packages/spec.md: 1
+  - strategy_crm/crm/spec.md: 1
+  - strategy_crm/lead_capture/spec.md: 1
+  - strategy_crm/opportunities/spec.md: 4
+  - strategy_crm/potential_projects/spec.md: 1
+  - system_governance/approvals/spec.md: 5
+  - system_governance/forms/spec.md: 2
+  - system_governance/governance/spec.md: 1
+
+Term: 'QCCTNB 3209' -> Total Occurrences: 38 (in 21 files)
+  - cash_data/allocations/spec.md: 2
+  - cash_data/expenses/spec.md: 5
+  - cash_data/finance/spec.md: 1
+  - cash_data/spec.md: 3
+  - people_assets/assets/spec.md: 1
+  - people_assets/hr/spec.md: 2
+  - performance_okrs/performance/spec.md: 5
+  - performance_okrs/reports/spec.md: 4
+  - process_execution/cde_documents/spec.md: 1
+  - process_execution/contracts/spec.md: 1
+  - process_execution/lessons_learned/spec.md: 1
+  - process_execution/pmo/spec.md: 1
+  - process_execution/projects/spec.md: 1
+  - process_execution/work_packages/spec.md: 1
+  - strategy_crm/crm/spec.md: 1
+  - strategy_crm/lead_capture/spec.md: 1
+  - strategy_crm/opportunities/spec.md: 1
+  - strategy_crm/potential_projects/spec.md: 1
+  - system_governance/approvals/spec.md: 2
+  - system_governance/forms/spec.md: 2
+  - system_governance/governance/spec.md: 1
+
+Term: 'CCBA Charter' -> Total Occurrences: 0 (in 0 files)
+
+Term: 'IBST' -> Total Occurrences: 1 (in 1 files)
+  - system_governance/governance/spec.md: 1
+
+Term: 'IDOP v2' -> Total Occurrences: 0 (in 0 files)
+
+Grand Total Exact Matches: 104
+
+============================================================
+
+--- 2. DETAILED VARIATION / ALIAS MATCHES ---
+
+=== Target Keyword: 'QCTK 2815' ===
+  Pattern r'QCTK\s*2815': 65 occurrences in 21 files
+    - cash_data/allocations/spec.md: 4
+    - cash_data/expenses/spec.md: 2
+    - cash_data/finance/spec.md: 2
+    - cash_data/spec.md: 8
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 1
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 2
+    - process_execution/contracts/spec.md: 6
+    - process_execution/lessons_learned/spec.md: 5
+    - process_execution/pmo/spec.md: 9
+    - process_execution/projects/spec.md: 7
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 4
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 5
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 1
+  Pattern r'2815/QĐ-VKH': 21 occurrences in 21 files
+    - cash_data/allocations/spec.md: 1
+    - cash_data/expenses/spec.md: 1
+    - cash_data/finance/spec.md: 1
+    - cash_data/spec.md: 1
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 1
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 1
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 1
+    - system_governance/forms/spec.md: 1
+    - system_governance/governance/spec.md: 1
+  Pattern r'QCTK': 67 occurrences in 21 files
+    - cash_data/allocations/spec.md: 5
+    - cash_data/expenses/spec.md: 2
+    - cash_data/finance/spec.md: 2
+    - cash_data/spec.md: 8
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 1
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 2
+    - process_execution/contracts/spec.md: 6
+    - process_execution/lessons_learned/spec.md: 6
+    - process_execution/pmo/spec.md: 9
+    - process_execution/projects/spec.md: 7
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 4
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 5
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 1
+  Pattern r'2815': 79 occurrences in 21 files
+    - cash_data/allocations/spec.md: 5
+    - cash_data/expenses/spec.md: 3
+    - cash_data/finance/spec.md: 3
+    - cash_data/spec.md: 9
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 1
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 3
+    - process_execution/contracts/spec.md: 7
+    - process_execution/lessons_learned/spec.md: 6
+    - process_execution/pmo/spec.md: 10
+    - process_execution/projects/spec.md: 8
+    - process_execution/work_packages/spec.md: 2
+    - strategy_crm/crm/spec.md: 2
+    - strategy_crm/lead_capture/spec.md: 2
+    - strategy_crm/opportunities/spec.md: 5
+    - strategy_crm/potential_projects/spec.md: 2
+    - system_governance/approvals/spec.md: 5
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 1
+
+=== Target Keyword: 'QCCTNB 3209' ===
+  Pattern r'QCCTNB\s*3209': 38 occurrences in 21 files
+    - cash_data/allocations/spec.md: 2
+    - cash_data/expenses/spec.md: 5
+    - cash_data/finance/spec.md: 1
+    - cash_data/spec.md: 3
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 2
+    - performance_okrs/performance/spec.md: 5
+    - performance_okrs/reports/spec.md: 4
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 1
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 2
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 1
+  Pattern r'3209/QĐ-VKH': 21 occurrences in 21 files
+    - cash_data/allocations/spec.md: 1
+    - cash_data/expenses/spec.md: 1
+    - cash_data/finance/spec.md: 1
+    - cash_data/spec.md: 1
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 1
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 1
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 1
+    - system_governance/forms/spec.md: 1
+    - system_governance/governance/spec.md: 1
+  Pattern r'QCCTNB': 38 occurrences in 21 files
+    - cash_data/allocations/spec.md: 2
+    - cash_data/expenses/spec.md: 5
+    - cash_data/finance/spec.md: 1
+    - cash_data/spec.md: 3
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 2
+    - performance_okrs/performance/spec.md: 5
+    - performance_okrs/reports/spec.md: 4
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 1
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 2
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 1
+  Pattern r'3209': 52 occurrences in 21 files
+    - cash_data/allocations/spec.md: 3
+    - cash_data/expenses/spec.md: 6
+    - cash_data/finance/spec.md: 2
+    - cash_data/spec.md: 4
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 2
+    - performance_okrs/performance/spec.md: 5
+    - performance_okrs/reports/spec.md: 4
+    - process_execution/cde_documents/spec.md: 2
+    - process_execution/contracts/spec.md: 2
+    - process_execution/lessons_learned/spec.md: 2
+    - process_execution/pmo/spec.md: 2
+    - process_execution/projects/spec.md: 2
+    - process_execution/work_packages/spec.md: 2
+    - strategy_crm/crm/spec.md: 2
+    - strategy_crm/lead_capture/spec.md: 2
+    - strategy_crm/opportunities/spec.md: 2
+    - strategy_crm/potential_projects/spec.md: 2
+    - system_governance/approvals/spec.md: 2
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 1
+
+=== Target Keyword: 'CCBA Charter' ===
+  Pattern r'CCBA\s+Charter': 0 occurrences in 0 files
+  Pattern r'Quy\s+chế\s+CCBA': 22 occurrences in 20 files
+    - cash_data/expenses/spec.md: 1
+    - cash_data/finance/spec.md: 1
+    - cash_data/spec.md: 1
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 2
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 1
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 2
+    - system_governance/forms/spec.md: 1
+    - system_governance/governance/spec.md: 1
+  Pattern r'Quy\s+chế.*CCBA': 22 occurrences in 20 files
+    - cash_data/expenses/spec.md: 1
+    - cash_data/finance/spec.md: 1
+    - cash_data/spec.md: 1
+    - people_assets/assets/spec.md: 1
+    - people_assets/hr/spec.md: 1
+    - performance_okrs/performance/spec.md: 2
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 1
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 1
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 2
+    - system_governance/forms/spec.md: 1
+    - system_governance/governance/spec.md: 1
+  Pattern r'Charter': 0 occurrences in 0 files
+
+=== Target Keyword: 'IBST' ===
+  Pattern r'\bIBST\b': 0 occurrences in 0 files
+  Pattern r'Viện\s+KHCN\s+Xây\s+dựng': 7 occurrences in 6 files
+    - cash_data/finance/spec.md: 2
+    - cash_data/spec.md: 1
+    - process_execution/contracts/spec.md: 1
+    - process_execution/lessons_learned/spec.md: 1
+    - process_execution/pmo/spec.md: 1
+    - process_execution/projects/spec.md: 1
+  Pattern r'\bVKH\b': 42 occurrences in 21 files
+    - cash_data/allocations/spec.md: 2
+    - cash_data/expenses/spec.md: 2
+    - cash_data/finance/spec.md: 2
+    - cash_data/spec.md: 2
+    - people_assets/assets/spec.md: 2
+    - people_assets/hr/spec.md: 2
+    - performance_okrs/performance/spec.md: 2
+    - performance_okrs/reports/spec.md: 2
+    - process_execution/cde_documents/spec.md: 2
+    - process_execution/contracts/spec.md: 2
+    - process_execution/lessons_learned/spec.md: 2
+    - process_execution/pmo/spec.md: 2
+    - process_execution/projects/spec.md: 2
+    - process_execution/work_packages/spec.md: 2
+    - strategy_crm/crm/spec.md: 2
+    - strategy_crm/lead_capture/spec.md: 2
+    - strategy_crm/opportunities/spec.md: 2
+    - strategy_crm/potential_projects/spec.md: 2
+    - system_governance/approvals/spec.md: 2
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 2
+
+=== Target Keyword: 'IDOP v2' ===
+  Pattern r'IDOP\s*v?2(?:\.0)?': 0 occurrences in 0 files
+  Pattern r'IDOP\s*v2': 0 occurrences in 0 files
+  Pattern r'IDOP': 43 occurrences in 20 files
+    - cash_data/allocations/spec.md: 1
+    - cash_data/expenses/spec.md: 2
+    - cash_data/finance/spec.md: 3
+    - cash_data/spec.md: 4
+    - people_assets/assets/spec.md: 2
+    - performance_okrs/performance/spec.md: 1
+    - performance_okrs/reports/spec.md: 1
+    - process_execution/cde_documents/spec.md: 1
+    - process_execution/contracts/spec.md: 2
+    - process_execution/lessons_learned/spec.md: 5
+    - process_execution/pmo/spec.md: 3
+    - process_execution/projects/spec.md: 2
+    - process_execution/work_packages/spec.md: 1
+    - strategy_crm/crm/spec.md: 2
+    - strategy_crm/lead_capture/spec.md: 1
+    - strategy_crm/opportunities/spec.md: 2
+    - strategy_crm/potential_projects/spec.md: 1
+    - system_governance/approvals/spec.md: 3
+    - system_governance/forms/spec.md: 2
+    - system_governance/governance/spec.md: 4
+
+============================================================
+
+--- 3. PER-FILE MATRIX ---
+File                                          | QCTK 2815    | QCCTNB 3209  | CCBA Charter | IBST         | IDOP v2     
+------------------------------------------------------------------------------------------------------------------------
+cash_data/allocations/spec.md                 | 4            | 2            | 0            | 0            | 0           
+cash_data/expenses/spec.md                    | 2            | 5            | 0            | 0            | 0           
+cash_data/finance/spec.md                     | 2            | 1            | 0            | 0            | 0           
+cash_data/spec.md                             | 8            | 3            | 0            | 0            | 0           
+people_assets/assets/spec.md                  | 1            | 1            | 0            | 0            | 0           
+people_assets/hr/spec.md                      | 1            | 2            | 0            | 0            | 0           
+performance_okrs/performance/spec.md          | 1            | 5            | 0            | 0            | 0           
+performance_okrs/reports/spec.md              | 1            | 4            | 0            | 0            | 0           
+process_execution/cde_documents/spec.md       | 2            | 1            | 0            | 0            | 0           
+process_execution/contracts/spec.md           | 6            | 1            | 0            | 0            | 0           
+process_execution/lessons_learned/spec.md     | 5            | 1            | 0            | 0            | 0           
+process_execution/pmo/spec.md                 | 9            | 1            | 0            | 0            | 0           
+process_execution/projects/spec.md            | 7            | 1            | 0            | 0            | 0           
+process_execution/work_packages/spec.md       | 1            | 1            | 0            | 0            | 0           
+strategy_crm/crm/spec.md                      | 1            | 1            | 0            | 0            | 0           
+strategy_crm/lead_capture/spec.md             | 1            | 1            | 0            | 0            | 0           
+strategy_crm/opportunities/spec.md            | 4            | 1            | 0            | 0            | 0           
+strategy_crm/potential_projects/spec.md       | 1            | 1            | 0            | 0            | 0           
+system_governance/approvals/spec.md           | 5            | 2            | 0            | 0            | 0           
+system_governance/forms/spec.md               | 2            | 2            | 0            | 0            | 0           
+system_governance/governance/spec.md          | 1            | 1            | 0            | 1            | 0           

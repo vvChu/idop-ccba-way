@@ -3,11 +3,15 @@
 
 @{
     # Common configuration
+    # App Registration: IDOP-SPO-Deploy (Certificate-based AppOnly)
+    # Interactive fallback ClientId: 90ded6f0-b787-4b3c-acea-8baf6403fd63
     Common = @{
-        ClientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
-        TenantId = "ibstbim.onmicrosoft.com"
+        ClientId = "c055c7a4-9150-4bd5-bf01-445c65467feb"
+        TenantId = "d7aa4978-363e-47aa-a77e-7da957b32bf3"
+        TenantDomain = "ibstbim.onmicrosoft.com"
         TermStoreGroup = "CCBA"
         DefaultTimeout = 300
+        InteractiveClientId = "90ded6f0-b787-4b3c-acea-8baf6403fd63"
     }
 
     # Development environment
@@ -37,6 +41,19 @@
         EnableDryRun = $false
         RequireApproval = $true
     }
+
+    # IDOP CCBA Environment Architecture (Root Portal + Operations Engine + CDE)
+    IDOP = @{
+        Name = "IDOP CCBA Operational Architecture"
+        PortalSiteUrl = "https://ibstbim.sharepoint.com/"
+        SharePointUrl = "https://ibstbim.sharepoint.com/sites/idop"
+        CdeSiteUrl = "https://ibstbim.sharepoint.com/sites/iCDE"
+        BiddingStorageUrl = "https://ibstbim-my.sharepoint.com/:f:/g/personal/ccba_ibst-bim_vn/IgAtDFNJbUThRLib9LDlUVSvAdqbX7255GPQj4dIjHGnrzE?e=ccDiFK"
+        SiteAlias = "idop"
+        AllowDestructiveOperations = $true
+        EnableDryRun = $false
+    }
+
 
     # Module paths
     Paths = @{

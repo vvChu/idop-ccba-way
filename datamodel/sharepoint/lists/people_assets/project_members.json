@@ -8,7 +8,16 @@
     "Lookup": { "List": "Projects", "Field": "ID", "Behavior": "restrict" } },
   { "Name": "EmployeeId", "Type": "Lookup",
     "Lookup": { "List": "Employees", "Field": "ID", "Behavior": "restrict" } },
-  { "Name": "Role", "Type": "Text" }
+  { "Name": "Role", "Type": "Text", "DisplayName": "Vai trò nhiệm vụ" },
+  {
+    "Name": "BIMRole",
+    "Type": "ManagedMetadata",
+    "TermSet": {
+      "Group": "CCBA Taxonomy",
+      "Name": "CCBA_ChucDanhBIM"
+    },
+    "DisplayName": "Chức danh BIM (ISO 19650)"
+  }
 ],
 "ContentTypes": []
 

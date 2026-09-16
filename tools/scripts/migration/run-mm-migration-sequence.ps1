@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('Dev','Test','Prod')][string]$Environment = 'Dev',
+  [ValidateSet('Dev','Test','Prod','IDOP')][string]$Environment = 'Dev',
   [switch]$DryRun,
   [ValidateSet('Cached','Interactive','DeviceLogin')][string]$Auth = 'Cached'
 )

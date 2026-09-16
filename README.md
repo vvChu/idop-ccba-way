@@ -189,17 +189,36 @@ pwsh -NoProfile -ExecutionPolicy Bypass `
 Some DryRun scripts still need to read from SharePoint (e.g., navigation pruning, bidding folders preview). Connect once, then run the script:
 
 ```powershell
-# Connect to the target site (e.g., Dev)
-Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop-dev -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
+# Connect to the IDOP Operations Engine (Interactive mode — dùng Interactive ClientId)
+Connect-PnPOnline -Url https://ibstbim.sharepoint.com/sites/idop -Interactive -ClientId 90ded6f0-b787-4b3c-acea-8baf6403fd63
 
 # Navigation DryRun preview with pruning
-& .\tools\scripts\deployment\sync-sp-navigation.ps1 -Environment Dev -Location Top -Prune -DryRun
+& .\tools\scripts\deployment\sync-sp-navigation.ps1 -Environment IDOP -Location Top -Prune -DryRun
 
 # Bidding folders DryRun preview with CSV output (uses defaults)
 & .\tools\scripts\deployment\opportunity-bidding-folders.ps1 -DryRun -ReportCsv .\bidding_dryrun.csv
 ```
 
 Tip: Don’t start a new PowerShell process (e.g., `pwsh -File`) for these scripts—doing so spawns a fresh session and the PnP connection won’t be available. Use the call operator `&` from the same shell where you ran `Connect-PnPOnline`.
+
+## 📚 Knowledge Base (.md/)
+
+Thư mục `.md/` đóng vai trò là **Knowledge Base** trung tâm và **"Hiến pháp hệ thống" (System Constitution)** cho toàn bộ nền tảng IDOP-CCBA-WAY. Tất cả các quy định pháp lý, quy chế quản lý dự án, chuẩn mực tài chính và thiết kế kiến trúc đều được chuẩn hóa thành các tài liệu Markdown cấu trúc để định hướng và giám sát cho cả nhà phát triển (human developers) lẫn các AI Agents.
+
+### Cấu trúc và Nhóm tài liệu
+
+1. **Thư mục tài liệu cốt lõi:**
+   - **`governance_constitution` (`.md/governance_constitution/`):** Quy chế pháp lý bất di bất dịch của tổ chức (QCTK 2815, QCCTNB 3209, Điều lệ CCBA, Quy chế KHCN IBST).
+   - **`system_blueprint` (`.md/system_blueprint/`):** Yêu cầu thiết kế hệ thống và luồng vận hành–kỹ thuật có thể tiến hóa (IDOP v2.0 F1-F4).
+
+2. **Các tệp Meta & Chỉ mục:**
+   - **`workspace_context.yaml`:** Tệp khởi tạo ngữ cảnh dự án (Project Bootstrap), định nghĩa các nhóm tài liệu, cơ sở dữ liệu và thứ tự đọc ban đầu cho AI Agents khi bắt đầu làm việc.
+   - **`INDEX.md`:** Chỉ mục tổng thể truy vết toàn bộ Knowledge Base, cung cấp bản đồ tri thức nhanh chóng.
+   - **`cross_references.yaml`:** Tệp tham chiếu chéo (Cross-Reference Index) kết nối từng điều khoản quy chế pháp lý trong `governance_constitution` với các yêu cầu kỹ thuật trong `system_blueprint` và các module mã nguồn/spec tại `specs/modules/`.
+
+### Cơ chế Đánh chỉ mục & Ma trận Tham chiếu Chéo
+
+Nhờ ma trận tham chiếu chéo (`cross_references.yaml`), mọi quy định pháp lý từ Hiến pháp hệ thống đều được liên kết trực tiếp tới các file đặc tả module (`specs/modules/`) và mã nguồn thực thi. Cơ chế này đảm bảo tính tuân thủ pháp lý (Governance & Compliance) xuyên suốt quá trình phát triển, kiểm thử và vận hành hệ thống IDOP.
 
 ## 📂 Liên kết nhanh
 

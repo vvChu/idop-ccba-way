@@ -33,7 +33,24 @@
       "Bash(rm -f .env)",
       "Bash(rm -rf prompts/)",
       "Bash(rm -f README-SCAFFOLD.md)",
-      "Bash(rm -f constitution.md)"
+      "Bash(rm -f constitution.md)",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''.vscode/tasks.json'',''utf8''\\)\\); console.log\\(''Valid JSON''\\)\")",
+      "Bash(gh pr:*)",
+      "Bash(grep -E \"^-.*\\\\.md$\")",
+      "Bash(grep -r README-SCAFFOLD d:idop-ccba-way --include=*.md)",
+      "Bash(grep -r REFACTORING.md d:idop-ccba-way --include=*.md)",
+      "Bash(grep -r legacy d:idop-ccba-way --include=*.md)",
+      "Read(//d/idop-ccba-way/**)",
+      "Bash(grep -r .specify d:idop-ccba-way --include=*.md)",
+      "Bash(grep -r \"Spec-Kit\\\\|Spec‑Kit\\\\|SpecKit\" d:idop-ccba-way --include=*.md)",
+      "Bash(rm -f .speckit.yml docs/deploy-sp-lists-enhanced.md tools/speckit/specify.ps1)",
+      "Bash(rmdir tools/speckit)",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''.vscode/settings.json'',''utf8''\\)\\); console.log\\(''settings.json: valid''\\)\")",
+      "Bash(grep -r deploy-sp-lists-enhanced /d/idop-ccba-way --include=*.ps1)",
+      "Bash(grep -E \"\\\\.js$\")",
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(find /d/idop-ccba-way/tools/scripts -name \"*.ps1\" -exec grep -l \"^\\\\s*$\" {})",
+      "Bash(xargs grep:*)"
     ],
     "additionalDirectories": [
       "d:\\idop-ccba-way\\.git\\hooks"

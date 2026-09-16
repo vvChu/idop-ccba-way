@@ -1,13 +1,17 @@
 {
   "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   
-"ListName": "OKRS_Objectives",
+"ListName": "OKRSObjectives",
 "Description": "Mục tiêu OKR",
 "Columns": [
   { "Name": "ObjectiveTitle", "Type": "Text", "Required": true },
   { "Name": "Owner", "Type": "User" },
   { "Name": "QuarterId", "Type": "Lookup",
     "Lookup": { "List": "Quarters", "Field": "ID", "Behavior": "restrict" } },
+  { "Name": "ParentObjectiveId", "Type": "Lookup",
+    "Lookup": { "List": "OKRSObjectives", "Field": "ID", "Behavior": "restrict" }, "Description": "Mục tiêu cấp cha" },
+  { "Name": "DepartmentId", "Type": "Lookup",
+    "Lookup": { "List": "Departments", "Field": "ID", "Behavior": "restrict" }, "Description": "Phòng ban sở hữu" },
   { "Name": "Description", "Type": "Text" }
 ],
 "ContentTypes": []

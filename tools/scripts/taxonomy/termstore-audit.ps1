@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("Dev","Test","Prod")]
+  [ValidateSet("Dev","Test","Prod","IDOP")]
   [string]$Environment = "Dev",
   [string]$ListsRoot = "datamodel/sharepoint/lists",
   [string]$TaxonomyPath = "datamodel/sharepoint/taxonomy",
@@ -26,7 +26,7 @@ $config = Get-IDOPConfig -Environment $Environment
 $siteUrl = $config.SharePointUrl
 
 Write-Log "[ts-audit] 🔗 Connecting to $siteUrl"
-Connect-IdopOnline -SiteUrl $siteUrl -AuthMode Interactive -ClientId $config.ClientId
+Connect-IDOPSharePoint -Environment $Environment
 Write-Log "[ts-audit] ✅ Connected" 'OK'
 
 function Get-TermStoreSafe {

@@ -1,0 +1,399 @@
+{
+  "TermSetInfo": {
+    "Name": "CCBA_LinhVucChuyenMon",
+    "Id": "81818181-1111-4444-8888-000000000001",
+    "Description": "Danh mục chuẩn hóa 8 Nhóm Lĩnh vực Chuyên môn (chuyên ngành kỹ thuật và nghiệp vụ hành nghề) trong hoạt động xây dựng theo Luật Xây dựng năm 2025 và Nghị định số 212/2026/NĐ-CP.",
+    "CreatedDate": "2026-07-29T17:34:00.000Z",
+    "LastModifiedDate": "2026-07-29T17:34:00.000Z",
+    "IsOpenForTermCreation": false,
+    "Contact": "",
+    "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
+  },
+  "Terms": [
+    {
+      "Id": "b7269240-f52b-4dc8-9e3c-3ca8eebab720",
+      "Name": "1. Lĩnh vực Khảo sát xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "1. Lĩnh vực Khảo sát xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "45d9c886-71ec-4fd8-977d-322593571996",
+          "Name": "Khảo sát địa hình",
+          "IsRoot": false,
+          "PathOfTerm": "1. Lĩnh vực Khảo sát xây dựng;Khảo sát địa hình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "KS_DH",
+            "RequiredMajor": "Trắc địa, bản đồ, kỹ thuật xây dựng",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 1"
+          },
+          "Children": []
+        },
+        {
+          "Id": "771cb9cc-ec30-4e0b-9ce7-97bc3adaa906",
+          "Name": "Khảo sát địa chất công trình & địa chất thủy văn",
+          "IsRoot": false,
+          "PathOfTerm": "1. Lĩnh vực Khảo sát xây dựng;Khảo sát địa chất công trình & địa chất thủy văn",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "KS_DC",
+            "RequiredMajor": "Địa chất công trình, địa chất thủy văn",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 1"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "e941566e-b893-466c-aafa-91276511a968",
+      "Name": "2. Lĩnh vực Lập quy hoạch đô thị và nông thôn",
+      "IsRoot": true,
+      "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "4fbfd332-484c-4fb8-95e9-d8e7ee188ed1",
+          "Name": "Quy hoạch chung, phân khu & chi tiết đô thị - nông thôn",
+          "IsRoot": false,
+          "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn;Quy hoạch chung, phân khu & chi tiết đô thị - nông thôn",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "QH_DTNT",
+            "RequiredMajor": "Kiến trúc, quy hoạch xây dựng, giao thông, hạ tầng kỹ thuật đô thị",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 2"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "fac5c2ff-3efd-48ce-bd15-64dadee4c19d",
+      "Name": "3. Lĩnh vực Thiết kế xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "0aafd27e-8a51-4d7c-b433-95a79c2302f1",
+          "Name": "Thiết kế xây dựng công trình (Kết cấu & Hạ tầng)",
+          "IsRoot": false,
+          "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "75479716-d8e7-4bab-8d77-021116d77d61",
+              "Name": "Kết cấu công trình (Dân dụng & Công nghiệp)",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Kết cấu công trình (Dân dụng & Công nghiệp)",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_KC",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "297ba1cd-8e19-4915-9268-e0211756ffee",
+              "Name": "Công trình Khai thác mỏ",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Khai thác mỏ",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_MO",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "b81653f4-05b8-4e46-a7d7-8adf95779834",
+              "Name": "Công trình Đường bộ (gồm đường cất hạ cánh, đỗ tàu bay)",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Đường bộ (gồm đường cất hạ cánh, đỗ tàu bay)",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_DUONGBO",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "02739698-ba48-4ce5-99fb-1cf50447147a",
+              "Name": "Công trình Đường sắt (gồm Metro, tàu điện ngầm, đường sắt trên cao)",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Đường sắt (gồm Metro, tàu điện ngầm, đường sắt trên cao)",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_DUONGSAT",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "9a85c85d-7ff9-4b29-81cb-da97dcacfefd",
+              "Name": "Công trình Cầu - Hầm",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Cầu - Hầm",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_CAUHAM",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "9e07f7ab-a873-4d53-af1b-78153450792a",
+              "Name": "Công trình Đường thủy nội địa - Hàng hải",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Đường thủy nội địa - Hàng hải",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_HANGHAI",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "9626b8bf-35d4-4bc9-8d5c-8ad6973fffe5",
+              "Name": "Công trình Thủy lợi, đê điều",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Thủy lợi, đê điều",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_THUYLOHI",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "c98f2187-003f-40dd-8ee6-2dad0429c1be",
+              "Name": "Công trình Cấp nước - thoát nước",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Cấp nước - thoát nước",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_CAPTHOATNUOC",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "726cb0ba-784e-4e41-a167-04addabfe77d",
+              "Name": "Công trình Xử lý chất thải rắn",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế xây dựng công trình (Kết cấu & Hạ tầng);Công trình Xử lý chất thải rắn",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_CHATTHAIRAN",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "7eef8acd-a7c6-473b-8fa2-74733645c33f",
+          "Name": "Thiết kế cơ - điện công trình (M&E)",
+          "IsRoot": false,
+          "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế cơ - điện công trình (M&E)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {},
+          "Children": [
+            {
+              "Id": "bf20e46d-7ca7-4bd1-a5ec-6c336643c7af",
+              "Name": "Hệ thống điện (gồm đường dây và trạm biến áp)",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế cơ - điện công trình (M&E);Hệ thống điện (gồm đường dây và trạm biến áp)",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_DIEN_TBA",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "8c8ca1ee-dd3a-431f-9e6b-43d7a398f55f",
+              "Name": "Hệ thống cấp - thoát nước trong công trình",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế cơ - điện công trình (M&E);Hệ thống cấp - thoát nước trong công trình",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_NUOCTRONGCONGTRINH",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            },
+            {
+              "Id": "66fa364d-1574-4a76-b402-7d45af4e2337",
+              "Name": "Hệ thống thông gió - cấp thoát nhiệt (HVAC, vi khí hậu)",
+              "IsRoot": false,
+              "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế cơ - điện công trình (M&E);Hệ thống thông gió - cấp thoát nhiệt (HVAC, vi khí hậu)",
+              "IsAvailableForTagging": true,
+              "CustomProperties": {
+                "SpecialtyCode": "TK_HVAC",
+                "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 3"
+              },
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Id": "bd8de995-5cf6-41b8-9ccd-7eae7f75b97d",
+          "Name": "Thiết kế kiến trúc công trình",
+          "IsRoot": false,
+          "PathOfTerm": "3. Lĩnh vực Thiết kế xây dựng;Thiết kế kiến trúc công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "TK_KIENTRUC",
+            "LegalBasis": "Luật Kiến trúc & NĐ 212/2026/NĐ-CP Mục 3"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "eec21028-da9c-4e95-bbd9-08afd4ce2449",
+      "Name": "4. Lĩnh vực Giám sát thi công xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "4. Lĩnh vực Giám sát thi công xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "3f497de6-3b13-4057-b276-23d19499f031",
+          "Name": "Giám sát công tác xây dựng công trình",
+          "IsRoot": false,
+          "PathOfTerm": "4. Lĩnh vực Giám sát thi công xây dựng;Giám sát công tác xây dựng công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "GS_XAYDUNG",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 4"
+          },
+          "Children": []
+        },
+        {
+          "Id": "25372b1a-bedb-4ff8-9d73-ee3ecc77d938",
+          "Name": "Giám sát công tác lắp đặt thiết bị công trình (M&E, Điện, Trạm biến áp)",
+          "IsRoot": false,
+          "PathOfTerm": "4. Lĩnh vực Giám sát thi công xây dựng;Giám sát công tác lắp đặt thiết bị công trình (M&E, Điện, Trạm biến áp)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "GS_THIETBI_ME",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 4"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "6c47500b-ae9d-4a01-9571-b03c48575c84",
+      "Name": "5. Lĩnh vực Quản lý dự án đầu tư xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "5. Lĩnh vực Quản lý dự án đầu tư xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "7539efaf-ad30-4968-bc57-1d2ae0ccc0c3",
+          "Name": "Quản lý & Điều phối dự án đầu tư xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "5. Lĩnh vực Quản lý dự án đầu tư xây dựng;Quản lý & Điều phối dự án đầu tư xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "QLDA_DIEUPHOI",
+            "LegalBasis": "Luật XD 2025 Điều 88 & NĐ 212/2026 Mục 5"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "6480e4d9-a1e8-47db-9797-4b50f8529ba7",
+      "Name": "6. Lĩnh vực Thi công xây dựng công trình",
+      "IsRoot": true,
+      "PathOfTerm": "6. Lĩnh vực Thi công xây dựng công trình",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "19d8fff6-9f3d-4301-b307-f636ed7cb015",
+          "Name": "Thi công công tác xây dựng công trình",
+          "IsRoot": false,
+          "PathOfTerm": "6. Lĩnh vực Thi công xây dựng công trình;Thi công công tác xây dựng công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "TC_XAYDUNG",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 6"
+          },
+          "Children": []
+        },
+        {
+          "Id": "8557fb2e-fc2c-4f52-a11b-3a5fb6f3171a",
+          "Name": "Thi công công tác lắp đặt thiết bị công trình",
+          "IsRoot": false,
+          "PathOfTerm": "6. Lĩnh vực Thi công xây dựng công trình;Thi công công tác lắp đặt thiết bị công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "TC_THIETBI_ME",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 6"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "b0d58378-6c8c-4563-ba4d-7aa7c717576c",
+      "Name": "7. Lĩnh vực Định giá xây dựng (Quản lý chi phí)",
+      "IsRoot": true,
+      "PathOfTerm": "7. Lĩnh vực Định giá xây dựng (Quản lý chi phí)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "dcdcf8fc-d785-4f32-8418-0d9083fb6c49",
+          "Name": "Xác định, thẩm tra & Quản lý chi phí đầu tư xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "7. Lĩnh vực Định giá xây dựng (Quản lý chi phí);Xác định, thẩm tra & Quản lý chi phí đầu tư xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "DinhGia_QLCP",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 7 & Điều 55"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "e3d00dbb-0bd4-43da-8cfc-0bcd0bd26bd9",
+      "Name": "8. Lĩnh vực Kiểm định xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "8. Lĩnh vực Kiểm định xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "a28504e3-32b1-4c4c-8ec2-3262bc1e3c8d",
+          "Name": "Kiểm định, quan trắc & Đánh giá chất lượng / Sự cố công trình",
+          "IsRoot": false,
+          "PathOfTerm": "8. Lĩnh vực Kiểm định xây dựng;Kiểm định, quan trắc & Đánh giá chất lượng / Sự cố công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "SpecialtyCode": "KiemDinh_QuanTrac",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục 8"
+          },
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "Statistics": {
+    "TotalRootTerms": 8,
+    "TotalTermsWithChildren": 8,
+    "MaxDepth": 2,
+    "ExportDate": "2026-07-29 17:34:00"
+  }
+}

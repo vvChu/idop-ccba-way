@@ -6,6 +6,8 @@
 "Columns": [
   { "Name": "DepartmentName", "Type": "Text", "Required": true },
   { "Name": "DepartmentCode", "Type": "Text" },
+  { "Name": "ParentDepartmentId", "Type": "Lookup",
+    "Lookup": { "List": "Departments", "Field": "ID", "Behavior": "restrict" }, "Description": "Phòng ban cấp cha" },
   { "Name": "Manager", "Type": "User" }
 ],
 "ContentTypes": []

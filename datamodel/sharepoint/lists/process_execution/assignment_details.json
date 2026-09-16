@@ -1,15 +1,115 @@
 {
   "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
-  
-"ListName": "AssignmentDetails",
-"Description": "Chi tiết phân công",
-"Columns": [
-  { "Name": "AssignmentId", "Type": "Lookup",
-    "Lookup": { "List": "JobAssignments", "Field": "ID", "Behavior": "restrict" } },
-  { "Name": "TaskDescription", "Type": "Text" },
-  { "Name": "HoursWorked", "Type": "Number" },
-  { "Name": "Notes", "Type": "Text" }
-],
-"ContentTypes": []
-
+  "ListName": "AssignmentDetails",
+  "Description": "Chi tiết phân công nhân sự và ràng buộc pháp lý theo Phiếu giao việc PGV",
+  "Columns": [
+    {
+      "Name": "AssignmentId",
+      "Type": "Lookup",
+      "Required": true,
+      "Lookup": {
+        "List": "JobAssignments",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Phiếu giao việc (PGV)"
+    },
+    {
+      "Name": "ContractScopeId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "ContractScopes",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Hạng mục hợp đồng"
+    },
+    {
+      "Name": "ScopeDeptAllocId",
+      "Type": "Lookup",
+      "Lookup": {
+        "List": "ScopeDepartmentAllocations",
+        "Field": "ID",
+        "Behavior": "restrict"
+      },
+      "DisplayName": "Phân bổ đơn vị hạng mục"
+    },
+    {
+      "Name": "DisciplineCode",
+      "Type": "ManagedMetadata",
+      "Required": true,
+      "TermSet": {
+        "Group": "CCBA Taxonomy",
+        "Name": "CCBA_ChucDanhXayDung"
+      },
+      "DisplayName": "Bộ môn chuyên ngành (ARC, STR, EL, HV, FP...)"
+    },
+    {
+      "Name": "GenericRoleName",
+      "Type": "Text",
+      "DisplayName": "Tên chức danh chuyên môn generic"
+    },
+    {
+      "Name": "AssignedTechnicalChiefUser",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Chủ trì kỹ thuật được phân công"
+    },
+    {
+      "Name": "ResolvedLegalRole",
+      "Type": "Text",
+      "DisplayName": "Chức danh pháp lý quy định (Luật 135/2025)"
+    },
+    {
+      "Name": "TechnicalChiefCertNo",
+      "Type": "Text",
+      "DisplayName": "Số CCHN của Chủ trì kỹ thuật Scope",
+      "Description": "Số Chứng chỉ Hành nghề tương ứng (CCHN Thiết kế / Khảo sát / Thẩm tra / Quy hoạch)"
+    },
+    {
+      "Name": "RequiresCertCheck",
+      "Type": "YesNo",
+      "DisplayName": "Yêu cầu kiểm tra chứng chỉ hành nghề"
+    },
+    {
+      "Name": "DisciplineLead",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Chủ trì bộ môn"
+    },
+    {
+      "Name": "TeamMembers",
+      "Type": "User",
+      "AllowMultiple": true,
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Thành viên nhóm thực hiện"
+    },
+    {
+      "Name": "QCChecker",
+      "Type": "User",
+      "UserSelectionMode": "PeopleOnly",
+      "DisplayName": "Người kiểm tra chất lượng (QA/QC)"
+    },
+    {
+      "Name": "AllocatedHours",
+      "Type": "Number",
+      "DisplayName": "Số giờ phân bổ"
+    },
+    {
+      "Name": "TaskDescription",
+      "Type": "Text",
+      "DisplayName": "Mô tả công việc chi tiết"
+    },
+    {
+      "Name": "HoursWorked",
+      "Type": "Number",
+      "DisplayName": "Số giờ thực tế đã làm"
+    },
+    {
+      "Name": "Notes",
+      "Type": "Text",
+      "DisplayName": "Ghi chú"
+    }
+  ],
+  "ContentTypes": []
 }

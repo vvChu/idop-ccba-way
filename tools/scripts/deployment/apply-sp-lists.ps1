@@ -28,7 +28,7 @@
 #Requires -Version 7.0
 
 param(
-    [ValidateSet('Dev', 'Test', 'Prod')]
+    [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
     [string]$Environment = 'Dev',
 
     [string]$ListsPath = "datamodel/sharepoint/lists",
@@ -52,7 +52,7 @@ Import-Module "$ModulePath/SpListDeploy.psm1" -Force
 # ─── Configuration ───────────────────────────────────────────────────
 
 $config = Get-IDOPConfig -Environment $Environment
-$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..' '..')).Path
+$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' '..')).Path
 $resolvedListsPath = Join-Path $repoRoot $ListsPath
 
 # If Module specified, narrow the path

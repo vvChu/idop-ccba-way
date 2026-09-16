@@ -1,7 +1,7 @@
 {
-  "$schema": "../../schemas/sp-list.schema.json",
+  "$schema": "datamodel/sharepoint/schemas/sp-list.schema.json",
   "ListName": "CDEDocuments",
-  "Description": "Chỉ mục tài liệu CDE theo dự án, quản lý siêu dữ liệu & liên kết đến thư mục/URL thực tế.",
+  "Description": "Chỉ mục tài liệu CDE theo dự án, quản lý siêu dữ liệu ISO 19650 & liên kết đến thư mục/URL thực tế.",
   "Columns": [
     {
       "Name": "Title",
@@ -26,10 +26,34 @@
       "DisplayName": "Mã dự án"
     },
     {
+      "Name": "Originator",
+      "Type": "Text",
+      "Description": "Mã đơn vị tác giả tạo tài liệu (ISO 19650).",
+      "DisplayName": "Tác giả / Đơn vị tạo"
+    },
+    {
+      "Name": "ZoneVolume",
+      "Type": "Text",
+      "Description": "Mã phân khu hoặc khối công trình (ISO 19650).",
+      "DisplayName": "Phân khu / Khối công trình"
+    },
+    {
+      "Name": "LevelLocation",
+      "Type": "Text",
+      "Description": "Mã tầng hoặc cao độ (ISO 19650).",
+      "DisplayName": "Cao độ / Tầng"
+    },
+    {
       "Name": "DocumentCode",
       "Type": "Text",
       "Description": "Mã tài liệu theo quy ước CDE/PMO.",
       "DisplayName": "Mã tài liệu"
+    },
+    {
+      "Name": "IsoDocumentName",
+      "Type": "Text",
+      "Description": "Tên container tệp chuẩn định danh ISO 19650.",
+      "DisplayName": "Tên tệp chuẩn ISO 19650"
     },
     {
       "Name": "DocumentType",
@@ -68,6 +92,19 @@
       "DisplayName": "Trạng thái"
     },
     {
+      "Name": "ApprovalStatus",
+      "Type": "Choice",
+      "Choices": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "A1"
+      ],
+      "Description": "Trạng thái phê duyệt ISO 19650 (S0: WIP, S1: Shared Internal, S2: Shared PMO, S3: Shared Legal QA, A1: Approved/Published).",
+      "DisplayName": "Trạng thái phê duyệt CDE"
+    },
+    {
       "Name": "Version",
       "Type": "Text",
       "DisplayName": "Phiên bản"
@@ -75,7 +112,7 @@
     {
       "Name": "FileUrl",
       "Type": "Hyperlink",
-      "Description": "Liên kết tới file/thu mục trong CDE (SharePoint/OneDrive).",
+      "Description": "Liên kết tới file/thư mục trong CDE (SharePoint/OneDrive).",
       "DisplayName": "Liên kết tệp"
     },
     {

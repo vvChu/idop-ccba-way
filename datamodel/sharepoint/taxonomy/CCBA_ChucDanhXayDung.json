@@ -2,262 +2,554 @@
   "TermSetInfo": {
     "Name": "CCBA_ChucDanhXayDung",
     "Id": "7070726d-93e7-4edc-86b7-f5ea3c0a0faa",
-    "Description": "Chuẩn hóa các chức danh vai trò theo quy định pháp luật xây dựng (Nghị định 175/2024/NĐ-CP) để đảm bảo tuân thủ khi phân công.",
+    "Description": "Danh mục chuẩn hóa 10 nhóm Chức danh Nghiệp vụ trong hoạt động xây dựng, quy hoạch, kiến trúc theo Luật Xây dựng năm 2025 và Nghị định số 212/2026/NĐ-CP (Đã đồng bộ đầy đủ các vị trí Cán bộ thực thi).",
     "CreatedDate": "2025-06-16T10:27:51.42Z",
-    "LastModifiedDate": "2025-06-16T10:34:51.497Z",
+    "LastModifiedDate": "2026-07-29T16:40:00.000Z",
     "IsOpenForTermCreation": false,
     "Contact": "",
     "Owner": "i:0#.f|membership|chuvv@ibst-bim.vn"
   },
   "Terms": [
     {
-      "Id": "7ae35d6a-9dab-4059-b378-e93698bce447",
-      "Name": "Kiểm định",
+      "Id": "08e834c9-26b4-4acb-bbfb-2eaf54aa68f6",
+      "Name": "1. Khảo sát xây dựng",
       "IsRoot": true,
-      "PathOfTerm": "Kiểm định",
+      "PathOfTerm": "1. Khảo sát xây dựng",
       "IsAvailableForTagging": true,
       "CustomProperties": {},
       "Children": [
         {
-          "Id": "8d26af8a-f9ad-4ebf-a1aa-c132dc5b771b",
-          "Name": "Chủ trì kiểm định xây dựng",
-          "IsRoot": false,
-          "PathOfTerm": "Kiểm định;Chủ trì kiểm định xây dựng",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        }
-      ]
-    },
-    {
-      "Id": "cb9002c5-9458-4c65-8859-0b7f8ea19f7f",
-      "Name": "Quản lý Chi phí",
-      "IsRoot": true,
-      "PathOfTerm": "Quản lý Chi phí",
-      "IsAvailableForTagging": true,
-      "CustomProperties": {},
-      "Children": [
-        {
-          "Id": "57ad84ed-05a3-4053-92ca-a07353af0540",
-          "Name": "Chủ trì lập",
-          "IsRoot": false,
-          "PathOfTerm": "Quản lý Chi phí;Chủ trì lập",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": [
-            {
-              "Id": "39ef3aca-2e3d-4e4f-9373-e3854d5dad2a",
-              "Name": "thẩm tra và quản lý chi phí đầu tư xây dựng",
-              "IsRoot": false,
-              "PathOfTerm": "Quản lý Chi phí;Chủ trì lập;thẩm tra và quản lý chi phí đầu tư xây dựng",
-              "IsAvailableForTagging": true,
-              "CustomProperties": {},
-              "Children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Id": "6b25b7a9-d77b-4bfe-b266-4e9aa5b59cee",
-      "Name": "Quản lý Dự án",
-      "IsRoot": true,
-      "PathOfTerm": "Quản lý Dự án",
-      "IsAvailableForTagging": true,
-      "CustomProperties": {},
-      "Children": [
-        {
-          "Id": "e2304c74-60f4-4420-aa18-6b3742256cb3",
-          "Name": "Chủ đầu tư",
-          "IsRoot": false,
-          "PathOfTerm": "Quản lý Dự án;Chủ đầu tư",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        },
-        {
-          "Id": "561663ff-26bb-456c-b386-825e25de1092",
-          "Name": "Giám đốc quản lý dự án",
-          "IsRoot": false,
-          "PathOfTerm": "Quản lý Dự án;Giám đốc quản lý dự án",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        }
-      ]
-    },
-    {
-      "Id": "eb6964cc-7b3e-4a93-8fd3-e0cc8ff8da48",
-      "Name": "Thi công",
-      "IsRoot": true,
-      "PathOfTerm": "Thi công",
-      "IsAvailableForTagging": true,
-      "CustomProperties": {},
-      "Children": [
-        {
-          "Id": "0ba08ceb-b977-44f8-94eb-45b2d3ea5c70",
-          "Name": "Cán bộ kỹ thuật thi công",
-          "IsRoot": false,
-          "PathOfTerm": "Thi công;Cán bộ kỹ thuật thi công",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        },
-        {
-          "Id": "54dcd244-abc9-4f56-a76a-ce14e28d7422",
-          "Name": "Chỉ huy trưởng công trường",
-          "IsRoot": false,
-          "PathOfTerm": "Thi công;Chỉ huy trưởng công trường",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        }
-      ]
-    },
-    {
-      "Id": "ae7cda8c-f559-42be-ae63-cd4f600aff37",
-      "Name": "Tư vấn Giám sát",
-      "IsRoot": true,
-      "PathOfTerm": "Tư vấn Giám sát",
-      "IsAvailableForTagging": true,
-      "CustomProperties": {},
-      "Children": [
-        {
-          "Id": "b01527fb-db77-4050-975e-3725fff88e20",
-          "Name": "Giám sát trưởng",
-          "IsRoot": false,
-          "PathOfTerm": "Tư vấn Giám sát;Giám sát trưởng",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        },
-        {
-          "Id": "2212f05d-58fc-4618-8770-c212138554b3",
-          "Name": "Giám sát viên",
-          "IsRoot": false,
-          "PathOfTerm": "Tư vấn Giám sát;Giám sát viên",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        }
-      ]
-    },
-    {
-      "Id": "567c5022-f35f-4221-8e46-1066b575d6ec",
-      "Name": "Tư vấn Khảo sát",
-      "IsRoot": true,
-      "PathOfTerm": "Tư vấn Khảo sát",
-      "IsAvailableForTagging": true,
-      "CustomProperties": {},
-      "Children": [
-        {
-          "Id": "d88b94b5-d020-40a8-a813-cbf3ff79492c",
+          "Id": "35f9c562-7bf3-4215-bdac-3fdbe6170b44",
           "Name": "Chủ nhiệm khảo sát xây dựng",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Khảo sát;Chủ nhiệm khảo sát xây dựng",
+          "PathOfTerm": "1. Khảo sát xây dựng;Chủ nhiệm khảo sát xây dựng",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ChuNhiem",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Chủ nhiệm khảo sát XD Hạng I, II, III.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Điều 3 & Khoản II.1"
+          },
           "Children": []
         },
         {
-          "Id": "750d634e-955b-4f68-84da-471f1f4ed889",
+          "Id": "46638e8b-c927-4f64-afbb-42961810da34",
           "Name": "Giám sát khảo sát xây dựng",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Khảo sát;Giám sát khảo sát xây dựng",
+          "PathOfTerm": "1. Khảo sát xây dựng;Giám sát khảo sát xây dựng",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "GiamSat",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Giám sát khảo sát XD Hạng I, II, III.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.1"
+          },
+          "Children": []
+        },
+        {
+          "Id": "0a35b977-9dfb-4a08-b1be-2d2b63e13295",
+          "Name": "Cán bộ khảo sát / Kỹ thuật viên hiện trường",
+          "IsRoot": false,
+          "PathOfTerm": "1. Khảo sát xây dựng;Cán bộ khảo sát / Kỹ thuật viên hiện trường",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Tốt nghiệp chuyên ngành địa chất, trắc địa, kỹ thuật phù hợp.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
           "Children": []
         }
       ]
     },
     {
-      "Id": "59fadaa4-0329-40a8-92a8-7d89ed8567c1",
-      "Name": "Tư vấn Thẩm tra",
+      "Id": "9233246d-b2db-4557-8e85-691ab8d17e5b",
+      "Name": "2. Lập quy hoạch đô thị và nông thôn",
       "IsRoot": true,
-      "PathOfTerm": "Tư vấn Thẩm tra",
+      "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn",
       "IsAvailableForTagging": true,
       "CustomProperties": {},
       "Children": [
         {
-          "Id": "42e33657-9ab3-4541-9a9e-d963efd83bbc",
-          "Name": "Chủ nhiệm thẩm tra thiết kế xây dựng",
+          "Id": "db4079ed-6b35-4da7-9928-190d67790bb4",
+          "Name": "Chủ nhiệm lập nhiệm vụ quy hoạch",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thẩm tra;Chủ nhiệm thẩm tra thiết kế xây dựng",
+          "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn;Chủ nhiệm lập nhiệm vụ quy hoạch",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ChuNhiem",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Lập quy hoạch đô thị và nông thôn Hạng I, II, III.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.2"
+          },
           "Children": []
         },
         {
-          "Id": "236b8e84-3530-494b-a463-d0c03538cf7c",
-          "Name": "Chủ trì thẩm tra thiết kế xây dựng",
+          "Id": "f3244a7f-952a-4752-9e2a-0d4d4168df9e",
+          "Name": "Chủ nhiệm lập đồ án quy hoạch",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thẩm tra;Chủ trì thẩm tra thiết kế xây dựng",
+          "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn;Chủ nhiệm lập đồ án quy hoạch",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ChuNhiem",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Lập quy hoạch đô thị và nông thôn Hạng I, II, III.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.2"
+          },
+          "Children": []
+        },
+        {
+          "Id": "0ff930a0-541e-4015-a367-0a5eb4735c6b",
+          "Name": "Chủ trì lĩnh vực chuyên môn quy hoạch",
+          "IsRoot": false,
+          "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn;Chủ trì lĩnh vực chuyên môn quy hoạch",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChuTri",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Lập quy hoạch chuyên môn phù hợp.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.2"
+          },
+          "Children": []
+        },
+        {
+          "Id": "8a84e69c-bf42-48c5-9bda-6a1e92792ef8",
+          "Name": "Cán bộ lập quy hoạch / Chuyên viên quy hoạch",
+          "IsRoot": false,
+          "PathOfTerm": "2. Lập quy hoạch đô thị và nông thôn;Cán bộ lập quy hoạch / Chuyên viên quy hoạch",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Tốt nghiệp chuyên ngành quy hoạch, kiến trúc, hạ tầng kỹ thuật.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
           "Children": []
         }
       ]
     },
     {
-      "Id": "10cb2449-5191-4a43-8d3f-c11d56c32238",
-      "Name": "Tư vấn Thiết kế",
+      "Id": "98602a74-fd6d-4895-8cc1-2da5f4baf1f5",
+      "Name": "3. Tư vấn Thiết kế xây dựng",
       "IsRoot": true,
-      "PathOfTerm": "Tư vấn Thiết kế",
+      "PathOfTerm": "3. Tư vấn Thiết kế xây dựng",
       "IsAvailableForTagging": true,
       "CustomProperties": {},
       "Children": [
         {
-          "Id": "e957daf9-01f1-4b62-a296-50bc88b92c3b",
-          "Name": "Chủ nhiệm lập thiết kế quy hoạch xây dựng",
-          "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thiết kế;Chủ nhiệm lập thiết kế quy hoạch xây dựng",
-          "IsAvailableForTagging": true,
-          "CustomProperties": {},
-          "Children": []
-        },
-        {
-          "Id": "fa8a5425-5164-4902-8ec8-e5f922ec1426",
+          "Id": "2fa25bda-ae4a-45f7-a4fb-85b438846321",
           "Name": "Chủ nhiệm thiết kế xây dựng",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thiết kế;Chủ nhiệm thiết kế xây dựng",
+          "PathOfTerm": "3. Tư vấn Thiết kế xây dựng;Chủ nhiệm thiết kế xây dựng",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ChuNhiem",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Thiết kế xây dựng Hạng I, II, III.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Điều 3 & Khoản II.3"
+          },
           "Children": []
         },
         {
-          "Id": "d1d95ca7-90f0-47a7-8492-6ba5fcd5293d",
-          "Name": "Chủ trì lập thiết kế quy hoạch xây dựng",
+          "Id": "38694e25-90ae-4204-ad7d-0c687a2f5c1b",
+          "Name": "Chủ trì thiết kế xây dựng công trình (Kết cấu, Kiến trúc, Giao thông, Thủy lợi)",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thiết kế;Chủ trì lập thiết kế quy hoạch xây dựng",
+          "PathOfTerm": "3. Tư vấn Thiết kế xây dựng;Chủ trì thiết kế xây dựng công trình (Kết cấu, Kiến trúc, Giao thông, Thủy lợi)",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ChuTri",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Thiết kế công trình chuyên ngành phù hợp.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.3a"
+          },
           "Children": []
         },
         {
-          "Id": "1b971850-a773-4448-98e7-ef9d6409b1e5",
-          "Name": "Chủ trì thiết kế xây dựng",
+          "Id": "3ca87250-d9d8-4e49-9e13-605acf6f1c5d",
+          "Name": "Chủ trì thiết kế cơ - điện công trình (M&E, Điện, Cấp thoát nước, Thông gió)",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thiết kế;Chủ trì thiết kế xây dựng",
+          "PathOfTerm": "3. Tư vấn Thiết kế xây dựng;Chủ trì thiết kế cơ - điện công trình (M&E, Điện, Cấp thoát nước, Thông gió)",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ChuTri",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Thiết kế Cơ - Điện công trình.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.3b"
+          },
           "Children": []
         },
         {
-          "Id": "1f085c2d-0365-4b6f-8313-6c0a9c75fb62",
-          "Name": "Thiết kế viên",
+          "Id": "f54327c5-d594-4d14-ac88-ea20275fe89b",
+          "Name": "Thiết kế viên / Cán bộ thiết kế",
           "IsRoot": false,
-          "PathOfTerm": "Tư vấn Thiết kế;Thiết kế viên",
+          "PathOfTerm": "3. Tư vấn Thiết kế xây dựng;Thiết kế viên / Cán bộ thiết kế",
           "IsAvailableForTagging": true,
-          "CustomProperties": {},
+          "CustomProperties": {
+            "LegalRoleType": "ThietKeVien",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Tốt nghiệp đại học/cao đẳng chuyên ngành kỹ thuật phù hợp.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "e914697e-9bda-4a9d-adf4-54ce605092c1",
+      "Name": "4. Tư vấn Thẩm tra thiết kế xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "4. Tư vấn Thẩm tra thiết kế xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "702e31d1-aa3a-453c-b01f-756565d55feb",
+          "Name": "Chủ nhiệm thẩm tra thiết kế xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "4. Tư vấn Thẩm tra thiết kế xây dựng;Chủ nhiệm thẩm tra thiết kế xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChuNhiem",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Thiết kế / Thẩm tra thiết kế xây dựng Hạng I, II, III.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Điều 3 & Khoản II.3"
+          },
+          "Children": []
+        },
+        {
+          "Id": "bac504d1-e4f7-4002-b08f-e11c2dd3df67",
+          "Name": "Chủ trì thẩm tra thiết kế xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "4. Tư vấn Thẩm tra thiết kế xây dựng;Chủ trì thẩm tra thiết kế xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChuTri",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Thẩm tra/Thiết kế xây dựng chuyên môn tương ứng.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Điều 3 & Khoản II.3"
+          },
+          "Children": []
+        },
+        {
+          "Id": "78e5ba6b-6eaf-4d0b-85cd-333a53c3d202",
+          "Name": "Cán bộ thẩm tra / Chuyên viên thẩm tra thiết kế",
+          "IsRoot": false,
+          "PathOfTerm": "4. Tư vấn Thẩm tra thiết kế xây dựng;Cán bộ thẩm tra / Chuyên viên thẩm tra thiết kế",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Tốt nghiệp đại học chuyên ngành kỹ thuật phù hợp. Thực hiện tính toán đối chứng và rà soát bản vẽ under sự hướng dẫn của Chủ trì.",
+            "LegalBasis": "QCTK 2815 Điều 7, 10 & Luật Xây dựng 2025"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "6ed815b3-36d4-41ba-8725-7fbf6d053b0c",
+      "Name": "5. Tư vấn Giám sát thi công xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "5. Tư vấn Giám sát thi công xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "5dfabeea-9303-47a3-8c71-d194cf15c70d",
+          "Name": "Giám sát trưởng",
+          "IsRoot": false,
+          "PathOfTerm": "5. Tư vấn Giám sát thi công xây dựng;Giám sát trưởng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "GiamSatTruong",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Giám sát thi công xây dựng Hạng I, II, III phù hợp cấp công trình.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Điều 3 & Khoản II.4"
+          },
+          "Children": []
+        },
+        {
+          "Id": "759741d0-73bc-4972-a1df-7df8f5195f6b",
+          "Name": "Giám sát viên công tác xây dựng công trình",
+          "IsRoot": false,
+          "PathOfTerm": "5. Tư vấn Giám sát thi công xây dựng;Giám sát viên công tác xây dựng công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "GiamSatVien",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Giám sát công tác xây dựng công trình.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.4a"
+          },
+          "Children": []
+        },
+        {
+          "Id": "3dc24101-942c-4986-9110-723ff76e5afd",
+          "Name": "Giám sát viên công tác lắp đặt thiết bị công trình (M&E, Điện, Trạm biến áp)",
+          "IsRoot": false,
+          "PathOfTerm": "5. Tư vấn Giám sát thi công xây dựng;Giám sát viên công tác lắp đặt thiết bị công trình (M&E, Điện, Trạm biến áp)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "GiamSatVien",
+            "RequiresCertificate": "True",
+            "CertificatePolicy": "Mandatory",
+            "CapabilityCondition": "Có CCHN Giám sát công tác lắp đặt thiết bị công trình.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Khoản II.4b"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "85b0d2cb-296f-4263-9c4c-4ba41dad2fa2",
+      "Name": "6. Tư vấn Kiểm định xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "6. Tư vấn Kiểm định xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "c0948aef-0076-47e2-b696-65ef54f60378",
+          "Name": "Chủ trì kiểm định xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "6. Tư vấn Kiểm định xây dựng;Chủ trì kiểm định xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChuTri",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Không yêu cầu CCHN (Điều 88 Luật XD 2025). Đảm bảo điều kiện năng lực & kinh nghiệm kiểm định chất lượng công trình.",
+            "LegalBasis": "Luật Xây dựng 2025 Điều 88 & NĐ 212/2026/NĐ-CP Điều 3"
+          },
+          "Children": []
+        },
+        {
+          "Id": "797e7aa3-4237-41e0-8987-1f2a7620ffd5",
+          "Name": "Cán bộ kiểm định / Thí nghiệm viên hiện trường & phòng LAB",
+          "IsRoot": false,
+          "PathOfTerm": "6. Tư vấn Kiểm định xây dựng;Cán bộ kiểm định / Thí nghiệm viên hiện trường & phòng LAB",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Có chứng chỉ/chứng nhận nghiệp vụ thí nghiệm LAS-XD hoặc chuyên ngành kỹ thuật phù hợp.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "773805ce-a109-4932-90f8-633ddc44ee32",
+      "Name": "7. Quản lý Chi phí (Định giá xây dựng)",
+      "IsRoot": true,
+      "PathOfTerm": "7. Quản lý Chi phí (Định giá xây dựng)",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "7fd1a2e1-9a47-470d-b30d-861a524e735d",
+          "Name": "Chủ trì xác định, thẩm tra và quản lý chi phí đầu tư xây dựng",
+          "IsRoot": false,
+          "PathOfTerm": "7. Quản lý Chi phí (Định giá xây dựng);Chủ trì xác định, thẩm tra và quản lý chi phí đầu tư xây dựng",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChuTri",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "Abolished_ManagedByCapability",
+            "CapabilityCondition": "Bãi bỏ cấp mới CCHN Định giá (Điều 55 NĐ 212). Quản lý dựa trên điều kiện năng lực & kinh nghiệm thực tế.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Điều 3 & Điều 55 (Bãi bỏ cấp mới)"
+          },
+          "Children": []
+        },
+        {
+          "Id": "8da9b1f2-0f38-4c55-b079-6aa707106eae",
+          "Name": "Cán bộ dự toán / Chuyên viên quản lý chi phí",
+          "IsRoot": false,
+          "PathOfTerm": "7. Quản lý Chi phí (Định giá xây dựng);Cán bộ dự toán / Chuyên viên quản lý chi phí",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Tốt nghiệp chuyên ngành kinh tế xây dựng, kỹ thuật.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "b18694f7-1492-447d-9df0-7a9dd696c920",
+      "Name": "8. Quản lý Dự án đầu tư xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "8. Quản lý Dự án đầu tư xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "b80ed779-ecd0-4c87-970e-c27232e4e303",
+          "Name": "Giám đốc quản lý dự án",
+          "IsRoot": false,
+          "PathOfTerm": "8. Quản lý Dự án đầu tư xây dựng;Giám đốc quản lý dự án",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "GiamDocQLDA",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "Abolished_ManagedByCapability",
+            "CapabilityCondition": "Bãi bỏ cấp mới CCHN QLDA (Điều 55 NĐ 212). Yêu cầu tốt nghiệp ĐH kỹ thuật XD, kiến trúc, kinh tế XD phù hợp.",
+            "LegalBasis": "Luật Xây dựng 2025 Điều 88 & NĐ 212/2026/NĐ-CP Điều 3, 55"
+          },
+          "Children": []
+        },
+        {
+          "Id": "cd084421-fffa-4d67-913f-f8f355e4135e",
+          "Name": "Chủ đầu tư / Đại diện Chủ đầu tư",
+          "IsRoot": false,
+          "PathOfTerm": "8. Quản lý Dự án đầu tư xây dựng;Chủ đầu tư / Đại diện Chủ đầu tư",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChuDauTu",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Người đại diện theo pháp luật của chủ đầu tư.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
+          "Children": []
+        },
+        {
+          "Id": "1bc889c8-fee3-4efa-beda-e63457ccaa72",
+          "Name": "Cán bộ quản lý dự án / Điều phối viên",
+          "IsRoot": false,
+          "PathOfTerm": "8. Quản lý Dự án đầu tư xây dựng;Cán bộ quản lý dự án / Điều phối viên",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Tốt nghiệp đại học chuyên ngành phù hợp.",
+            "LegalBasis": "Luật Xây dựng 2025"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "66d5f0a9-b761-48cf-a64e-e31df435bf9c",
+      "Name": "9. Thi công xây dựng",
+      "IsRoot": true,
+      "PathOfTerm": "9. Thi công xây dựng",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "33fab1b0-fe51-4f90-b9b4-c1b3216e39f1",
+          "Name": "Chỉ huy trưởng công tác thi công xây dựng công trình",
+          "IsRoot": false,
+          "PathOfTerm": "9. Thi công xây dựng;Chỉ huy trưởng công tác thi công xây dựng công trình",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChiHuyTruong",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Không yêu cầu CCHN (Điều 88 Luật XD 2025). Đòi hỏi chuyên môn kết cấu, cầu đường, công trình thủy lợi, mỏ, kiến trúc.",
+            "LegalBasis": "Luật Xây dựng 2025 Điều 88 & NĐ 212/2026/NĐ-CP Mục III.2"
+          },
+          "Children": []
+        },
+        {
+          "Id": "bd395732-3581-452f-a655-b129915e5c47",
+          "Name": "Chỉ huy trưởng công tác lắp đặt thiết bị công trình (M&E, Điện, Nước)",
+          "IsRoot": false,
+          "PathOfTerm": "9. Thi công xây dựng;Chỉ huy trưởng công tác lắp đặt thiết bị công trình (M&E, Điện, Nước)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "ChiHuyTruong",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Không yêu cầu CCHN (Điều 88 Luật XD 2025). Đòi hỏi chuyên môn kỹ thuật điện, nước, thông gió, cấp thoát nhiệt.",
+            "LegalBasis": "Luật Xây dựng 2025 Điều 88 & NĐ 212/2026/NĐ-CP Mục III.2"
+          },
+          "Children": []
+        },
+        {
+          "Id": "be053ee2-1761-4393-9f8e-c556eca39be1",
+          "Name": "Cán bộ kỹ thuật thi công công trường",
+          "IsRoot": false,
+          "PathOfTerm": "9. Thi công xây dựng;Cán bộ kỹ thuật thi công công trường",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoKyThuat",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "NotRequired",
+            "CapabilityCondition": "Có bằng đại học/cao đẳng kỹ thuật phù hợp.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP"
+          },
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Id": "f5e4a129-9931-4d18-8965-616567d91ae6",
+      "Name": "10. Công việc đặc thù & Miễn chứng chỉ hành nghề",
+      "IsRoot": true,
+      "PathOfTerm": "10. Công việc đặc thù & Miễn chứng chỉ hành nghề",
+      "IsAvailableForTagging": true,
+      "CustomProperties": {},
+      "Children": [
+        {
+          "Id": "81a2b6ee-023b-4457-9889-be515fde9036",
+          "Name": "Cán bộ thiết kế/giám sát hoàn thiện công trình (Trát, ốp lát, sơn, nội thất)",
+          "IsRoot": false,
+          "PathOfTerm": "10. Công việc đặc thù & Miễn chứng chỉ hành nghề;Cán bộ thiết kế/giám sát hoàn thiện công trình (Trát, ốp lát, sơn, nội thất)",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "Exempt",
+            "CapabilityCondition": "Miễn CCHN theo Mục IV NĐ 212/2026 (Công việc hoàn thiện không ảnh hưởng kết cấu chịu lực).",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục IV"
+          },
+          "Children": []
+        },
+        {
+          "Id": "db89697a-5f23-4592-9761-48f173a3de9f",
+          "Name": "Cán bộ thiết kế/giám sát hệ thống thông tin liên lạc, viễn thông",
+          "IsRoot": false,
+          "PathOfTerm": "10. Công việc đặc thù & Miễn chứng chỉ hành nghề;Cán bộ thiết kế/giám sát hệ thống thông tin liên lạc, viễn thông",
+          "IsAvailableForTagging": true,
+          "CustomProperties": {
+            "LegalRoleType": "CanBoChuyenMon",
+            "RequiresCertificate": "False",
+            "CertificatePolicy": "Exempt",
+            "CapabilityCondition": "Miễn CCHN theo Mục IV NĐ 212/2026 đối với hạ tầng thông tin liên lạc, viễn thông công trình.",
+            "LegalBasis": "NĐ 212/2026/NĐ-CP Mục IV"
+          },
           "Children": []
         }
       ]
     }
   ],
   "Statistics": {
-    "TotalRootTerms": 8,
-    "TotalTermsWithChildren": 8,
-    "MaxDepth": 0,
-    "ExportDate": "2025-09-15 00:23:13"
+    "TotalRootTerms": 10,
+    "TotalTermsWithChildren": 10,
+    "MaxDepth": 1,
+    "ExportDate": "2026-07-29 16:40:00"
   }
 }

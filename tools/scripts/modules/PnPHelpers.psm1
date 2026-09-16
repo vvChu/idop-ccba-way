@@ -6,8 +6,6 @@
     and SharePoint operations across all IDOP scripts.
 #>
 
-#Requires -Modules PnP.PowerShell
-
 # Import configuration
 $script:Config = Import-PowerShellDataFile -Path "$PSScriptRoot/../../config/environments.psd1"
 
@@ -21,7 +19,7 @@ function Get-IDOPConfig {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
-        [ValidateSet('Dev', 'Test', 'Prod')]
+        [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
         [string]$Environment = 'Dev'
     )
 
@@ -54,7 +52,7 @@ function Connect-IDOPSharePoint {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
-        [ValidateSet('Dev', 'Test', 'Prod')]
+        [ValidateSet('Dev', 'Test', 'Prod', 'IDOP')]
         [string]$Environment = 'Dev',
 
         [Parameter(Mandatory = $false)]
@@ -63,9 +61,13 @@ function Connect-IDOPSharePoint {
 
     $config = Get-IDOPConfig -Environment $Environment
 
+    if (-not (Get-Module -ListAvailable -Name 'PnP.PowerShell')) {
+        throw "The 'PnP.PowerShell' module is required for SharePoint operations. Please install it with: Install-Module PnP.PowerShell -Scope CurrentUser"
+    }
+
     try {
         # Check if already connected
-        $existingConnection = Get-PnPConnection -ErrorAction SilentlyContinue
+        $existingConnection = try { Get-PnPConnection -ErrorAction Stop } catch { $null }
 
         if ($existingConnection -and -not $Force) {
             $currentUrl = $existingConnection.Url
@@ -83,12 +85,33 @@ function Connect-IDOPSharePoint {
         Write-Host "Connecting to $Environment environment..." -ForegroundColor Cyan
         Write-Host "  URL: $($config.SharePointUrl)" -ForegroundColor Gray
 
-        $connection = Connect-PnPOnline `
-            -Url $config.SharePointUrl `
-            -Interactive `
-            -ClientId $config.ClientId `
-            -ReturnConnection `
-            -ErrorAction Stop
+        $connection = $null
+        $certPath = $env:IDOP_SP_CERT_PATH
+        $tenantId = if ($env:IDOP_SP_TENANT) { $env:IDOP_SP_TENANT } else { $config.TenantId }
+        $clientId = if ($env:IDOP_SP_CLIENT_ID) { $env:IDOP_SP_CLIENT_ID } else { $config.ClientId }
+        $certPwd  = $env:IDOP_SP_CERT_PASSWORD
+
+        if ($certPath -and (Test-Path $certPath) -and $tenantId -and $clientId -and $certPwd) {
+            Write-Host "  Auth Mode: AppOnly Certificate ($certPath)" -ForegroundColor DarkGray
+            $secPwd = ConvertTo-SecureString $certPwd -AsPlainText -Force
+            Connect-PnPOnline `
+                -Url $config.SharePointUrl `
+                -ClientId $clientId `
+                -Tenant $tenantId `
+                -CertificatePath $certPath `
+                -CertificatePassword $secPwd `
+                -ErrorAction Stop
+            $connection = Get-PnPConnection
+        } else {
+            Write-Host "  Auth Mode: Interactive Browser" -ForegroundColor DarkGray
+            $interactiveId = if ($config.InteractiveClientId) { $config.InteractiveClientId } else { "90ded6f0-b787-4b3c-acea-8baf6403fd63" }
+            Connect-PnPOnline `
+                -Url $config.SharePointUrl `
+                -Interactive `
+                -ClientId $interactiveId `
+                -ErrorAction Stop
+            $connection = Get-PnPConnection
+        }
 
         Write-Host "✓ Successfully connected to $Environment" -ForegroundColor Green
         return $connection
