@@ -57,3 +57,12 @@ Thumbs.db
 # AI Agent working files (auto-generated, not project source)
 .agents/
 ORIGINAL_REQUEST.md
+
+# Hub auto-generated editable links & Spoke Leakage Guard (ADR 0045)
+requirements-hub.txt
+.md/teach/
+.md/scratch/
+.md/data/
+.md/backups/
+.tmp/
+.out-of-scope/
