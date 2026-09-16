@@ -1,44 +1,37 @@
 # SharePoint Navigation Governance — IDOP Modules
 
-Last updated: 2025-09-22
+Last updated: 2026-08-02
 
 ## Principles
-- Group every SharePoint list under a module label directly below `Home` in the left navigation (QuickLaunch).
-- Module labels reflect IDOP components; lists are auto-discovered from `datamodel/sharepoint/lists/<module>/`.
-- Idempotent updates: re-running the script won’t duplicate nodes; missing nodes are created.
-- Apply the same structure in Dev, Test, and Prod.
+- Group every SharePoint list under a module label directly below `Home` in the top/left navigation.
+- Module labels reflect IDOP components; lists are auto-discovered from `datamodel/sharepoint/lists/<module>/` and `datamodel/sharepoint/navigation/global-navigation.json`.
+- Idempotent updates: re-running the script won’t duplicate nodes; missing nodes are created and updated gracefully.
+- Support external cross-site and OneDrive links via automated fallback (`-External`).
 
-## Modules and folders
-- Cash Data → `datamodel/sharepoint/lists/cash_data/`
-- People Assets → `datamodel/sharepoint/lists/people_assets/`
-- Performance OKRs → `datamodel/sharepoint/lists/performance_okrs/`
-- Process Execution → `datamodel/sharepoint/lists/process_execution/`
-- System Governance → `datamodel/sharepoint/lists/system_governance/`
-- Strategy CRM → `datamodel/sharepoint/lists/strategy_crm/`
+## Modules and Global Navigation Structure
+- **Intranet Portal**: Home link, Rules & Knowledge pages
+- **CRM**: Customers, Contacts, Opportunities, Potential Projects
+- **Projects & CDE**: Projects, CDE Documents, iCDE System, Bidding Folder (OneDrive Master)
+- **People & Assets**: Employees, Assets
 
 ## Runbook
-- Dry-run (see structure):
+- Dry-run preview:
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\tools\scripts\create-sp-navigation.ps1 -DryRun
+.\idop.ps1 deploy navigation -Environment IDOP -DryRun
 ```
-- Apply to Dev/Test/Prod:
+- Apply navigation sync to PROD (`sites/idop`):
 ```powershell
-# Dev
-powershell -ExecutionPolicy Bypass -File .\tools\scripts\create-sp-navigation.ps1 -Environment Dev
-# Test
-powershell -ExecutionPolicy Bypass -File .\tools\scripts\create-sp-navigation.ps1 -Environment Test
-# Prod
-powershell -ExecutionPolicy Bypass -File .\tools\scripts\create-sp-navigation.ps1 -Environment Prod
+.\idop.ps1 deploy navigation -Environment IDOP
+```
+- Or run sub-script directly via PnP session:
+```powershell
+pwsh -NoProfile -File .\tools\scripts\deployment\sync-sp-navigation.ps1 -Environment IDOP -Location Top
 ```
 
-## Adding new lists
-- When a new list schema is added under a module folder in `datamodel/sharepoint/lists/`, re-run the navigation script to auto-add it to the label.
-- Ensure the live list exists (via apply scripts) so its `DefaultViewUrl` resolves.
-
-## Order and visibility
-- Module labels appear directly below `Home`.
-- Child items under each module are the lists’ display names. You can reorder manually if necessary; reruns won’t overwrite existing placements.
+## Adding new lists or navigation links
+- When a new list or custom link is added, update `datamodel/sharepoint/navigation/global-navigation.json` and re-run `.\idop.ps1 deploy navigation -Environment IDOP`.
+- Ensure the live list exists (via `.\idop.ps1 deploy lists -Environment IDOP -Full`) so its URL resolves smoothly.
 
 ## Troubleshooting
-- If a list is not found, confirm it exists on the site and has a default view.
-- If duplicate nodes appear from manual changes, delete them and re-run the script.
+- If a link fails due to cross-site or external URL validation, `sync-sp-navigation.ps1` automatically applies the `-External` fallback flag.
+- If duplicate nodes appear from manual edits, use `-Prune` or clean up nodes via PnP cmdlets.

@@ -1,12 +1,57 @@
+# =============================================================================
+# WORKSPACE CONTEXT — IDOP-CCBA-WAY (Spoke Delivery Workspace)
+# Machine-readable onboarding file for AI Agents.
+# =============================================================================
+
+project:
+  name: "IDOP-CCBA-WAY"
+  type: "Phần mềm"
+  mode: "hybrid"
+  qc_mode: null
+  hub_path: "D:\\GitHubProjects\\ccba-agent-platform"
+  description: >
+    Central Knowledge Base bootstrap configuration for IDOP-CCBA-WAY governance
+    constitution, system blueprint, and module specifications. Serves as the primary
+    entry point for AI Agents and developers.
+
+# =============================================================================
+# MUST-READ FILES & BOOTSTRAP SEQUENCE
+# =============================================================================
+must_read:
+  always:
+    - path: .md/workspace_context.yaml
+      why: "Workspace configuration & bootstrap"
+    - path: .md/INDEX.md
+      why: "Ubiquitous Language & Knowledge Base Index"
+    - path: .md/cross_references.yaml
+      why: "Governance to technical cross-reference matrix"
+    - path: .md/system_blueprint/05_sharepoint_intranet_architecture_map.md
+      why: "SharePoint Intranet Wayfinding Map & Architecture"
+
+# =============================================================================
+# DO NOT TOUCH
+# =============================================================================
+do_not_touch:
+  - .env
+  - idop_deploy.pfx
+  - idop_deploy.cer
+
+# =============================================================================
+# AGENT ACKNOWLEDGMENT PROTOCOL (Global Rule 4 — Override)
+# =============================================================================
+acknowledgment_required: true
+acknowledgment_format: >
+  "Tôi đã đọc workspace_context.yaml. Dự án IDOP-CCBA-WAY là Phần mềm (mode: hybrid). Tác vụ hiện tại liên quan đến Nền tảng Vận hành Số Tích hợp IDOP (SharePoint Online / Microsoft 365)."
+
+# =============================================================================
+# IDOP v2.0 LEGACY COMPATIBILITY & DETAILED METADATA
+# =============================================================================
 project_name: IDOP-CCBA-WAY
 version: 2.0.0
-current_milestone: Milestone 2 - Migration & Meta Files Generation
-description: Central Knowledge Base bootstrap configuration for IDOP-CCBA-WAY governance
-  constitution, system blueprint, and module specifications. Serves as the primary
-  entry point for AI Agents and developers.
+current_milestone: PROD Deployment Stage 1 Complete (59 Lists, 21 Taxonomy, Top Navigation) — Stage 2 Prep
 database: SharePoint Online Lists & Power Platform Data Model
-architecture_pattern: Hub & Spoke Architecture (IBST-CCBA Root Hub + Specialized Spoke
-  Sites)
+architecture_pattern: Hub & Spoke Architecture (IBST-CCBA Root Hub + Specialized Spoke Sites)
+
 document_groups:
   governance_constitution:
     path: .md/governance_constitution
@@ -26,12 +71,14 @@ document_groups:
     - 02_idop_v2_operations_finance.md
     - 03_idop_v2_technical_implementation.md
     - 04_idop_v2_enterprise_architecture.md
+    - 05_sharepoint_intranet_architecture_map.md
   module_specifications:
     path: specs/modules
     description: 21 module specification files mapped across 6 operational domains
       (cash_data, people_assets, performance_okrs, process_execution, strategy_crm,
       system_governance).
     total_specs: 21
+
 initial_reading_sequence:
 - .md/workspace_context.yaml
 - .md/INDEX.md
@@ -44,3 +91,4 @@ initial_reading_sequence:
 - .md/system_blueprint/02_idop_v2_operations_finance.md
 - .md/system_blueprint/03_idop_v2_technical_implementation.md
 - .md/system_blueprint/04_idop_v2_enterprise_architecture.md
+- .md/system_blueprint/05_sharepoint_intranet_architecture_map.md

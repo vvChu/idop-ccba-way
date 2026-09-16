@@ -59,7 +59,7 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 4.1 Quy trình Step 7 Quyết toán & Phân phối Kinh phí 3 Tầng
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: '[Xác nhận Tiền về Tài khoản Viện] -> [Tra cứu Tỷ lệ Bảng 1 QCTK] ->
       [Tính toán Tờ phân phối 3 Tầng] -> [TCKT & Lãnh đạo Viện Phê duyệt] -> [Chuyển
@@ -149,7 +149,7 @@ modules:
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 4.1 Quy trình Quản lý & Phê duyệt Chi phí Dự án
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: Kế toán đối soát định mức QCCTNB 3209.
   - document: 02_qcctnb_3209_financial_norms.md
@@ -332,38 +332,35 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 4.1 Quy trình Nghiệm thu, Xuất Hóa đơn (Step 6) & Quyết toán
-      Phân phối 3 Tầng (Step 7)
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: 'Căn cứ Bảng 1 QCTK 2815, TCKT trình Lãnh đạo Viện ký Tờ phân phối Hợp
       đồng:'
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: Điều 11.1
-    section_context: 4.1 Quy trình Nghiệm thu, Xuất Hóa đơn (Step 6) & Quyết toán
-      Phân phối 3 Tầng (Step 7)
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: Trong vòng không quá 03 ngày làm việc kể từ khi đủ hồ sơ tiền về, TCKT
       thực hiện chuyển tiền giải ngân cho CCBA và PM (Điều 11.1 QCTK 2815).
   - document: 03_ccba_charter_2026.md
     document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
     article_clause: Điều 11.1
-    section_context: 4.1 Quy trình Nghiệm thu, Xuất Hóa đơn (Step 6) & Quyết toán
-      Phân phối 3 Tầng (Step 7)
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
     excerpt: Trong vòng không quá 03 ngày làm việc kể từ khi đủ hồ sơ tiền về, TCKT
       thực hiện chuyển tiền giải ngân cho CCBA và PM (Điều 11.1 QCTK 2815).
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 5.2 Tiêu chí Chấp nhận Tổng thể (Acceptance Criteria)
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: 'AC-CSH-02**: Mọi giao dịch tài chính bắt buộc tuân thủ đúng tỷ lệ giao
       khoán Bảng 1 QCTK 2815 và định mức chi QCCTNB 3209.'
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 5.2 Tiêu chí Chấp nhận Tổng thể (Acceptance Criteria)
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: 'AC-CSH-02**: Mọi giao dịch tài chính bắt buộc tuân thủ đúng tỷ lệ giao
       khoán Bảng 1 QCTK 2815 và định mức chi QCCTNB 3209.'
@@ -518,7 +515,7 @@ modules:
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 4.2. Diễn giải Quy trình Nghiệp vụ & Tích hợp Cơ chế Tài chính
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: '5. **Bước 5: Tích hợp Tài chính**: Dữ liệu `Timesheets` được chuyển
       sang module Cash & Data để KHTC tính chi phí nhân công thực tế vào Hợp đồng
@@ -602,14 +599,14 @@ modules:
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 4.2. Diễn giải Quy trình Nghiệp vụ & Tích hợp Cơ chế Tài chính
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: KHTC xác định tổng giá trị Quỹ thưởng sản xuất Tầng 3 trích lập từ kết
       quả kinh doanh quý theo QCCTNB 3209.
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: '[ ] Kết quả đánh giá OKR/KPI liên thông trực tiếp với thuật toán phân
       bổ Quỹ thưởng sản xuất Tầng 3 theo QCCTNB 3209.'
@@ -675,13 +672,13 @@ modules:
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 4.1. Sơ đồ Quy trình Tổng hợp Báo cáo Hiệu suất (Mermaid BPMN)
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: C --> D[KHTC Kết xuất Số liệu Quỹ Thưởng Tầng 3 QCCTNB 3209]
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: '[ ] Báo cáo phân bổ Quỹ thưởng sản xuất Tầng 3 liên thông chính xác
       với số liệu tài chính trích lập từ QCCTNB 3209.'
@@ -837,7 +834,7 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: Điều 6.3
-    section_context: 4.1 Quy trình Step 2 Trình ký Hợp đồng (`trinh_ky_hd`)
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: Nộp lưu trữ đúng quy định tại Điều 6.3 QCTK 2815.
   system_blueprint_references:
@@ -942,7 +939,7 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: Điều 10
-    section_context: 4.1 Quy trình Step 5 Kiểm tra Nội bộ & Ghi nhận Lessons Learned
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: '[Thực hiện Kiểm tra Nội bộ (Điều 10 QCTK)] -> [Lập Biên bản Kiểm tra]
       -> [Nhận diện Bài học / Cải tiến] -> [Nhập bản ghi Lessons Learned] -> [TPM/BGD '
@@ -1023,20 +1020,20 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: Điều 7.1
-    section_context: 1.2 Phạm vi
+    section_context: 1.2 Phạm vi (Scope)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: 'Quy trình 4 luồng giao việc (Điều 7.1 QCTK 2815):'
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: Điều 7.4
-    section_context: 1.2 Phạm vi
+    section_context: 1.2 Phạm vi (Scope)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: 'Phân định thẩm quyền và điều kiện của các chức danh (Điều 7.4-7.6 QCTK
       2815): Người chỉ đạo HĐ, Đơn vị chủ trì/phối hợp, Chủ trì HĐ, Chủ trì kỹ thuật '
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 1.2 Phạm vi
+    section_context: 1.2 Phạm vi (Scope)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: Xác định tỷ lệ phân chia giá trị giao việc giữa các đơn vị/cá nhân theo
       Bảng 1 QCTK 2815.
@@ -1080,7 +1077,7 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
+    section_context: 9.2 Tiêu chí Chấp nhận (Acceptance Criteria)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: 'AC-PMO-04**: Tỷ lệ giao khoán trên PGV không được vượt quá định mức
       tại Bảng 1 QCTK 2815 đối với từng nhóm Hợp đồng.'
@@ -1205,14 +1202,14 @@ modules:
   - document: 03_ccba_charter_2026.md
     document_title: Quy chế Tổ chức & Hoạt động CCBA 2026 v2.2
     article_clause: Quy chế CCBA 2026
-    section_context: 4.1 Quy trình Step 4 Thực hiện Dự án (`thuc_hien_du_an`) 5 Luồng
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow)
     topic: Tổ chức bộ máy CCBA, phân quyền & quy trình SOP
     excerpt: '└───> [Luồng 5: Mô hình Tập trung CCBA] ───> GĐ CCBA Trực tiếp Điều
       hành ────┘'
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: Điều 10
-    section_context: 4.1 Quy trình Step 4 Thực hiện Dự án (`thuc_hien_du_an`) 5 Luồng
+    section_context: 4. Quy trình Nghiệp vụ Chi tiết (Operational Flow)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: Hoàn thành sản phẩm kỹ thuật, chuẩn bị hồ sơ cho Step 5 Kiểm tra nội
       bộ (Điều 10 QCTK 2815).
@@ -1604,7 +1601,7 @@ modules:
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 2.1. User Stories theo 5 Phòng Ban & 3 Chức danh CCBA
+    section_context: 2.1 User Stories
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: Là Kế toán Trưởng, tôi muốn nhận thông báo trình ký các phiếu đề nghị
       thanh toán, hóa đơn (`Invoice`) và phê duyệt theo hạn mức quy định tại QCCTNB
@@ -1630,7 +1627,7 @@ modules:
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 5.1. Tiêu chí Chấp nhận (Acceptance Criteria)
+    section_context: 5.2 Tiêu chí Chấp nhận (Acceptance Criteria)
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: '[ ] Quy trình phê duyệt hỗ trợ linh hoạt 05 cấp duyệt theo chuẩn QCTK
       2815.'
@@ -1700,14 +1697,14 @@ modules:
   - document: 02_qcctnb_3209_financial_norms.md
     document_title: Quy chế Chi tiêu Nội bộ số 3209/QĐ-VKH
     article_clause: QCCTNB 3209 Rules
-    section_context: 2.1. User Stories theo 5 Phòng Ban & 3 Chức danh CCBA
+    section_context: 2.1 User Stories
     topic: Định mức chi tiêu tài chính, tạm ứng & quyết toán
     excerpt: Là Kế toán Trưởng, tôi muốn tùy chỉnh biểu mẫu đề nghị thanh toán, phiếu
       thu/chi và kiểm soát các trường bắt buộc nhập theo đúng định mức QCCTNB 3209.
   - document: 01_qctk_2815_project_management.md
     document_title: Quy chế Triển khai dự án số 2815/QĐ-VKH
     article_clause: QCTK 2815 Rules
-    section_context: 2.1. User Stories theo 5 Phòng Ban & 3 Chức danh CCBA
+    section_context: 2.1 User Stories
     topic: Quy trình quản lý thực thi dự án & kiểm soát tuân thủ
     excerpt: Là PM, tôi muốn sử dụng biểu mẫu khởi tạo dự án và giao việc chuẩn hóa
       theo đúng mẫu quy định tại QCTK 2815.
@@ -1917,4 +1914,4 @@ modules:
     section: Ph?n 2 Role Matrix
     section_context: Ma tr?n quy?n trn 6 module
     topic: Phn quy?n h? th?ng
-    excerpt: 'Vai tr -> SharePoint Permission Groups'
+    excerpt: Vai tr -> SharePoint Permission Groups
