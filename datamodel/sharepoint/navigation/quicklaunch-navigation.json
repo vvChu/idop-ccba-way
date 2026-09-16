@@ -1,0 +1,73 @@
+{
+  "Groups": [
+    {
+      "Title": "Strategy CRM",
+      "Nodes": [
+        { "Title": "Customers (Khách hàng)", "Url": "/sites/idop-{env}/Lists/Customers" },
+        { "Title": "Contacts (Người liên hệ)", "Url": "/sites/idop-{env}/Lists/Contacts" },
+        { "Title": "Opportunities (Cơ hội KD)", "Url": "/sites/idop-{env}/Lists/Opportunities" },
+        { "Title": "Potential Projects (Tiềm năng dự án)", "Url": "/sites/idop-{env}/Lists/PotentialProjects" },
+        { "Title": "Leads (Khách hàng tiềm năng)", "Url": "/sites/idop-{env}/Lists/Leads" },
+        { "Title": "Service Catalog (Danh mục dịch vụ)", "Url": "/sites/idop-{env}/Lists/ServiceCatalog" }
+      ]
+    },
+    {
+      "Title": "Process Execution",
+      "Nodes": [
+        { "Title": "Projects (Dự án)", "Url": "/sites/idop-{env}/Lists/Projects" },
+        { "Title": "CDE Documents (Tài liệu CDE)", "Url": "/sites/idop-{env}/Lists/CDEDocuments" },
+        { "Title": "Contracts (Hợp đồng)", "Url": "/sites/idop-{env}/Lists/Contracts" },
+        { "Title": "Contract Scopes (Hạng mục HĐ)", "Url": "/sites/idop-{env}/Lists/ContractScopes" },
+        { "Title": "Job Assignments (Phiếu giao việc)", "Url": "/sites/idop-{env}/Lists/JobAssignments" },
+        { "Title": "Work Packages (Gói việc WBS)", "Url": "/sites/idop-{env}/Lists/WorkPackages" },
+        { "Title": "Project Risks (Rủi ro dự án)", "Url": "/sites/idop-{env}/Lists/ProjectRisks" },
+        { "Title": "Project Issues (Vấn đề phát sinh)", "Url": "/sites/idop-{env}/Lists/ProjectIssues" },
+        { "Title": "Lessons Learned (Bài học kinh nghiệm)", "Url": "/sites/idop-{env}/Lists/LessonsLearned" }
+      ]
+    },
+    {
+      "Title": "Cash Data & Finance",
+      "Nodes": [
+        { "Title": "Expenses (Chứng từ chi)", "Url": "/sites/idop-{env}/Lists/Expenses" },
+        { "Title": "Expense Checklists (Checklist chi)", "Url": "/sites/idop-{env}/Lists/ExpenseChecklists" },
+        { "Title": "Input Invoices (Hóa đơn đầu vào)", "Url": "/sites/idop-{env}/Lists/InputInvoices" },
+        { "Title": "Outgoing Invoices (Hóa đơn đầu ra)", "Url": "/sites/idop-{env}/Lists/OutgoingInvoices" },
+        { "Title": "Invoice Requests (Yêu cầu xuất HĐ)", "Url": "/sites/idop-{env}/Lists/InvoiceRequests" },
+        { "Title": "Financial Plans (Kế hoạch tài chính)", "Url": "/sites/idop-{env}/Lists/FinancialPlans" },
+        { "Title": "Shared Cost Allocations (Phân bổ chi phí)", "Url": "/sites/idop-{env}/Lists/SharedCostAllocations" },
+        { "Title": "Bank Accounts (Tài khoản ngân hàng)", "Url": "/sites/idop-{env}/Lists/BankAccounts" },
+        { "Title": "Vendors (Nhà cung cấp)", "Url": "/sites/idop-{env}/Lists/Vendors" }
+      ]
+    },
+    {
+      "Title": "People & Assets",
+      "Nodes": [
+        { "Title": "Employees (Nhân sự CCBA)", "Url": "/sites/idop-{env}/Lists/Employees" },
+        { "Title": "Employment Contracts (HĐ lao động)", "Url": "/sites/idop-{env}/Lists/EmploymentContracts" },
+        { "Title": "Departments (Phòng ban / Đơn vị)", "Url": "/sites/idop-{env}/Lists/Departments" },
+        { "Title": "Assets (Tài sản & Thiết bị)", "Url": "/sites/idop-{env}/Lists/Assets" },
+        { "Title": "Maintenance Logs (Bảo trì thiết bị)", "Url": "/sites/idop-{env}/Lists/MaintenanceLogs" },
+        { "Title": "Timesheets (Chấm công giờ làm)", "Url": "/sites/idop-{env}/Lists/Timesheets" }
+      ]
+    },
+    {
+      "Title": "Performance OKRs",
+      "Nodes": [
+        { "Title": "OKRS Objectives (Mục tiêu OKR)", "Url": "/sites/idop-{env}/Lists/OKRSObjectives" },
+        { "Title": "OKRS Key Results (Kết quả then chốt)", "Url": "/sites/idop-{env}/Lists/OKRSKeyResults" },
+        { "Title": "Scorecard Data (Điểm KPI)", "Url": "/sites/idop-{env}/Lists/ScorecardData" },
+        { "Title": "Measurables (Chỉ số đo lường)", "Url": "/sites/idop-{env}/Lists/Measurables" }
+      ]
+    },
+    {
+      "Title": "System Governance",
+      "Nodes": [
+        { "Title": "Submissions (Tờ trình & Trình ký)", "Url": "/sites/idop-{env}/Lists/Submissions" },
+        { "Title": "Approval Workflows (Quy trình duyệt)", "Url": "/sites/idop-{env}/Lists/ApprovalWorkflows" },
+        { "Title": "Dynamic Forms (Biểu mẫu động)", "Url": "/sites/idop-{env}/Lists/DynamicForms" },
+        { "Title": "Document Requirements (Yêu cầu hồ sơ)", "Url": "/sites/idop-{env}/Lists/DocumentRequirements" },
+        { "Title": "System Settings (Cấu hình hệ thống)", "Url": "/sites/idop-{env}/Lists/SystemSettings" }
+      ]
+    }
+  ]
+}
