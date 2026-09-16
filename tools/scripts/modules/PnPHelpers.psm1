@@ -6,8 +6,6 @@
     and SharePoint operations across all IDOP scripts.
 #>
 
-#Requires -Modules PnP.PowerShell
-
 # Import configuration
 $script:Config = Import-PowerShellDataFile -Path "$PSScriptRoot/../../config/environments.psd1"
 
@@ -62,6 +60,10 @@ function Connect-IDOPSharePoint {
     )
 
     $config = Get-IDOPConfig -Environment $Environment
+
+    if (-not (Get-Module -ListAvailable -Name 'PnP.PowerShell')) {
+        throw "The 'PnP.PowerShell' module is required for SharePoint operations. Please install it with: Install-Module PnP.PowerShell -Scope CurrentUser"
+    }
 
     try {
         # Check if already connected
