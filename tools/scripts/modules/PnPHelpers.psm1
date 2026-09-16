@@ -92,23 +92,23 @@ function Connect-IDOPSharePoint {
         if ($certPath -and (Test-Path $certPath) -and $tenantId -and $clientId -and $certPwd) {
             Write-Host "  Auth Mode: AppOnly Certificate ($certPath)" -ForegroundColor DarkGray
             $secPwd = ConvertTo-SecureString $certPwd -AsPlainText -Force
-            $connection = Connect-PnPOnline `
+            Connect-PnPOnline `
                 -Url $config.SharePointUrl `
                 -ClientId $clientId `
                 -Tenant $tenantId `
                 -CertificatePath $certPath `
                 -CertificatePassword $secPwd `
-                -ReturnConnection `
                 -ErrorAction Stop
+            $connection = Get-PnPConnection
         } else {
             Write-Host "  Auth Mode: Interactive Browser" -ForegroundColor DarkGray
             $interactiveId = if ($config.InteractiveClientId) { $config.InteractiveClientId } else { "90ded6f0-b787-4b3c-acea-8baf6403fd63" }
-            $connection = Connect-PnPOnline `
+            Connect-PnPOnline `
                 -Url $config.SharePointUrl `
                 -Interactive `
                 -ClientId $interactiveId `
-                -ReturnConnection `
                 -ErrorAction Stop
+            $connection = Get-PnPConnection
         }
 
         Write-Host "✓ Successfully connected to $Environment" -ForegroundColor Green
