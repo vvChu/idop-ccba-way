@@ -43,6 +43,7 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 6. **[InfluenceScore là công thức tất định](file:///home/vvc/ccba/IDOP-CCBA-WAY/specs/modules/strategy_crm/opportunities/flows.md)**: Không dùng LLM. AI chỉ hỗ trợ thẩm định nội dung HSMT.
 7. **[Submissions.json thiếu CDEDocument](file:///home/vvc/ccba/IDOP-CCBA-WAY/datamodel/sharepoint/lists/system_governance/submissions.json#L8-L9)**: Trường `RelatedEntity` chỉ có 4 giá trị. Cần bổ sung `"CDEDocument"`.
 8. **[Biến môi trường xác thực chuẩn hóa](file:///home/vvc/ccba/IDOP-CCBA-WAY/tools/scripts/modules/PnPHelpers.psm1#L89-L94)**: `IDOP_SP_CERT_PATH`, `IDOP_SP_CERT_PASSWORD`, `IDOP_SP_CLIENT_ID`, `IDOP_SP_TENANT_ID`.
+9. **[Issue #7 Hoàn thành](https://github.com/vvChu/idop-ccba-way/issues/7)**: Đã hoàn thiện `schema_validator.py` và generator `models.py` (726 dòng) hỗ trợ Pydantic v2 type-safe, bổ sung `"CDEDocument"` vào `submissions.json`. Vượt qua 100% tests và khóa kiểm định tất định ADR-0058 (`verify-patch`).
 
 ---
 
@@ -52,17 +53,22 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 
 | Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Trạng thái |
 |:---|:---|:---:|:---:|:---:|:---:|
-| [Python Typed Models & Schema Validator](https://github.com/vvChu/idop-ccba-way/issues/7) | `#7` | Feature | AFK | P0 | 🟢 Open |
-| [App-Only Certificate & Graph Permissions](https://github.com/vvChu/idop-ccba-way/issues/8) | `#8` | Task | HITL | P0 | 🟢 Open |
+| [App-Only Certificate & Graph Permissions](https://github.com/vvChu/idop-ccba-way/issues/8) | `#8` | Task | HITL | P0 | 🟢 Open (Unblocked) |
+
+### 🟣 Resolved — Đã Hoàn Thành
+
+| Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Trạng thái |
+|:---|:---|:---:|:---:|:---:|:---:|
+| [Python Typed Models & Schema Validator](https://github.com/vvChu/idop-ccba-way/issues/7) | `#7` | Feature | AFK | P0 | 🟣 Closed (Resolved) |
 
 ### 🔴 Blocked — Chờ phụ thuộc
 
 | Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Blocked By | Trạng thái |
 |:---|:---|:---:|:---:|:---:|:---|:---:|
-| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | `#7`, `#8` | 🔴 Blocked |
-| [Live Schema Drift Detector](https://github.com/vvChu/idop-ccba-way/issues/10) | `#10` | Feature | AFK | P1 | `#8` | 🔴 Blocked |
-| [CDE ISO 19650 Gatekeeper](https://github.com/vvChu/idop-ccba-way/issues/11) | `#11` | Feature | HITL | P1 | `#7`, `#9` | 🔴 Blocked |
-| [Bidding HSMT Compliance AI](https://github.com/vvChu/idop-ccba-way/issues/12) | `#12` | Feature | AFK | P2 | `#9` | 🔴 Blocked |
+| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | `#8` (đã xong `#7`) | 🔴 Blocked by #8 |
+| [Live Schema Drift Detector](https://github.com/vvChu/idop-ccba-way/issues/10) | `#10` | Feature | AFK | P1 | `#8` | 🔴 Blocked by #8 |
+| [CDE ISO 19650 Gatekeeper](https://github.com/vvChu/idop-ccba-way/issues/11) | `#11` | Feature | HITL | P1 | `#9` (đã xong `#7`) | 🔴 Blocked by #9 |
+| [Bidding HSMT Compliance AI](https://github.com/vvChu/idop-ccba-way/issues/12) | `#12` | Feature | AFK | P2 | `#9` | 🔴 Blocked by #9 |
 
 ### Sơ đồ phụ thuộc (Dependency Graph)
 
