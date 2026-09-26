@@ -44,6 +44,7 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 7. **[Submissions.json thiếu CDEDocument](file:///home/vvc/ccba/IDOP-CCBA-WAY/datamodel/sharepoint/lists/system_governance/submissions.json#L8-L9)**: Trường `RelatedEntity` chỉ có 4 giá trị. Cần bổ sung `"CDEDocument"`.
 8. **[Biến môi trường xác thực chuẩn hóa](file:///home/vvc/ccba/IDOP-CCBA-WAY/tools/scripts/modules/PnPHelpers.psm1#L89-L94)**: `IDOP_SP_CERT_PATH`, `IDOP_SP_CERT_PASSWORD`, `IDOP_SP_CLIENT_ID`, `IDOP_SP_TENANT_ID`.
 9. **[Issue #7 Hoàn thành](https://github.com/vvChu/idop-ccba-way/issues/7)**: Đã hoàn thiện `schema_validator.py` và generator `models.py` (726 dòng) hỗ trợ Pydantic v2 type-safe, bổ sung `"CDEDocument"` vào `submissions.json`. Vượt qua 100% tests và khóa kiểm định tất định ADR-0058 (`verify-patch`).
+10. **[Issue #8 Hoàn thành](https://github.com/vvChu/idop-ccba-way/issues/8)**: Đã hoàn thiện `tools/auth/graph_auth.py` và `scripts/check_graph_auth.py` hỗ trợ nạp chứng chỉ PKCS#12 (.pfx) an toàn, quản lý client credential caching qua MSAL, và kiểm tra quyền hạn Microsoft Graph API (`Sites.FullControl.All`, `Files.ReadWrite.All`).
 
 ---
 
@@ -53,46 +54,46 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 
 | Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Trạng thái |
 |:---|:---|:---:|:---:|:---:|:---:|
-| [App-Only Certificate & Graph Permissions](https://github.com/vvChu/idop-ccba-way/issues/8) | `#8` | Task | HITL | P0 | 🟢 Open (Unblocked) |
+| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | 🟢 Open (Unblocked by #7, #8) |
+| [Live Schema Drift Detector](https://github.com/vvChu/idop-ccba-way/issues/10) | `#10` | Feature | AFK | P1 | 🟢 Open (Unblocked by #8) |
 
 ### 🟣 Resolved — Đã Hoàn Thành
 
 | Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Trạng thái |
 |:---|:---|:---:|:---:|:---:|:---:|
 | [Python Typed Models & Schema Validator](https://github.com/vvChu/idop-ccba-way/issues/7) | `#7` | Feature | AFK | P0 | 🟣 Closed (Resolved) |
+| [App-Only Certificate & Graph Permissions](https://github.com/vvChu/idop-ccba-way/issues/8) | `#8` | Task | HITL | P0 | 🟣 Closed (Resolved) |
 
 ### 🔴 Blocked — Chờ phụ thuộc
 
 | Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Blocked By | Trạng thái |
 |:---|:---|:---:|:---:|:---:|:---|:---:|
-| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | `#8` (đã xong `#7`) | 🔴 Blocked by #8 |
-| [Live Schema Drift Detector](https://github.com/vvChu/idop-ccba-way/issues/10) | `#10` | Feature | AFK | P1 | `#8` | 🔴 Blocked by #8 |
-| [CDE ISO 19650 Gatekeeper](https://github.com/vvChu/idop-ccba-way/issues/11) | `#11` | Feature | HITL | P1 | `#9` (đã xong `#7`) | 🔴 Blocked by #9 |
+| [CDE ISO 19650 Gatekeeper](https://github.com/vvChu/idop-ccba-way/issues/11) | `#11` | Feature | HITL | P1 | `#9` | 🔴 Blocked by #9 |
 | [Bidding HSMT Compliance AI](https://github.com/vvChu/idop-ccba-way/issues/12) | `#12` | Feature | AFK | P2 | `#9` | 🔴 Blocked by #9 |
 
 ### Sơ đồ phụ thuộc (Dependency Graph)
 
 ```
-                  ┌────────────────────┐       ┌────────────────────┐
-                  │  #7 Schema Validator│       │  #8 Cert & Graph   │
-                  │  [P0 - Frontier]   │       │  [P0 - Frontier]   │
-                  └────────┬───────────┘       └────────┬───────────┘
-                           │                            │
-              ┌────────────┼────────────────────────────┤
-              │            │                            │
-              │            ▼                            ▼
-              │  ┌────────────────────┐       ┌────────────────────┐
-              │  │  #9 Bridge Worker  │       │  #10 Drift Detector│
-              │  │  [P0 - Blocked]    │       │  [P1 - Blocked]    │
-              │  └────────┬───────────┘       └────────────────────┘
-              │            │
-              ├────────────┤
-              │            │
-              ▼            ▼
-    ┌────────────────────┐   ┌────────────────────┐
-    │ #11 CDE Gatekeeper │   │ #12 Bidding HSMT   │
-    │ [P1 - Blocked]     │   │ [P2 - Blocked]     │
-    └────────────────────┘   └────────────────────┘
+                  ┌───────────────────────────────┐       ┌───────────────────────────────┐
+                  │  #7 Schema Validator & Models │       │  #8 App-Only Cert & Graph     │
+                  │  [🟣 RESOLVED / CLOSED]       │       │  [🟣 RESOLVED / CLOSED]       │
+                  └──────────────┬────────────────┘       └──────────────┬────────────────┘
+                                 │                                       │
+              ┌──────────────────┴───────────────────────────────────────┤
+              │                                                          │
+              ▼                                                          ▼
+    ┌────────────────────┐                                     ┌────────────────────┐
+    │  #9 Bridge Worker  │                                     │  #10 Drift Detector│
+    │  [🟢 UNBLOCKED P0] │                                     │  [🟢 UNBLOCKED P1] │
+    └─────────┬──────────┘                                     └────────────────────┘
+              │
+              ├────────────────────────────┐
+              │                            │
+              ▼                            ▼
+    ┌────────────────────┐       ┌────────────────────┐
+    │ #11 CDE Gatekeeper │       │ #12 Bidding HSMT   │
+    │ [🔴 Blocked by #9] │       │ [🔴 Blocked by #9] │
+    └────────────────────┘       └────────────────────┘
 ```
 
 ---

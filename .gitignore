@@ -13,6 +13,7 @@ target/
 *.cer
 *.pem
 *.key
+.secrets/
 coverage/
 *.zip
 *.tar
