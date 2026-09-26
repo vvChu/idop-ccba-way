@@ -6,7 +6,7 @@
 "Columns": [
   { "Name": "SubmissionTitle", "Type": "Text", "Required": true },
   { "Name": "RelatedEntity", "Type": "Choice",
-    "Choices": ["Contract","Invoice","Expense","Project"] },
+    "Choices": ["Contract","Invoice","Expense","Project","CDEDocument"] },
   { "Name": "RelatedId", "Type": "Number" },
   { "Name": "SubmittedBy", "Type": "User" },
   { "Name": "SubmissionDate", "Type": "DateTime" },
