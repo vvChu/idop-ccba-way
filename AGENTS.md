@@ -124,3 +124,20 @@ Agent sử dụng duy nhất CLI Wrapper `idop.ps1` từ root folder:
 .\idop.ps1 deploy navigation -Environment IDOP
 .\idop.ps1 maintenance folders
 ```
+
+---
+
+## 6. ⚙️ Nguyên Tắc Nền Tảng & Tích Hợp Dịch Vụ M365 (Platform & M365 Invariants)
+
+Khi phát triển các công cụ Python và dịch vụ tích hợp dữ liệu, mọi Agent **BẮT BUỘC** tuân thủ 3 nguyên tắc:
+
+1. **SSOT Xác Thực & Kết Nối Nền Tảng**:
+   - Mọi kết nối Microsoft Graph App-Only trên Linux bắt buộc sử dụng module SSOT `tools.auth.graph_auth` (`get_graph_client`, `load_pfx_credentials`). CẤM đọc trực tiếp chứng chỉ nhị phân `.pfx` bằng hàm `open(..., 'r')` dạng text PEM.
+
+2. **Cách Ly Trạng Thái Runtime & DLQ**:
+   - Toàn bộ cơ sở dữ liệu SQLite runtime, delta checkpoints, và Dead-Letter Queue (DLQ) bắt buộc lưu trữ tại `tools/output/state/` (đã nằm trong `.gitignore`). CẤM ghi file trạng thái vào `.system_generated/` hoặc thư mục gốc repo.
+
+3. **Phòng Thủ Hấp Thụ Dữ Liệu An Toàn (Safe Ingestion Guard)**:
+   - Dữ liệu đồng bộ từ bên ngoài (Graph Delta) bắt buộc phải kiểm thực qua Pydantic models (`tools.validator.models`). Mọi lỗi `ValidationError` phải được cô lập vào Dead-Letter Queue (DLQ) thay vì để dữ liệu sai làm sập tiến trình daemon.
+   - Các mẫu thiết kế kỹ thuật và giải pháp chi tiết: Tham chiếu tại `.md/knowledge/session_learnings.md`.
+
