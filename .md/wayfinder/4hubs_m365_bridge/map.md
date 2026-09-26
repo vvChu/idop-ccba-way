@@ -45,6 +45,7 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 8. **[Biến môi trường xác thực chuẩn hóa](file:///home/vvc/ccba/IDOP-CCBA-WAY/tools/scripts/modules/PnPHelpers.psm1#L89-L94)**: `IDOP_SP_CERT_PATH`, `IDOP_SP_CERT_PASSWORD`, `IDOP_SP_CLIENT_ID`, `IDOP_SP_TENANT_ID`.
 9. **[Issue #7 Hoàn thành](https://github.com/vvChu/idop-ccba-way/issues/7)**: Đã hoàn thiện `schema_validator.py` và generator `models.py` (726 dòng) hỗ trợ Pydantic v2 type-safe, bổ sung `"CDEDocument"` vào `submissions.json`. Vượt qua 100% tests và khóa kiểm định tất định ADR-0058 (`verify-patch`).
 10. **[Issue #8 Hoàn thành](https://github.com/vvChu/idop-ccba-way/issues/8)**: Đã hoàn thiện `tools/auth/graph_auth.py` và `scripts/check_graph_auth.py` hỗ trợ nạp chứng chỉ PKCS#12 (.pfx) an toàn, quản lý client credential caching qua MSAL, và kiểm tra quyền hạn Microsoft Graph API (`Sites.FullControl.All`, `Files.ReadWrite.All`).
+11. **[Issue #9 Hoàn thành](https://github.com/vvChu/idop-ccba-way/issues/9)**: Đã hoàn thiện `tools/bridge/m365_bridge_worker.py` và `tests/test_m365_bridge.py` (28 unit tests, 100% pass), tích hợp Graph Delta Queries, 3-tier LoopBreaker, TokenBucketRateLimiter (5 req/s), DeadLetterQueue SQLite tại `tools/output/state/m365_bridge.db`, Pydantic v2 validation guard, và OutboundSyncEngine OCC. Vượt qua 100% tests và khóa kiểm định tất định ADR-0058.
 
 ---
 
@@ -54,8 +55,9 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 
 | Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Trạng thái |
 |:---|:---|:---:|:---:|:---:|:---:|
-| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | 🟢 Open (Unblocked by #7, #8) |
 | [Live Schema Drift Detector](https://github.com/vvChu/idop-ccba-way/issues/10) | `#10` | Feature | AFK | P1 | 🟢 Open (Unblocked by #8) |
+| [CDE ISO 19650 Gatekeeper](https://github.com/vvChu/idop-ccba-way/issues/11) | `#11` | Feature | HITL | P1 | 🟢 Open (Unblocked by #9) |
+| [Bidding HSMT Compliance AI](https://github.com/vvChu/idop-ccba-way/issues/12) | `#12` | Feature | AFK | P2 | 🟢 Open (Unblocked by #9) |
 
 ### 🟣 Resolved — Đã Hoàn Thành
 
@@ -63,13 +65,11 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 |:---|:---|:---:|:---:|:---:|:---:|
 | [Python Typed Models & Schema Validator](https://github.com/vvChu/idop-ccba-way/issues/7) | `#7` | Feature | AFK | P0 | 🟣 Closed (Resolved) |
 | [App-Only Certificate & Graph Permissions](https://github.com/vvChu/idop-ccba-way/issues/8) | `#8` | Task | HITL | P0 | 🟣 Closed (Resolved) |
+| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | 🟣 Resolved (PR ready) |
 
 ### 🔴 Blocked — Chờ phụ thuộc
 
-| Ticket | GitHub Issue | Loại | Chế độ | Ưu tiên | Blocked By | Trạng thái |
-|:---|:---|:---:|:---:|:---:|:---|:---:|
-| [CDE ISO 19650 Gatekeeper](https://github.com/vvChu/idop-ccba-way/issues/11) | `#11` | Feature | HITL | P1 | `#9` | 🔴 Blocked by #9 |
-| [Bidding HSMT Compliance AI](https://github.com/vvChu/idop-ccba-way/issues/12) | `#12` | Feature | AFK | P2 | `#9` | 🔴 Blocked by #9 |
+*Hiện không còn ticket nào bị chặn phụ thuộc!*
 
 ### Sơ đồ phụ thuộc (Dependency Graph)
 
@@ -84,7 +84,7 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
               ▼                                                          ▼
     ┌────────────────────┐                                     ┌────────────────────┐
     │  #9 Bridge Worker  │                                     │  #10 Drift Detector│
-    │  [🟢 UNBLOCKED P0] │                                     │  [🟢 UNBLOCKED P1] │
+    │  [🟣 RESOLVED]     │                                     │  [🟢 UNBLOCKED P1] │
     └─────────┬──────────┘                                     └────────────────────┘
               │
               ├────────────────────────────┐
@@ -92,7 +92,7 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
               ▼                            ▼
     ┌────────────────────┐       ┌────────────────────┐
     │ #11 CDE Gatekeeper │       │ #12 Bidding HSMT   │
-    │ [🔴 Blocked by #9] │       │ [🔴 Blocked by #9] │
+    │ [🟢 UNBLOCKED P1]  │       │ [🟢 UNBLOCKED P2]  │
     └────────────────────┘       └────────────────────┘
 ```
 
