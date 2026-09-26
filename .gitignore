@@ -16,6 +16,10 @@ target/
 coverage/
 *.zip
 *.tar
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
 
 # Additional PowerShell/SharePoint specific ignores
 *.ps1~
@@ -66,3 +70,7 @@ requirements-hub.txt
 .md/backups/
 .tmp/
 .out-of-scope/
+
+# Hub auto-generated editable links & Spoke Leakage Guard (ADR 0045)
+.md/data/telemetry_summary.json
+.md/data/*.json

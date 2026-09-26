@@ -8,7 +8,7 @@ project:
   type: "Phần mềm"
   mode: "hybrid"
   qc_mode: null
-  hub_path: "D:\\GitHubProjects\\ccba-agent-platform"
+  hub_path: "../ccba-agent-platform"
   description: >
     Central Knowledge Base bootstrap configuration for IDOP-CCBA-WAY governance
     constitution, system blueprint, and module specifications. Serves as the primary
