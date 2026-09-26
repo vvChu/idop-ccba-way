@@ -58,8 +58,8 @@ try:
     HAS_MODELS = True
 except ImportError:
     ValidationError = Exception  # type: ignore[assignment,misc]
-    CDEDocumentsItem = None  # type: ignore[assignment]
-    OpportunitiesItem = None  # type: ignore[assignment]
+    CDEDocumentsItem = None  # type: ignore[assignment,misc]
+    OpportunitiesItem = None  # type: ignore[assignment,misc]
     HAS_MODELS = False
 
 # Setup logging
@@ -598,7 +598,7 @@ class ResilientGraphClient:
             token = await self.token_manager.get_token()
 
             headers = dict(kwargs.get("headers") or {})
-            headers.setdefault("Authorization", f"Bearer {token}")
+            headers["Authorization"] = f"Bearer {token}"
             headers.setdefault("Accept", "application/json")
             kwargs["headers"] = headers
 
@@ -778,7 +778,7 @@ class DeadLetterQueue:
                 ),
             )
             conn.commit()
-            dlq_id = int(cursor.lastrowid)
+            dlq_id = int(cursor.lastrowid or 0)
 
         logger.error(
             f"DLQ Isolated Record #{dlq_id} [{sync_direction} - {list_name} - Item {item_id}]: "
@@ -1056,7 +1056,7 @@ class DeltaSyncEngine:
                     continue
 
                 # 3. Pydantic Model Validation Guard
-                validated_model = None
+                validated_model: Any = None
                 if HAS_MODELS:
                     payload_to_validate = dict(fields)
                     # Merge top-level id into payload for Pydantic model compatibility

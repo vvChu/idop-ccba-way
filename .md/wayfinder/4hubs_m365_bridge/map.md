@@ -65,7 +65,7 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 |:---|:---|:---:|:---:|:---:|:---:|
 | [Python Typed Models & Schema Validator](https://github.com/vvChu/idop-ccba-way/issues/7) | `#7` | Feature | AFK | P0 | 🟣 Closed (Resolved) |
 | [App-Only Certificate & Graph Permissions](https://github.com/vvChu/idop-ccba-way/issues/8) | `#8` | Task | HITL | P0 | 🟣 Closed (Resolved) |
-| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | 🟣 Resolved (PR ready) |
+| [M365 Outbound Bridge Worker](https://github.com/vvChu/idop-ccba-way/issues/9) | `#9` | Feature | AFK | P0 | 🟣 Closed (Resolved) |
 
 ### 🔴 Blocked — Chờ phụ thuộc
 
@@ -100,11 +100,9 @@ Hoàn thiện **bộ công cụ Python chuẩn mực** cho repo `IDOP-CCBA-WAY` 
 
 ## 🌫️ Chưa Xác Định Rõ (Not yet specified — Fog of War)
 
-1. **Quyền Graph API hiện tại của App Registration**: Chưa biết App `c055c7a4-...` đã được cấp `Sites.FullControl.All` trên Microsoft Graph (ngoài SharePoint CSOM) hay chưa. Kết quả sẽ rõ sau ticket `#8`.
-2. **File chứng chỉ PFX/PEM trên Linux**: Chưa xác nhận file `.pfx` tồn tại và đọc được trên máy trạm Linux. Kết quả sẽ rõ sau ticket `#8`.
-3. **Bảng ánh xạ Taxonomy ↔ mã ISO 19650**: Cần chốt bảng ánh xạ chính thức giữa `CCBA_LoaiTaiLieu.json` (tiếng Việt) với mã 2 ký tự ISO 19650 (`DR`, `RP`, `MO`...). Sẽ giải quyết trong ticket `#11` qua `/ccba-grilling`.
-4. **Cấu trúc mẫu báo cáo thẩm định HSMT**: Cần thống nhất template prompt cho RAG Service (:8005) khi quét HSMT. Sẽ giải quyết trong ticket `#12`.
-5. **Vị trí host của Bridge Worker daemon**: Bridge Worker chạy trên DGX Spark hay trên máy chủ riêng? Chiến lược Docker container hay systemd service? Sẽ quyết định trong ticket `#9`.
+1. **Bảng ánh xạ Taxonomy ↔ mã ISO 19650**: Cần chốt bảng ánh xạ chính thức giữa `CCBA_LoaiTaiLieu.json` (tiếng Việt) với mã 2 ký tự ISO 19650 (`DR`, `RP`, `MO`...). Sẽ giải quyết trong ticket `#11` qua `/ccba-grilling`.
+2. **Cấu trúc mẫu báo cáo thẩm định HSMT**: Cần thống nhất template prompt cho RAG Service (:8005) khi quét HSMT. Sẽ giải quyết trong ticket `#12`.
+3. **Môi trường Live M365 Production**: Chạy kiểm thử kết nối trực tiếp với tenant SharePoint thật khi có file chứng chỉ `.pfx` và `.env` trên DGX Spark.
 
 ---
 
